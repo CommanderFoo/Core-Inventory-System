@@ -54,6 +54,9 @@ Objects {
   ChildIds: 10736260970155672102
   ChildIds: 12022879565615496328
   ChildIds: 8131351067154343009
+  ChildIds: 12387990716116465785
+  ChildIds: 17882975545477831957
+  ChildIds: 17097516558241454909
   ChildIds: 3399513445889837083
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -118,6 +121,242 @@ Objects {
     }
     TemplateAsset {
       Id: 2907989484309433646
+    }
+  }
+}
+Objects {
+  Id: 17097516558241454909
+  Name: "Player Inventory"
+  Transform {
+    Location {
+      X: 87.3912811
+      Y: 0.975377083
+      Z: -3.05175781e-05
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4056815105945944543
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 6300197238816624524
+      value {
+        Overrides {
+          Name: "Anchor"
+          Enum {
+            Value: "mc:euianchor:topcenter"
+          }
+        }
+        Overrides {
+          Name: "Dock"
+          Enum {
+            Value: "mc:euianchor:topcenter"
+          }
+        }
+        Overrides {
+          Name: "UIX"
+          Float: 0
+        }
+        Overrides {
+          Name: "UIY"
+          Float: 50
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 16211408270603517451
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Player Inventory"
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        Overrides {
+          Name: "cs:Name"
+          String: "Player Inventory4"
+        }
+        Overrides {
+          Name: "cs:StorageKey"
+          String: "pinv4"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 17543768331625296425
+    }
+  }
+}
+Objects {
+  Id: 17882975545477831957
+  Name: "Player Inventory"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4056815105945944543
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 6300197238816624524
+      value {
+        Overrides {
+          Name: "Anchor"
+          Enum {
+            Value: "mc:euianchor:topleft"
+          }
+        }
+        Overrides {
+          Name: "Dock"
+          Enum {
+            Value: "mc:euianchor:topleft"
+          }
+        }
+        Overrides {
+          Name: "UIX"
+          Float: 50
+        }
+        Overrides {
+          Name: "UIY"
+          Float: 50
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 16211408270603517451
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Player Inventory"
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        Overrides {
+          Name: "cs:Name"
+          String: "Player Inventory3"
+        }
+        Overrides {
+          Name: "cs:StorageKey"
+          String: "pinv3"
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 17543768331625296425
+    }
+  }
+}
+Objects {
+  Id: 12387990716116465785
+  Name: "Player Inventory"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4056815105945944543
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 6300197238816624524
+      value {
+        Overrides {
+          Name: "Anchor"
+          Enum {
+            Value: "mc:euianchor:bottomleft"
+          }
+        }
+        Overrides {
+          Name: "Dock"
+          Enum {
+            Value: "mc:euianchor:bottomleft"
+          }
+        }
+        Overrides {
+          Name: "UIX"
+          Float: 50
+        }
+        Overrides {
+          Name: "UIY"
+          Float: -50
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 16211408270603517451
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Player Inventory"
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        Overrides {
+          Name: "cs:Name"
+          String: "Player Inventory2"
+        }
+        Overrides {
+          Name: "cs:StorageKey"
+          String: "pinv2"
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 17543768331625296425
     }
   }
 }
