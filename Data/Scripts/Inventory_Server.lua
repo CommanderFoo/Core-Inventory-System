@@ -1,8 +1,11 @@
-local API_Inventory = require(script:GetCustomProperty("API_Inventory"))
-local SLOT_COUNT = script:GetCustomProperty("SlotCount")
-local CLEAN_UP = script:GetCustomProperty("CleanUp")
-local STORAGE_KEY = script:GetCustomProperty("StorageKey")
-local NAME = script:GetCustomProperty("Name")
+local ROOT = script:GetCustomProperty("Root"):WaitForObject()
+
+local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
+
+local SLOT_COUNT = ROOT:GetCustomProperty("SlotCount")
+local CLEAN_UP = ROOT:GetCustomProperty("CleanUp")
+local STORAGE_KEY = ROOT:GetCustomProperty("StorageKey")
+local NAME = ROOT:GetCustomProperty("Name")
 
 local function on_player_joined(player)
 	API_Inventory.create_player_inventory(player, SLOT_COUNT, CLEAN_UP, STORAGE_KEY, NAME)

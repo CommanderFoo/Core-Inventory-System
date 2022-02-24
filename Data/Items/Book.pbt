@@ -1,26 +1,26 @@
 Assets {
-  Id: 9332503982576710862
-  Name: "Key"
+  Id: 3683707664205314919
+  Name: "Book"
   PlatformAssetType: 33
   SerializationVersion: 107
   ItemAsset {
-    CustomName: "Key"
-    MaximumStackCount: 5
+    CustomName: "Book"
+    MaximumStackCount: 1
     CustomParameters {
       Overrides {
         Name: "cs:Icon"
         AssetReference {
-          Id: 6112180836239827778
+          Id: 10432877250731249514
         }
       }
     }
     Assets {
-      Id: 6112180836239827778
-      Name: "Fantasy Key 001"
+      Id: 10432877250731249514
+      Name: "Fantasy Book 005"
       PlatformAssetType: 9
       PrimaryAsset {
         AssetType: "PlatformBrushAssetRef"
-        AssetId: "UI_Fantasy_Equip_Key_001"
+        AssetId: "UI_Fantasy_Equip_Book_005"
       }
     }
   }

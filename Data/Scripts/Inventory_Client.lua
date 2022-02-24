@@ -1,12 +1,14 @@
-local API_Inventory = require(script:GetCustomProperty("API_Inventory"))
+local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 
-local SLOTS = script:GetCustomProperty("Slots"):WaitForObject()
-local SLOT_FRAME_NORMAL = script:GetCustomProperty("SlotFrameNormal")
-local SLOT_FRAME_HOVER = script:GetCustomProperty("SlotFrameHover")
-local SLOT_BACKGROUND_NORMAL = script:GetCustomProperty("SlotBackgroundNormal")
-local SLOT_BACKGROUND_HOVER = script:GetCustomProperty("SlotBackgroundHover")
+local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
 
-local local_player = Game.GetLocalPlayer()
+local SLOTS = ROOT:GetCustomProperty("Slots"):WaitForObject()
+local SLOT_FRAME_NORMAL = ROOT:GetCustomProperty("SlotFrameNormal")
+local SLOT_FRAME_HOVER = ROOT:GetCustomProperty("SlotFrameHover")
+local SLOT_BACKGROUND_NORMAL = ROOT:GetCustomProperty("SlotBackgroundNormal")
+local SLOT_BACKGROUND_HOVER = ROOT:GetCustomProperty("SlotBackgroundHover")
+local NAME = ROOT:GetCustomProperty("Name")
+
 local inventory = nil
 
 API_Inventory.enable_cursor()
@@ -53,7 +55,7 @@ local function connect_slot_events()
 	end
 end
 
-inventory = API_Inventory.get_inventory("Player Hotbar")
+inventory = API_Inventory.get_inventory(NAME)
 
 if(inventory ~= nil) then
 	for slot_index, item in pairs(inventory:GetItems()) do

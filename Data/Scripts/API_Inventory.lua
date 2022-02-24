@@ -36,8 +36,15 @@ function API.create_player_inventory(player, slot_count, clean_up, storage_key, 
 
 	}
 
-	-- for i = 1, 4 do
-	-- 	inventory:AddItem(INVENTORY_ASSETS[#INVENTORY_ASSETS].asset, { count = math.random(1), slot = i})
+	-- for i = 1, slot_count do
+	-- 	local asset = INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset
+	-- 	local count = math.random(1, 5)
+
+	-- 	if(inventory:CanAddItem(asset, { count = count, slot = i })) then
+	-- 		inventory:AddItem(asset, { count = count, slot = i })
+	-- 	elseif(count == 2) then
+	-- 		inventory:AddItem(asset, { count = 1, slot = i })
+	-- 	end
 	-- end
 end
 

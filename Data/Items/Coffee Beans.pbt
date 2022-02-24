@@ -1,26 +1,26 @@
 Assets {
-  Id: 9332503982576710862
-  Name: "Key"
+  Id: 18384392046183835442
+  Name: "Coffee Beans"
   PlatformAssetType: 33
   SerializationVersion: 107
   ItemAsset {
-    CustomName: "Key"
-    MaximumStackCount: 5
+    CustomName: "Coffee Beans"
+    MaximumStackCount: 15
     CustomParameters {
       Overrides {
         Name: "cs:Icon"
         AssetReference {
-          Id: 6112180836239827778
+          Id: 4083375966430084893
         }
       }
     }
     Assets {
-      Id: 6112180836239827778
-      Name: "Fantasy Key 001"
+      Id: 4083375966430084893
+      Name: "Fantasy Beans 001"
       PlatformAssetType: 9
       PrimaryAsset {
         AssetType: "PlatformBrushAssetRef"
-        AssetId: "UI_Fantasy_Equip_Key_001"
+        AssetId: "UI_Fantasy_Food_Beans_001"
       }
     }
   }
