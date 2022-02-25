@@ -1,7 +1,11 @@
 local INVENTORY_ASSETS = require(script:GetCustomProperty("InventoryAssets"))
 local INVENTORY = script:GetCustomProperty("Inventory")
 
-local API = {}
+local API = {
+
+	disabled_hover = {}
+
+}
 
 API.INVENTORIES = {}
 API.ACTIVE = {
@@ -331,7 +335,12 @@ function API.drop_item_action(player, action)
 end
 
 function API.on_hovered_event(button, params)
-	params.slot:GetCustomProperty("Frame"):GetObject():SetColor(params.slot_frame_hover)
+	local frame = params.slot:GetCustomProperty("Frame"):GetObject()
+
+	if(API.disabled_hover[frame] == nil) then
+		frame:SetColor(params.slot_frame_hover)
+	end
+
 	params.slot:GetCustomProperty("Background"):GetObject():SetColor(params.slot_background_hover)
 
 	API.ACTIVE.hovered_slot_index = params.slot_index
@@ -340,28 +349,13 @@ function API.on_hovered_event(button, params)
 end
 
 function API.on_unhovered_event(button, params)
-	params.slot:GetCustomProperty("Frame"):GetObject():SetColor(params.slot_frame_unhover)
+	local frame = params.slot:GetCustomProperty("Frame"):GetObject()
+
+	if(API.disabled_hover[frame] == nil) then
+		frame:SetColor(params.slot_frame_unhover)
+	end
+
 	params.slot:GetCustomProperty("Background"):GetObject():SetColor(params.slot_background_unhover)
-end
-
--- Shared
-
-function API.find_lookup_item_by_key(key)
-	for i, data_item in pairs(INVENTORY_ASSETS) do
-		if(key == data_item.key) then
-			return data_item
-		end
-	end
-end
-
-function API.find_lookup_item_by_asset_id(item)
-	for i, data_item in pairs(INVENTORY_ASSETS) do
-		local id = CoreString.Split(data_item.asset, ":")
-
-		if(id == item.itemAssetId) then
-			return data_item
-		end
-	end
 end
 
 function API.remove_item_slot_pressed()
@@ -388,6 +382,36 @@ function API.get_inventory(name)
 	end
 
 	return nil
+end
+
+function API.disable_hover(slot_frame)
+	API.disabled_hover[slot_frame] = 1
+end
+
+function API.enable_hover(slot_frame)
+	if(API.disabled_hover[slot_frame] ~= nil) then
+		API.disabled_hover[slot_frame] = nil
+	end
+end
+
+-- Shared
+
+function API.find_lookup_item_by_key(key)
+	for i, data_item in pairs(INVENTORY_ASSETS) do
+		if(key == data_item.key) then
+			return data_item
+		end
+	end
+end
+
+function API.find_lookup_item_by_asset_id(item)
+	for i, data_item in pairs(INVENTORY_ASSETS) do
+		local id = CoreString.Split(data_item.asset, ":")
+
+		if(id == item.itemAssetId) then
+			return data_item
+		end
+	end
 end
 
 -- Events

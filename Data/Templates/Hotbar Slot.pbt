@@ -7,7 +7,7 @@ Assets {
       RootId: 17241503802324526723
       Objects {
         Id: 17241503802324526723
-        Name: "Slot"
+        Name: "Hotbar Slot"
         Transform {
           Scale {
             X: 1
@@ -630,7 +630,7 @@ Assets {
       }
       Objects {
         Id: 1467277428421801004
-        Name: "Title"
+        Name: "Label"
         Transform {
           Location {
             X: -13.0504675
