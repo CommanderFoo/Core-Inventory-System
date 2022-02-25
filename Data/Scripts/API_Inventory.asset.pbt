@@ -22,6 +22,12 @@ Assets {
           Id: 9414153814428187976
         }
       }
+      Overrides {
+        Name: "cs:JSON"
+        AssetReference {
+          Id: 7398069313101726787
+        }
+      }
     }
   }
   SerializationVersion: 107

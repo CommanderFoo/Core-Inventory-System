@@ -1,3 +1,5 @@
+local JSON = require(script:GetCustomProperty("JSON"))
+
 local INVENTORY_ASSETS = require(script:GetCustomProperty("InventoryAssets"))
 local INVENTORY = script:GetCustomProperty("Inventory")
 
@@ -104,6 +106,44 @@ function API.save_player_inventory(player)
 
 	Storage.SetPlayerData(player, data)
 end
+
+-- String compress
+-- function API.save_player_inventory(player)
+-- 	local data = Storage.GetPlayerData(player)
+-- 	local inv_data = {}
+
+-- 	for id, obj in pairs(API.INVENTORIES) do
+-- 		if(obj.player ~= nil and obj.player == player) then
+-- 			local inv = obj.inventory
+
+-- 			if(Object.IsValid(inv)) then
+-- 				local tmp = {}
+
+-- 				for i = 1, inv.slotCount do
+-- 					local item = inv:GetItem(i)
+-- 					local entry = "|"
+
+-- 					if(item ~= nil) then
+-- 						local lookup_item = API.find_lookup_item_by_asset_id(item)
+
+-- 						if(lookup_item ~= nil) then
+-- 							entry = lookup_item.key .. "|" .. item.count
+-- 						end
+-- 					end
+
+-- 					table.insert(tmp, entry)
+-- 				end
+
+-- 				table.insert(inv_data, obj.storage_key .. ":" .. table.concat(tmp, "@"))
+-- 			end
+-- 		end
+-- 	end
+
+-- 	data._i = table.concat(inv_data, "@")
+
+-- 	print(Storage.SizeOfData(data))
+-- 	Storage.SetPlayerData(player, data)
+-- end
 
 function API.remove_player_inventory(player)
 	for id, obj in pairs(API.INVENTORIES) do

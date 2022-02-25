@@ -195,14 +195,6 @@ Entries {
 }
 Entries {
   Key {
-    StringVar: "ihs"
-  }
-  SimpleValue {
-    IntVar: 6
-  }
-}
-Entries {
-  Key {
     StringVar: "pinv"
   }
   SimpleValue {
@@ -576,5 +568,29 @@ Entries {
         }
       }
     }
+  }
+}
+Entries {
+  Key {
+    StringVar: "_i"
+  }
+  SimpleValue {
+    StringVar: "phb:k|4@c|4@|@|@b|1@c|8@|@k|4@|@c|15"
+  }
+}
+Entries {
+  Key {
+    StringVar: "ihs"
+  }
+  SimpleValue {
+    IntVar: 6
+  }
+}
+Entries {
+  Key {
+    StringVar: "i"
+  }
+  SimpleValue {
+    StringVar: "{\"pinv\":[[\"c\",15],[\"k\",3],[\"k\",4],[],[\"k\",4],[\"c\",10],[\"k\",5],[\"b\",1],[\"c\",14],[\"k\",5],[\"c\",10],[],[\"k\",4],[\"k\",5],[\"k\",3],[\"c\",8]]}"
   }
 }
