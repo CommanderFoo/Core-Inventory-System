@@ -2,6 +2,7 @@ local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 
 local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
 
+local INVENTORY_UI = ROOT:GetCustomProperty("InventoryUI"):WaitForObject()
 local SLOTS = ROOT:GetCustomProperty("Slots"):WaitForObject()
 local SLOT_FRAME_NORMAL = ROOT:GetCustomProperty("SlotFrameNormal")
 local SLOT_FRAME_HOVER = ROOT:GetCustomProperty("SlotFrameHover")

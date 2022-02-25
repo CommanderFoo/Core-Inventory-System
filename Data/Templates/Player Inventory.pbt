@@ -42,6 +42,12 @@ Assets {
             Bool: true
           }
           Overrides {
+            Name: "cs:InventoryUI"
+            ObjectReference {
+              SubObjectId: 6300197238816624524
+            }
+          }
+          Overrides {
             Name: "cs:Slots"
             ObjectReference {
               SubObjectId: 10515405227916180255

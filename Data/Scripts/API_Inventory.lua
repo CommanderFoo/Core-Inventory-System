@@ -1,6 +1,8 @@
 local INVENTORY_ASSETS = require(script:GetCustomProperty("InventoryAssets"))
 local INVENTORY = script:GetCustomProperty("Inventory")
 
+-- @TODO: Storage compression
+
 local API = {
 
 	disabled_hover = {}

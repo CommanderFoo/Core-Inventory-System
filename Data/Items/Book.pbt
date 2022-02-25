@@ -6,6 +6,7 @@ Assets {
   ItemAsset {
     CustomName: "Book"
     MaximumStackCount: 1
+    ItemTemplateAssetId: 370900379657318047
     CustomParameters {
       Overrides {
         Name: "cs:Icon"

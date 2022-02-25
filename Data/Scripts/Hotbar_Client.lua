@@ -2,6 +2,7 @@ local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 
 local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
 
+local INVENTORY_UI = ROOT:GetCustomProperty("InventoryUI"):WaitForObject()
 local SLOTS = ROOT:GetCustomProperty("Slots"):WaitForObject():GetChildren()
 local SLOT_FRAME_NORMAL = ROOT:GetCustomProperty("SlotFrameNormal")
 local NAME = ROOT:GetCustomProperty("Name")
@@ -10,8 +11,8 @@ local SLOT_FRAME_ACTIVE = ROOT:GetCustomProperty("SlotFrameActive")
 local inventory = API_Inventory.get_inventory(NAME)
 
 local slot_frames = {}
+local local_player = Game.GetLocalPlayer()
 
--- @TODO: Save selected slot to storage?
 local active_slot_index = -1
 
 local function select_slot(slot_index)
@@ -73,7 +74,23 @@ local function set_action_labels()
 	end
 end
 
+local function on_player_left(player)
+	if(player == local_player and active_slot_index > -1) then
+		Events.BroadcastToServer("inventory.hotbar.save_slot", active_slot_index)
+	end
+end
+
+local function on_private_networked_data_changed(player, key)
+	if(key == "inventory.hotbar.slot") then
+		select_slot(local_player:GetPrivateNetworkedData(key) or -1)
+	end
+end
+
 Input.actionPressedEvent:Connect(on_action_pressed)
+Game.playerLeftEvent:Connect(on_player_left)
 
 set_action_labels()
 select_slot(1)
+
+local_player.privateNetworkedDataChangedEvent:Connect(on_private_networked_data_changed)
+on_private_networked_data_changed(local_player, "inventory.hotbar.slot")
