@@ -384,11 +384,11 @@ function API.get_inventory(name)
 	return nil
 end
 
-function API.disable_hover(slot_frame)
+function API.disable_frame_hover(slot_frame)
 	API.disabled_hover[slot_frame] = 1
 end
 
-function API.enable_hover(slot_frame)
+function API.enable_frame_hover(slot_frame)
 	if(API.disabled_hover[slot_frame] ~= nil) then
 		API.disabled_hover[slot_frame] = nil
 	end

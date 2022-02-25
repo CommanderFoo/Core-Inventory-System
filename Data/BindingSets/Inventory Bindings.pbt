@@ -40,7 +40,7 @@ Assets {
             Value: "mc:ebindingkeyboard:none"
           }
           Controller {
-            Value: "mc:ebindinggamepad:none"
+            Value: "mc:ebindinggamepad:dpadright"
           }
         }
         DecreaseInputs {
@@ -51,7 +51,7 @@ Assets {
             Value: "mc:ebindingkeyboard:none"
           }
           Controller {
-            Value: "mc:ebindinggamepad:none"
+            Value: "mc:ebindinggamepad:dpadleft"
           }
         }
       }

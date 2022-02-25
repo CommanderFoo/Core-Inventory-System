@@ -22,11 +22,11 @@ local function select_slot(slot_index)
 
 		slot_frames["slot_" .. tostring(slot_index)]:SetColor(SLOT_FRAME_ACTIVE)
 
-		API_Inventory.enable_hover(slot_frames["slot_" .. tostring(active_slot_index)])
+		API_Inventory.enable_frame_hover(slot_frames["slot_" .. tostring(active_slot_index)])
 
 		active_slot_index = slot_index
 
-		API_Inventory.disable_hover(slot_frames["slot_" .. tostring(slot_index)])
+		API_Inventory.disable_frame_hover(slot_frames["slot_" .. tostring(slot_index)])
 	end
 end
 

@@ -84,6 +84,15 @@ Assets {
             }
           }
           Overrides {
+            Name: "cs:SlotFrameActive"
+            Color {
+              R: 0.126041576
+              G: 0.0621283501
+              B: 0.0134556387
+              A: 1
+            }
+          }
+          Overrides {
             Name: "cs:API_Inventory:isrep"
             Bool: false
           }
@@ -279,6 +288,7 @@ Assets {
         ParentId: 2157732961051654012
         ChildIds: 15938237459194604224
         ChildIds: 15460974197886614067
+        ChildIds: 8644038496056306344
         Collidable_v2 {
           Value: "mc:ecollisionsetting:forceoff"
         }
@@ -828,6 +838,12 @@ Assets {
           }
         }
         ParentId: 17178296635386173225
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
         TemplateInstance {
           ParameterOverrideMap {
             key: 17241503802324526723
@@ -835,6 +851,16 @@ Assets {
               Overrides {
                 Name: "Name"
                 String: "Hotbar Slot"
+              }
+              Overrides {
+                Name: "Position"
+                Vector {
+                }
+              }
+              Overrides {
+                Name: "Rotation"
+                Rotator {
+                }
               }
             }
           }
@@ -1430,6 +1456,50 @@ Assets {
         Script {
           ScriptAsset {
             Id: 10545072440016289850
+          }
+        }
+        NetworkRelevanceDistance {
+          Value: "mc:eproxyrelevance:critical"
+        }
+      }
+      Objects {
+        Id: 8644038496056306344
+        Name: "Hotbar_Client"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 17530914393312924580
+        UnregisteredParameters {
+          Overrides {
+            Name: "cs:Root"
+            ObjectReference {
+              SubObjectId: 2157732961051654012
+            }
+          }
+        }
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Script {
+          ScriptAsset {
+            Id: 11892512239955878530
           }
         }
         NetworkRelevanceDistance {
