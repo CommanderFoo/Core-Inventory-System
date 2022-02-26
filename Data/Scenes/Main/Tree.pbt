@@ -16,7 +16,6 @@ Objects {
   }
   ChildIds: 16270802511419725645
   ChildIds: 4056815105945944543
-  ChildIds: 15071754642872722936
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -32,25 +31,6 @@ Objects {
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
-  Id: 15071754642872722936
-  Name: "Inventory Drops"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  NetworkContext {
-    Type: Local
   }
 }
 Objects {
