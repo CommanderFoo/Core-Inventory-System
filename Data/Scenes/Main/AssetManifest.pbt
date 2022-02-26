@@ -34,12 +34,3 @@ Assets {
     AssetId: "CORESKY_Sky"
   }
 }
-Assets {
-  Id: 3839519509431907484
-  Name: "BG Flat 002"
-  PlatformAssetType: 9
-  PrimaryAsset {
-    AssetType: "PlatformBrushAssetRef"
-    AssetId: "BackgroundNoOutline_019"
-  }
-}

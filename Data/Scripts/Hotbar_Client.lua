@@ -86,6 +86,16 @@ local function on_private_networked_data_changed(player, key)
 	end
 end
 
+-- API_Inventory.register_data(inventory.id, {
+
+-- 	panel = INVENTORY_UI,
+-- 	x_start = -(INVENTORY_UI.width / 2),
+-- 	x_end = (INVENTORY_UI.width / 2),
+-- 	y_start = -INVENTORY_UI.height,
+-- 	y_end = 0
+
+-- })
+
 Input.actionPressedEvent:Connect(on_action_pressed)
 Game.playerLeftEvent:Connect(on_player_left)
 

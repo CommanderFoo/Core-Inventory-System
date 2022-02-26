@@ -12,6 +12,7 @@ local API = {
 }
 
 API.INVENTORIES = {}
+API.INVENTORIES_DATA = {}
 API.ACTIVE = {
 
 	slot = nil,
@@ -434,6 +435,20 @@ function API.enable_frame_hover(slot_frame)
 	if(API.disabled_hover[slot_frame] ~= nil) then
 		API.disabled_hover[slot_frame] = nil
 	end
+end
+
+function API.register_data(inventory_id, data)
+	API.INVENTORIES_DATA[inventory_id] = data
+end
+
+function API.get_all_data()
+	local all_data = {}
+
+	for id, data in pairs(API.INVENTORIES_DATA) do
+		table.insert(all_data, data)
+	end
+
+	return all_data
 end
 
 -- Shared
