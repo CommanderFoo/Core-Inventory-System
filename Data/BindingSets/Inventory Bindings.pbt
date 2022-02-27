@@ -21,8 +21,8 @@ Assets {
           }
         }
       }
-      Action: "Inventory Add One"
-      Description: "Drops one item onto a slot."
+      Action: "Inventory Drop One"
+      Description: "Drops one item onto a slot or into the world."
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }

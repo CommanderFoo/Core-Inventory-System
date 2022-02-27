@@ -6,6 +6,7 @@ Assets {
   ItemAsset {
     CustomName: "Coffee Beans"
     MaximumStackCount: 15
+    ItemTemplateAssetId: 13554235956785981284
     CustomParameters {
       Overrides {
         Name: "cs:Icon"

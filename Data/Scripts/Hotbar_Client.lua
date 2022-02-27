@@ -8,26 +8,24 @@ local SLOT_FRAME_NORMAL = ROOT:GetCustomProperty("SlotFrameNormal")
 local NAME = ROOT:GetCustomProperty("Name")
 local SLOT_FRAME_ACTIVE = ROOT:GetCustomProperty("SlotFrameActive")
 
-local inventory = API_Inventory.get_inventory(NAME)
-
 local slot_frames = {}
 local local_player = Game.GetLocalPlayer()
 
 local active_slot_index = -1
+local last_active_slot_index = -1
+local update_task = nil
 
 local function select_slot(slot_index)
-	if(active_slot_index ~= slot_index) then
+	if(active_slot_index ~= slot_index and slot_index ~= -1) then
 		if(active_slot_index > -1) then
 			slot_frames["slot_" .. tostring(active_slot_index)]:SetColor(SLOT_FRAME_NORMAL)
 		end
 
 		slot_frames["slot_" .. tostring(slot_index)]:SetColor(SLOT_FRAME_ACTIVE)
-
 		API_Inventory.enable_frame_hover(slot_frames["slot_" .. tostring(active_slot_index)])
-
 		active_slot_index = slot_index
-
 		API_Inventory.disable_frame_hover(slot_frames["slot_" .. tostring(slot_index)])
+
 	end
 end
 
@@ -74,30 +72,25 @@ local function set_action_labels()
 	end
 end
 
-local function on_player_left(player)
-	if(player == local_player and active_slot_index > -1) then
-		Events.BroadcastToServer("inventory.hotbar.save_slot", active_slot_index)
-	end
-end
-
 local function on_private_networked_data_changed(player, key)
 	if(key == "inventory.hotbar.slot") then
 		select_slot(local_player:GetPrivateNetworkedData(key) or -1)
 	end
 end
 
--- API_Inventory.register_data(inventory.id, {
+local function save_active_slot()
+	if(active_slot_index ~= last_active_slot_index and active_slot_index ~= -1) then
+		Events.BroadcastToServer("inventory.hotbar.save_slot", active_slot_index)
+		last_active_slot_index = active_slot_index
+	end
+end
 
--- 	panel = INVENTORY_UI,
--- 	x_start = -(INVENTORY_UI.width / 2),
--- 	x_end = (INVENTORY_UI.width / 2),
--- 	y_start = -INVENTORY_UI.height,
--- 	y_end = 0
+update_task = Task.Spawn(save_active_slot)
 
--- })
+update_task.repeatCount = -1
+update_task.repeatInterval = 30
 
 Input.actionPressedEvent:Connect(on_action_pressed)
-Game.playerLeftEvent:Connect(on_player_left)
 
 set_action_labels()
 select_slot(1)

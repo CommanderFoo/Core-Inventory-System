@@ -59,21 +59,11 @@ end
 inventory = API_Inventory.get_inventory(NAME)
 
 if(inventory ~= nil) then
+	API_Inventory.set_panel(inventory.id, INVENTORY_UI)
+
 	for slot_index, item in pairs(inventory:GetItems()) do
 		inventory_changed(inventory, slot_index)
 	end
-
-	-- if(NAME == "Player Inventory") then
-	-- 	API_Inventory.register_data(inventory.id, {
-
-	-- 		panel = INVENTORY_UI,
-	-- 		x_start = -INVENTORY_UI.width,
-	-- 		x_end = 0,
-	-- 		y_start = -(INVENTORY_UI.height / 2),
-	-- 		y_end = (INVENTORY_UI.height / 2)
-		
-	-- 	})
-	-- end
 
 	inventory.changedEvent:Connect(inventory_changed)
 

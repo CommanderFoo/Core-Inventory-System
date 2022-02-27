@@ -12,7 +12,8 @@ local API = {
 }
 
 API.INVENTORIES = {}
-API.INVENTORIES_DATA = {}
+API.INVENTORY_PANELS = {}
+API.IS_INSIDE = false
 API.ACTIVE = {
 
 	slot = nil,
@@ -151,6 +152,7 @@ function API.remove_player_inventory(player)
 		if(obj.player ~= nil and obj.player == player and obj.clean_up) then
 			obj.inventory:Destroy()
 			API.INVENTORIES[id] = nil
+			API.INVENTORY_PANELS[id] = nil
 			break
 		end
 	end
@@ -212,7 +214,7 @@ function API.move_item_handler(from_inventory_id, to_inventory_id, from_slot_ind
 	end
 end
 
-function API.add_one_handler(from_inventory_id, to_inventory_id, from_slot_index, to_slot_index)
+function API.drop_one_handler(from_inventory_id, to_inventory_id, from_slot_index, to_slot_index, is_inside)
 	local from_inventory_obj = API.INVENTORIES[from_inventory_id]
 	local to_inventory_obj = API.INVENTORIES[to_inventory_id]
 
@@ -221,7 +223,18 @@ function API.add_one_handler(from_inventory_id, to_inventory_id, from_slot_index
 		local to_inventory = to_inventory_obj.inventory
 		local item = from_inventory:GetItem(from_slot_index)
 
-		if(to_inventory:CanAddItem(item.itemAssetId, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
+		if(not is_inside) then
+
+			--@TODO: should inventories have their own drop container or a global one?
+			--@TODO: set position, should spawn at world root without position set.
+			--@TODO: spawn in to local context to prevent each item object being networked.
+
+			--Events.Broadcast("inventory.cross.dropitem", from_inventory, item.itemAssetId, 1)
+
+			if(from_inventory:CanDropItem(item.itemAssetId, { count = 1, networkContext = NetworkContextType.LOCAL_CONTEXT })) then
+				from_inventory:DropItem(item.itemAssetId, { count = 1, networkContext = NetworkContextType.LOCAL_CONTEXT })
+			end
+		elseif(to_inventory:CanAddItem(item.itemAssetId, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
 			to_inventory:AddItem(item.itemAssetId, { count = 1, slot = to_slot_index })
 			from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
 		end
@@ -322,55 +335,68 @@ function API.on_slot_pressed_event(button, params)
 	end
 end
 
-function API.add_one_action(player, action)
-	if(action == "Inventory Add One") then
+function API.drop_one_action(player, action)
+	if(action == "Inventory Drop One") then
+
 		if(API.ACTIVE.has_item and API.ACTIVE.hovered_inventory and API.ACTIVE.hovered_slot) then
-			local icon = API.ACTIVE.hovered_slot:FindChildByName("Icon")
-			local is_hidden = icon.visibility == Visibility.FORCE_OFF and true or false
 			local item = API.ACTIVE.inventory:GetItem(API.ACTIVE.slot_index)
 			local item_count = item.count
-			local itemAssetId = item.itemAssetId
 			local new_count = math.max(0, item.count - 1)
+			local item_asset_id = item.itemAssetId
 
-			if(API.ACTIVE.inventory == API.ACTIVE.hovered_inventory and API.ACTIVE.slot_index == API.ACTIVE.hovered_slot_index) then
-				API.PROXY.visibility = Visibility.FORCE_OFF
-				API.ACTIVE.slot.opacity = 1
-				API.clear_dragged_item()
-			elseif(is_hidden) then
-				icon.visibility = Visibility.FORCE_ON
-				icon:SetImage(API.PROXY_ICON:GetImage())
-				API.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
-
-				Events.BroadcastToServer("inventory.addone", API.ACTIVE.inventory.id, API.ACTIVE.hovered_inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index)
-
+			if(not API.IS_INSIDE) then
 				if(new_count == 0) then
 					API.PROXY.visibility = Visibility.FORCE_OFF
 					API.ACTIVE.slot.opacity = 1
 					API.clear_dragged_item()
+				else
+					Events.BroadcastToServer("inventory.dropone", API.ACTIVE.inventory.id, API.ACTIVE.inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index, API.IS_INSIDE)
 				end
 			else
-				local current_item = API.ACTIVE.hovered_inventory:GetItem(API.ACTIVE.hovered_slot_index)
-				local can_drop = true
+				local icon = API.ACTIVE.hovered_slot:FindChildByName("Icon")
+				local is_hidden = icon.visibility == Visibility.FORCE_OFF and true or false
 
-				if(current_item ~= nil and current_item.count == current_item.maximumStackCount and current_item.itemAssetId == itemAssetId) then
-					can_drop = false
-				end
-
-				if(can_drop) then
-					Events.BroadcastToServer("inventory.addone", API.ACTIVE.inventory.id, API.ACTIVE.hovered_inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index)
-					API.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
-				end
-
-				if(new_count == 0) then
+				if(API.ACTIVE.inventory == API.ACTIVE.hovered_inventory and API.ACTIVE.slot_index == API.ACTIVE.hovered_slot_index) then
 					API.PROXY.visibility = Visibility.FORCE_OFF
 					API.ACTIVE.slot.opacity = 1
 					API.clear_dragged_item()
+				elseif(is_hidden) then
+					icon.visibility = Visibility.FORCE_ON
+					icon:SetImage(API.PROXY_ICON:GetImage())
+					API.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
+
+					Events.BroadcastToServer("inventory.dropone", API.ACTIVE.inventory.id, API.ACTIVE.hovered_inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index)
+
+					if(new_count == 0) then
+						API.PROXY.visibility = Visibility.FORCE_OFF
+						API.ACTIVE.slot.opacity = 1
+						API.clear_dragged_item()
+					end
+				else
+					local current_item = API.ACTIVE.hovered_inventory:GetItem(API.ACTIVE.hovered_slot_index)
+					local can_drop = true
+
+					if(current_item ~= nil and current_item.count == current_item.maximumStackCount and current_item.itemAssetId == item_asset_id) then
+						can_drop = false
+					end
+
+					if(can_drop) then
+						Events.BroadcastToServer("inventory.dropone", API.ACTIVE.inventory.id, API.ACTIVE.hovered_inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index)
+						API.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
+					end
+
+					if(new_count == 0) then
+						API.PROXY.visibility = Visibility.FORCE_OFF
+						API.ACTIVE.slot.opacity = 1
+						API.clear_dragged_item()
+					end
 				end
 			end
 		end
 	end
 end
 
+--@TODO check if inside inventory or not
 function API.drop_item_action(player, action)
 	if(action == "Inventory Drop Item" and API.ACTIVE.has_item) then
 		Events.BroadcastToServer("inventory.dropitem", API.ACTIVE.inventory.id, API.ACTIVE.slot_index)
@@ -437,18 +463,94 @@ function API.enable_frame_hover(slot_frame)
 	end
 end
 
-function API.register_data(inventory_id, data)
-	API.INVENTORIES_DATA[inventory_id] = data
-end
+function API.get_panels()
+	local panels = {}
 
-function API.get_all_data()
-	local all_data = {}
-
-	for id, data in pairs(API.INVENTORIES_DATA) do
-		table.insert(all_data, data)
+	for id, data in pairs(API.INVENTORY_PANELS) do
+		table.insert(panels, data)
 	end
 
-	return all_data
+	return panels
+end
+
+function API.set_panel(id, panel)
+	API.INVENTORY_PANELS[id] = panel
+end
+
+function API.tick()
+	API.IS_INSIDE = false
+
+	if(API.ACTIVE.has_item) then
+		local panels = API.get_panels()
+
+		if(#panels > 0) then
+			for i, panel in ipairs(panels) do
+				local mouse_pos = UI.GetCursorPosition()
+				local pos = panel:GetAbsolutePosition()
+
+				local x_start = 0
+				local x_end = 0
+				local y_start = 0
+				local y_end = 0
+				local anchor = panel.anchor
+
+				if(anchor == UIPivot.TOP_LEFT) then
+					x_start = pos.x
+					x_end = pos.x + panel.width
+					y_start = pos.y
+					y_end = pos.y + panel.height
+				elseif(anchor == UIPivot.TOP_CENTER) then
+					x_start = pos.x - (panel.width / 2)
+					x_end = pos.x + (panel.width / 2)
+					y_start = pos.y
+					y_end = pos.y + panel.height
+				elseif(anchor == UIPivot.TOP_RIGHT) then
+					x_start = pos.x - panel.width
+					x_end = pos.x
+					y_start = pos.y
+					y_end = pos.y + panel.height
+				elseif(anchor == UIPivot.MIDDLE_LEFT) then
+					x_start = pos.x
+					x_end = pos.x + panel.width
+					y_start = pos.y - (panel.height / 2)
+					y_end = pos.y + (panel.height / 2)
+				elseif(anchor == UIPivot.MIDDLE_CENTER) then
+					x_start = pos.x - (panel.width / 2)
+					x_end = pos.x + (panel.width / 2)
+					y_start = pos.y - (panel.height / 2)
+					y_end = pos.y + (panel.height / 2)
+				elseif(anchor == UIPivot.MIDDLE_RIGHT) then
+					x_start = pos.x - panel.width
+					x_end = pos.x
+					y_start = pos.y - (panel.height / 2)
+					y_end = pos.y + (panel.height / 2)
+				elseif(anchor == UIPivot.BOTTOM_LEFT) then
+					x_start = pos.x
+					x_end = pos.x + panel.width
+					y_start = pos.y - panel.height
+					y_end = pos.y
+				elseif(anchor == UIPivot.BOTTOM_CENTER) then
+					x_start = pos.x - (panel.width / 2)
+					x_end = pos.x + (panel.width / 2)
+					y_start = pos.y - panel.height
+					y_end = pos.y
+				elseif(anchor == UIPivot.BOTTOM_RIGHT) then
+					x_start = pos.x - panel.width
+					x_end = pos.x
+					y_start = pos.y - panel.height
+					y_end = pos.y
+				end
+
+				if(mouse_pos.x > x_start and mouse_pos.x < x_end and mouse_pos.y > y_start and mouse_pos.y < y_end) then
+					API.IS_INSIDE = true
+				end
+
+				--print(string.format("Mouse X: %s, Start X: %s, End X: %s, Mouse Y: %s, Start Y: %s, End Y: %s, Inside: %s", mouse_pos.x, x_start, x_end, mouse_pos.y, y_start, y_end, API.IS_INSIDE))
+			end
+		end
+	end
+
+	--print(API.IS_INSIDE)
 end
 
 -- Shared
@@ -475,10 +577,10 @@ end
 
 if(Environment.IsServer()) then
 	Events.Connect("inventory.moveitem", API.move_item_handler)
-	Events.Connect("inventory.addone", API.add_one_handler)
+	Events.Connect("inventory.dropone", API.drop_one_handler)
 	Events.Connect("inventory.removeitem", API.remove_item_handler)
 else
-	Input.actionPressedEvent:Connect(API.add_one_action)
+	Input.actionPressedEvent:Connect(API.drop_one_action)
 end
 
 return API
