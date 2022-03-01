@@ -3,8 +3,6 @@ local JSON = require(script:GetCustomProperty("JSON"))
 local INVENTORY_ASSETS = require(script:GetCustomProperty("InventoryAssets"))
 local INVENTORY = script:GetCustomProperty("Inventory")
 
--- @TODO: Storage compression
-
 local API = {
 
 	disabled_hover = {}
@@ -303,17 +301,25 @@ function API.on_slot_pressed_event(button, params)
 
 		-- Slot contains existing item
 		else
-			local tmp_img = icon:GetImage()
-			local tmp_count = count.text
+			local item = API.ACTIVE.inventory:GetItem(API.ACTIVE.slot_index)
+			local hovered_inventory = API.ACTIVE.hovered_inventory or API.ACTIVE.inventory
+			local to_item = hovered_inventory:GetItem(API.ACTIVE.hovered_slot_index or API.ACTIVE.slot_index)
 
-			icon:SetImage(API.ACTIVE.slot_icon:GetImage())
-			count.text = API.ACTIVE.slot_count.text
-			API.ACTIVE.slot_icon:SetImage(tmp_img)
-			API.ACTIVE.slot_count.text = tmp_count
-			API.ACTIVE.slot.opacity = 1
+			if(item ~= nil and to_item ~= nil and item.itemAssetId == to_item.itemAssetId and to_item.count == to_item.maximumStackCount) then
+				API.ACTIVE.slot.opacity = 1
+			else
+				local tmp_img = icon:GetImage()
+				local tmp_count = count.text
 
-			tmp_img = nil
-			tmp_count = nil
+				icon:SetImage(API.ACTIVE.slot_icon:GetImage())
+				count.text = API.ACTIVE.slot_count.text
+				API.ACTIVE.slot_icon:SetImage(tmp_img)
+				API.ACTIVE.slot_count.text = tmp_count
+				API.ACTIVE.slot.opacity = 1
+
+				tmp_img = nil
+				tmp_count = nil
+			end
 		end
 
 		Events.BroadcastToServer("inventory.moveitem", API.ACTIVE.inventory.id, params.inventory.id, API.ACTIVE.slot_index, params.slot_index)
