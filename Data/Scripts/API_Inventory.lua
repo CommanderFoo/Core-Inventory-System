@@ -223,6 +223,7 @@ function API.drop_one_handler(from_inventory_id, to_inventory_id, from_slot_inde
 		local to_inventory = to_inventory_obj.inventory
 		local item = from_inventory:GetItem(from_slot_index)
 
+		print(is_inside)
 		if(not is_inside) then
 
 			--@TODO: should inventories have their own drop container or a global one?
@@ -365,7 +366,7 @@ function API.drop_one_action(player, action)
 					icon:SetImage(API.PROXY_ICON:GetImage())
 					API.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
 
-					Events.BroadcastToServer("inventory.dropone", API.ACTIVE.inventory.id, API.ACTIVE.hovered_inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index)
+					Events.BroadcastToServer("inventory.dropone", API.ACTIVE.inventory.id, API.ACTIVE.hovered_inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index, true)
 
 					if(new_count == 0) then
 						API.PROXY.visibility = Visibility.FORCE_OFF
@@ -381,7 +382,7 @@ function API.drop_one_action(player, action)
 					end
 
 					if(can_drop) then
-						Events.BroadcastToServer("inventory.dropone", API.ACTIVE.inventory.id, API.ACTIVE.hovered_inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index)
+						Events.BroadcastToServer("inventory.dropone", API.ACTIVE.inventory.id, API.ACTIVE.hovered_inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index, true)
 						API.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
 					end
 
@@ -398,7 +399,7 @@ end
 
 --@TODO check if inside inventory or not
 function API.drop_item_action(player, action)
-	if(action == "Inventory Drop Item" and API.ACTIVE.has_item) then
+	if(action == "Inventory Drop Item" and API.ACTIVE.has_item and not API.IS_INSIDE) then
 		Events.BroadcastToServer("inventory.dropitem", API.ACTIVE.inventory.id, API.ACTIVE.slot_index)
 	end
 end
