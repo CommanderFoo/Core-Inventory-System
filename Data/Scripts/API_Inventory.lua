@@ -1,7 +1,6 @@
-local JSON = require(script:GetCustomProperty("JSON"))
-
 local INVENTORY_ASSETS = require(script:GetCustomProperty("InventoryAssets"))
 local INVENTORY = script:GetCustomProperty("Inventory")
+local DEBUG = script:GetCustomProperty("Debug")
 
 ---@class API_Inventory
 local API = {
@@ -29,6 +28,16 @@ API.ACTIVE = {
 
 -- Server
 
+function API.give_items(inventory)
+	for i = 1, inventory.slotCount do
+		local item = INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset
+
+		if(inventory:CanAddItem(item, { count = 1 })) then
+			inventory:AddItem(item, { count = 1 })
+		end
+	end
+end
+
 ---Creates a player inventory and assigns it.
 ---@param player Player
 ---@param slot_count integer
@@ -51,21 +60,18 @@ function API.create_player_inventory(player, slot_count, clean_up, storage_key, 
 
 	}
 
-	-- for i = 1, slot_count do
-	-- 	local asset = INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset
-	-- 	local count = math.random(1, 5)
-
-	-- 	if(inventory:CanAddItem(asset, { count = count, slot = i })) then
-	-- 		inventory:AddItem(asset, { count = count, slot = i })
-	-- 	elseif(count == 2) then
-	-- 		inventory:AddItem(asset, { count = 1, slot = i })
-	-- 	end
-	-- end
+	if(DEBUG) then
+		API.give_items(inventory)
+	end
 end
 
 ---Loads a player's inventory.
 ---@param player Player
 function API.load_player_inventory(player)
+	if(DEBUG) then
+		return
+	end
+
 	local data = Storage.GetPlayerData(player)
 
 	for id, obj in pairs(API.INVENTORIES) do
@@ -86,6 +92,10 @@ end
 ---Saves a player's inventory.
 ---@param player Player
 function API.save_player_inventory(player)
+	if(DEBUG) then
+		return
+	end
+	
 	local data = Storage.GetPlayerData(player)
 
 	for id, obj in pairs(API.INVENTORIES) do
@@ -226,6 +236,9 @@ function API.drop_one_handler(from_inventory_id, to_inventory_id, from_slot_inde
 	end
 end
 
+---Removes an item from a slot.
+---@param inventory_id string
+---@param slot_index integer
 function API.remove_item_handler(inventory_id, slot_index)
 	local inventory_obj = API.INVENTORIES[inventory_id]
 
@@ -240,6 +253,7 @@ end
 
 -- Client
 
+---Clears the ACTIVE table.
 function API.clear_dragged_item()
 	API.ACTIVE.slot = nil
 	API.ACTIVE.slot_icon = nil
@@ -252,22 +266,30 @@ function API.clear_dragged_item()
 	API.ACTIVE.hovered_inventory = nil
 end
 
+---Set the drag proxy object and setup the icon and count properties.
+---@param proxy UIControl
 function API.set_drag_proxy(proxy)
 	API.PROXY = proxy
 	API.PROXY_ICON = proxy:FindChildByName("Icon")
 	API.PROXY_COUNT = API.PROXY_ICON:FindChildByName("Count")
 end
 
+---Enables the cursor for the player.
 function API.enable_cursor()
 	UI.SetCanCursorInteractWithUI(true)
 	UI.SetCursorVisible(true)
 end
 
+---Disables the cursor for the player.
 function API.disable_cursor()
 	UI.SetCanCursorInteractWithUI(false)
 	UI.SetCursorVisible(false)
 end
 
+---When a slot is pressed, it will either pick up the item in a slot, swap it,
+---or add to the stack count of the going to slot.
+---@param button UIButton
+---@param params table Table contains slot and inventory information.
 function API.on_slot_pressed_event(button, params)
 	local icon = params.slot:FindChildByName("Icon")
 	local is_hidden = icon.visibility == Visibility.FORCE_OFF and true or false
@@ -328,9 +350,11 @@ function API.on_slot_pressed_event(button, params)
 	end
 end
 
+---Drops one item in to a slot, to an existing count, or into the world.
+---@param player Player
+---@param action string
 function API.drop_one_action(player, action)
 	if(action == "Inventory Drop One") then
-
 		if(API.ACTIVE.has_item and API.ACTIVE.hovered_inventory and API.ACTIVE.hovered_slot) then
 			local item = API.ACTIVE.inventory:GetItem(API.ACTIVE.slot_index)
 			local item_count = item.count
@@ -343,6 +367,7 @@ function API.drop_one_action(player, action)
 					API.ACTIVE.slot.opacity = 1
 					API.clear_dragged_item()
 				else
+					print(1)
 					Events.BroadcastToServer("inventory.dropone", API.ACTIVE.inventory.id, API.ACTIVE.inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index, API.IS_INSIDE)
 				end
 			else
@@ -389,12 +414,9 @@ function API.drop_one_action(player, action)
 	end
 end
 
-function API.drop_item_action(player, action)
-	if(action == "Inventory Drop Item" and API.ACTIVE.has_item and not API.IS_INSIDE) then
-		Events.BroadcastToServer("inventory.dropitem", API.ACTIVE.inventory.id, API.ACTIVE.slot_index)
-	end
-end
-
+---Triggers when the player hovers over a slot.
+---@param button UIButton
+---@param params table
 function API.on_hovered_event(button, params)
 	local frame = params.slot:GetCustomProperty("Frame"):GetObject()
 
@@ -409,6 +431,9 @@ function API.on_hovered_event(button, params)
 	API.ACTIVE.hovered_slot = params.slot
 end
 
+---Triggers when the player unhovers on a slot.
+---@param button UIButton
+---@param params table
 function API.on_unhovered_event(button, params)
 	local frame = params.slot:GetCustomProperty("Frame"):GetObject()
 
@@ -419,16 +444,10 @@ function API.on_unhovered_event(button, params)
 	params.slot:GetCustomProperty("Background"):GetObject():SetColor(params.slot_background_unhover)
 end
 
-function API.remove_item_slot_pressed()
-	if(API.ACTIVE.has_item and API.ACTIVE.inventory ~= nil) then
-		Events.BroadcastToServer("inventory.removeitem", API.ACTIVE.inventory.id, API.ACTIVE.slot_index)
-		API.ACTIVE.slot.opacity = 1
-		API.ACTIVE.slot_icon.visibility = Visibility.FORCE_OFF
-		API.clear_dragged_item()
-		API.PROXY.visibility = Visibility.FORCE_OFF
-	end
-end
-
+---@TODO: Rework to work with world inventories.
+---Looks up a player inventory.
+---@param name string
+---@return Inventory
 function API.get_inventory(name)
 	local local_player = Game.GetLocalPlayer()
 
@@ -445,16 +464,22 @@ function API.get_inventory(name)
 	return nil
 end
 
+---Disables the frame from being hovered over. This is used with hotbars.
+---@param slot_frame UIImage
 function API.disable_frame_hover(slot_frame)
 	API.disabled_hover[slot_frame] = 1
 end
 
+---Enables frame over on a slot by removing it from the lookup table.
+---@param slot_frame UIImage
 function API.enable_frame_hover(slot_frame)
 	if(API.disabled_hover[slot_frame] ~= nil) then
 		API.disabled_hover[slot_frame] = nil
 	end
 end
 
+---Gets the inventory panels
+---@return table
 function API.get_panels()
 	local panels = {}
 
@@ -465,10 +490,14 @@ function API.get_panels()
 	return panels
 end
 
+---Sets an inventory panel.
+---@param id string The inventory id.
+---@param panel UIControl
 function API.set_panel(id, panel)
 	API.INVENTORY_PANELS[id] = panel
 end
 
+---Ticks every frame to check if the player is inside an inventory when they have an item.
 function API.tick()
 	API.IS_INSIDE = false
 
@@ -541,12 +570,13 @@ function API.tick()
 			end
 		end
 	end
-
-	--print(API.IS_INSIDE)
 end
 
 -- Shared
 
+---Looks up an item by the key that is used for storage.
+---@param key string
+---@return table
 function API.find_lookup_item_by_key(key)
 	for i, data_item in pairs(INVENTORY_ASSETS) do
 		if(key == data_item.key) then
@@ -555,6 +585,9 @@ function API.find_lookup_item_by_key(key)
 	end
 end
 
+---Find an item based on an asset id.
+---@param item string
+---@return table
 function API.find_lookup_item_by_asset_id(item)
 	for i, data_item in pairs(INVENTORY_ASSETS) do
 		local id = CoreString.Split(data_item.asset, ":")

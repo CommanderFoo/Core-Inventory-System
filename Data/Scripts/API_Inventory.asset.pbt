@@ -23,10 +23,8 @@ Assets {
         }
       }
       Overrides {
-        Name: "cs:JSON"
-        AssetReference {
-          Id: 7398069313101726787
-        }
+        Name: "cs:Debug"
+        Bool: true
       }
     }
   }
