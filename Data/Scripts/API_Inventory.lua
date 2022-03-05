@@ -217,7 +217,6 @@ function API.drop_one_handler(from_inventory_id, to_inventory_id, from_slot_inde
 		local to_inventory = to_inventory_obj.inventory
 		local item = from_inventory:GetItem(from_slot_index)
 
-		print(is_inside)
 		if(not is_inside) then
 
 			--@TODO: should inventories have their own drop container or a global one?
@@ -227,7 +226,7 @@ function API.drop_one_handler(from_inventory_id, to_inventory_id, from_slot_inde
 			--Events.Broadcast("inventory.cross.dropitem", from_inventory, item.itemAssetId, 1)
 
 			if(from_inventory:CanDropItem(item.itemAssetId, { count = 1, networkContext = NetworkContextType.LOCAL_CONTEXT })) then
-				from_inventory:DropItem(item.itemAssetId, { count = 1, networkContext = NetworkContextType.LOCAL_CONTEXT })
+				--from_inventory:DropItem(item.itemAssetId, { count = 1, networkContext = NetworkContextType.LOCAL_CONTEXT })
 			end
 		elseif(to_inventory:CanAddItem(item.itemAssetId, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
 			to_inventory:AddItem(item.itemAssetId, { count = 1, slot = to_slot_index })
@@ -362,13 +361,12 @@ function API.drop_one_action(player, action)
 			local item_asset_id = item.itemAssetId
 
 			if(not API.IS_INSIDE) then
+				Events.BroadcastToServer("inventory.dropone", API.ACTIVE.inventory.id, API.ACTIVE.inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index, API.IS_INSIDE)
+
 				if(new_count == 0) then
 					API.PROXY.visibility = Visibility.FORCE_OFF
 					API.ACTIVE.slot.opacity = 1
 					API.clear_dragged_item()
-				else
-					print(1)
-					Events.BroadcastToServer("inventory.dropone", API.ACTIVE.inventory.id, API.ACTIVE.inventory.id, API.ACTIVE.slot_index, API.ACTIVE.hovered_slot_index, API.IS_INSIDE)
 				end
 			else
 				local icon = API.ACTIVE.hovered_slot:FindChildByName("Icon")
