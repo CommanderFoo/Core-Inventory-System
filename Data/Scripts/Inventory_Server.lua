@@ -1,6 +1,6 @@
 local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 
-local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
+local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory")) ---@type API_Inventory
 
 local SLOT_COUNT = ROOT:GetCustomProperty("SlotCount")
 local CLEAN_UP = ROOT:GetCustomProperty("CleanUp")

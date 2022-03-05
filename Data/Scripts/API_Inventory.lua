@@ -3,6 +3,7 @@ local JSON = require(script:GetCustomProperty("JSON"))
 local INVENTORY_ASSETS = require(script:GetCustomProperty("InventoryAssets"))
 local INVENTORY = script:GetCustomProperty("Inventory")
 
+---@class API_Inventory
 local API = {
 
 	disabled_hover = {}
@@ -28,6 +29,12 @@ API.ACTIVE = {
 
 -- Server
 
+---Creates a player inventory and assigns it.
+---@param player Player
+---@param slot_count integer
+---@param clean_up boolean
+---@param storage_key string
+---@param name string
 function API.create_player_inventory(player, slot_count, clean_up, storage_key, name)
 	local inventory = World.SpawnAsset(INVENTORY, { networkContext = NetworkContextType.NETWORKED })
 
@@ -56,6 +63,8 @@ function API.create_player_inventory(player, slot_count, clean_up, storage_key, 
 	-- end
 end
 
+---Loads a player's inventory.
+---@param player Player
 function API.load_player_inventory(player)
 	local data = Storage.GetPlayerData(player)
 
@@ -74,6 +83,8 @@ function API.load_player_inventory(player)
 	end
 end
 
+---Saves a player's inventory.
+---@param player Player
 function API.save_player_inventory(player)
 	local data = Storage.GetPlayerData(player)
 
@@ -145,6 +156,8 @@ end
 -- 	Storage.SetPlayerData(player, data)
 -- end
 
+---Removes a player's inventory.
+---@param player Player
 function API.remove_player_inventory(player)
 	for id, obj in pairs(API.INVENTORIES) do
 		if(obj.player ~= nil and obj.player == player and obj.clean_up) then
@@ -156,6 +169,11 @@ function API.remove_player_inventory(player)
 	end
 end
 
+---Moves an item from one slot to another. This supports cross inventories.
+---@param from_inventory_id string The inventory id the item is coming from.
+---@param to_inventory_id string The inventory id the item is going too.
+---@param from_slot_index integer The slot index the item is coming from.
+---@param to_slot_index integer The slot index the item is going too.
 function API.move_item_handler(from_inventory_id, to_inventory_id, from_slot_index, to_slot_index)
 	local from_inventory_obj = API.INVENTORIES[from_inventory_id]
 	local to_inventory_obj = API.INVENTORIES[to_inventory_id]
@@ -212,6 +230,12 @@ function API.move_item_handler(from_inventory_id, to_inventory_id, from_slot_ind
 	end
 end
 
+---Drops an item into an inventory. If the item is outside of an inventory, then it will drop into the world.
+---@param from_inventory_id string The inventory id the item is coming from.
+---@param to_inventory_id string The inventory id the item is going too.
+---@param from_slot_index integer The slot index the item is coming from.
+---@param to_slot_index integer The slot index the item is going too.
+---@param is_inside boolean Determins if the item being dropped is over an inventory or not.
 function API.drop_one_handler(from_inventory_id, to_inventory_id, from_slot_index, to_slot_index, is_inside)
 	local from_inventory_obj = API.INVENTORIES[from_inventory_id]
 	local to_inventory_obj = API.INVENTORIES[to_inventory_id]
@@ -403,7 +427,6 @@ function API.drop_one_action(player, action)
 	end
 end
 
---@TODO check if inside inventory or not
 function API.drop_item_action(player, action)
 	if(action == "Inventory Drop Item" and API.ACTIVE.has_item and not API.IS_INSIDE) then
 		Events.BroadcastToServer("inventory.dropitem", API.ACTIVE.inventory.id, API.ACTIVE.slot_index)

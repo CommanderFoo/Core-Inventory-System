@@ -49,45 +49,8 @@ Objects {
     }
   }
   ParentId: 4781671109827199097
-  ChildIds: 1448239538879859632
   NetworkContext {
     Type: Local
-  }
-}
-Objects {
-  Id: 1448239538879859632
-  Name: "Inventory_Caller"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4007106953623320400
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Script {
-    ScriptAsset {
-      Id: 3480891312075378677
-    }
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
   }
 }
 Objects {
