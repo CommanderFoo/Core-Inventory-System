@@ -17,10 +17,8 @@ Assets {
         }
       }
       Overrides {
-        Name: "cs:WorldInventoriesContainer"
-        AssetReference {
-          Id: 841534158063459245
-        }
+        Name: "cs:HotBarSlotKey"
+        String: "hss"
       }
       Overrides {
         Name: "cs:Debug"
