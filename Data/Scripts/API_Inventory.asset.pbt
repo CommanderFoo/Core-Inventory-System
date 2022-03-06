@@ -11,20 +11,20 @@ Assets {
         }
       }
       Overrides {
-        Name: "cs:API"
-        AssetReference {
-          Id: 12879219911357857649
-        }
-      }
-      Overrides {
         Name: "cs:Inventory"
         AssetReference {
           Id: 9414153814428187976
         }
       }
       Overrides {
+        Name: "cs:WorldInventoriesContainer"
+        AssetReference {
+          Id: 4209565152854683048
+        }
+      }
+      Overrides {
         Name: "cs:Debug"
-        Bool: true
+        Bool: false
       }
     }
   }

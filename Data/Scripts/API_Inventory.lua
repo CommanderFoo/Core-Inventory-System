@@ -6,7 +6,6 @@ local DEBUG = script:GetCustomProperty("Debug")
 local API = {
 
 	disabled_hover = {}
-
 }
 
 API.INVENTORIES = {}
@@ -26,6 +25,17 @@ API.ACTIVE = {
 
 }
 
+API.Type = {
+
+	PLAYER_INVENTORY = 1, --Player assigned
+	HOTBAR_INVENTORY = 2, --Player assigned
+	CHEST_INVENTORY = 3, --World assigned
+	ARMOR_INVENTORY = 4, --Player assigned
+	STASH_INVENTORY = 5, --Player assigned
+	PET_INVENTORY = 6 --Player assigned
+
+}
+
 -- Server
 
 function API.give_items(inventory)
@@ -38,27 +48,21 @@ function API.give_items(inventory)
 	end
 end
 
----Creates a player inventory and assigns it.
----@param player Player
----@param slot_count integer
----@param clean_up boolean
----@param storage_key string
----@param name string
-function API.create_player_inventory(player, slot_count, clean_up, storage_key, name)
+function API.create_inventory(opts)
 	local inventory = World.SpawnAsset(INVENTORY, { networkContext = NetworkContextType.NETWORKED })
+	
+	inventory:Resize(opts.slot_count)
+	inventory.name = opts.name or inventory.id
 
-	inventory:Resize(slot_count)
-	inventory:Assign(player)
-	inventory.name = name or player.name
+	if(opts.player ~= nil) then
+		inventory:Assign(opts.player)
+	elseif(opts.container ~= nil and Object.IsValid(opts.container)) then
+		inventory.parent = opts.container
+	end
 
-	API.INVENTORIES[inventory.id] = {
+	opts.inventory = inventory
 
-		inventory = inventory,
-		player = player,
-		clean_up =  clean_up,
-		storage_key = storage_key
-
-	}
+	API.INVENTORIES[inventory.id] = opts
 
 	if(DEBUG) then
 		API.give_items(inventory)
@@ -91,11 +95,7 @@ end
 
 ---Saves a player's inventory.
 ---@param player Player
-function API.save_player_inventory(player)
-	if(DEBUG) then
-		return
-	end
-	
+function API.save_player_inventory(player)	
 	local data = Storage.GetPlayerData(player)
 
 	for id, obj in pairs(API.INVENTORIES) do
@@ -218,15 +218,19 @@ function API.drop_one_handler(from_inventory_id, to_inventory_id, from_slot_inde
 		local item = from_inventory:GetItem(from_slot_index)
 
 		if(not is_inside) then
+			local params = { count = 1, networkContext = NetworkContextType.LOCAL_CONTEXT }
 
-			--@TODO: should inventories have their own drop container or a global one?
-			--@TODO: set position, should spawn at world root without position set.
-			--@TODO: spawn in to local context to prevent each item object being networked.
+			-- Add item to drops inventory
+			-- add custom property for inventory item
+			-- add custom property to dropped item and set the id for both
+			-- use velocity on spawned item
+			-- allow for pickup
+			-- despawn after X time (remove from pickup inventory)
+			-- Picked up clear pickup inventory to sync between clients
 
-			--Events.Broadcast("inventory.cross.dropitem", from_inventory, item.itemAssetId, 1)
+			if(from_inventory:CanDropFromSlot(from_slot_index, params)) then
 
-			if(from_inventory:CanDropItem(item.itemAssetId, { count = 1, networkContext = NetworkContextType.LOCAL_CONTEXT })) then
-				--from_inventory:DropItem(item.itemAssetId, { count = 1, networkContext = NetworkContextType.LOCAL_CONTEXT })
+				--from_inventory:DropFromSlot(from_slot_index, params)
 			end
 		elseif(to_inventory:CanAddItem(item.itemAssetId, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
 			to_inventory:AddItem(item.itemAssetId, { count = 1, slot = to_slot_index })
@@ -436,26 +440,33 @@ function API.on_unhovered_event(button, params)
 	local frame = params.slot:GetCustomProperty("Frame"):GetObject()
 
 	if(API.disabled_hover[frame] == nil) then
-		frame:SetColor(params.slot_frame_unhover)
+		frame:SetColor(params.slot_frame_normal)
 	end
 
-	params.slot:GetCustomProperty("Background"):GetObject():SetColor(params.slot_background_unhover)
+	params.slot:GetCustomProperty("Background"):GetObject():SetColor(params.slot_background_normal)
 end
 
----@TODO: Rework to work with world inventories.
----Looks up a player inventory.
+---Looks up an inventory.
 ---@param name string
 ---@return Inventory
-function API.get_inventory(name)
-	local local_player = Game.GetLocalPlayer()
+function API.get_inventory(name, type, container)
+	if(type == API.Type.CHEST_INVENTORY) then
+		while(container:GetChildren() == 0) do
+			Task.Wait()
+		end
 
-	while(#local_player:GetInventories() == 0) do
-		Task.Wait()
-	end
+		return container:GetChildren()[1]
+	else
+		local local_player = Game.GetLocalPlayer()
 
-	for i, inv in ipairs(local_player:GetInventories()) do
-		if(inv.name == name) then
-			return inv
+		while(#local_player:GetInventories() == 0) do
+			Task.Wait()
+		end
+
+		for i, inv in ipairs(local_player:GetInventories()) do
+			if(inv.name == name) then
+				return inv
+			end
 		end
 	end
 
@@ -566,6 +577,60 @@ function API.tick()
 
 				--print(string.format("Mouse X: %s, Start X: %s, End X: %s, Mouse Y: %s, Start Y: %s, End Y: %s, Inside: %s", mouse_pos.x, x_start, x_end, mouse_pos.y, y_start, y_end, API.IS_INSIDE))
 			end
+		end
+	end
+end
+
+---Global inventory changed event.
+---@param inventory Inventory
+---@param slot_index integer
+---@param slots UIPanel
+function API.inventory_changed(inventory, slot_index, slots)
+	local item = inventory:GetItem(slot_index)
+	local child_icon = slots:GetChildren()[slot_index]:FindChildByName("Icon")
+	local child_count = child_icon:FindChildByName("Count")
+
+	if(item ~= nil) then
+		local icon = item:GetCustomProperty("Icon")
+
+		child_icon:SetImage(icon)
+		child_icon.visibility = Visibility.FORCE_ON
+		child_count.text = tostring(item.count)
+	else
+		child_icon.visibility = Visibility.FORCE_OFF
+		child_count.text = ""
+	end
+end
+
+function API.init(opts)
+	API.set_panel(opts.inventory.id, opts.inventory_ui)
+
+	for slot_index, item in pairs(opts.inventory:GetItems()) do
+		API.inventory_changed(opts.inventory, slot_index, opts.slots)
+	end
+
+	opts.inventory.changedEvent:Connect(API.inventory_changed, opts.slots)
+
+	for index, slot in ipairs(opts.slots:GetChildren()) do
+		local button = slot:FindChildByName("Button")
+		local icon = slot:FindChildByName("Icon")
+		
+		if(button ~= nil and icon ~= nil and button.isInteractable) then
+			local params = {
+
+				inventory = opts.inventory,
+				slot = slot,
+				slot_index = index,
+				slot_frame_hover = opts.slot_frame_hover,
+				slot_background_hover = opts.slot_background_hover,
+				slot_frame_normal = opts.slot_frame_normal,
+				slot_background_normal = opts.slot_background_normal,
+
+			}
+
+			button.pressedEvent:Connect(API.on_slot_pressed_event, params)
+			button.hoveredEvent:Connect(API.on_hovered_event, params)
+			button.unhoveredEvent:Connect(API.on_unhovered_event, params)
 		end
 	end
 end

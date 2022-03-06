@@ -16,7 +16,6 @@ Objects {
   }
   ChildIds: 16270802511419725645
   ChildIds: 4056815105945944543
-  ChildIds: 4007106953623320400
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -32,25 +31,6 @@ Objects {
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
-  Id: 4007106953623320400
-  Name: "Item Drops"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  NetworkContext {
-    Type: Local
   }
 }
 Objects {
@@ -74,6 +54,7 @@ Objects {
   ChildIds: 10736260970155672102
   ChildIds: 12022879565615496328
   ChildIds: 8131351067154343009
+  ChildIds: 17500937244161095873
   ChildIds: 3399513445889837083
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -138,6 +119,46 @@ Objects {
     }
     TemplateAsset {
       Id: 2907989484309433646
+    }
+  }
+}
+Objects {
+  Id: 17500937244161095873
+  Name: "Chest Inventory"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4056815105945944543
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 4718527058990615992
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Chest Inventory"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: 342.608704
+            Y: -0.975377083
+            Z: 3.05175781e-05
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+            Yaw: 89.9999924
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 17881690212890626348
     }
   }
 }

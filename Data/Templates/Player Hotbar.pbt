@@ -412,7 +412,7 @@ Assets {
       }
       Objects {
         Id: 12600169729114424956
-        Name: "Player Hotbar"
+        Name: "Inventory"
         Transform {
           Location {
           }

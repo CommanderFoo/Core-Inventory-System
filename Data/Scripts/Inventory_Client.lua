@@ -14,58 +14,19 @@ local inventory = nil
 
 API_Inventory.enable_cursor()
 
-local function inventory_changed(inv, slot_index)
-	local item = inv:GetItem(slot_index)
-	local child_icon = SLOTS:GetChildren()[slot_index]:FindChildByName("Icon")
-	local child_count = child_icon:FindChildByName("Count")
-
-	if(item ~= nil) then
-		local icon = item:GetCustomProperty("Icon")
-
-		child_icon:SetImage(icon)
-		child_icon.visibility = Visibility.FORCE_ON
-		child_count.text = tostring(item.count)
-	else
-		child_icon.visibility = Visibility.FORCE_OFF
-		child_count.text = ""
-	end
-end
-
-local function connect_slot_events()
-	for index, slot in ipairs(SLOTS:GetChildren()) do
-		local button = slot:FindChildByName("Button")
-		local icon = slot:FindChildByName("Icon")
-
-		if(button ~= nil and icon ~= nil and button.isInteractable) then
-			local args = {
-
-				inventory = inventory,
-				slot = slot,
-				slot_index = index,
-				slot_frame_hover = SLOT_FRAME_HOVER,
-				slot_frame_unhover = SLOT_FRAME_NORMAL,
-				slot_background_hover = SLOT_BACKGROUND_HOVER,
-				slot_background_unhover = SLOT_BACKGROUND_NORMAL
-
-			}
-
-			button.pressedEvent:Connect(API_Inventory.on_slot_pressed_event, args)
-			button.hoveredEvent:Connect(API_Inventory.on_hovered_event, args)
-			button.unhoveredEvent:Connect(API_Inventory.on_unhovered_event, args)
-		end
-	end
-end
-
-inventory = API_Inventory.get_inventory(NAME)
+inventory = API_Inventory.get_inventory(NAME, API_Inventory.Type.PLAYER_INVENTORY)
 
 if(inventory ~= nil) then
-	API_Inventory.set_panel(inventory.id, INVENTORY_UI)
+	API_Inventory.init({
 
-	for slot_index, item in pairs(inventory:GetItems()) do
-		inventory_changed(inventory, slot_index)
-	end
+		inventory = inventory,
+		inventory_ui = INVENTORY_UI,
+		slots = SLOTS,
+		slot_frame_normal = SLOT_FRAME_NORMAL,
+		slot_frame_hover = SLOT_FRAME_HOVER,
+		slot_background_normal = SLOT_BACKGROUND_NORMAL,
+		slot_background_hover = SLOT_BACKGROUND_HOVER,
+		type = API_Inventory.Type.PLAYER_INVENTORY
 
-	inventory.changedEvent:Connect(inventory_changed)
-
-	connect_slot_events()
+	})
 end
