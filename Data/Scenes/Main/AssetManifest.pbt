@@ -8,6 +8,15 @@ Assets {
   }
 }
 Assets {
+  Id: 15784785916998790486
+  Name: "Artificial Grass 01"
+  PlatformAssetType: 2
+  PrimaryAsset {
+    AssetType: "MaterialAssetRef"
+    AssetId: "mi_grass_artificial_001_uv_ref"
+  }
+}
+Assets {
   Id: 12095835209017042614
   Name: "Cube"
   PlatformAssetType: 1
