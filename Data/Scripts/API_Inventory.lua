@@ -307,8 +307,14 @@ function API.on_slot_pressed_event(button, params)
 			icon:SetImage(API.PROXY_ICON:GetImage())
 			API.ACTIVE.slot.opacity = 1
 			API.ACTIVE.slot_icon.visibility = Visibility.FORCE_OFF
-			count.text = API.ACTIVE.slot_count.text
-			API.ACTIVE.slot_count.text = "0"
+
+			if(Object.IsValid(count) and Object.IsValid(API.ACTIVE.slot_count)) then
+				count.text = API.ACTIVE.slot_count.text
+			end
+
+			if(Object.IsValid(API.ACTIVE.slot_count)) then
+				API.ACTIVE.slot_count.text = "0"
+			end
 
 		-- Slot contains existing item
 		else
@@ -320,12 +326,24 @@ function API.on_slot_pressed_event(button, params)
 				API.ACTIVE.slot.opacity = 1
 			else
 				local tmp_img = icon:GetImage()
-				local tmp_count = count.text
+				local tmp_count = nil
+
+				if(Object.IsValid(count)) then
+					tmp_count = count.text
+				end
 
 				icon:SetImage(API.ACTIVE.slot_icon:GetImage())
-				count.text = API.ACTIVE.slot_count.text
+
+				if(Object.IsValid(count) and Object.IsValid(API.ACTIVE.slot_count)) then
+					count.text = API.ACTIVE.slot_count.text
+				end
+
 				API.ACTIVE.slot_icon:SetImage(tmp_img)
-				API.ACTIVE.slot_count.text = tmp_count
+
+				if(tmp_count ~= nil and Object.IsValid(API.ACTIVE.slot_count)) then
+					API.ACTIVE.slot_count.text = tmp_count
+				end
+
 				API.ACTIVE.slot.opacity = 1
 
 				tmp_img = nil
@@ -595,10 +613,16 @@ function API.inventory_changed(inventory, slot_index, slots)
 
 		child_icon:SetImage(icon)
 		child_icon.visibility = Visibility.FORCE_ON
-		child_count.text = tostring(item.count)
+
+		if(Object.IsValid(child_count)) then
+			child_count.text = tostring(item.count)
+		end
 	else
 		child_icon.visibility = Visibility.FORCE_OFF
-		child_count.text = ""
+
+		if(Object.IsValid(child_count)) then
+			child_count.text = ""
+		end
 	end
 end
 

@@ -19,7 +19,7 @@ Assets {
       Overrides {
         Name: "cs:WorldInventoriesContainer"
         AssetReference {
-          Id: 4209565152854683048
+          Id: 841534158063459245
         }
       }
       Overrides {
