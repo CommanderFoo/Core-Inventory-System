@@ -65,7 +65,7 @@ if(inventory ~= nil) then
 		slot_frame_hover = SLOT_FRAME_HOVER,
 		slot_background_normal = SLOT_BACKGROUND_NORMAL,
 		slot_background_hover = SLOT_BACKGROUND_HOVER,
-		type = API_Inventory.Type.CHEST_INVENTORY
+		type = API_Inventory.Type.ARMOR_INVENTORY
 
 	})
 end

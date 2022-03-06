@@ -1,6 +1,7 @@
 local INVENTORY_ASSETS = require(script:GetCustomProperty("InventoryAssets"))
 local INVENTORY = script:GetCustomProperty("Inventory")
 local DEBUG = script:GetCustomProperty("Debug")
+local HOTBAR_SLOT_KEY = script:GetCustomProperty("HotBarSlotKey")
 
 ---@class API_Inventory
 local API = {
@@ -11,6 +12,7 @@ local API = {
 API.INVENTORIES = {}
 API.INVENTORY_PANELS = {}
 API.IS_INSIDE = false
+API.HOTBAR_SLOT_KEY = HOTBAR_SLOT_KEY
 API.ACTIVE = {
 
 	slot = nil,
@@ -48,7 +50,7 @@ function API.give_items(inventory)
 	end
 end
 
-function API.create_inventory(opts)
+function API.create(opts)
 	local inventory = World.SpawnAsset(INVENTORY, { networkContext = NetworkContextType.NETWORKED })
 	
 	inventory:Resize(opts.slot_count)
@@ -58,6 +60,7 @@ function API.create_inventory(opts)
 		inventory:Assign(opts.player)
 	elseif(opts.container ~= nil and Object.IsValid(opts.container)) then
 		inventory.parent = opts.container
+		API.give_items(inventory)
 	end
 
 	opts.inventory = inventory
@@ -67,65 +70,97 @@ function API.create_inventory(opts)
 	if(DEBUG) then
 		API.give_items(inventory)
 	end
+
+	return {
+
+		load = function()
+			API.load(opts)
+		end
+
+	}
 end
 
----Loads a player's inventory.
----@param player Player
-function API.load_player_inventory(player)
-	if(DEBUG) then
-		return
-	end
-
-	local data = Storage.GetPlayerData(player)
-
-	for id, obj in pairs(API.INVENTORIES) do
-		local inv = data[obj.storage_key] or nil
+function API.load(opts)
+	if(opts.type == API.Type.CHEST_INVENTORY) then
+		-- ?
+	else
+		local data = Storage.GetPlayerData(opts.player)
+		local inv = data[opts.storage_key] or nil
 
 		if(inv ~= nil) then
 			for slot_index, entry in ipairs(inv) do
 				local item = API.find_lookup_item_by_key(entry[1])
 
-				if(item ~= nil and obj.inventory:CanAddItem(item.asset, { count = entry[2], slot = slot_index })) then
-					obj.inventory:AddItem(item.asset, { count = entry[2], slot = slot_index })
+				if(item ~= nil and opts.inventory:CanAddItem(item.asset, { count = entry[2], slot = slot_index })) then
+					opts.inventory:AddItem(item.asset, { count = entry[2], slot = slot_index })
 				end
+			end
+		end
+
+		if(opts.type == API.Type.HOTBAR_INVENTORY) then
+			if(data[API.HOTBAR_SLOT_KEY] ~= nil) then
+				opts.player:SetPrivateNetworkedData("inventory.hotbar.slot", data[API.HOTBAR_SLOT_KEY])
 			end
 		end
 	end
 end
 
----Saves a player's inventory.
+---Saves inventory.
 ---@param player Player
-function API.save_player_inventory(player)	
-	local data = Storage.GetPlayerData(player)
+function API.save(player)
+	if(player == nil) then
+		-- ?
+	else
+		local data = Storage.GetPlayerData(player)
 
-	for id, obj in pairs(API.INVENTORIES) do
-		if(obj.player ~= nil and obj.player == player) then
-			local inv = obj.inventory
+		for id, obj in pairs(API.INVENTORIES) do
+			if(obj.player ~= nil and obj.player == player) then
+				local inv = obj.inventory
 
-			if(Object.IsValid(inv)) then
-				local tmp = {}
+				if(Object.IsValid(inv)) then
+					local tmp = {}
 
-				for i = 1, inv.slotCount do
-					local item = inv:GetItem(i)
-					local entry = {}
+					for i = 1, inv.slotCount do
+						local item = inv:GetItem(i)
+						local entry = {}
 
-					if(item ~= nil) then
-						local lookup_item = API.find_lookup_item_by_asset_id(item)
+						if(item ~= nil) then
+							local lookup_item = API.find_lookup_item_by_asset_id(item)
 
-						if(lookup_item ~= nil) then
-							entry = { lookup_item.key, item.count }
+							if(lookup_item ~= nil) then
+								entry = { lookup_item.key, item.count }
+							end
 						end
+
+						table.insert(tmp, entry)
 					end
 
-					table.insert(tmp, entry)
+					data[obj.storage_key] = tmp
 				end
-
-				data[obj.storage_key] = tmp
 			end
 		end
+
+		Storage.SetPlayerData(player, data)
 	end
 
-	Storage.SetPlayerData(player, data)
+	return {
+
+		cleanup = function()
+			if(player ~= nil) then
+				API.remove_player_inventory(player)
+			end
+		end
+
+	}
+end
+
+function API.save_hotbar_slot(player, slot_index)
+	if(slot_index > -1) then
+		local data = Storage.GetPlayerData(player)
+
+		data[API.HOTBAR_SLOT_KEY] = slot_index
+		Storage.SetPlayerData(player, data)
+	end
 end
 
 ---Removes a player's inventory.
@@ -691,6 +726,7 @@ if(Environment.IsServer()) then
 	Events.Connect("inventory.moveitem", API.move_item_handler)
 	Events.Connect("inventory.dropone", API.drop_one_handler)
 	Events.Connect("inventory.removeitem", API.remove_item_handler)
+	Events.ConnectForPlayer("inventory.hotbar.save_slot", API.save_hotbar_slot)
 else
 	Input.actionPressedEvent:Connect(API.drop_one_action)
 end

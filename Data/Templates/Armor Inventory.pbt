@@ -376,7 +376,6 @@ Assets {
           Width: 340
           Height: 430
           UIX: 605
-          UIY: -70
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"

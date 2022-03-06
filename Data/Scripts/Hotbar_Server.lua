@@ -1,21 +1,19 @@
-local hotbar_storage_key = "ihs"
+local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 
-local function save_hotbar_slot(player, slot_index)
-	if(slot_index > -1) then
-		local data = Storage.GetPlayerData(player)
+---@type API_Inventory
+local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
 
-		data[hotbar_storage_key] = slot_index
-		Storage.SetPlayerData(player, data)
-	end
+local function on_player_joined(player)
+	API_Inventory.create({
+
+		player = player,
+		slot_count = ROOT:GetCustomProperty("SlotCount"),
+		clean_up = ROOT:GetCustomProperty("CleanUp"),
+		storage_key = ROOT:GetCustomProperty("StorageKey"),
+		name = ROOT:GetCustomProperty("Name"),
+		type = API_Inventory.Type.HOTBAR_INVENTORY
+
+	}).load()
 end
 
-local function load_hotbar_slot(player)
-	local data = Storage.GetPlayerData(player)
-
-	if(data[hotbar_storage_key] ~= nil) then
-		player:SetPrivateNetworkedData("inventory.hotbar.slot", data[hotbar_storage_key])
-	end
-end
-
-Game.playerJoinedEvent:Connect(load_hotbar_slot)
-Events.ConnectForPlayer("inventory.hotbar.save_slot", save_hotbar_slot)
+Game.playerJoinedEvent:Connect(on_player_joined)

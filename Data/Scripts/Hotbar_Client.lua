@@ -3,10 +3,14 @@ local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
 
 local INVENTORY_UI = ROOT:GetCustomProperty("InventoryUI"):WaitForObject()
-local SLOTS = ROOT:GetCustomProperty("Slots"):WaitForObject():GetChildren()
+local SLOTS = ROOT:GetCustomProperty("Slots"):WaitForObject()
 local SLOT_FRAME_NORMAL = ROOT:GetCustomProperty("SlotFrameNormal")
 local NAME = ROOT:GetCustomProperty("Name")
 local SLOT_FRAME_ACTIVE = ROOT:GetCustomProperty("SlotFrameActive")
+
+local SLOT_FRAME_HOVER = ROOT:GetCustomProperty("SlotFrameHover")
+local SLOT_BACKGROUND_NORMAL = ROOT:GetCustomProperty("SlotBackgroundNormal")
+local SLOT_BACKGROUND_HOVER = ROOT:GetCustomProperty("SlotBackgroundHover")
 
 local slot_frames = {}
 local local_player = Game.GetLocalPlayer()
@@ -14,6 +18,7 @@ local local_player = Game.GetLocalPlayer()
 local active_slot_index = -1
 local last_active_slot_index = -1
 local update_task = nil
+local inventory = nil
 
 local function select_slot(slot_index)
 	if(active_slot_index ~= slot_index and slot_index ~= -1) then
@@ -40,7 +45,7 @@ local function on_action_pressed(player, action, value)
 		if(value < 0) then
 			if(slot_index == 0) then
 				slot_index = 1
-			elseif(slot_index == (#SLOTS - 1)) then
+			elseif(slot_index == (#SLOTS:GetChildren() - 1)) then
 				slot_index = 0
 			else
 				slot_index = slot_index + 1
@@ -49,7 +54,7 @@ local function on_action_pressed(player, action, value)
             if(slot_index == 1) then
 				slot_index = 0
 			elseif(slot_index == 0) then
-				slot_index = #SLOTS - 1
+				slot_index = #SLOTS:GetChildren() - 1
 			else
 				slot_index = slot_index - 1
 			end
@@ -60,7 +65,7 @@ local function on_action_pressed(player, action, value)
 end
 
 local function set_action_labels()
-	for i, s in ipairs(SLOTS) do
+	for i, s in ipairs(SLOTS:GetChildren()) do
 		local label = s:FindDescendantByName("Label")
 		local action = Input.GetActionInputLabel("Hotbar Slot " .. label.text)
 
@@ -85,10 +90,27 @@ local function save_active_slot()
 	end
 end
 
+inventory = API_Inventory.get_inventory(NAME, API_Inventory.Type.PLAYER_INVENTORY)
+
+if(inventory ~= nil) then
+	API_Inventory.init({
+
+		inventory = inventory,
+		inventory_ui = INVENTORY_UI,
+		slots = SLOTS,
+		slot_frame_normal = SLOT_FRAME_NORMAL,
+		slot_frame_hover = SLOT_FRAME_HOVER,
+		slot_background_normal = SLOT_BACKGROUND_NORMAL,
+		slot_background_hover = SLOT_BACKGROUND_HOVER,
+		type = API_Inventory.Type.HOTBAR_INVENTORY
+
+	})
+end
+
 update_task = Task.Spawn(save_active_slot)
 
 update_task.repeatCount = -1
-update_task.repeatInterval = 30
+update_task.repeatInterval = 10
 
 Input.actionPressedEvent:Connect(on_action_pressed)
 
