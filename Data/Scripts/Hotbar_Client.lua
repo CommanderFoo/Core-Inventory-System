@@ -12,6 +12,8 @@ local SLOT_FRAME_HOVER = ROOT:GetCustomProperty("SlotFrameHover")
 local SLOT_BACKGROUND_NORMAL = ROOT:GetCustomProperty("SlotBackgroundNormal")
 local SLOT_BACKGROUND_HOVER = ROOT:GetCustomProperty("SlotBackgroundHover")
 
+local STORAGE_SLOT_KEY = ROOT:GetCustomProperty("StorageSlotKey")
+
 local slot_frames = {}
 local local_player = Game.GetLocalPlayer()
 
@@ -78,7 +80,7 @@ local function set_action_labels()
 end
 
 local function on_private_networked_data_changed(player, key)
-	if(key == "inventory.hotbar.slot") then
+	if(key == "inventory.hotbar." .. STORAGE_SLOT_KEY) then
 		select_slot(local_player:GetPrivateNetworkedData(key) or -1)
 	end
 end
@@ -118,4 +120,4 @@ set_action_labels()
 select_slot(1)
 
 local_player.privateNetworkedDataChangedEvent:Connect(on_private_networked_data_changed)
-on_private_networked_data_changed(local_player, "inventory.hotbar.slot")
+on_private_networked_data_changed(local_player, "inventory.hotbar." .. STORAGE_SLOT_KEY)

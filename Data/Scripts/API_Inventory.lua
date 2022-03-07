@@ -100,9 +100,9 @@ function API.load(opts)
 			end
 		end
 
-		if(opts.type == API.Type.HOTBAR_INVENTORY) then
-			if(data[API.HOTBAR_SLOT_KEY] ~= nil) then
-				opts.player:SetPrivateNetworkedData("inventory.hotbar.slot", data[API.HOTBAR_SLOT_KEY])
+		if(opts.type == API.Type.HOTBAR_INVENTORY and opts.storage_slot_key ~= nil) then
+			if(data[opts.storage_slot_key] ~= nil) then
+				opts.player:SetPrivateNetworkedData("inventory.hotbar." .. opts.storage_slot_key, data[opts.storage_slot_key])
 			end
 		end
 	end
