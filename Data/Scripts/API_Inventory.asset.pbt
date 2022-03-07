@@ -24,6 +24,18 @@ Assets {
         Name: "cs:Debug"
         Bool: false
       }
+      Overrides {
+        Name: "cs:Slot"
+        AssetReference {
+          Id: 9951480137272277549
+        }
+      }
+      Overrides {
+        Name: "cs:HotbarSlot"
+        AssetReference {
+          Id: 10648753773554858583
+        }
+      }
     }
   }
   SerializationVersion: 107

@@ -78,7 +78,7 @@ Assets {
           }
         }
       }
-      Action: "Hotbar Slot 1"
+      Action: "Player Hotbar Slot 1"
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
@@ -100,7 +100,7 @@ Assets {
           }
         }
       }
-      Action: "Hotbar Slot 2"
+      Action: "Player Hotbar Slot 2"
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
@@ -122,7 +122,7 @@ Assets {
           }
         }
       }
-      Action: "Hotbar Slot 3"
+      Action: "Player Hotbar Slot 3"
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
@@ -144,7 +144,7 @@ Assets {
           }
         }
       }
-      Action: "Hotbar Slot 4"
+      Action: "Player Hotbar Slot 4"
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
@@ -166,7 +166,7 @@ Assets {
           }
         }
       }
-      Action: "Hotbar Slot 5"
+      Action: "Player Hotbar Slot 5"
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
@@ -188,7 +188,7 @@ Assets {
           }
         }
       }
-      Action: "Hotbar Slot 6"
+      Action: "Player Hotbar Slot 6"
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
@@ -210,7 +210,7 @@ Assets {
           }
         }
       }
-      Action: "Hotbar Slot 7"
+      Action: "Player Hotbar Slot 7"
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
@@ -232,7 +232,7 @@ Assets {
           }
         }
       }
-      Action: "Hotbar Slot 8"
+      Action: "Player Hotbar Slot 8"
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
@@ -254,7 +254,7 @@ Assets {
           }
         }
       }
-      Action: "Hotbar Slot 9"
+      Action: "Player Hotbar Slot 9"
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
@@ -276,7 +276,7 @@ Assets {
           }
         }
       }
-      Action: "Hotbar Slot 0"
+      Action: "Player Hotbar Slot 0"
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }

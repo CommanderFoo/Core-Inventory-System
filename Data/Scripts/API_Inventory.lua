@@ -1,7 +1,8 @@
 local INVENTORY_ASSETS = require(script:GetCustomProperty("InventoryAssets"))
 local INVENTORY = script:GetCustomProperty("Inventory")
 local DEBUG = script:GetCustomProperty("Debug")
-local HOTBAR_SLOT_KEY = script:GetCustomProperty("HotBarSlotKey")
+local SLOT = script:GetCustomProperty("Slot")
+local HOTBAR_SLOT = script:GetCustomProperty("HotbarSlot")
 
 ---@class API_Inventory
 local API = {
@@ -12,7 +13,7 @@ local API = {
 API.INVENTORIES = {}
 API.INVENTORY_PANELS = {}
 API.IS_INSIDE = false
-API.HOTBAR_SLOT_KEY = HOTBAR_SLOT_KEY
+
 API.ACTIVE = {
 
 	slot = nil,
@@ -157,11 +158,11 @@ function API.save(player)
 	}
 end
 
-function API.save_hotbar_slot(player, slot_index)
+function API.save_hotbar_slot(player, storage_slot_key, slot_index)
 	if(slot_index > -1) then
 		local data = Storage.GetPlayerData(player)
 
-		data[API.HOTBAR_SLOT_KEY] = slot_index
+		data[storage_slot_key] = slot_index
 		Storage.SetPlayerData(player, data)
 	end
 end
@@ -663,7 +664,44 @@ function API.inventory_changed(inventory, slot_index, slots)
 	end
 end
 
+function API.create_slots(opts)
+	local slots_per_row = opts.slots_per_row or opts.slot_count
+	local x_offset = 0
+	local y_offset = 0
+	local total_width = 0
+	local total_height = 0
+	local is_hotbar = opts.type == API.Type.HOTBAR_INVENTORY and true or false
+	
+	if(not is_hotbar) then
+		return
+	end
+
+	for i = 1, opts.slot_count do
+		local slot = World.SpawnAsset(is_hotbar and HOTBAR_SLOT or SLOT)
+
+		slot.parent = opts.slots
+		
+		if(i == 1) then
+			total_height = total_height + slot.height + (slot.height / 2)
+		end
+
+		if(i > slots_per_row) then
+			y_offset = y_offset + slot.height
+			x_offset = 0
+			total_height = total_height + slot.height
+		end
+
+		slot.x = x_offset
+		x_offset = x_offset + slot.width
+		total_width = total_width + slot.width
+	end
+
+	opts.inventory_ui.width = total_width + math.abs(opts.slots.width)
+	opts.inventory_ui.height = total_height
+end
+
 function API.init(opts)
+	API.create_slots(opts)
 	API.set_panel(opts.inventory.id, opts.inventory_ui)
 
 	for slot_index, item in pairs(opts.inventory:GetItems()) do

@@ -7,6 +7,7 @@ local SLOTS = ROOT:GetCustomProperty("Slots"):WaitForObject()
 local SLOT_FRAME_NORMAL = ROOT:GetCustomProperty("SlotFrameNormal")
 local NAME = ROOT:GetCustomProperty("Name")
 local SLOT_FRAME_ACTIVE = ROOT:GetCustomProperty("SlotFrameActive")
+local SLOT_COUNT = ROOT:GetCustomProperty("SlotCount")
 
 local SLOT_FRAME_HOVER = ROOT:GetCustomProperty("SlotFrameHover")
 local SLOT_BACKGROUND_NORMAL = ROOT:GetCustomProperty("SlotBackgroundNormal")
@@ -23,6 +24,7 @@ local update_task = nil
 local inventory = nil
 
 local function select_slot(slot_index)
+	print(active_slot_index, slot_index, slot_frames["slot_" .. tostring(active_slot_index)])
 	if(active_slot_index ~= slot_index and slot_index ~= -1) then
 		if(active_slot_index > -1) then
 			slot_frames["slot_" .. tostring(active_slot_index)]:SetColor(SLOT_FRAME_NORMAL)
@@ -36,6 +38,7 @@ local function select_slot(slot_index)
 	end
 end
 
+---@TODO: Out of bounds issue.
 local function on_action_pressed(player, action, value)
 	if(string.find(action, "Hotbar Slot ")) then
 		local match = string.match(action, "Hotbar Slot (%d)")
@@ -47,7 +50,7 @@ local function on_action_pressed(player, action, value)
 		if(value < 0) then
 			if(slot_index == 0) then
 				slot_index = 1
-			elseif(slot_index == (#SLOTS:GetChildren() - 1)) then
+			elseif(slot_index == (SLOT_COUNT - 1)) then
 				slot_index = 0
 			else
 				slot_index = slot_index + 1
@@ -56,7 +59,7 @@ local function on_action_pressed(player, action, value)
             if(slot_index == 1) then
 				slot_index = 0
 			elseif(slot_index == 0) then
-				slot_index = #SLOTS:GetChildren() - 1
+				slot_index = SLOT_COUNT - 1
 			else
 				slot_index = slot_index - 1
 			end
@@ -69,9 +72,10 @@ end
 local function set_action_labels()
 	for i, s in ipairs(SLOTS:GetChildren()) do
 		local label = s:FindDescendantByName("Label")
-		local action = Input.GetActionInputLabel("Hotbar Slot " .. label.text)
+		local value = tostring(i == 10 and 0 or i)
+		local action = Input.GetActionInputLabel(NAME .. " Slot " .. value)
 
-		slot_frames["slot_" .. tostring(i == 10 and 0 or i)] = s:FindChildByName("Frame")
+		slot_frames["slot_" .. value] = s:FindChildByName("Frame")
 
 		if(action ~= nil) then
 			label.text = action
@@ -87,12 +91,12 @@ end
 
 local function save_active_slot()
 	if(active_slot_index ~= last_active_slot_index and active_slot_index ~= -1) then
-		Events.BroadcastToServer("inventory.hotbar.save_slot", active_slot_index)
+		Events.BroadcastToServer("inventory.hotbar.save_slot", STORAGE_SLOT_KEY, active_slot_index)
 		last_active_slot_index = active_slot_index
 	end
 end
 
-inventory = API_Inventory.get_inventory(NAME, API_Inventory.Type.PLAYER_INVENTORY)
+inventory = API_Inventory.get_inventory(NAME, API_Inventory.Type.HOTBAR_INVENTORY)
 
 if(inventory ~= nil) then
 	API_Inventory.init({
@@ -100,6 +104,7 @@ if(inventory ~= nil) then
 		inventory = inventory,
 		inventory_ui = INVENTORY_UI,
 		slots = SLOTS,
+		slot_count = math.min(10, SLOT_COUNT),
 		slot_frame_normal = SLOT_FRAME_NORMAL,
 		slot_frame_hover = SLOT_FRAME_HOVER,
 		slot_background_normal = SLOT_BACKGROUND_NORMAL,
