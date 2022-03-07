@@ -17,6 +17,10 @@ Assets {
         Name: "cs:Type"
         String: "head"
       }
+      Overrides {
+        Name: "cs:Type:isrep"
+        Bool: true
+      }
     }
     Assets {
       Id: 16232142055496997433

@@ -22,7 +22,7 @@ Assets {
       }
       Overrides {
         Name: "cs:Debug"
-        Bool: false
+        Bool: true
       }
     }
   }

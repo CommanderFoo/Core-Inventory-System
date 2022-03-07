@@ -40,12 +40,12 @@ API.Type = {
 
 -- Server
 
-function API.give_items(inventory)
-	for i = 1, inventory.slotCount do
+function API.give_items(opts)
+	for i = 1, opts.inventory.slotCount do
 		local item = INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset
 
-		if(inventory:CanAddItem(item, { count = 1 })) then
-			inventory:AddItem(item, { count = 1 })
+		if(opts.inventory:CanAddItem(item, { count = 1 })) then
+			opts.inventory:AddItem(item, { count = 1 })
 		end
 	end
 end
@@ -55,20 +55,20 @@ function API.create(opts)
 	
 	inventory:Resize(opts.slot_count)
 	inventory.name = opts.name or inventory.id
+	
+	opts.inventory = inventory
 
 	if(opts.player ~= nil) then
 		inventory:Assign(opts.player)
 	elseif(opts.container ~= nil and Object.IsValid(opts.container)) then
 		inventory.parent = opts.container
-		API.give_items(inventory)
+		API.give_items(opts)
 	end
-
-	opts.inventory = inventory
 
 	API.INVENTORIES[inventory.id] = opts
 
 	if(DEBUG) then
-		API.give_items(inventory)
+		API.give_items(opts)
 	end
 
 	return {
@@ -80,6 +80,7 @@ function API.create(opts)
 	}
 end
 
+---@TODO check type of inventory and load data table based on type.
 function API.load(opts)
 	if(opts.type == API.Type.CHEST_INVENTORY) then
 		-- ?
@@ -91,8 +92,10 @@ function API.load(opts)
 			for slot_index, entry in ipairs(inv) do
 				local item = API.find_lookup_item_by_key(entry[1])
 
-				if(item ~= nil and opts.inventory:CanAddItem(item.asset, { count = entry[2], slot = slot_index })) then
-					opts.inventory:AddItem(item.asset, { count = entry[2], slot = slot_index })
+				if(item ~= nil) then					
+					if(opts.inventory:CanAddItem(item.asset, { count = entry[2], slot = slot_index })) then
+						opts.inventory:AddItem(item.asset, { count = entry[2], slot = slot_index })
+					end
 				end
 			end
 		end
@@ -171,7 +174,6 @@ function API.remove_player_inventory(player)
 			obj.inventory:Destroy()
 			API.INVENTORIES[id] = nil
 			API.INVENTORY_PANELS[id] = nil
-			break
 		end
 	end
 end

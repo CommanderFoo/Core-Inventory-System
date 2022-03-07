@@ -260,7 +260,7 @@ Assets {
         }
         ParentId: 15757681508783782519
         ChildIds: 6496115731275101807
-        ChildIds: 14555585160641497070
+        ChildIds: 7270317912739735379
         Collidable_v2 {
           Value: "mc:ecollisionsetting:forceoff"
         }
@@ -2063,15 +2063,12 @@ Assets {
         }
       }
       Objects {
-        Id: 14555585160641497070
-        Name: "Inventory_Client"
+        Id: 7270317912739735379
+        Name: "Armor_Inventory_Client"
         Transform {
           Location {
-            X: -9.15527344e-05
-            Y: 429.999969
           }
           Rotation {
-            Yaw: -89.9999847
           }
           Scale {
             X: 1
@@ -2102,7 +2099,7 @@ Assets {
         }
         Script {
           ScriptAsset {
-            Id: 10545072440016289850
+            Id: 737881821191491817
           }
         }
         NetworkRelevanceDistance {

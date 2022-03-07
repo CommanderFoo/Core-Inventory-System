@@ -14,6 +14,14 @@ Assets {
           Id: 10432877250731249514
         }
       }
+      Overrides {
+        Name: "cs:Type"
+        String: ""
+      }
+      Overrides {
+        Name: "cs:Type:isrep"
+        Bool: true
+      }
     }
     Assets {
       Id: 10432877250731249514
