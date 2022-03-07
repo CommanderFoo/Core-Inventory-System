@@ -161,6 +161,15 @@ Objects {
         }
       }
     }
+    ParameterOverrideMap {
+      key: 16936384737219765831
+      value {
+        Overrides {
+          Name: "UIX"
+          Float: 50
+        }
+      }
+    }
     TemplateAsset {
       Id: 7581631008779369608
     }

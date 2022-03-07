@@ -1,26 +1,26 @@
 Assets {
-  Id: 17836615923076900991
-  Name: "Common Chest Gear"
+  Id: 11549714002051645369
+  Name: "Common Bottom Gear"
   PlatformAssetType: 33
   SerializationVersion: 107
   ItemAsset {
-    CustomName: "Chest Gear"
+    CustomName: "Head Gear"
     MaximumStackCount: 1
     CustomParameters {
       Overrides {
         Name: "cs:Icon"
         AssetReference {
-          Id: 10584252582777731982
+          Id: 2691612049590178732
         }
       }
     }
     Assets {
-      Id: 10584252582777731982
-      Name: "Fantasy Gear Top 015"
+      Id: 2691612049590178732
+      Name: "Fantasy Bottom Gear 015"
       PlatformAssetType: 9
       PrimaryAsset {
         AssetType: "PlatformBrushAssetRef"
-        AssetId: "UI_Fantasy_Gear_Top_015"
+        AssetId: "UI_Fantasy_Gear_Bottoms_015"
       }
     }
   }

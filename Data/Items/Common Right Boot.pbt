@@ -1,26 +1,26 @@
 Assets {
-  Id: 17836615923076900991
-  Name: "Common Chest Gear"
+  Id: 12511026013215964288
+  Name: "Common Right Boot"
   PlatformAssetType: 33
   SerializationVersion: 107
   ItemAsset {
-    CustomName: "Chest Gear"
+    CustomName: "Head Gear"
     MaximumStackCount: 1
     CustomParameters {
       Overrides {
         Name: "cs:Icon"
         AssetReference {
-          Id: 10584252582777731982
+          Id: 5940504427700487458
         }
       }
     }
     Assets {
-      Id: 10584252582777731982
-      Name: "Fantasy Gear Top 015"
+      Id: 5940504427700487458
+      Name: "Fantasy Boot 015"
       PlatformAssetType: 9
       PrimaryAsset {
         AssetType: "PlatformBrushAssetRef"
-        AssetId: "UI_Fantasy_Gear_Top_015"
+        AssetId: "UI_Fantasy_Gear_Boot_015"
       }
     }
   }
