@@ -24,27 +24,28 @@ local update_task = nil
 local inventory = nil
 
 local function select_slot(slot_index)
-	print(active_slot_index, slot_index, slot_frames["slot_" .. tostring(active_slot_index)])
 	if(active_slot_index ~= slot_index and slot_index ~= -1) then
-		if(active_slot_index > -1) then
+		if(active_slot_index > -1 and slot_frames["slot_" .. tostring(active_slot_index)] ~= nil) then
 			slot_frames["slot_" .. tostring(active_slot_index)]:SetColor(SLOT_FRAME_NORMAL)
 		end
 
-		slot_frames["slot_" .. tostring(slot_index)]:SetColor(SLOT_FRAME_ACTIVE)
-		API_Inventory.enable_frame_hover(slot_frames["slot_" .. tostring(active_slot_index)])
-		active_slot_index = slot_index
-		API_Inventory.disable_frame_hover(slot_frames["slot_" .. tostring(slot_index)])
-
+		if(slot_frames["slot_" .. tostring(slot_index)] ~= nil) then
+			slot_frames["slot_" .. tostring(slot_index)]:SetColor(SLOT_FRAME_ACTIVE)
+			API_Inventory.enable_frame_hover(slot_frames["slot_" .. tostring(active_slot_index)])
+			active_slot_index = slot_index
+			API_Inventory.disable_frame_hover(slot_frames["slot_" .. tostring(slot_index)])
+		end
 	end
 end
 
----@TODO: Out of bounds issue.
 local function on_action_pressed(player, action, value)
 	if(string.find(action, "Hotbar Slot ")) then
-		local match = string.match(action, "Hotbar Slot (%d)")
-
-		select_slot(tonumber(match))
-	elseif(action == "Hotbar Scroll") then
+		local match = tonumber(string.match(action, "Hotbar Slot (%d)"))
+		
+		if(match <= SLOT_COUNT and SLOT_COUNT > 1) then
+			select_slot((match == SLOT_COUNT and 0 or match))
+		end
+	elseif(action == "Hotbar Scroll" and SLOT_COUNT > 1) then
 		local slot_index = active_slot_index
 
 		if(value < 0) then
@@ -72,20 +73,22 @@ end
 local function set_action_labels()
 	for i, s in ipairs(SLOTS:GetChildren()) do
 		local label = s:FindDescendantByName("Label")
-		local value = tostring(i == 10 and 0 or i)
+		local value = tostring((i == 10 or (i == SLOT_COUNT and SLOT_COUNT > 1)) and 0 or i)
 		local action = Input.GetActionInputLabel(NAME .. " Slot " .. value)
 
 		slot_frames["slot_" .. value] = s:FindChildByName("Frame")
 
 		if(action ~= nil) then
-			label.text = action
+			label.text = i == 10 and "0" or tostring(i)
 		end
 	end
 end
 
 local function on_private_networked_data_changed(player, key)
 	if(key == "inventory.hotbar." .. STORAGE_SLOT_KEY) then
-		select_slot(local_player:GetPrivateNetworkedData(key) or -1)
+		local value = local_player:GetPrivateNetworkedData(key)
+
+		select_slot(value == 1 and 1 or -1)
 	end
 end
 
@@ -117,7 +120,7 @@ end
 update_task = Task.Spawn(save_active_slot)
 
 update_task.repeatCount = -1
-update_task.repeatInterval = 10
+update_task.repeatInterval = 2
 
 Input.actionPressedEvent:Connect(on_action_pressed)
 

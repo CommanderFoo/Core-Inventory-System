@@ -2317,7 +2317,7 @@ Objects {
         }
         Overrides {
           Name: "cs:SlotCount"
-          Int: 5
+          Int: 10
         }
       }
     }
