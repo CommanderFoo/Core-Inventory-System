@@ -36,8 +36,16 @@ Assets {
             Int: 8
           }
           Overrides {
+            Name: "cs:SlotsPerRow"
+            Int: 4
+          }
+          Overrides {
             Name: "cs:StorageKey"
             String: "cinv"
+          }
+          Overrides {
+            Name: "cs:StartVisible"
+            Bool: false
           }
           Overrides {
             Name: "cs:CleanUp"

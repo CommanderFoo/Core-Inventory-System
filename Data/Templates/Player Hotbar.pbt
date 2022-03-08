@@ -31,7 +31,7 @@ Assets {
           }
           Overrides {
             Name: "cs:SlotCount"
-            Int: 5
+            Int: 10
           }
           Overrides {
             Name: "cs:StorageKey"
@@ -40,6 +40,10 @@ Assets {
           Overrides {
             Name: "cs:StorageSlotKey"
             String: "phbs"
+          }
+          Overrides {
+            Name: "cs:StartVisible"
+            Bool: true
           }
           Overrides {
             Name: "cs:CleanUp"
@@ -336,7 +340,7 @@ Assets {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
         Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
+          Value: "mc:evisibilitysetting:forceoff"
         }
         CameraCollidable {
           Value: "mc:ecollisionsetting:inheritfromparent"

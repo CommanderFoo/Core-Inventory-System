@@ -1,13 +1,5 @@
 Entries {
   Key {
-    StringVar: "hss"
-  }
-  SimpleValue {
-    IntVar: 1
-  }
-}
-Entries {
-  Key {
     StringVar: "pinv"
   }
   SimpleValue {
@@ -161,6 +153,30 @@ Entries {
 }
 Entries {
   Key {
+    StringVar: "ihs"
+  }
+  SimpleValue {
+    IntVar: 1
+  }
+}
+Entries {
+  Key {
+    StringVar: "phbs"
+  }
+  SimpleValue {
+    IntVar: 1
+  }
+}
+Entries {
+  Key {
+    StringVar: "hss"
+  }
+  SimpleValue {
+    IntVar: 1
+  }
+}
+Entries {
+  Key {
     StringVar: "ainv"
   }
   SimpleValue {
@@ -251,14 +267,6 @@ Entries {
 }
 Entries {
   Key {
-    StringVar: "ihs"
-  }
-  SimpleValue {
-    IntVar: 1
-  }
-}
-Entries {
-  Key {
     StringVar: "phb"
   }
   SimpleValue {
@@ -269,6 +277,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                StringVar: "cg"
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
           }
         }
       }
@@ -287,6 +311,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                StringVar: "lsg"
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
           }
         }
       }
@@ -305,6 +345,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                StringVar: "rsg"
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
           }
         }
       }
@@ -332,6 +388,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                StringVar: "k"
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
           }
         }
       }
@@ -350,6 +422,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                StringVar: "rb"
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
           }
         }
       }

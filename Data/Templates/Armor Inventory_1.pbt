@@ -38,6 +38,10 @@ Assets {
             String: "ainv"
           }
           Overrides {
+            Name: "cs:StartVisible"
+            Bool: true
+          }
+          Overrides {
             Name: "cs:CleanUp"
             Bool: true
           }
@@ -150,7 +154,7 @@ Assets {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
         Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
+          Value: "mc:evisibilitysetting:forceoff"
         }
         CameraCollidable {
           Value: "mc:ecollisionsetting:inheritfromparent"
@@ -372,7 +376,7 @@ Assets {
         Control {
           Width: 340
           Height: 430
-          UIX: 605
+          UIX: 50
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"

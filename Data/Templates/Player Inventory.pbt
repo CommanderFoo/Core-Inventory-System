@@ -34,6 +34,14 @@ Assets {
             Int: 16
           }
           Overrides {
+            Name: "cs:SlotsPerRow"
+            Int: 4
+          }
+          Overrides {
+            Name: "cs:StartVisible"
+            Bool: true
+          }
+          Overrides {
             Name: "cs:StorageKey"
             String: "pinv"
           }
@@ -150,7 +158,7 @@ Assets {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
         Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
+          Value: "mc:evisibilitysetting:forceoff"
         }
         CameraCollidable {
           Value: "mc:ecollisionsetting:inheritfromparent"
