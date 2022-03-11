@@ -332,9 +332,9 @@ end
 ---@param button UIButton
 ---@param params table Table contains slot and inventory information.
 function API.on_slot_pressed_event(button, params)
-	local icon = params.slot:FindChildByName("Icon")
+	local icon = params.slot:FindDescendantByName("Icon")
 	local is_hidden = icon.visibility == Visibility.FORCE_OFF and true or false
-	local count = icon:FindChildByName("Count")
+	local count = icon:FindDescendantByName("Count")
 
 	-- Has item already.
 	if(API.ACTIVE.has_item) then
@@ -429,7 +429,7 @@ function API.drop_one_action(player, action)
 					API.clear_dragged_item()
 				end
 			else
-				local icon = API.ACTIVE.hovered_slot:FindChildByName("Icon")
+				local icon = API.ACTIVE.hovered_slot:FindDescendantByName("Icon")
 				local is_hidden = icon.visibility == Visibility.FORCE_OFF and true or false
 
 				if(API.ACTIVE.inventory == API.ACTIVE.hovered_inventory and API.ACTIVE.slot_index == API.ACTIVE.hovered_slot_index) then
@@ -643,8 +643,8 @@ end
 ---@param slots UIPanel
 function API.inventory_changed(inventory, slot_index, slots)
 	local item = inventory:GetItem(slot_index)
-	local child_icon = slots:GetChildren()[slot_index]:FindChildByName("Icon")
-	local child_count = child_icon:FindChildByName("Count")
+	local child_icon = slots:GetChildren()[slot_index]:FindDescendantByName("Icon")
+	local child_count = child_icon:FindDescendantByName("Count")
 
 	if(item ~= nil) then
 		local icon = item:GetCustomProperty("Icon")
@@ -665,6 +665,10 @@ function API.inventory_changed(inventory, slot_index, slots)
 end
 
 function API.create_slots(opts)
+	if(opts.slot_count <= 0) then
+		return	
+	end
+
 	local slots_per_row = opts.slots_per_row or opts.slot_count
 	local x_offset = 0
 	local y_offset = 0
@@ -673,7 +677,7 @@ function API.create_slots(opts)
 	local is_hotbar = opts.type == API.Type.HOTBAR_INVENTORY and true or false
 	
 	if(not is_hotbar) then
-		return
+		return	
 	end
 
 	for i = 1, opts.slot_count do
@@ -701,6 +705,10 @@ function API.create_slots(opts)
 end
 
 function API.init(opts)
+	if(opts.slots:GetChildren()[1] ~= nil and opts.slots:GetChildren()[1]:IsA("UIScrollPanel")) then
+		opts.slots = opts.slots:GetChildren()[1]
+	end
+
 	API.create_slots(opts)
 	API.set_panel(opts.inventory.id, opts.inventory_ui)
 
@@ -711,8 +719,8 @@ function API.init(opts)
 	opts.inventory.changedEvent:Connect(API.inventory_changed, opts.slots)
 
 	for index, slot in ipairs(opts.slots:GetChildren()) do
-		local button = slot:FindChildByName("Button")
-		local icon = slot:FindChildByName("Icon")
+		local button = slot:FindDescendantByName("Button")
+		local icon = slot:FindDescendantByName("Icon")
 		
 		if(button ~= nil and icon ~= nil and button.isInteractable) then
 			local params = {

@@ -4,15 +4,16 @@ local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
 
 local INVENTORY_UI = ROOT:GetCustomProperty("InventoryUI"):WaitForObject()
 local SLOTS = ROOT:GetCustomProperty("Slots"):WaitForObject()
-local SLOT_FRAME_NORMAL = ROOT:GetCustomProperty("SlotFrameNormal")
-local NAME = ROOT:GetCustomProperty("Name")
-local SLOT_FRAME_ACTIVE = ROOT:GetCustomProperty("SlotFrameActive")
 local SLOT_COUNT = ROOT:GetCustomProperty("SlotCount")
+local NAME = ROOT:GetCustomProperty("Name")
+local STORAGE_SLOT_KEY = ROOT:GetCustomProperty("StorageSlotKey")
+local START_VISIBLE = ROOT:GetCustomProperty("StartVisible")
+
+local SLOT_FRAME_NORMAL = ROOT:GetCustomProperty("SlotFrameNormal")
+local SLOT_FRAME_ACTIVE = ROOT:GetCustomProperty("SlotFrameActive")
 local SLOT_FRAME_HOVER = ROOT:GetCustomProperty("SlotFrameHover")
 local SLOT_BACKGROUND_NORMAL = ROOT:GetCustomProperty("SlotBackgroundNormal")
 local SLOT_BACKGROUND_HOVER = ROOT:GetCustomProperty("SlotBackgroundHover")
-local STORAGE_SLOT_KEY = ROOT:GetCustomProperty("StorageSlotKey")
-local START_VISIBLE = ROOT:GetCustomProperty("StartVisible")
 
 local slot_frames = {}
 local local_player = Game.GetLocalPlayer()
