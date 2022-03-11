@@ -732,6 +732,10 @@ function API.init(opts)
 			button.unhoveredEvent:Connect(API.on_unhovered_event, params)
 		end
 	end
+
+	if(opts.start_visible) then
+		opts.inventory_ui.visibility = Visibility.INHERIT
+	end
 end
 
 -- Shared
