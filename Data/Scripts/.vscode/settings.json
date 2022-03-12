@@ -4,6 +4,9 @@
 
 		 "**/*.pbt": true 
 
-	}
+	},
+	"Lua.diagnostics.disable": [
+		"undefined-field"
+	]
 
 }

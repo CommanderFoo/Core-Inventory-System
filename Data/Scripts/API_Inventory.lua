@@ -53,10 +53,10 @@ end
 
 function API.create(opts)
 	local inventory = World.SpawnAsset(INVENTORY, { networkContext = NetworkContextType.NETWORKED })
-	
+
 	inventory:Resize(opts.slot_count)
 	inventory.name = opts.name or inventory.id
-	
+
 	opts.inventory = inventory
 
 	if(opts.player ~= nil) then
@@ -93,7 +93,7 @@ function API.load(opts)
 			for slot_index, entry in ipairs(inv) do
 				local item = API.find_lookup_item_by_key(entry[1])
 
-				if(item ~= nil) then					
+				if(item ~= nil) then
 					if(opts.inventory:CanAddItem(item.asset, { count = entry[2], slot = slot_index })) then
 						opts.inventory:AddItem(item.asset, { count = entry[2], slot = slot_index })
 					end
@@ -666,7 +666,7 @@ end
 
 function API.create_slots(opts)
 	if(opts.slot_count <= 0) then
-		return	
+		return
 	end
 
 	local slots_per_row = opts.slots_per_row or opts.slot_count
@@ -675,16 +675,26 @@ function API.create_slots(opts)
 	local total_width = 0
 	local total_height = 0
 	local is_hotbar = opts.type == API.Type.HOTBAR_INVENTORY and true or false
-	
+	local slot_width = 0
+	local slot_height = 0
+
 	if(not is_hotbar) then
-		return	
+		return
 	end
 
 	for i = 1, opts.slot_count do
 		local slot = World.SpawnAsset(is_hotbar and HOTBAR_SLOT or SLOT)
 
+		if(slot_width == 0) then
+			slot_width = slot.width
+		end
+
+		if(slot_height == 0) then
+			slot_height = slot.height	
+		end
+
 		slot.parent = opts.slots
-		
+
 		if(i == 1) then
 			total_height = total_height + slot.height + (slot.height / 2)
 		end
@@ -697,11 +707,10 @@ function API.create_slots(opts)
 
 		slot.x = x_offset
 		x_offset = x_offset + slot.width
-		total_width = total_width + slot.width
 	end
 
-	opts.inventory_ui.width = total_width + math.abs(opts.slots.width)
-	opts.inventory_ui.height = total_height
+	opts.inventory_ui.width = (slot_width * slots_per_row) + math.abs(opts.slots.width)
+	opts.inventory_ui.height = slot_height * (opts.slot_count / slots_per_row) + math.abs(opts.slots.height)
 end
 
 function API.init(opts)
@@ -721,7 +730,7 @@ function API.init(opts)
 	for index, slot in ipairs(opts.slots:GetChildren()) do
 		local button = slot:FindDescendantByName("Button")
 		local icon = slot:FindDescendantByName("Icon")
-		
+
 		if(button ~= nil and icon ~= nil and button.isInteractable) then
 			local params = {
 

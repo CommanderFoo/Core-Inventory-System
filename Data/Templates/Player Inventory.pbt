@@ -158,7 +158,7 @@ Assets {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
         Visible_v2 {
-          Value: "mc:evisibilitysetting:forceoff"
+          Value: "mc:evisibilitysetting:inheritfromparent"
         }
         CameraCollidable {
           Value: "mc:ecollisionsetting:inheritfromparent"
@@ -1239,22 +1239,7 @@ Assets {
           }
         }
         ParentId: 6300197238816624524
-        ChildIds: 939607644565562751
-        ChildIds: 16485546060688346390
-        ChildIds: 15537442602315550743
-        ChildIds: 3458795559060470463
-        ChildIds: 6568394890484823189
-        ChildIds: 14849994259218518102
-        ChildIds: 2281732175680144456
-        ChildIds: 181808179456036589
-        ChildIds: 841732992030795866
-        ChildIds: 1916648107618850267
-        ChildIds: 5528522846083308961
-        ChildIds: 12156009169415934336
-        ChildIds: 3863957184266289756
-        ChildIds: 8358762398800762335
-        ChildIds: 4156305501792457580
-        ChildIds: 15569655942494691538
+        ChildIds: 9906497988187534985
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -1297,6 +1282,135 @@ Assets {
         }
       }
       Objects {
+        Id: 9906497988187534985
+        Name: "UI Scroll Panel"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 10515405227916180255
+        ChildIds: 15569655942494691538
+        ChildIds: 939607644565562751
+        ChildIds: 16485546060688346390
+        ChildIds: 15537442602315550743
+        ChildIds: 3458795559060470463
+        ChildIds: 6568394890484823189
+        ChildIds: 14849994259218518102
+        ChildIds: 2281732175680144456
+        ChildIds: 181808179456036589
+        ChildIds: 841732992030795866
+        ChildIds: 1916648107618850267
+        ChildIds: 5528522846083308961
+        ChildIds: 12156009169415934336
+        ChildIds: 3863957184266289756
+        ChildIds: 8358762398800762335
+        ChildIds: 4156305501792457580
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Control {
+          Width: 500
+          Height: 500
+          RenderTransformPivot {
+            Anchor {
+              Value: "mc:euianchor:middlecenter"
+            }
+          }
+          UseParentWidth: true
+          UseParentHeight: true
+          ScrollPanel {
+            Orientation {
+              Value: "mc:eorientation:orient_vertical"
+            }
+            IsInteractable: true
+          }
+          AnchorLayout {
+            SelfAnchor {
+              Anchor {
+                Value: "mc:euianchor:topcenter"
+              }
+            }
+            TargetAnchor {
+              Anchor {
+                Value: "mc:euianchor:topcenter"
+              }
+            }
+          }
+        }
+      }
+      Objects {
+        Id: 15569655942494691538
+        Name: "Slot"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 9906497988187534985
+        TemplateInstance {
+          ParameterOverrideMap {
+            key: 1680811936629800543
+            value {
+              Overrides {
+                Name: "Name"
+                String: "Slot"
+              }
+              Overrides {
+                Name: "Scale"
+                Vector {
+                  X: 1
+                  Y: 1
+                  Z: 1
+                }
+              }
+              Overrides {
+                Name: "Position"
+                Vector {
+                }
+              }
+              Overrides {
+                Name: "Rotation"
+                Rotator {
+                }
+              }
+              Overrides {
+                Name: "UIX"
+                Float: 270
+              }
+              Overrides {
+                Name: "UIY"
+                Float: 270
+              }
+            }
+          }
+          TemplateAsset {
+            Id: 9951480137272277549
+          }
+        }
+      }
+      Objects {
         Id: 939607644565562751
         Name: "Slot"
         Transform {
@@ -1306,7 +1420,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1354,7 +1468,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1406,7 +1520,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1458,7 +1572,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1510,7 +1624,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1562,7 +1676,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1618,7 +1732,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1674,7 +1788,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1730,7 +1844,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1782,7 +1896,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1838,7 +1952,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1894,7 +2008,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -1950,7 +2064,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -2002,7 +2116,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -2058,7 +2172,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10515405227916180255
+        ParentId: 9906497988187534985
         TemplateInstance {
           ParameterOverrideMap {
             key: 1680811936629800543
@@ -2088,62 +2202,6 @@ Assets {
               Overrides {
                 Name: "UIX"
                 Float: 180
-              }
-              Overrides {
-                Name: "UIY"
-                Float: 270
-              }
-            }
-          }
-          TemplateAsset {
-            Id: 9951480137272277549
-          }
-        }
-      }
-      Objects {
-        Id: 15569655942494691538
-        Name: "Slot"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 10515405227916180255
-        TemplateInstance {
-          ParameterOverrideMap {
-            key: 1680811936629800543
-            value {
-              Overrides {
-                Name: "Name"
-                String: "Slot"
-              }
-              Overrides {
-                Name: "Scale"
-                Vector {
-                  X: 1
-                  Y: 1
-                  Z: 1
-                }
-              }
-              Overrides {
-                Name: "Position"
-                Vector {
-                }
-              }
-              Overrides {
-                Name: "Rotation"
-                Rotator {
-                }
-              }
-              Overrides {
-                Name: "UIX"
-                Float: 270
               }
               Overrides {
                 Name: "UIY"

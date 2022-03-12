@@ -43,21 +43,3 @@ Assets {
     AssetId: "CORESKY_Sky"
   }
 }
-Assets {
-  Id: 3839519509431907484
-  Name: "BG Flat 002"
-  PlatformAssetType: 9
-  PrimaryAsset {
-    AssetType: "PlatformBrushAssetRef"
-    AssetId: "BackgroundNoOutline_019"
-  }
-}
-Assets {
-  Id: 3081743918018300983
-  Name: "Teko Bold"
-  PlatformAssetType: 28
-  PrimaryAsset {
-    AssetType: "FontAssetRef"
-    AssetId: "TekoBold_ref"
-  }
-}
