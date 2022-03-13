@@ -90,6 +90,19 @@ Objects {
   ParentId: 4056815105945944543
   TemplateInstance {
     ParameterOverrideMap {
+      key: 3646703086997159412
+      value {
+        Overrides {
+          Name: "Width"
+          Int: 80
+        }
+        Overrides {
+          Name: "Height"
+          Int: 80
+        }
+      }
+    }
+    ParameterOverrideMap {
       key: 9822156273903299146
       value {
         Overrides {
@@ -143,6 +156,105 @@ Objects {
   }
   TemplateInstance {
     ParameterOverrideMap {
+      key: 1233016953411068269
+      value {
+        Overrides {
+          Name: "Width"
+          Int: 0
+        }
+        Overrides {
+          Name: "UIY"
+          Float: 36
+        }
+        Overrides {
+          Name: "Height"
+          Int: 0
+        }
+        Overrides {
+          Name: "Anchor"
+          Enum {
+            Value: "mc:euianchor:topcenter"
+          }
+        }
+        Overrides {
+          Name: "Dock"
+          Enum {
+            Value: "mc:euianchor:topcenter"
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 1334856252270001103
+      value {
+        Overrides {
+          Name: "UIY"
+          Float: 240
+        }
+        Overrides {
+          Name: "UIX"
+          Float: 40
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 2331397174338944278
+      value {
+        Overrides {
+          Name: "UIY"
+          Float: 80
+        }
+        Overrides {
+          Name: "UIX"
+          Float: 80
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 6984254466057644972
+      value {
+        Overrides {
+          Name: "UIY"
+          Float: 160
+        }
+        Overrides {
+          Name: "UIX"
+          Float: 80
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 7397200504845835973
+      value {
+        Overrides {
+          Name: "UIY"
+          Float: 160
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 12036619138306347902
+      value {
+        Overrides {
+          Name: "UIY"
+          Float: 240
+        }
+        Overrides {
+          Name: "UIX"
+          Float: -40
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 14123037550035733309
+      value {
+        Overrides {
+          Name: "UIY"
+          Float: 80
+        }
+      }
+    }
+    ParameterOverrideMap {
       key: 15757681508783782519
       value {
         Overrides {
@@ -167,7 +279,20 @@ Objects {
         }
         Overrides {
           Name: "cs:StartVisible"
-          Bool: false
+          Bool: true
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 16753475205071697662
+      value {
+        Overrides {
+          Name: "UIX"
+          Float: -80
+        }
+        Overrides {
+          Name: "UIY"
+          Float: 160
         }
       }
     }
@@ -179,6 +304,27 @@ Objects {
           Enum {
             Value: "mc:evisibilitysetting:forceoff"
           }
+        }
+        Overrides {
+          Name: "Width"
+          Int: 290
+        }
+        Overrides {
+          Name: "Height"
+          Int: 380
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 17151577787999697315
+      value {
+        Overrides {
+          Name: "UIY"
+          Float: 80
+        }
+        Overrides {
+          Name: "UIX"
+          Float: -80
         }
       }
     }
@@ -223,6 +369,19 @@ Objects {
           Rotator {
             Yaw: 90
           }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 10000694764328048290
+      value {
+        Overrides {
+          Name: "Width"
+          Int: -40
+        }
+        Overrides {
+          Name: "Height"
+          Int: -40
         }
       }
     }
@@ -275,30 +434,12 @@ Objects {
       key: 12600169729114424956
       value {
         Overrides {
-          Name: "Visible"
-          Enum {
-            Value: "mc:evisibilitysetting:forceoff"
-          }
+          Name: "Width"
+          Int: 40
         }
-      }
-    }
-    ParameterOverrideMap {
-      key: 15938237459194604224
-      value {
-        Overrides {
-          Name: "Visible"
-          Enum {
-            Value: "mc:evisibilitysetting:forceon"
-          }
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 17178296635386173225
-      value {
         Overrides {
           Name: "Height"
-          Int: 50
+          Int: 40
         }
       }
     }
@@ -325,6 +466,30 @@ Objects {
     Value: "mc:evisibilitysetting:inheritfromparent"
   }
   TemplateInstance {
+    ParameterOverrideMap {
+      key: 6300197238816624524
+      value {
+        Overrides {
+          Name: "Visible"
+          Enum {
+            Value: "mc:evisibilitysetting:forceoff"
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 10515405227916180255
+      value {
+        Overrides {
+          Name: "Width"
+          Int: -40
+        }
+        Overrides {
+          Name: "Height"
+          Int: -40
+        }
+      }
+    }
     ParameterOverrideMap {
       key: 16211408270603517451
       value {

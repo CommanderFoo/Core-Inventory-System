@@ -16,7 +16,7 @@ Assets {
           }
         }
         ParentId: 4056815105945944543
-        ChildIds: 15301078824052185816
+        ChildIds: 9036666921009156357
         ChildIds: 15709152541762139256
         ChildIds: 11984854766614539495
         ChildIds: 345139701365849045
@@ -33,15 +33,19 @@ Assets {
           }
           Overrides {
             Name: "cs:SlotCount"
-            Int: 8
+            Int: 20
           }
           Overrides {
             Name: "cs:SlotsPerRow"
-            Int: 4
+            Int: 5
           }
           Overrides {
             Name: "cs:StorageKey"
             String: "cinv"
+          }
+          Overrides {
+            Name: "cs:MaxHeight"
+            Int: 0
           }
           Overrides {
             Name: "cs:StartVisible"
@@ -176,13 +180,9 @@ Assets {
         }
       }
       Objects {
-        Id: 15301078824052185816
-        Name: "Inventory Container"
+        Id: 9036666921009156357
+        Name: "Inventory"
         Transform {
-          Location {
-          }
-          Rotation {
-          }
           Scale {
             X: 1
             Y: 1
@@ -190,23 +190,28 @@ Assets {
           }
         }
         ParentId: 4718527058990615992
-        Collidable_v2 {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
-        }
-        CameraCollidable {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        EditorIndicatorVisibility {
-          Value: "mc:eindicatorvisibility:visiblewhenselected"
-        }
-        Folder {
-          IsGroup: true
-        }
-        NetworkRelevanceDistance {
-          Value: "mc:eproxyrelevance:critical"
+        WantsNetworking: true
+        TemplateInstance {
+          ParameterOverrideMap {
+            key: 16044348753239220270
+            value {
+              Overrides {
+                Name: "Name"
+                String: "Inventory"
+              }
+              Overrides {
+                Name: "Scale"
+                Vector {
+                  X: 1
+                  Y: 1
+                  Z: 1
+                }
+              }
+            }
+          }
+          TemplateAsset {
+            Id: 9414153814428187976
+          }
         }
       }
       Objects {
@@ -267,9 +272,9 @@ Assets {
             }
           }
           Overrides {
-            Name: "cs:InventoryContainer"
+            Name: "cs:Inventory"
             ObjectReference {
-              SubObjectId: 15301078824052185816
+              SubObjectId: 7705354579242029185
             }
           }
           Overrides {
@@ -429,8 +434,6 @@ Assets {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
         Control {
-          Width: 420
-          Height: 250
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -1289,14 +1292,7 @@ Assets {
           }
         }
         ParentId: 8133277363676696968
-        ChildIds: 9455961792756974629
-        ChildIds: 4133364656383103155
-        ChildIds: 17803500217865821420
-        ChildIds: 351077065996526193
-        ChildIds: 9179785255803142533
-        ChildIds: 1844753141088880358
-        ChildIds: 6891802565888339896
-        ChildIds: 4325677319737348770
+        ChildIds: 15767928230712903824
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -1339,52 +1335,8 @@ Assets {
         }
       }
       Objects {
-        Id: 9455961792756974629
-        Name: "Slot"
-        Transform {
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 10000694764328048290
-        TemplateInstance {
-          ParameterOverrideMap {
-            key: 1680811936629800543
-            value {
-              Overrides {
-                Name: "Name"
-                String: "Slot"
-              }
-              Overrides {
-                Name: "Scale"
-                Vector {
-                  X: 1
-                  Y: 1
-                  Z: 1
-                }
-              }
-              Overrides {
-                Name: "Position"
-                Vector {
-                }
-              }
-              Overrides {
-                Name: "Rotation"
-                Rotator {
-                }
-              }
-            }
-          }
-          TemplateAsset {
-            Id: 9951480137272277549
-          }
-        }
-      }
-      Objects {
-        Id: 4133364656383103155
-        Name: "Slot"
+        Id: 15767928230712903824
+        Name: "UI Scroll Panel"
         Transform {
           Location {
           }
@@ -1397,364 +1349,44 @@ Assets {
           }
         }
         ParentId: 10000694764328048290
-        TemplateInstance {
-          ParameterOverrideMap {
-            key: 1680811936629800543
-            value {
-              Overrides {
-                Name: "Name"
-                String: "Slot"
-              }
-              Overrides {
-                Name: "Scale"
-                Vector {
-                  X: 1
-                  Y: 1
-                  Z: 1
-                }
-              }
-              Overrides {
-                Name: "Position"
-                Vector {
-                }
-              }
-              Overrides {
-                Name: "Rotation"
-                Rotator {
-                }
-              }
-              Overrides {
-                Name: "UIX"
-                Float: 90
-              }
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Control {
+          RenderTransformPivot {
+            Anchor {
+              Value: "mc:euianchor:middlecenter"
             }
           }
-          TemplateAsset {
-            Id: 9951480137272277549
+          AddSizeToParentIfUsingParentSize: true
+          UseParentWidth: true
+          UseParentHeight: true
+          ScrollPanel {
+            Orientation {
+              Value: "mc:eorientation:orient_vertical"
+            }
+            IsInteractable: true
           }
-        }
-      }
-      Objects {
-        Id: 17803500217865821420
-        Name: "Slot"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 10000694764328048290
-        TemplateInstance {
-          ParameterOverrideMap {
-            key: 1680811936629800543
-            value {
-              Overrides {
-                Name: "Name"
-                String: "Slot"
-              }
-              Overrides {
-                Name: "Scale"
-                Vector {
-                  X: 1
-                  Y: 1
-                  Z: 1
-                }
-              }
-              Overrides {
-                Name: "Position"
-                Vector {
-                }
-              }
-              Overrides {
-                Name: "Rotation"
-                Rotator {
-                }
-              }
-              Overrides {
-                Name: "UIX"
-                Float: 180
+          AnchorLayout {
+            SelfAnchor {
+              Anchor {
+                Value: "mc:euianchor:topcenter"
               }
             }
-          }
-          TemplateAsset {
-            Id: 9951480137272277549
-          }
-        }
-      }
-      Objects {
-        Id: 351077065996526193
-        Name: "Slot"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 10000694764328048290
-        TemplateInstance {
-          ParameterOverrideMap {
-            key: 1680811936629800543
-            value {
-              Overrides {
-                Name: "Name"
-                String: "Slot"
-              }
-              Overrides {
-                Name: "Scale"
-                Vector {
-                  X: 1
-                  Y: 1
-                  Z: 1
-                }
-              }
-              Overrides {
-                Name: "Position"
-                Vector {
-                }
-              }
-              Overrides {
-                Name: "Rotation"
-                Rotator {
-                }
-              }
-              Overrides {
-                Name: "UIX"
-                Float: 270
+            TargetAnchor {
+              Anchor {
+                Value: "mc:euianchor:topcenter"
               }
             }
-          }
-          TemplateAsset {
-            Id: 9951480137272277549
-          }
-        }
-      }
-      Objects {
-        Id: 9179785255803142533
-        Name: "Slot"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 10000694764328048290
-        TemplateInstance {
-          ParameterOverrideMap {
-            key: 1680811936629800543
-            value {
-              Overrides {
-                Name: "Name"
-                String: "Slot"
-              }
-              Overrides {
-                Name: "Scale"
-                Vector {
-                  X: 1
-                  Y: 1
-                  Z: 1
-                }
-              }
-              Overrides {
-                Name: "Position"
-                Vector {
-                }
-              }
-              Overrides {
-                Name: "Rotation"
-                Rotator {
-                }
-              }
-              Overrides {
-                Name: "UIY"
-                Float: 90
-              }
-            }
-          }
-          TemplateAsset {
-            Id: 9951480137272277549
-          }
-        }
-      }
-      Objects {
-        Id: 1844753141088880358
-        Name: "Slot"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 10000694764328048290
-        TemplateInstance {
-          ParameterOverrideMap {
-            key: 1680811936629800543
-            value {
-              Overrides {
-                Name: "Name"
-                String: "Slot"
-              }
-              Overrides {
-                Name: "Scale"
-                Vector {
-                  X: 1
-                  Y: 1
-                  Z: 1
-                }
-              }
-              Overrides {
-                Name: "Position"
-                Vector {
-                }
-              }
-              Overrides {
-                Name: "Rotation"
-                Rotator {
-                }
-              }
-              Overrides {
-                Name: "UIX"
-                Float: 90
-              }
-              Overrides {
-                Name: "UIY"
-                Float: 90
-              }
-            }
-          }
-          TemplateAsset {
-            Id: 9951480137272277549
-          }
-        }
-      }
-      Objects {
-        Id: 6891802565888339896
-        Name: "Slot"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 10000694764328048290
-        TemplateInstance {
-          ParameterOverrideMap {
-            key: 1680811936629800543
-            value {
-              Overrides {
-                Name: "Name"
-                String: "Slot"
-              }
-              Overrides {
-                Name: "Scale"
-                Vector {
-                  X: 1
-                  Y: 1
-                  Z: 1
-                }
-              }
-              Overrides {
-                Name: "Position"
-                Vector {
-                }
-              }
-              Overrides {
-                Name: "Rotation"
-                Rotator {
-                }
-              }
-              Overrides {
-                Name: "UIX"
-                Float: 180
-              }
-              Overrides {
-                Name: "UIY"
-                Float: 90
-              }
-            }
-          }
-          TemplateAsset {
-            Id: 9951480137272277549
-          }
-        }
-      }
-      Objects {
-        Id: 4325677319737348770
-        Name: "Slot"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 10000694764328048290
-        TemplateInstance {
-          ParameterOverrideMap {
-            key: 1680811936629800543
-            value {
-              Overrides {
-                Name: "Name"
-                String: "Slot"
-              }
-              Overrides {
-                Name: "Scale"
-                Vector {
-                  X: 1
-                  Y: 1
-                  Z: 1
-                }
-              }
-              Overrides {
-                Name: "Position"
-                Vector {
-                }
-              }
-              Overrides {
-                Name: "Rotation"
-                Rotator {
-                }
-              }
-              Overrides {
-                Name: "UIX"
-                Float: 270
-              }
-              Overrides {
-                Name: "UIY"
-                Float: 90
-              }
-            }
-          }
-          TemplateAsset {
-            Id: 9951480137272277549
           }
         }
       }
@@ -1793,9 +1425,9 @@ Assets {
             }
           }
           Overrides {
-            Name: "cs:InventoryContainer"
+            Name: "cs:Inventory"
             ObjectReference {
-              SubObjectId: 15301078824052185816
+              SubObjectId: 7705354579242029185
             }
           }
         }

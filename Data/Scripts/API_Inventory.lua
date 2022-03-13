@@ -52,17 +52,19 @@ function API.give_items(opts)
 end
 
 function API.create(opts)
-	local inventory = World.SpawnAsset(INVENTORY, { networkContext = NetworkContextType.NETWORKED })
+	local inventory = opts.inventory
+
+	if(inventory == nil) then
+		inventory = World.SpawnAsset(INVENTORY, { networkContext = NetworkContextType.NETWORKED })
+		opts.inventory = inventory
+	end
 
 	inventory:Resize(opts.slot_count)
 	inventory.name = opts.name or inventory.id
 
-	opts.inventory = inventory
-
 	if(opts.player ~= nil) then
 		inventory:Assign(opts.player)
-	elseif(opts.container ~= nil and Object.IsValid(opts.container)) then
-		inventory.parent = opts.container
+	else
 		API.give_items(opts)
 	end
 
@@ -332,9 +334,9 @@ end
 ---@param button UIButton
 ---@param params table Table contains slot and inventory information.
 function API.on_slot_pressed_event(button, params)
-	local icon = params.slot:FindDescendantByName("Icon")
+	local icon = params.slot:GetCustomProperty("Icon"):GetObject()
 	local is_hidden = icon.visibility == Visibility.FORCE_OFF and true or false
-	local count = icon:FindDescendantByName("Count")
+	local count = params.slot:GetCustomProperty("Count"):GetObject()
 
 	-- Has item already.
 	if(API.ACTIVE.has_item) then
@@ -429,7 +431,7 @@ function API.drop_one_action(player, action)
 					API.clear_dragged_item()
 				end
 			else
-				local icon = API.ACTIVE.hovered_slot:FindDescendantByName("Icon")
+				local icon = API.ACTIVE.hovered_slot:GetCustomProperty("Icon"):GetObject()
 				local is_hidden = icon.visibility == Visibility.FORCE_OFF and true or false
 
 				if(API.ACTIVE.inventory == API.ACTIVE.hovered_inventory and API.ACTIVE.slot_index == API.ACTIVE.hovered_slot_index) then
@@ -643,8 +645,8 @@ end
 ---@param slots UIPanel
 function API.inventory_changed(inventory, slot_index, slots)
 	local item = inventory:GetItem(slot_index)
-	local child_icon = slots:GetChildren()[slot_index]:FindDescendantByName("Icon")
-	local child_count = child_icon:FindDescendantByName("Count")
+	local child_icon = slots:GetChildren()[slot_index]:GetCustomProperty("Icon"):GetObject()
+	local child_count = slots:GetChildren()[slot_index]:GetCustomProperty("Count"):GetObject()
 
 	if(item ~= nil) then
 		local icon = item:GetCustomProperty("Icon")
@@ -665,22 +667,17 @@ function API.inventory_changed(inventory, slot_index, slots)
 end
 
 function API.create_slots(opts)
-	if(opts.slot_count <= 0) then
+	if(opts.slot_count <= 0 or opts.type == API.Type.ARMOR_INVENTORY) then
 		return
 	end
 
 	local slots_per_row = opts.slots_per_row or opts.slot_count
 	local x_offset = 0
 	local y_offset = 0
-	local total_width = 0
-	local total_height = 0
 	local is_hotbar = opts.type == API.Type.HOTBAR_INVENTORY and true or false
 	local slot_width = 0
 	local slot_height = 0
-
-	if(not is_hotbar) then
-		--return
-	end
+	local counter = 0
 
 	for i = 1, opts.slot_count do
 		local slot = World.SpawnAsset(is_hotbar and HOTBAR_SLOT or SLOT)
@@ -695,26 +692,45 @@ function API.create_slots(opts)
 
 		slot.parent = opts.slots
 
-		if(i == 1) then
-			total_height = total_height + slot.height + (slot.height / 2)
-		end
-
-		if(i > slots_per_row) then
-			y_offset = y_offset + slot.height
+		if(counter == slots_per_row) then
 			x_offset = 0
-			total_height = total_height + slot.height
+			y_offset = y_offset + slot.height
+			counter = 0
 		end
 
 		slot.x = x_offset
+		slot.y = y_offset
 		x_offset = x_offset + slot.width
+		counter = counter + 1
 	end
 
-	opts.inventory_ui.width = (slot_width * slots_per_row) + math.abs(opts.slots.width)
-	opts.inventory_ui.height = slot_height * (opts.slot_count / slots_per_row) + math.abs(opts.slots.height)
+	local extra_width = math.abs(opts.slots.width)
+	local extra_height = math.abs(opts.slots.height)
+
+	if(opts.parent_slots ~= nil) then
+		extra_width = math.abs(opts.parent_slots.width)
+		extra_height = math.abs(opts.parent_slots.height) + opts.parent_slots.y
+	end
+
+	if(opts.type == API.Type.HOTBAR_INVENTORY and opts.inventory_ui.width > 0) then
+		opts.slots.x = opts.inventory_ui.width / 2
+	end
+
+	opts.inventory_ui.width = opts.inventory_ui.width + (slot_width * slots_per_row) + extra_width
+	opts.inventory_ui.height = opts.inventory_ui.height + slot_height * (opts.slot_count / slots_per_row) + extra_height
+
+	if(opts.max_height ~= nil and opts.max_height > 0 and opts.inventory_ui.height > opts.max_height) then
+		opts.inventory_ui.height = opts.max_height
+		
+		if(opts.parent_slots ~= nil) then
+			opts.slots.width = 10
+		end
+	end
 end
 
 function API.init(opts)
 	if(opts.slots:GetChildren()[1] ~= nil and opts.slots:GetChildren()[1]:IsA("UIScrollPanel")) then
+		opts.parent_slots = opts.slots
 		opts.slots = opts.slots:GetChildren()[1]
 	end
 
@@ -728,8 +744,8 @@ function API.init(opts)
 	opts.inventory.changedEvent:Connect(API.inventory_changed, opts.slots)
 
 	for index, slot in ipairs(opts.slots:GetChildren()) do
-		local button = slot:FindDescendantByName("Button")
-		local icon = slot:FindDescendantByName("Icon")
+		local button = slot:GetCustomProperty("Button"):GetObject()
+		local icon = slot:GetCustomProperty("Icon"):GetObject()
 
 		if(button ~= nil and icon ~= nil and button.isInteractable) then
 			local params = {
