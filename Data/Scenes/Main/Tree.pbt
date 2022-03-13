@@ -293,6 +293,15 @@ Objects {
         }
       }
     }
+    ParameterOverrideMap {
+      key: 17178296635386173225
+      value {
+        Overrides {
+          Name: "Height"
+          Int: 50
+        }
+      }
+    }
     TemplateAsset {
       Id: 2366760204233403941
     }

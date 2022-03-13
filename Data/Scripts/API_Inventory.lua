@@ -679,7 +679,7 @@ function API.create_slots(opts)
 	local slot_height = 0
 
 	if(not is_hotbar) then
-		return
+		--return
 	end
 
 	for i = 1, opts.slot_count do
