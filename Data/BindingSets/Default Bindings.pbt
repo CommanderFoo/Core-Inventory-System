@@ -2,7 +2,7 @@ Assets {
   Id: 736360303936294653
   Name: "Default Bindings"
   PlatformAssetType: 29
-  SerializationVersion: 107
+  SerializationVersion: 108
   BindingSetAsset {
     Bindings {
       BindingType {
@@ -26,6 +26,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:jump"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -49,6 +50,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:crouch"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -72,6 +74,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:mount"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -95,6 +98,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:interact"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -118,6 +122,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:chat"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -141,6 +146,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:slotpicker"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -197,6 +203,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:move"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -231,6 +238,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:movevertically"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -287,6 +295,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:look"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -321,6 +330,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:zoom"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -344,6 +354,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:pushtotalk"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -367,6 +378,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -391,6 +403,7 @@ Assets {
         Value: "mc:ecorebehavior:none"
       }
       Networked: true
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -414,6 +427,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -437,6 +451,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -460,6 +475,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:vehicleaccelerate"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -483,6 +499,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:vehiclereverse"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -517,6 +534,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:vehicleturn"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -540,6 +558,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:vehiclehandbrake"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -563,6 +582,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -586,6 +606,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:vehicleexit"
       }
+      IsEnabledOnStart: true
     }
   }
 }

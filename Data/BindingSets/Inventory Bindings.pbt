@@ -2,7 +2,7 @@ Assets {
   Id: 5004294234075582436
   Name: "Inventory Bindings"
   PlatformAssetType: 29
-  SerializationVersion: 107
+  SerializationVersion: 108
   BindingSetAsset {
     Bindings {
       BindingType {
@@ -26,6 +26,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -60,6 +61,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -82,6 +84,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -104,6 +107,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -126,6 +130,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -148,6 +153,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -170,6 +176,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -192,6 +199,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -214,6 +222,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -236,6 +245,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -258,6 +268,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
     Bindings {
       BindingType {
@@ -280,6 +291,7 @@ Assets {
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
+      IsEnabledOnStart: true
     }
   }
 }

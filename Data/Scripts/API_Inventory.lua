@@ -93,7 +93,7 @@ function API.load(opts)
 
 		if(inv ~= nil) then
 			for slot_index, entry in ipairs(inv) do
-				local item = API.find_lookup_item_by_key(entry[1])
+				local item = API.find_lookup_item_by_index(entry[1])
 
 				if(item ~= nil) then
 					if(opts.inventory:CanAddItem(item.asset, { count = entry[2], slot = slot_index })) then
@@ -111,6 +111,7 @@ function API.load(opts)
 	end
 end
 
+---@TODO check type of inventory and save based on data table type.
 ---Saves inventory.
 ---@param player Player
 function API.save(player)
@@ -131,10 +132,10 @@ function API.save(player)
 						local entry = {}
 
 						if(item ~= nil) then
-							local lookup_item = API.find_lookup_item_by_asset_id(item)
+							local lookup_item, item_index = API.find_lookup_item_by_asset_id(item.itemAssetId)
 
 							if(lookup_item ~= nil) then
-								entry = { lookup_item.key, item.count }
+								entry = { item_index, item.count }
 							end
 						end
 
@@ -256,27 +257,33 @@ function API.drop_one_handler(from_inventory_id, to_inventory_id, from_slot_inde
 		local from_inventory = from_inventory_obj.inventory
 		local to_inventory = to_inventory_obj.inventory
 		local item = from_inventory:GetItem(from_slot_index)
+		local item_asset_id = item.itemAssetId
 
 		if(not is_inside) then
-			local params = { count = 1, networkContext = NetworkContextType.LOCAL_CONTEXT }
-
-			-- Add item to drops inventory
-			-- add custom property for inventory item
-			-- add custom property to dropped item and set the id for both
-			-- use velocity on spawned item
-			-- allow for pickup
-			-- despawn after X time (remove from pickup inventory)
-			-- Picked up clear pickup inventory to sync between clients
-
-			if(from_inventory:CanDropFromSlot(from_slot_index, params)) then
-
-				--from_inventory:DropFromSlot(from_slot_index, params)
+			if(from_inventory:CanRemoveFromSlot(from_slot_index, { count = 1 })) then
+				from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
+				API.drop_item_into_world(from_inventory.owner, item_asset_id, 1)
 			end
 		elseif(to_inventory:CanAddItem(item.itemAssetId, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
 			to_inventory:AddItem(item.itemAssetId, { count = 1, slot = to_slot_index })
 			from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
 		end
 	end
+end
+
+function API.drop_item_into_world(owner, item_asset_id, count)
+	local item = API.find_lookup_item_by_asset_id(item_asset_id)
+	local forward = owner:GetWorldTransform():GetForwardVector()
+	local obj = World.SpawnAsset(item.pickup_template, {
+		
+		networkContext = NetworkContextType.LOCAL_CONTEXT,
+		scale = Vector3.New(.4, .4, .4),
+		position = owner:GetWorldPosition() + forward * 50
+		
+	})
+
+	obj:SetVelocity(forward * 300)
+
 end
 
 ---Removes an item from a slot.
@@ -292,6 +299,18 @@ function API.remove_item_handler(inventory_id, slot_index)
 			inventory:RemoveFromSlot(slot_index)
 		end
 	end
+end
+
+function API.get_player_inventories(player)
+	local inventories = {}
+
+	for i, inv in pairs(API.INVENTORIES) do
+		if(inv.owner == player) then
+			table.insert(inventories, inv)
+		end
+	end
+
+	return inventories
 end
 
 -- Client
@@ -429,6 +448,8 @@ function API.drop_one_action(player, action)
 					API.PROXY.visibility = Visibility.FORCE_OFF
 					API.ACTIVE.slot.opacity = 1
 					API.clear_dragged_item()
+				else
+					API.PROXY_COUNT.text = tostring(new_count)
 				end
 			else
 				local icon = API.ACTIVE.hovered_slot:GetCustomProperty("Icon"):GetObject()
@@ -573,67 +594,69 @@ function API.tick()
 
 		if(#panels > 0) then
 			for i, panel in ipairs(panels) do
-				local mouse_pos = UI.GetCursorPosition()
-				local pos = panel:GetAbsolutePosition()
+				if(panel.visibility ~= Visibility.FORCE_OFF) then
+					local mouse_pos = UI.GetCursorPosition()
+					local pos = panel:GetAbsolutePosition()
 
-				local x_start = 0
-				local x_end = 0
-				local y_start = 0
-				local y_end = 0
-				local anchor = panel.anchor
+					local x_start = 0
+					local x_end = 0
+					local y_start = 0
+					local y_end = 0
+					local anchor = panel.anchor
 
-				if(anchor == UIPivot.TOP_LEFT) then
-					x_start = pos.x
-					x_end = pos.x + panel.width
-					y_start = pos.y
-					y_end = pos.y + panel.height
-				elseif(anchor == UIPivot.TOP_CENTER) then
-					x_start = pos.x - (panel.width / 2)
-					x_end = pos.x + (panel.width / 2)
-					y_start = pos.y
-					y_end = pos.y + panel.height
-				elseif(anchor == UIPivot.TOP_RIGHT) then
-					x_start = pos.x - panel.width
-					x_end = pos.x
-					y_start = pos.y
-					y_end = pos.y + panel.height
-				elseif(anchor == UIPivot.MIDDLE_LEFT) then
-					x_start = pos.x
-					x_end = pos.x + panel.width
-					y_start = pos.y - (panel.height / 2)
-					y_end = pos.y + (panel.height / 2)
-				elseif(anchor == UIPivot.MIDDLE_CENTER) then
-					x_start = pos.x - (panel.width / 2)
-					x_end = pos.x + (panel.width / 2)
-					y_start = pos.y - (panel.height / 2)
-					y_end = pos.y + (panel.height / 2)
-				elseif(anchor == UIPivot.MIDDLE_RIGHT) then
-					x_start = pos.x - panel.width
-					x_end = pos.x
-					y_start = pos.y - (panel.height / 2)
-					y_end = pos.y + (panel.height / 2)
-				elseif(anchor == UIPivot.BOTTOM_LEFT) then
-					x_start = pos.x
-					x_end = pos.x + panel.width
-					y_start = pos.y - panel.height
-					y_end = pos.y
-				elseif(anchor == UIPivot.BOTTOM_CENTER) then
-					x_start = pos.x - (panel.width / 2)
-					x_end = pos.x + (panel.width / 2)
-					y_start = pos.y - panel.height
-					y_end = pos.y
-				elseif(anchor == UIPivot.BOTTOM_RIGHT) then
-					x_start = pos.x - panel.width
-					x_end = pos.x
-					y_start = pos.y - panel.height
-					y_end = pos.y
+					if(anchor == UIPivot.TOP_LEFT) then
+						x_start = pos.x
+						x_end = pos.x + panel.width
+						y_start = pos.y
+						y_end = pos.y + panel.height
+					elseif(anchor == UIPivot.TOP_CENTER) then
+						x_start = pos.x - (panel.width / 2)
+						x_end = pos.x + (panel.width / 2)
+						y_start = pos.y
+						y_end = pos.y + panel.height
+					elseif(anchor == UIPivot.TOP_RIGHT) then
+						x_start = pos.x - panel.width
+						x_end = pos.x
+						y_start = pos.y
+						y_end = pos.y + panel.height
+					elseif(anchor == UIPivot.MIDDLE_LEFT) then
+						x_start = pos.x
+						x_end = pos.x + panel.width
+						y_start = pos.y - (panel.height / 2)
+						y_end = pos.y + (panel.height / 2)
+					elseif(anchor == UIPivot.MIDDLE_CENTER) then
+						x_start = pos.x - (panel.width / 2)
+						x_end = pos.x + (panel.width / 2)
+						y_start = pos.y - (panel.height / 2)
+						y_end = pos.y + (panel.height / 2)
+					elseif(anchor == UIPivot.MIDDLE_RIGHT) then
+						x_start = pos.x - panel.width
+						x_end = pos.x
+						y_start = pos.y - (panel.height / 2)
+						y_end = pos.y + (panel.height / 2)
+					elseif(anchor == UIPivot.BOTTOM_LEFT) then
+						x_start = pos.x
+						x_end = pos.x + panel.width
+						y_start = pos.y - panel.height
+						y_end = pos.y
+					elseif(anchor == UIPivot.BOTTOM_CENTER) then
+						x_start = pos.x - (panel.width / 2)
+						x_end = pos.x + (panel.width / 2)
+						y_start = pos.y - panel.height
+						y_end = pos.y
+					elseif(anchor == UIPivot.BOTTOM_RIGHT) then
+						x_start = pos.x - panel.width
+						x_end = pos.x
+						y_start = pos.y - panel.height
+						y_end = pos.y
+					end
+
+					if(mouse_pos.x > x_start and mouse_pos.x < x_end and mouse_pos.y > y_start and mouse_pos.y < y_end) then
+						API.IS_INSIDE = true
+					end
+
+					--print(string.format("Mouse X: %s, Start X: %s, End X: %s, Mouse Y: %s, Start Y: %s, End Y: %s, Inside: %s", mouse_pos.x, x_start, x_end, mouse_pos.y, y_start, y_end, API.IS_INSIDE))
 				end
-
-				if(mouse_pos.x > x_start and mouse_pos.x < x_end and mouse_pos.y > y_start and mouse_pos.y < y_end) then
-					API.IS_INSIDE = true
-				end
-
-				--print(string.format("Mouse X: %s, Start X: %s, End X: %s, Mouse Y: %s, Start Y: %s, End Y: %s, Inside: %s", mouse_pos.x, x_start, x_end, mouse_pos.y, y_start, y_end, API.IS_INSIDE))
 			end
 		end
 	end
@@ -687,7 +710,7 @@ function API.create_slots(opts)
 		end
 
 		if(slot_height == 0) then
-			slot_height = slot.height	
+			slot_height = slot.height
 		end
 
 		slot.parent = opts.slots
@@ -721,7 +744,7 @@ function API.create_slots(opts)
 
 	if(opts.max_height ~= nil and opts.max_height > 0 and opts.inventory_ui.height > opts.max_height) then
 		opts.inventory_ui.height = opts.max_height
-		
+
 		if(opts.parent_slots ~= nil) then
 			opts.slots.width = 10
 		end
@@ -773,12 +796,12 @@ end
 
 -- Shared
 
----Looks up an item by the key that is used for storage.
----@param key string
+---Looks up an item by the index that is used for storage.
+---@param index integer
 ---@return table
-function API.find_lookup_item_by_key(key)
-	for i, data_item in pairs(INVENTORY_ASSETS) do
-		if(key == data_item.key) then
+function API.find_lookup_item_by_index(index)
+	for i, data_item in ipairs(INVENTORY_ASSETS) do
+		if(index == i) then
 			return data_item
 		end
 	end
@@ -787,12 +810,12 @@ end
 ---Find an item based on an asset id.
 ---@param item string
 ---@return table
-function API.find_lookup_item_by_asset_id(item)
-	for i, data_item in pairs(INVENTORY_ASSETS) do
+function API.find_lookup_item_by_asset_id(item_asset_id)
+	for i, data_item in ipairs(INVENTORY_ASSETS) do
 		local id = CoreString.Split(data_item.asset, ":")
 
-		if(id == item.itemAssetId) then
-			return data_item
+		if(id == item_asset_id) then
+			return data_item, i
 		end
 	end
 end
