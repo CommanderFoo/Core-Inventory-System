@@ -274,15 +274,23 @@ end
 function API.drop_item_into_world(owner, item_asset_id, count)
 	local item = API.find_lookup_item_by_asset_id(item_asset_id)
 	local forward = owner:GetWorldTransform():GetForwardVector()
-	local obj = World.SpawnAsset(item.pickup_template, {
+	local direction = owner:GetWorldRotation() * Vector3.FORWARD
+	-- local obj = World.SpawnAsset(item.pickup_template, {
 		
-		networkContext = NetworkContextType.LOCAL_CONTEXT,
-		scale = Vector3.New(.4, .4, .4),
-		position = owner:GetWorldPosition() + forward * 50
+	-- 	networkContext = NetworkContextType.LOCAL_CONTEXT,
+	-- 	scale = Vector3.New(.4, .4, .4),
+	-- 	position = owner:GetWorldPosition() + forward * 50
 		
-	})
+	-- })
 
-	obj:SetVelocity(forward * 300)
+	local projectile = Projectile.Spawn(item.pickup_template, owner:GetWorldPosition() + forward * 150, forward)
+
+	--projectile:SetWorldScale(Vector3.New(.3, .3, .3))
+	projectile.shouldDieOnImpact = false
+	projectile.speed = 800
+	projectile.gravityScale = 2
+
+	projectile.lifeSpan = 30
 
 end
 

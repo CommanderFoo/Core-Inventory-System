@@ -16,7 +16,7 @@ Objects {
   }
   ChildIds: 16270802511419725645
   ChildIds: 4056815105945944543
-  ChildIds: 9558403850688539431
+  ChildIds: 13480117023641323524
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -35,57 +35,51 @@ Objects {
   }
 }
 Objects {
-  Id: 9558403850688539431
-  Name: "Bean"
+  Id: 13480117023641323524
+  Name: "Cube"
   Transform {
+    Location {
+    }
+    Rotation {
+    }
     Scale {
-      X: 1
-      Y: 1
-      Z: 1
+      X: 0.214066029
+      Y: 0.214066029
+      Z: 0.214066029
     }
   }
   ParentId: 4781671109827199097
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 11458945372560880643
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Bean"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            X: -70.1897888
-            Y: -257.556549
-            Z: 22.0383224
-          }
-        }
-        Overrides {
-          Name: "CoreProxy.CameraCollidable"
-          Enum {
-            Value: "mc:ecollisionsetting:forceoff"
-          }
-        }
-        Overrides {
-          Name: "Scale"
-          Vector {
-            X: 0.339
-            Y: 0.33942169
-            Z: 0.33942169
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-            Yaw: -40.0834961
-          }
-        }
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  CoreMesh {
+    MeshAsset {
+      Id: 12095835209017042614
+    }
+    Teams {
+      IsTeamCollisionEnabled: true
+      IsEnemyCollisionEnabled: true
+    }
+    StaticMesh {
+      Physics {
+        Mass: 100
+        LinearDamping: 0.01
       }
+      BoundsScale: 1
     }
-    TemplateAsset {
-      Id: 13554235956785981284
-    }
+  }
+  NetworkRelevanceDistance {
+    Value: "mc:eproxyrelevance:critical"
   }
 }
 Objects {
