@@ -5,12 +5,56 @@ Assets {
   SerializationVersion: 108
   VirtualFolderSetAsset {
     Folders {
+      VirtualFolderPath: "Inventory System"
+      PlatformAssetType: 5
+    }
+    Folders {
+      VirtualFolderPath: "Inventory System"
+      VirtualFolderPath: "Item Templates"
+      PlatformAssetType: 5
+    }
+    Folders {
+      VirtualFolderPath: "Inventory System"
+      VirtualFolderPath: "Item Effects"
+      PlatformAssetType: 5
+    }
+    Folders {
+      VirtualFolderPath: "Inventory System"
       VirtualFolderPath: "Item Objects"
       PlatformAssetType: 5
     }
     Folders {
-      VirtualFolderPath: "Item Templates"
+      VirtualFolderPath: "Inventory System"
+      VirtualFolderPath: "Slots"
       PlatformAssetType: 5
+    }
+    Folders {
+      VirtualFolderPath: "Inventory System"
+      VirtualFolderPath: "Inventories"
+      PlatformAssetType: 5
+    }
+    Folders {
+      VirtualFolderPath: "Inventory System"
+      PlatformAssetType: 3
+    }
+    Folders {
+      VirtualFolderPath: "Inventory System"
+      VirtualFolderPath: "Inventories"
+      PlatformAssetType: 3
+    }
+    Folders {
+      VirtualFolderPath: "Inventory System"
+      VirtualFolderPath: "Tween"
+      PlatformAssetType: 3
+    }
+    Folders {
+      VirtualFolderPath: "Inventory System"
+      VirtualFolderPath: "Effects"
+      PlatformAssetType: 3
+    }
+    Folders {
+      VirtualFolderPath: "Inventory System"
+      PlatformAssetType: 31
     }
   }
 }

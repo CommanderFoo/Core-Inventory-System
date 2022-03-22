@@ -4,6 +4,16 @@ local DEBUG = script:GetCustomProperty("Debug")
 local SLOT = script:GetCustomProperty("Slot")
 local HOTBAR_SLOT = script:GetCustomProperty("HotbarSlot")
 
+local DROPPED_ITEM_BOUNCES = script:GetCustomProperty("DroppedItemBounces")
+local DROPPED_ITEM_BOUNCINESS = script:GetCustomProperty("DroppedItemBounciness")
+local DROPPED_DIST_FROM_PLAYER = script:GetCustomProperty("DroppedDistFromPlayer")
+local DROPPED_UP_DIST_FROM_PLAYER = script:GetCustomProperty("DroppedUpDistFromPlayer")
+local DROPPED_ITEM_SPEED = script:GetCustomProperty("DroppedItemSpeed")
+local DROPPED_ITEM_GRAVITY = script:GetCustomProperty("DroppedItemGravity")
+local DROPPED_ITEM_PROJ_RADIUS = script:GetCustomProperty("DroppedItemProjRadius")
+local DROPPED_ITEM_PROJ_LENGTH = script:GetCustomProperty("DroppedItemProjLength")
+local DROPPED_ITEM_PROJ_LIFE_SPAN = script:GetCustomProperty("DroppedItemProjLifeSpan")
+
 ---@class API_Inventory
 local API = {
 
@@ -70,6 +80,7 @@ function API.create(opts)
 
 	API.INVENTORIES[inventory.id] = opts
 
+	inventory:AddItem(INVENTORY_ASSETS[3].asset, { count = 500 })
 	if(DEBUG) then
 		API.give_items(opts)
 	end
@@ -273,25 +284,27 @@ end
 
 function API.drop_item_into_world(owner, item_asset_id, count)
 	local item = API.find_lookup_item_by_asset_id(item_asset_id)
-	local forward = owner:GetWorldTransform():GetForwardVector()
-	local direction = owner:GetWorldRotation() * Vector3.FORWARD
-	-- local obj = World.SpawnAsset(item.pickup_template, {
-		
-	-- 	networkContext = NetworkContextType.LOCAL_CONTEXT,
-	-- 	scale = Vector3.New(.4, .4, .4),
-	-- 	position = owner:GetWorldPosition() + forward * 50
-		
-	-- })
+	local forward = owner:GetViewWorldRotation() * Vector3.FORWARD
+	local projectile = Projectile.Spawn(item.pickup_template, owner:GetWorldPosition() + (Vector3.UP * DROPPED_UP_DIST_FROM_PLAYER) + (forward * DROPPED_DIST_FROM_PLAYER), forward)
 
-	local projectile = Projectile.Spawn(item.pickup_template, owner:GetWorldPosition() + forward * 150, forward)
-
-	--projectile:SetWorldScale(Vector3.New(.3, .3, .3))
 	projectile.shouldDieOnImpact = false
-	projectile.speed = 800
-	projectile.gravityScale = 2
+	projectile.speed = DROPPED_ITEM_SPEED
+	projectile.gravityScale = DROPPED_ITEM_GRAVITY
+	projectile.bouncesRemaining = DROPPED_ITEM_BOUNCES
+	projectile.capsuleRadius = DROPPED_ITEM_PROJ_RADIUS
+	projectile.capsuleLength = DROPPED_ITEM_PROJ_LENGTH
+	projectile.bounciness = DROPPED_ITEM_BOUNCINESS
 
-	projectile.lifeSpan = 30
+	--@TODO: Spawn pickup for this item and kill projectile on last bounce
+	projectile.impactEvent:Connect(function()
+		projectile.bouncesRemaining = math.max(0, projectile.bouncesRemaining - 1)
 
+		if(projectile.bouncesRemaining == 0) then
+			projectile:Destroy()
+		end
+	end)
+
+	projectile.lifeSpan = DROPPED_ITEM_PROJ_LIFE_SPAN
 end
 
 ---Removes an item from a slot.
@@ -816,7 +829,7 @@ function API.find_lookup_item_by_index(index)
 end
 
 ---Find an item based on an asset id.
----@param item string
+---@param item_asset_id string
 ---@return table
 function API.find_lookup_item_by_asset_id(item_asset_id)
 	for i, data_item in ipairs(INVENTORY_ASSETS) do

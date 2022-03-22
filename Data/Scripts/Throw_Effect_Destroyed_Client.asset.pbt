@@ -1,6 +1,6 @@
 Assets {
-  Id: 737881821191491817
-  Name: "Armor_Inventory_Client"
+  Id: 12948489543303282390
+  Name: "Throw_Effect_Destroyed_Client"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
@@ -8,5 +8,5 @@ Assets {
   }
   SerializationVersion: 108
   VirtualFolderPath: "Inventory System"
-  VirtualFolderPath: "Inventories"
+  VirtualFolderPath: "Effects"
 }

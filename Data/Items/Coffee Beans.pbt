@@ -5,7 +5,7 @@ Assets {
   SerializationVersion: 108
   ItemAsset {
     CustomName: "Coffee Beans"
-    MaximumStackCount: 15
+    MaximumStackCount: 500
     ItemTemplateAssetId: 13554235956785981284
     CustomParameters {
       Overrides {

@@ -3,6 +3,7 @@ Assets {
   Name: "Inventory Assets"
   PlatformAssetType: 31
   SerializationVersion: 108
+  VirtualFolderPath: "Inventory System"
   DataTableAsset {
   }
 }
