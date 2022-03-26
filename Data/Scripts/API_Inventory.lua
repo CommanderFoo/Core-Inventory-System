@@ -285,7 +285,7 @@ end
 function API.drop_item_into_world(owner, item_asset_id, count)
 	local item = API.find_lookup_item_by_asset_id(item_asset_id)
 	local forward = owner:GetViewWorldRotation() * Vector3.FORWARD
-	local projectile = Projectile.Spawn(item.pickup_template, owner:GetWorldPosition() + (Vector3.UP * DROPPED_UP_DIST_FROM_PLAYER) + (forward * DROPPED_DIST_FROM_PLAYER), forward)
+	local projectile = Projectile.Spawn(item.throw_template, owner:GetWorldPosition() + (Vector3.UP * DROPPED_UP_DIST_FROM_PLAYER) + (forward * DROPPED_DIST_FROM_PLAYER), forward)
 
 	projectile.shouldDieOnImpact = false
 	projectile.speed = DROPPED_ITEM_SPEED
@@ -296,11 +296,18 @@ function API.drop_item_into_world(owner, item_asset_id, count)
 	projectile.bounciness = DROPPED_ITEM_BOUNCINESS
 
 	--@TODO: Spawn pickup for this item and kill projectile on last bounce
-	projectile.impactEvent:Connect(function()
+	projectile.impactEvent:Connect(function(proj, other, hit)
 		projectile.bouncesRemaining = math.max(0, projectile.bouncesRemaining - 1)
 
 		if(projectile.bouncesRemaining == 0) then
 			projectile:Destroy()
+			World.SpawnAsset(item.pickup_template, {
+				
+				position = hit:GetImpactPosition() + (Vector3.UP * 30),
+				networkContext = NetworkContextType.LOCAL_CONTEXT,
+				scale = Vector3.New(.3, .3, .3)
+			
+			})
 		end
 	end)
 
