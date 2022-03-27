@@ -305,7 +305,7 @@ function API.drop_item_into_world(owner, item_asset_id, count)
 				
 				position = hit:GetImpactPosition() + (Vector3.UP * 30),
 				networkContext = NetworkContextType.LOCAL_CONTEXT,
-				scale = Vector3.New(.3, .3, .3)
+				scale = Vector3.New(.4, .4, .4)
 			
 			})
 		end
