@@ -102,6 +102,10 @@ Assets {
             }
           }
           Overrides {
+            Name: "cs:PickupPriority"
+            Int: 2
+          }
+          Overrides {
             Name: "cs:API_Inventory:isrep"
             Bool: false
           }
@@ -373,7 +377,7 @@ Assets {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
         Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
+          Value: "mc:evisibilitysetting:forceoff"
         }
         CameraCollidable {
           Value: "mc:ecollisionsetting:inheritfromparent"
@@ -1255,8 +1259,8 @@ Assets {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
         Control {
-          Width: -60
-          Height: -60
+          Width: -40
+          Height: -40
           UIY: 10
           RenderTransformPivot {
             Anchor {

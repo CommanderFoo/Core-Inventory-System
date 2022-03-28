@@ -10,6 +10,7 @@ local function on_player_joined(player)
 		slot_count = ROOT:GetCustomProperty("SlotCount"),
 		clean_up = ROOT:GetCustomProperty("CleanUp"),
 		storage_key = ROOT:GetCustomProperty("StorageKey"),
+		priority = ROOT:GetCustomProperty("PickupPriority"),
 		name = ROOT:GetCustomProperty("Name"),
 		type = API_Inventory.Type.PLAYER_INVENTORY
 

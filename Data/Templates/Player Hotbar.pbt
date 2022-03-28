@@ -107,6 +107,10 @@ Assets {
             }
           }
           Overrides {
+            Name: "cs:PickupPriority"
+            Int: 1
+          }
+          Overrides {
             Name: "cs:API_Inventory:isrep"
             Bool: false
           }
@@ -410,8 +414,8 @@ Assets {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
         Control {
-          Width: 30
-          Height: 30
+          Width: 40
+          Height: 40
           UIY: -40
           RenderTransformPivot {
             Anchor {

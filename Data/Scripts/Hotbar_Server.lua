@@ -13,6 +13,7 @@ local function on_player_joined(player)
 		clean_up = ROOT:GetCustomProperty("CleanUp"),
 		storage_key = ROOT:GetCustomProperty("StorageKey"),
 		storage_slot_key = ROOT:GetCustomProperty("StorageSlotKey"),
+		priority = ROOT:GetCustomProperty("PickupPriority"),
 		name = ROOT:GetCustomProperty("Name"),
 		type = API_Inventory.Type.HOTBAR_INVENTORY
 

@@ -1,10 +1,11 @@
 Assets {
-  Id: 7153229304768253401
-  Name: "Item_Pickup_Client"
+  Id: 8622066580887477931
+  Name: "Inventory_Pickup"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
     }
   }
   SerializationVersion: 108
+  VirtualFolderPath: "Inventory System"
 }

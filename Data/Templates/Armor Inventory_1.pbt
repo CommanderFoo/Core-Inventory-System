@@ -154,7 +154,7 @@ Assets {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
         Visible_v2 {
-          Value: "mc:evisibilitysetting:forceoff"
+          Value: "mc:evisibilitysetting:inheritfromparent"
         }
         CameraCollidable {
           Value: "mc:ecollisionsetting:inheritfromparent"
@@ -365,7 +365,7 @@ Assets {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
         Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
+          Value: "mc:evisibilitysetting:forceoff"
         }
         CameraCollidable {
           Value: "mc:ecollisionsetting:inheritfromparent"
@@ -374,8 +374,8 @@ Assets {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
         Control {
-          Width: 340
-          Height: 430
+          Width: 290
+          Height: 380
           UIX: 50
           RenderTransformPivot {
             Anchor {
@@ -1257,9 +1257,7 @@ Assets {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
         Control {
-          Width: -60
-          Height: -60
-          UIY: 10
+          UIY: 36
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
@@ -1274,12 +1272,12 @@ Assets {
           AnchorLayout {
             SelfAnchor {
               Anchor {
-                Value: "mc:euianchor:middlecenter"
+                Value: "mc:euianchor:topcenter"
               }
             }
             TargetAnchor {
               Anchor {
-                Value: "mc:euianchor:middlecenter"
+                Value: "mc:euianchor:topcenter"
               }
             }
           }
@@ -1384,7 +1382,7 @@ Assets {
               }
               Overrides {
                 Name: "UIY"
-                Float: 90
+                Float: 80
               }
               Overrides {
                 Name: "UIX"
@@ -1471,11 +1469,11 @@ Assets {
               }
               Overrides {
                 Name: "UIY"
-                Float: 90
+                Float: 80
               }
               Overrides {
                 Name: "UIX"
-                Float: -90
+                Float: -80
               }
             }
           }
@@ -1558,11 +1556,11 @@ Assets {
               }
               Overrides {
                 Name: "UIY"
-                Float: 180
+                Float: 160
               }
               Overrides {
                 Name: "UIX"
-                Float: -90
+                Float: -80
               }
             }
           }
@@ -1645,11 +1643,11 @@ Assets {
               }
               Overrides {
                 Name: "UIY"
-                Float: 90
+                Float: 80
               }
               Overrides {
                 Name: "UIX"
-                Float: 90
+                Float: 80
               }
             }
           }
@@ -1740,11 +1738,11 @@ Assets {
               }
               Overrides {
                 Name: "UIY"
-                Float: 180
+                Float: 160
               }
               Overrides {
                 Name: "UIX"
-                Float: 90
+                Float: 80
               }
             }
           }
@@ -1835,7 +1833,7 @@ Assets {
               }
               Overrides {
                 Name: "UIY"
-                Float: 180
+                Float: 160
               }
               Overrides {
                 Name: "UIX"
@@ -1922,11 +1920,11 @@ Assets {
               }
               Overrides {
                 Name: "UIY"
-                Float: 270
+                Float: 240
               }
               Overrides {
                 Name: "UIX"
-                Float: -45
+                Float: -40
               }
             }
           }
@@ -2009,11 +2007,11 @@ Assets {
               }
               Overrides {
                 Name: "UIY"
-                Float: 270
+                Float: 240
               }
               Overrides {
                 Name: "UIX"
-                Float: 45
+                Float: 40
               }
               Overrides {
                 Name: "UIRotationAngle"

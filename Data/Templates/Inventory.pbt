@@ -17,6 +17,14 @@ Assets {
         }
         ParentId: 4781671109827199097
         UnregisteredParameters {
+          Overrides {
+            Name: "cs:priority"
+            Int: 0
+          }
+          Overrides {
+            Name: "cs:priority:isrep"
+            Bool: true
+          }
         }
         WantsNetworking: true
         Collidable_v2 {

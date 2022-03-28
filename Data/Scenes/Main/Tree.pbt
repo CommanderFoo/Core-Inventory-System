@@ -16,7 +16,7 @@ Objects {
   }
   ChildIds: 16270802511419725645
   ChildIds: 4056815105945944543
-  ChildIds: 8537964180828705527
+  ChildIds: 9199195642149450140
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -35,15 +35,9 @@ Objects {
   }
 }
 Objects {
-  Id: 8537964180828705527
+  Id: 9199195642149450140
   Name: "Bean Pickup"
   Transform {
-    Location {
-      X: 200
-      Y: 200
-    }
-    Rotation {
-    }
     Scale {
       X: 1
       Y: 1
@@ -51,221 +45,38 @@ Objects {
     }
   }
   ParentId: 4781671109827199097
-  ChildIds: 15742562091926080282
-  ChildIds: 15231258666528216275
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Visible_v2 {
     Value: "mc:evisibilitysetting:inheritfromparent"
   }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Folder {
-    IsGroup: true
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
-  Id: 15231258666528216275
-  Name: "Trigger"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 3.31638455
-      Y: 3.31638455
-      Z: 3.31638455
-    }
-  }
-  ParentId: 8537964180828705527
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Trigger {
-    TeamSettings {
-      IsTeamCollisionEnabled: true
-      IsEnemyCollisionEnabled: true
-    }
-    TriggerShape_v2 {
-      Value: "mc:etriggershape:sphere"
-    }
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
-  Id: 15742562091926080282
-  Name: "Client"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 8537964180828705527
-  ChildIds: 10241742676083410899
-  ChildIds: 14293618215154750946
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  NetworkContext {
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
-  Id: 14293618215154750946
-  Name: "Item_Pickup_Client"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 15742562091926080282
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:Trigger"
-      ObjectReference {
-        SelfId: 15231258666528216275
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 14137138681320844337
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Bean Pickup"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -232.652573
+            Y: -266.681793
+            Z: 2.28881836e-05
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
       }
     }
-    Overrides {
-      Name: "cs:Mesh"
-      ObjectReference {
-        SelfId: 10241742676083410899
-      }
+    TemplateAsset {
+      Id: 10208314571334523668
     }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Script {
-    ScriptAsset {
-      Id: 7153229304768253401
-    }
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
-  Id: 10241742676083410899
-  Name: "Bean"
-  Transform {
-    Location {
-      Z: 8.63431549
-    }
-    Rotation {
-    }
-    Scale {
-      X: 0.3
-      Y: 0.3
-      Z: 0.3
-    }
-  }
-  ParentId: 15742562091926080282
-  UnregisteredParameters {
-    Overrides {
-      Name: "ma:Shared_BaseMaterial:color"
-      Color {
-        R: 0.930000067
-        G: 0.915238142
-        A: 1
-      }
-    }
-    Overrides {
-      Name: "ma:Shared_BaseMaterial:id"
-      AssetReference {
-        Id: 10184847056121543272
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  CoreMesh {
-    MeshAsset {
-      Id: 9133958875745400169
-    }
-    Teams {
-      IsTeamCollisionEnabled: true
-      IsEnemyCollisionEnabled: true
-    }
-    StaticMesh {
-      Physics {
-        Mass: 100
-        LinearDamping: 0.01
-      }
-      BoundsScale: 1
-    }
-  }
-  InstanceHistory {
-    SelfId: 10241742676083410899
-    SubobjectId: 11458945372560880643
-    InstanceId: 15632543856546259113
-    TemplateId: 13554235956785981284
-    WasRoot: true
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
   }
 }
 Objects {
@@ -291,7 +102,6 @@ Objects {
   ChildIds: 12022879565615496328
   ChildIds: 8131351067154343009
   ChildIds: 9433971498664992443
-  ChildIds: 14598834697028635917
   ChildIds: 3399513445889837083
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -369,202 +179,6 @@ Objects {
     }
     TemplateAsset {
       Id: 2907989484309433646
-    }
-  }
-}
-Objects {
-  Id: 14598834697028635917
-  Name: "Armor Inventory"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:forceoff"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 1233016953411068269
-      value {
-        Overrides {
-          Name: "Width"
-          Int: 0
-        }
-        Overrides {
-          Name: "UIY"
-          Float: 36
-        }
-        Overrides {
-          Name: "Height"
-          Int: 0
-        }
-        Overrides {
-          Name: "Anchor"
-          Enum {
-            Value: "mc:euianchor:topcenter"
-          }
-        }
-        Overrides {
-          Name: "Dock"
-          Enum {
-            Value: "mc:euianchor:topcenter"
-          }
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 1334856252270001103
-      value {
-        Overrides {
-          Name: "UIY"
-          Float: 240
-        }
-        Overrides {
-          Name: "UIX"
-          Float: 40
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 2331397174338944278
-      value {
-        Overrides {
-          Name: "UIY"
-          Float: 80
-        }
-        Overrides {
-          Name: "UIX"
-          Float: 80
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 6984254466057644972
-      value {
-        Overrides {
-          Name: "UIY"
-          Float: 160
-        }
-        Overrides {
-          Name: "UIX"
-          Float: 80
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 7397200504845835973
-      value {
-        Overrides {
-          Name: "UIY"
-          Float: 160
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 12036619138306347902
-      value {
-        Overrides {
-          Name: "UIY"
-          Float: 240
-        }
-        Overrides {
-          Name: "UIX"
-          Float: -40
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 14123037550035733309
-      value {
-        Overrides {
-          Name: "UIY"
-          Float: 80
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 15757681508783782519
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Armor Inventory"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-        Overrides {
-          Name: "Visible"
-          Enum {
-            Value: "mc:evisibilitysetting:inheritfromparent"
-          }
-        }
-        Overrides {
-          Name: "cs:StartVisible"
-          Bool: true
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 16753475205071697662
-      value {
-        Overrides {
-          Name: "UIX"
-          Float: -80
-        }
-        Overrides {
-          Name: "UIY"
-          Float: 160
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 16936384737219765831
-      value {
-        Overrides {
-          Name: "Visible"
-          Enum {
-            Value: "mc:evisibilitysetting:forceoff"
-          }
-        }
-        Overrides {
-          Name: "Width"
-          Int: 290
-        }
-        Overrides {
-          Name: "Height"
-          Int: 380
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 17151577787999697315
-      value {
-        Overrides {
-          Name: "UIY"
-          Float: 80
-        }
-        Overrides {
-          Name: "UIX"
-          Float: -80
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 7581631008779369608
     }
   }
 }
@@ -667,23 +281,6 @@ Objects {
           Rotator {
           }
         }
-        Overrides {
-          Name: "cs:SlotCount"
-          Int: 10
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 12600169729114424956
-      value {
-        Overrides {
-          Name: "Width"
-          Int: 40
-        }
-        Overrides {
-          Name: "Height"
-          Int: 40
-        }
       }
     }
     TemplateAsset {
@@ -710,30 +307,6 @@ Objects {
   }
   TemplateInstance {
     ParameterOverrideMap {
-      key: 6300197238816624524
-      value {
-        Overrides {
-          Name: "Visible"
-          Enum {
-            Value: "mc:evisibilitysetting:forceoff"
-          }
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 10515405227916180255
-      value {
-        Overrides {
-          Name: "Width"
-          Int: -40
-        }
-        Overrides {
-          Name: "Height"
-          Int: -40
-        }
-      }
-    }
-    ParameterOverrideMap {
       key: 16211408270603517451
       value {
         Overrides {
@@ -752,14 +325,6 @@ Objects {
           Name: "Rotation"
           Rotator {
           }
-        }
-        Overrides {
-          Name: "cs:SlotCount"
-          Int: 16
-        }
-        Overrides {
-          Name: "cs:SlotsPerRow"
-          Int: 4
         }
       }
     }
@@ -934,8 +499,8 @@ Objects {
     Rotation {
     }
     Scale {
-      X: 50
-      Y: 50
+      X: 350.683868
+      Y: 86.1630707
       Z: 1
     }
   }

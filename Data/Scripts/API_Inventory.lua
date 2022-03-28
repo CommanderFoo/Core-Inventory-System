@@ -72,6 +72,10 @@ function API.create(opts)
 	inventory:Resize(opts.slot_count)
 	inventory.name = opts.name or inventory.id
 
+	if(opts.priority ~= nil) then
+		inventory:SetCustomProperty("priority", opts.priority)
+	end
+
 	if(opts.player ~= nil) then
 		inventory:Assign(opts.player)
 	else
@@ -304,8 +308,7 @@ function API.drop_item_into_world(owner, item_asset_id, count)
 			World.SpawnAsset(item.pickup_template, {
 				
 				position = hit:GetImpactPosition() + (Vector3.UP * 30),
-				networkContext = NetworkContextType.LOCAL_CONTEXT,
-				scale = Vector3.New(.4, .4, .4)
+				networkContext = NetworkContextType.LOCAL_CONTEXT
 			
 			})
 		end
@@ -578,6 +581,27 @@ function API.get_inventory(name, type, container)
 	end
 
 	return nil
+end
+
+-- function API.get_priority_inventory_with_space(player)
+-- 	local inventory = nil
+
+-- 	for i, inv in ipairs(player:GetInventories()) do
+-- 		local priority = inv:GetCustomProperty("priority")
+
+-- 		if(inventory == nil) then
+-- 			if(invent)
+-- 			inventory = inv
+-- 		end
+		
+-- 	end
+-- end
+
+function API.can_pickup_item(item, player)
+	--local inventories = API.get_priority_inventory_with_space(player, item)
+	local inv = API.get_inventory("Player Hotbar", API.Type.HOTBAR_INVENTORY)
+	
+	print(inv:CanPickUpItem(item))
 end
 
 ---Disables the frame from being hovered over. This is used with hotbars.

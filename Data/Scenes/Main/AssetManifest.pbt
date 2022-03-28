@@ -35,24 +35,6 @@ Assets {
   }
 }
 Assets {
-  Id: 10184847056121543272
-  Name: "Basic Material"
-  PlatformAssetType: 2
-  PrimaryAsset {
-    AssetType: "MaterialAssetRef"
-    AssetId: "mi_basic_pbr_material_001"
-  }
-}
-Assets {
-  Id: 9133958875745400169
-  Name: "Basic Bean 02"
-  PlatformAssetType: 1
-  PrimaryAsset {
-    AssetType: "StaticMeshAssetRef"
-    AssetId: "sm_prim_org_bean_002_ref"
-  }
-}
-Assets {
   Id: 7887238662729938253
   Name: "Sky Dome"
   PlatformAssetType: 6
