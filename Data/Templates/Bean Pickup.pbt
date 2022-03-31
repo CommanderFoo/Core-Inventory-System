@@ -261,6 +261,9 @@ Assets {
           TemplateId: 13554235956785981284
           WasRoot: true
         }
+        Relevance {
+          Value: "mc:eproxyrelevance:critical"
+        }
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
@@ -329,5 +332,5 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 108
+  SerializationVersion: 110
 }

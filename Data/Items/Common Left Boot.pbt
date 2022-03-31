@@ -2,7 +2,7 @@ Assets {
   Id: 7114646290464330702
   Name: "Common Left Boot"
   PlatformAssetType: 33
-  SerializationVersion: 108
+  SerializationVersion: 110
   ItemAsset {
     CustomName: "Head Gear"
     MaximumStackCount: 1

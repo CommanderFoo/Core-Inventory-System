@@ -2,7 +2,7 @@ Assets {
   Id: 12119776990019753997
   Name: "Common RIght Shoulder Gear"
   PlatformAssetType: 33
-  SerializationVersion: 108
+  SerializationVersion: 110
   ItemAsset {
     CustomName: "Head Gear"
     MaximumStackCount: 1

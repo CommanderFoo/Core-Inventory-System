@@ -5,13 +5,26 @@ Assets {
   TextAsset {
     CustomParameters {
       Overrides {
-        Name: "cs:API_Inventory"
+        Name: "cs:API_Inventory_Pickup"
         AssetReference {
-          Id: 12879219911357857649
+          Id: 8099296177848779074
         }
+      }
+      Overrides {
+        Name: "cs:Root"
+        ObjectReference {
+        }
+      }
+      Overrides {
+        Name: "cs:API_Inventory_Pickup:isrep"
+        Bool: false
+      }
+      Overrides {
+        Name: "cs:API_Inventory_Pickup:ml"
+        Bool: false
       }
     }
   }
-  SerializationVersion: 108
+  SerializationVersion: 110
   VirtualFolderPath: "Inventory System"
 }
