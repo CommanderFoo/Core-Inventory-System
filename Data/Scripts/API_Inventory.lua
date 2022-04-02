@@ -299,8 +299,9 @@ function API.drop_item_into_world(owner, item_asset_id, count)
 	projectile.capsuleLength = DROPPED_ITEM_PROJ_LENGTH
 	projectile.bounciness = DROPPED_ITEM_BOUNCINESS
 
-	--@TODO: Spawn pickup for this item and kill projectile on last bounce
+	-- Check if impact is player and don't decrease bounce.
 	projectile.impactEvent:Connect(function(proj, other, hit)
+		print(other)
 		projectile.bouncesRemaining = math.max(0, projectile.bouncesRemaining - 1)
 
 		if(projectile.bouncesRemaining == 0) then
@@ -647,7 +648,7 @@ function API.tick()
 		if(#panels > 0) then
 			for i, panel in ipairs(panels) do
 				if(panel.visibility ~= Visibility.FORCE_OFF) then
-					local mouse_pos = UI.GetCursorPosition()
+					local mouse_pos = Input.GetCursorPosition()
 					local pos = panel:GetAbsolutePosition()
 
 					local x_start = 0
