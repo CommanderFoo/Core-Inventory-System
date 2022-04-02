@@ -299,19 +299,19 @@ function API.drop_item_into_world(owner, item_asset_id, count)
 	projectile.capsuleLength = DROPPED_ITEM_PROJ_LENGTH
 	projectile.bounciness = DROPPED_ITEM_BOUNCINESS
 
-	-- Check if impact is player and don't decrease bounce.
 	projectile.impactEvent:Connect(function(proj, other, hit)
-		print(other)
-		projectile.bouncesRemaining = math.max(0, projectile.bouncesRemaining - 1)
+		if(not other:IsA("Player")) then
+			projectile.bouncesRemaining = math.max(0, projectile.bouncesRemaining - 1)
 
-		if(projectile.bouncesRemaining == 0) then
-			projectile:Destroy()
-			World.SpawnAsset(item.pickup_template, {
+			if(projectile.bouncesRemaining == 0) then
+				projectile:Destroy()
+				World.SpawnAsset(item.pickup_template, {
+					
+					position = hit:GetImpactPosition() + (Vector3.UP * 30),
+					networkContext = NetworkContextType.LOCAL_CONTEXT
 				
-				position = hit:GetImpactPosition() + (Vector3.UP * 30),
-				networkContext = NetworkContextType.LOCAL_CONTEXT
-			
-			})
+				})
+			end
 		end
 	end)
 
