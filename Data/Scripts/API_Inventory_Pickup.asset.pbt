@@ -16,6 +16,12 @@ Assets {
           Id: 14610399218369338396
         }
       }
+      Overrides {
+        Name: "cs:InventoryObjectOutline"
+        AssetReference {
+          Id: 107364086786845811
+        }
+      }
     }
   }
   SerializationVersion: 110

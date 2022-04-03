@@ -1,11 +1,16 @@
 local API_INVENTORY = require(script:GetCustomProperty("API_Inventory"))
 local Ticker = require(script:GetCustomProperty("Ticker"))
+local INVENTORY_OBJECT_OUTLINE = script:GetCustomProperty("InventoryObjectOutline")
+
+local OUTLINE = World.SpawnAsset(INVENTORY_OBJECT_OUTLINE, { networkContext = NetworkContextType.CLIENT_CONTEXT })
 
 local API = {
 
 	pickups = {},
 	ticker = nil,
-	count = 0
+	count = 0,
+	in_triggers = 0,
+	viewed_item = nil
 
 }
 
@@ -23,7 +28,7 @@ function API.register(opts)
 
 	opts.added = time()
 	opts.z_offset = opts.item:GetPosition().z
-	API.pickups[opts.root.id] = opts
+	API.pickups[opts.trigger.id] = opts
 	API.count = API.count + 1
 
 	if(opts.rotate) then
@@ -31,6 +36,33 @@ function API.register(opts)
 	end
 
 	opts.root.destroyEvent:Connect(API.on_pickup_destroyed)
+	opts.trigger.beginOverlapEvent:Connect(API.on_trigger_entered)
+	opts.trigger.endOverlapEvent:Connect(API.on_trigger_exit)
+end
+
+function API.is_player(other)
+	local player = other:IsA("Player") and other or (other:IsA("Vehicle") and other.driver or nil)
+
+	if(player ~= nil and player == Game.GetLocalPlayer()) then
+		return true
+	end
+
+	return false
+end
+
+function API.on_trigger_entered(trigger, other)
+	if(API.is_player(other)) then
+		OUTLINE:SetSmartProperty("Enabled", true)
+		OUTLINE:SetSmartProperty("Object To Outline", API.pickups[trigger.id].item)
+		API.in_triggers = API.in_triggers + 1
+	end
+end
+
+function API.on_trigger_exit(trigger, other)
+	if(API.is_player(other)) then
+		OUTLINE:SetSmartProperty("Enabled", false)
+		API.in_triggers = API.in_triggers - 1
+	end
 end
 
 function API.on_pickup_destroyed(obj)
@@ -46,6 +78,14 @@ function API.on_pickup_destroyed(obj)
 	end
 end
 
+-- Player pos - camera offset
+function API.outline_item_in_view()
+	local start_pos = Vector3.ZERO
+	local end_pos = start_pos
+
+	--local hit = World.Spherecast(start_pos, end_pos, 50)
+end
+
 function API.tick(dt)
 	for id, pickup in pairs(API.pickups) do
 		local pos = pickup.item:GetPosition()
@@ -53,6 +93,10 @@ function API.tick(dt)
 		pos.z = pickup.z_offset + pickup.up_down_curve:GetValue(time() - pickup.added) * pickup.multiplier
 
 		pickup.item:SetPosition(pos)
+	end
+
+	if(API.in_triggers > 0) then
+		API.outline_item_in_view()
 	end
 end
 

@@ -462,6 +462,7 @@ function API.on_slot_pressed_event(button, params)
 	end
 end
 
+---@TODO Sync local context object to other players (replication).
 ---Drops one item in to a slot, to an existing count, or into the world.
 ---@param player Player
 ---@param action string
@@ -792,8 +793,8 @@ function API.create_slots(opts)
 		opts.slots.x = opts.inventory_ui.width / 2
 	end
 
-	opts.inventory_ui.width = opts.inventory_ui.width + (slot_width * slots_per_row) + extra_width
-	opts.inventory_ui.height = opts.inventory_ui.height + slot_height * (opts.slot_count / slots_per_row) + extra_height
+	opts.inventory_ui.width = math.floor(opts.inventory_ui.width + (slot_width * slots_per_row) + extra_width)
+	opts.inventory_ui.height = math.floor(opts.inventory_ui.height + slot_height * (opts.slot_count / slots_per_row) + extra_height)
 
 	if(opts.max_height ~= nil and opts.max_height > 0 and opts.inventory_ui.height > opts.max_height) then
 		opts.inventory_ui.height = opts.max_height

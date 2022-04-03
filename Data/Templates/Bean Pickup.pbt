@@ -15,10 +15,126 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 4781671109827199097
+        ParentId: 8609302513225839815
         ChildIds: 8329300644772512400
         ChildIds: 5912204778567650375
         ChildIds: 7002403198478379541
+        UnregisteredParameters {
+          Overrides {
+            Name: "cs:API_Inventory_Pickup"
+            AssetReference {
+              Id: 8099296177848779074
+            }
+          }
+          Overrides {
+            Name: "cs:Trigger"
+            ObjectReference {
+              SubObjectId: 7002403198478379541
+            }
+          }
+          Overrides {
+            Name: "cs:Item"
+            ObjectReference {
+              SubObjectId: 180455175669557461
+            }
+          }
+          Overrides {
+            Name: "cs:UpDownCurve"
+            SimpleCurve {
+              Keys {
+                Interpolation {
+                  Value: "mc:erichcurveinterpmode:rcim_cubic"
+                }
+                TangentMode {
+                  Value: "mc:erichcurvetangentmode:rctm_user"
+                }
+              }
+              Keys {
+                Interpolation {
+                  Value: "mc:erichcurveinterpmode:rcim_cubic"
+                }
+                TangentMode {
+                  Value: "mc:erichcurvetangentmode:rctm_user"
+                }
+                Time: 3
+                Value: 1
+              }
+              PreExtrapolation {
+                Value: "mc:erichcurveextrapolation:rcce_oscillate"
+              }
+              PostExtrapolation {
+                Value: "mc:erichcurveextrapolation:rcce_oscillate"
+              }
+              DefaultValue: 3.40282347e+38
+            }
+          }
+          Overrides {
+            Name: "cs:Rotate"
+            Bool: true
+          }
+          Overrides {
+            Name: "cs:AnimateUpDown"
+            Bool: true
+          }
+          Overrides {
+            Name: "cs:multiplier"
+            Float: 50
+          }
+          Overrides {
+            Name: "cs:OutlineColor"
+            Color {
+              A: 1
+            }
+          }
+          Overrides {
+            Name: "cs:API_Inventory_Pickup:isrep"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:API_Inventory_Pickup:ml"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:Trigger:isrep"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:Trigger:ml"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:Item:isrep"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:Item:ml"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:UpDownCurve:isrep"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:UpDownCurve:ml"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:Rotate:isrep"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:Rotate:ml"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:AnimateUpDown:isrep"
+            Bool: false
+          }
+          Overrides {
+            Name: "cs:AnimateUpDown:ml"
+            Bool: false
+          }
+        }
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -126,15 +242,15 @@ Assets {
         ParentId: 5912204778567650375
         UnregisteredParameters {
           Overrides {
-            Name: "cs:Trigger"
-            ObjectReference {
-              SubObjectId: 7002403198478379541
+            Name: "cs:API_Inventory_Pickup"
+            AssetReference {
+              Id: 8099296177848779074
             }
           }
           Overrides {
-            Name: "cs:Item"
+            Name: "cs:Root"
             ObjectReference {
-              SubObjectId: 180455175669557461
+              SubObjectId: 14137138681320844337
             }
           }
         }
@@ -164,14 +280,14 @@ Assets {
         Name: "Item"
         Transform {
           Location {
-            Z: 8.63431549
+            Z: 16.2286606
           }
           Rotation {
           }
           Scale {
-            X: 1
-            Y: 1
-            Z: 1
+            X: 0.5
+            Y: 0.5
+            Z: 0.5
           }
         }
         ParentId: 5912204778567650375
@@ -204,9 +320,9 @@ Assets {
           Rotation {
           }
           Scale {
-            X: 0.3
-            Y: 0.3
-            Z: 0.3
+            X: 0.75
+            Y: 0.75
+            Z: 0.75
           }
         }
         ParentId: 180455175669557461
@@ -277,9 +393,9 @@ Assets {
           Rotation {
           }
           Scale {
-            X: 3.31638455
-            Y: 3.31638455
-            Z: 3.31638455
+            X: 4.33745813
+            Y: 4.33745813
+            Z: 4.33745813
           }
         }
         ParentId: 14137138681320844337
