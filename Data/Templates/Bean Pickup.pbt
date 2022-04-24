@@ -15,7 +15,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 8609302513225839815
+        ParentId: 4781671109827199097
         ChildIds: 8329300644772512400
         ChildIds: 5912204778567650375
         ChildIds: 7002403198478379541
@@ -79,12 +79,6 @@ Assets {
           Overrides {
             Name: "cs:multiplier"
             Float: 50
-          }
-          Overrides {
-            Name: "cs:OutlineColor"
-            Color {
-              A: 1
-            }
           }
           Overrides {
             Name: "cs:API_Inventory_Pickup:isrep"
@@ -206,6 +200,7 @@ Assets {
         }
         ParentId: 14137138681320844337
         ChildIds: 8363439165270387492
+        ChildIds: 3671607771547500635
         ChildIds: 180455175669557461
         Collidable_v2 {
           Value: "mc:ecollisionsetting:forceoff"
@@ -253,6 +248,12 @@ Assets {
               SubObjectId: 14137138681320844337
             }
           }
+          Overrides {
+            Name: "cs:Outline"
+            ObjectReference {
+              SubObjectId: 11416299705193302920
+            }
+          }
         }
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
@@ -273,6 +274,52 @@ Assets {
         }
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
+        }
+      }
+      Objects {
+        Id: 3671607771547500635
+        Name: "Inventory Object Outline"
+        Transform {
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 5912204778567650375
+        TemplateInstance {
+          ParameterOverrideMap {
+            key: 3443521175387742296
+            value {
+              Overrides {
+                Name: "Name"
+                String: "Inventory Object Outline"
+              }
+              Overrides {
+                Name: "Position"
+                Vector {
+                }
+              }
+              Overrides {
+                Name: "Rotation"
+                Rotator {
+                }
+              }
+              Overrides {
+                Name: "bp:Object To Outline"
+                ObjectReference {
+                  SubObjectId: 180455175669557461
+                }
+              }
+              Overrides {
+                Name: "bp:Enabled"
+                Bool: false
+              }
+            }
+          }
+          TemplateAsset {
+            Id: 107364086786845811
+          }
         }
       }
       Objects {
@@ -448,5 +495,5 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 110
+  SerializationVersion: 113
 }

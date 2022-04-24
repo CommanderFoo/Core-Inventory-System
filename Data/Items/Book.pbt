@@ -2,7 +2,7 @@ Assets {
   Id: 3683707664205314919
   Name: "Book"
   PlatformAssetType: 33
-  SerializationVersion: 110
+  SerializationVersion: 113
   ItemAsset {
     CustomName: "Book"
     MaximumStackCount: 1

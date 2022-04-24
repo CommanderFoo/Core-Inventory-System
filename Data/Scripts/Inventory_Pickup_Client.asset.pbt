@@ -16,6 +16,11 @@ Assets {
         }
       }
       Overrides {
+        Name: "cs:Outline"
+        ObjectReference {
+        }
+      }
+      Overrides {
         Name: "cs:API_Inventory_Pickup:isrep"
         Bool: false
       }
@@ -25,6 +30,6 @@ Assets {
       }
     }
   }
-  SerializationVersion: 110
+  SerializationVersion: 113
   VirtualFolderPath: "Inventory System"
 }

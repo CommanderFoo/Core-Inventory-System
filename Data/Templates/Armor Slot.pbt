@@ -402,6 +402,7 @@ Assets {
           }
           UseParentWidth: true
           UseParentHeight: true
+          IsHittable: true
           Button {
             FontColor {
               A: 1
@@ -490,7 +491,7 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 110
+  SerializationVersion: 113
   VirtualFolderPath: "Inventory System"
   VirtualFolderPath: "Slots"
 }

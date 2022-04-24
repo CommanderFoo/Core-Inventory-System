@@ -74,6 +74,7 @@ Objects {
   }
   ParentId: 4781671109827199097
   ChildIds: 10736260970155672102
+  ChildIds: 18033546095998181997
   ChildIds: 4593270119659968449
   ChildIds: 10361824722656158393
   ChildIds: 12022879565615496328
@@ -341,6 +342,7 @@ Objects {
     }
   }
   ParentId: 4056815105945944543
+  ChildIds: 10129347640799687043
   Collidable_v2 {
     Value: "mc:ecollisionsetting:forceoff"
   }
@@ -354,6 +356,50 @@ Objects {
     Value: "mc:eindicatorvisibility:visiblewhenselected"
   }
   NetworkContext {
+  }
+  NetworkRelevanceDistance {
+    Value: "mc:eproxyrelevance:critical"
+  }
+}
+Objects {
+  Id: 10129347640799687043
+  Name: "Inventory_Drops_Client"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 10361824722656158393
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:API_Inventory_Drops"
+      AssetReference {
+        Id: 11250812363436965243
+      }
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Script {
+    ScriptAsset {
+      Id: 16921788138212314500
+    }
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
@@ -375,6 +421,7 @@ Objects {
   }
   ParentId: 4056815105945944543
   ChildIds: 13138830252238135915
+  ChildIds: 14441863831355246146
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -389,6 +436,56 @@ Objects {
   }
   NetworkContext {
     Type: Server
+  }
+  NetworkRelevanceDistance {
+    Value: "mc:eproxyrelevance:critical"
+  }
+}
+Objects {
+  Id: 14441863831355246146
+  Name: "Inventory_Drops_Server"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4593270119659968449
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:API_Inventory_Drops"
+      AssetReference {
+        Id: 11250812363436965243
+      }
+    }
+    Overrides {
+      Name: "cs:DropsInventory"
+      ObjectReference {
+        SelfId: 18033546095998181997
+      }
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Script {
+    ScriptAsset {
+      Id: 10111855426989570073
+    }
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
@@ -433,6 +530,43 @@ Objects {
     ScriptAsset {
       Id: 16170364069802545493
     }
+  }
+  NetworkRelevanceDistance {
+    Value: "mc:eproxyrelevance:critical"
+  }
+}
+Objects {
+  Id: 18033546095998181997
+  Name: "Drops Inventory"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4056815105945944543
+  UnregisteredParameters {
+  }
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Inventory {
+    PickupItemsOnStart: true
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"

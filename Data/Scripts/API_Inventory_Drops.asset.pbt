@@ -1,6 +1,6 @@
 Assets {
-  Id: 14610399218369338396
-  Name: "Ticker"
+  Id: 11250812363436965243
+  Name: "API_Inventory_Drops"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {

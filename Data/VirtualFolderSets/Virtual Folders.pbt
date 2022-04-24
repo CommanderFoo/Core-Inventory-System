@@ -2,7 +2,7 @@ Assets {
   Id: 11237267171393895703
   Name: "Virtual Folders"
   PlatformAssetType: 30
-  SerializationVersion: 110
+  SerializationVersion: 113
   VirtualFolderSetAsset {
     Folders {
       VirtualFolderPath: "Inventory System"

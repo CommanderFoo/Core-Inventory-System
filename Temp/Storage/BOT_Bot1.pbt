@@ -1,5 +1,13 @@
 Entries {
   Key {
+    StringVar: "phbs"
+  }
+  SimpleValue {
+    IntVar: 1
+  }
+}
+Entries {
+  Key {
     StringVar: "ainv"
   }
   SimpleValue {
@@ -334,7 +342,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 467
+                IntVar: 500
               }
             }
           }
@@ -359,7 +367,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 368
+                IntVar: 344
               }
             }
           }
@@ -438,13 +446,5 @@ Entries {
         }
       }
     }
-  }
-}
-Entries {
-  Key {
-    StringVar: "phbs"
-  }
-  SimpleValue {
-    IntVar: 1
   }
 }

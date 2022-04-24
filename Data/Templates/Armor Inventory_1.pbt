@@ -328,6 +328,7 @@ Assets {
               Y: 1024
             }
             RedrawTime: 30
+            UseSafeZoneAdjustment: true
           }
           AnchorLayout {
             SelfAnchor {
@@ -2177,7 +2178,7 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 110
+  SerializationVersion: 113
   VirtualFolderPath: "Inventory System"
   VirtualFolderPath: "Inventories"
 }

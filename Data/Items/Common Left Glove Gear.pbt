@@ -2,7 +2,7 @@ Assets {
   Id: 7606106339276433227
   Name: "Common Left Glove Gear"
   PlatformAssetType: 33
-  SerializationVersion: 110
+  SerializationVersion: 113
   ItemAsset {
     CustomName: "Head Gear"
     MaximumStackCount: 1

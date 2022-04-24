@@ -2,7 +2,7 @@ Assets {
   Id: 9332503982576710862
   Name: "Key"
   PlatformAssetType: 33
-  SerializationVersion: 110
+  SerializationVersion: 113
   ItemAsset {
     CustomName: "Key"
     MaximumStackCount: 5

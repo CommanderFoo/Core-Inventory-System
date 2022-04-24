@@ -10,7 +10,8 @@ API_INVENTORY_PICKUP.register({
 	rotate = ROOT:GetCustomProperty("Rotate"),
 	animate_up_down = ROOT:GetCustomProperty("AnimateUpDown"),
 	multiplier = ROOT:GetCustomProperty("multiplier"),
-	outline_color = ROOT:GetCustomProperty("OutlineColor")
+	outline_color = ROOT:GetCustomProperty("OutlineColor"),
+	outline = script:GetCustomProperty("Outline"):WaitForObject()
 
 })
 

@@ -305,12 +305,13 @@ function API.drop_item_into_world(owner, item_asset_id, count)
 
 			if(projectile.bouncesRemaining == 0) then
 				projectile:Destroy()
-				World.SpawnAsset(item.pickup_template, {
+				Events.Broadcast("inventory.drops.add", item.asset, 1, hit:GetImpactPosition() + (Vector3.UP * 30))
+				-- World.SpawnAsset(item.pickup_template, {
 					
-					position = hit:GetImpactPosition() + (Vector3.UP * 30),
-					networkContext = NetworkContextType.LOCAL_CONTEXT
+				-- 	position = hit:GetImpactPosition() + (Vector3.UP * 30),
+				-- 	networkContext = NetworkContextType.LOCAL_CONTEXT
 				
-				})
+				-- })
 			end
 		end
 	end)
