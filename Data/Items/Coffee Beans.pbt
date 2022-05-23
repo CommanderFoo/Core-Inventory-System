@@ -2,7 +2,7 @@ Assets {
   Id: 18384392046183835442
   Name: "Coffee Beans"
   PlatformAssetType: 33
-  SerializationVersion: 113
+  SerializationVersion: 115
   ItemAsset {
     CustomName: "Coffee Beans"
     MaximumStackCount: 500

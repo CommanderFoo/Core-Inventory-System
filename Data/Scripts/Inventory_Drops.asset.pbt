@@ -1,10 +1,10 @@
 Assets {
   Id: 10111855426989570073
-  Name: "Inventory_Drops_Server"
+  Name: "Inventory_Drops"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
     }
   }
-  SerializationVersion: 113
+  SerializationVersion: 115
 }

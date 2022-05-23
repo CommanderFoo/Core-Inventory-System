@@ -16,7 +16,6 @@ Objects {
   }
   ChildIds: 16270802511419725645
   ChildIds: 4056815105945944543
-  ChildIds: 8609302513225839815
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -32,27 +31,6 @@ Objects {
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
-  Id: 8609302513225839815
-  Name: "Pickups"
-  Transform {
-    Location {
-      X: -230
-      Y: -270
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  NetworkContext {
-    Type: Local
   }
 }
 Objects {
@@ -74,9 +52,8 @@ Objects {
   }
   ParentId: 4781671109827199097
   ChildIds: 10736260970155672102
-  ChildIds: 18033546095998181997
+  ChildIds: 13912551315565614246
   ChildIds: 4593270119659968449
-  ChildIds: 10361824722656158393
   ChildIds: 12022879565615496328
   ChildIds: 8131351067154343009
   ChildIds: 9433971498664992443
@@ -328,84 +305,6 @@ Objects {
   }
 }
 Objects {
-  Id: 10361824722656158393
-  Name: "Client"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  ChildIds: 10129347640799687043
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  NetworkContext {
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
-  Id: 10129347640799687043
-  Name: "Inventory_Drops_Client"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 10361824722656158393
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:API_Inventory_Drops"
-      AssetReference {
-        Id: 11250812363436965243
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Script {
-    ScriptAsset {
-      Id: 16921788138212314500
-    }
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
   Id: 4593270119659968449
   Name: "Server"
   Transform {
@@ -421,7 +320,6 @@ Objects {
   }
   ParentId: 4056815105945944543
   ChildIds: 13138830252238135915
-  ChildIds: 14441863831355246146
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -436,56 +334,6 @@ Objects {
   }
   NetworkContext {
     Type: Server
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
-  Id: 14441863831355246146
-  Name: "Inventory_Drops_Server"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4593270119659968449
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:API_Inventory_Drops"
-      AssetReference {
-        Id: 11250812363436965243
-      }
-    }
-    Overrides {
-      Name: "cs:DropsInventory"
-      ObjectReference {
-        SelfId: 18033546095998181997
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Script {
-    ScriptAsset {
-      Id: 10111855426989570073
-    }
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
@@ -536,10 +384,13 @@ Objects {
   }
 }
 Objects {
-  Id: 18033546095998181997
-  Name: "Drops Inventory"
+  Id: 13912551315565614246
+  Name: "Drops"
   Transform {
     Location {
+      X: -87.3912811
+      Y: -0.975377083
+      Z: 3.05175781e-05
     }
     Rotation {
     }
@@ -550,9 +401,37 @@ Objects {
     }
   }
   ParentId: 4056815105945944543
-  UnregisteredParameters {
+  ChildIds: 14441863831355246146
+  NetworkContext {
+    Type: Local
   }
-  WantsNetworking: true
+}
+Objects {
+  Id: 14441863831355246146
+  Name: "Inventory_Drops"
+  Transform {
+    Location {
+      X: 87.3912811
+      Y: 0.975377083
+      Z: -3.05175781e-05
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 13912551315565614246
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:API_Inventory_Drops"
+      AssetReference {
+        Id: 11250812363436965243
+      }
+    }
+  }
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -565,8 +444,10 @@ Objects {
   EditorIndicatorVisibility {
     Value: "mc:eindicatorvisibility:visiblewhenselected"
   }
-  Inventory {
-    PickupItemsOnStart: true
+  Script {
+    ScriptAsset {
+      Id: 10111855426989570073
+    }
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"

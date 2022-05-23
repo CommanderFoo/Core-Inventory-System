@@ -1,6 +1,8 @@
 local API_INVENTORY = require(script:GetCustomProperty("API_Inventory"))
 local Ticker = require(script:GetCustomProperty("Ticker"))
 
+local LOCAL_PLAYER = Game.GetLocalPlayer()
+
 local API = {
 
 	pickups = {},
@@ -24,6 +26,8 @@ function API.register(opts)
 
 	opts.added = time()
 	opts.z_offset = opts.item:GetPosition().z
+	opts.shared = opts.root:GetCustomProperty("shared")
+
 	API.pickups[opts.trigger.id] = opts
 	API.count = API.count + 1
 
@@ -39,7 +43,7 @@ end
 function API.is_player(other)
 	local player = other:IsA("Player") and other or (other:IsA("Vehicle") and other.driver or nil)
 
-	if(player ~= nil and player == Game.GetLocalPlayer()) then
+	if(player ~= nil) then
 		return true
 	end
 
@@ -48,6 +52,10 @@ end
 
 function API.on_trigger_entered(trigger, other)
 	if(API.is_player(other)) then
+		if(not API.pickups[trigger.id].shared) then
+			trigger.isInteractable = false
+		end
+
 		local OUTLINE = API.pickups[trigger.id].outline
 
 		OUTLINE:SetSmartProperty("Enabled", true)
@@ -60,6 +68,8 @@ end
 
 function API.on_trigger_exit(trigger, other)
 	if(API.is_player(other)) then
+		trigger.isInteractable = true
+
 		local OUTLINE = API.pickups[trigger.id].outline
 
 		OUTLINE:SetSmartProperty("Enabled", false)
@@ -79,13 +89,17 @@ function API.on_pickup_destroyed(obj)
 	end
 end
 
-local LOCAL_PLAYER = Game.GetLocalPlayer()
-
 function API.tick(dt)
 	for id, pickup in pairs(API.pickups) do
 		if(pickup.can_pickup) then
-			pickup.item:Follow(LOCAL_PLAYER, pickup.speed)
-			pickup.speed = pickup.speed + (dt * 10)
+			local overlapping = pickup.trigger:GetOverlappingObjects()
+
+			for index, obj in ipairs(overlapping) do
+				if(obj:IsA("Player")) then
+					pickup.item:Follow(obj, pickup.speed)
+					pickup.speed = pickup.speed + (dt * 10)
+				end
+			end
 		else
 			local pos = pickup.item:GetPosition()
 

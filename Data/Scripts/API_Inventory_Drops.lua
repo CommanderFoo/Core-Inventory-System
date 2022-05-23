@@ -1,20 +1,25 @@
-local API = {}
+local API = {
 
-function API.set_inventory(inventory)
-	API.inventory = inventory
+	drops = {}
+
+}
+
+function API.set_container(container)
+	API.container = container
 end
 
-Events.Connect("inventory.drops.add", function(asset, quantity, position)
-	API.inventory:AddItem(asset, quantity, {
+function API.add(item, quantity, position, broadcast)
+	local spawned_item = World.SpawnAsset(item.pickup_template, {
 
-		customProperties = {
-
-			position = position,
-			timestamp = DateTime.CurrentTime().secondsSinceEpoch
-
-		}
+		parent = API.container,
+		position = position,
+		networkContext = NetworkContextType.LOCAL_CONTEXT
 
 	})
-end)
+
+	spawned_item:SetCustomProperty("shared", item.shared)
+end
+
+Events.Connect("inventory.drops.add", API.add)
 
 return API

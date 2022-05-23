@@ -81,6 +81,10 @@ Assets {
             Float: 50
           }
           Overrides {
+            Name: "cs:shared"
+            Bool: false
+          }
+          Overrides {
             Name: "cs:API_Inventory_Pickup:isrep"
             Bool: false
           }
@@ -127,6 +131,10 @@ Assets {
           Overrides {
             Name: "cs:AnimateUpDown:ml"
             Bool: false
+          }
+          Overrides {
+            Name: "cs:shared:isrep"
+            Bool: true
           }
         }
         Collidable_v2 {
@@ -215,6 +223,12 @@ Assets {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
         NetworkContext {
+          MinDetailLevel {
+            Value: "mc:edetaillevel:low"
+          }
+          MaxDetailLevel {
+            Value: "mc:edetaillevel:ultra"
+          }
         }
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
@@ -495,5 +509,5 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 113
+  SerializationVersion: 115
 }

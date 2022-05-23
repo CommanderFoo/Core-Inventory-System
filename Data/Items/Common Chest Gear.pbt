@@ -2,7 +2,7 @@ Assets {
   Id: 17836615923076900991
   Name: "Common Chest Gear"
   PlatformAssetType: 33
-  SerializationVersion: 113
+  SerializationVersion: 115
   ItemAsset {
     CustomName: "Chest Gear"
     MaximumStackCount: 1

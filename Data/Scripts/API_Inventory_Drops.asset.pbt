@@ -4,8 +4,13 @@ Assets {
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
+      Overrides {
+        Name: "cs:Pickups"
+        ObjectReference {
+        }
+      }
     }
   }
-  SerializationVersion: 113
+  SerializationVersion: 115
   VirtualFolderPath: "Inventory System"
 }
