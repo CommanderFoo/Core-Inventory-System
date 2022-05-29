@@ -16,6 +16,7 @@ Assets {
           }
         }
         ParentId: 4781671109827199097
+        ChildIds: 16836476989887076038
         ChildIds: 5912204778567650375
         ChildIds: 7002403198478379541
         UnregisteredParameters {
@@ -80,8 +81,8 @@ Assets {
             Float: 50
           }
           Overrides {
-            Name: "cs:shared"
-            Bool: false
+            Name: "cs:timestamp"
+            Int: 0
           }
           Overrides {
             Name: "cs:Inventory_Pickup:isrep"
@@ -132,7 +133,7 @@ Assets {
             Bool: false
           }
           Overrides {
-            Name: "cs:shared:isrep"
+            Name: "cs:timestamp:isrep"
             Bool: true
           }
         }
@@ -150,6 +151,42 @@ Assets {
         }
         Folder {
           IsGroup: true
+        }
+        NetworkRelevanceDistance {
+          Value: "mc:eproxyrelevance:critical"
+        }
+      }
+      Objects {
+        Id: 16836476989887076038
+        Name: "Inventory_Drop_Set_Props"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 14137138681320844337
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Script {
+          ScriptAsset {
+            Id: 7968409412185550532
+          }
         }
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
@@ -387,13 +424,6 @@ Assets {
             }
             BoundsScale: 1
           }
-        }
-        InstanceHistory {
-          SelfId: 18123130516118117473
-          SubobjectId: 11458945372560880643
-          InstanceId: 12059487936505450805
-          TemplateId: 13554235956785981284
-          WasRoot: true
         }
         Relevance {
           Value: "mc:eproxyrelevance:critical"

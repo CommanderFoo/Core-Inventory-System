@@ -15,20 +15,19 @@ Assets {
         }
       }
       Overrides {
-        Name: "cs:position"
-        Vector {
-        }
-      }
-      Overrides {
         Name: "cs:timestamp"
         Int: 0
       }
       Overrides {
-        Name: "cs:position:isrep"
-        Bool: true
+        Name: "cs:shared"
+        Bool: false
       }
       Overrides {
         Name: "cs:timestamp:isrep"
+        Bool: true
+      }
+      Overrides {
+        Name: "cs:shared:isrep"
         Bool: true
       }
     }

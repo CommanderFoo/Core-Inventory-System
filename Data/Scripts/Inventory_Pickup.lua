@@ -63,11 +63,18 @@ function Inventory_Pickup.on_trigger_entered(trigger, other)
 
 		Inventory_Pickup.pickups[trigger.id].speed = 100
 		Inventory_Pickup.pickups[trigger.id].can_pickup = true
+
+		-- if(not Inventory_Pickup.pickups[trigger.id].shared) then
+		-- 	local obj = Inventory_Pickup.pickups[trigger.id].root
+
+		-- 	Inventory_Pickup.pickups[trigger.id] = nil
+		-- 	obj:Destroy()
+		-- end
 	end
 end
 
 function Inventory_Pickup.on_trigger_exit(trigger, other)
-	if(Inventory_Pickup.is_player(other)) then
+	if(Inventory_Pickup.is_player(other) and Inventory_Pickup.pickups[trigger.id] ~= nil) then
 		local OUTLINE = Inventory_Pickup.pickups[trigger.id].outline
 
 		OUTLINE:SetSmartProperty("Enabled", false)

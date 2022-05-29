@@ -291,7 +291,7 @@ function Inventory.drop_one_handler(from_inventory_id, to_inventory_id, from_slo
 		if(not is_inside) then
 			if(from_inventory:CanRemoveFromSlot(from_slot_index, { count = 1 })) then
 				from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
-				Inventory.drop_item_into_world(from_inventory.owner, item_asset_id, 1)
+				Inventory.drop_item_into_world(from_inventory.owner, item_asset_id, 1, from_inventory)
 			end
 		elseif(to_inventory:CanAddItem(item.itemAssetId, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
 			to_inventory:AddItem(item.itemAssetId, { count = 1, slot = to_slot_index })
@@ -300,7 +300,7 @@ function Inventory.drop_one_handler(from_inventory_id, to_inventory_id, from_slo
 	end
 end
 
-function Inventory.drop_item_into_world(owner, item_asset_id, count)
+function Inventory.drop_item_into_world(owner, item_asset_id, count, inventory)
 	local item = Inventory.find_lookup_item_by_asset_id(item_asset_id)
 	local forward = owner:GetViewWorldRotation() * Vector3.FORWARD
 	local projectile = Projectile.Spawn(item.throw_template, owner:GetWorldPosition() + (Vector3.UP * DROPPED_UP_DIST_FROM_PLAYER) + (forward * DROPPED_DIST_FROM_PLAYER), forward)
@@ -319,8 +319,7 @@ function Inventory.drop_item_into_world(owner, item_asset_id, count)
 
 			if(projectile.bouncesRemaining == 0) then
 				projectile:Destroy()
-				Events.Broadcast(Inventory_Events.DROP, item, 1, hit:GetImpactPosition() + (Vector3.UP * 30), true)
-				Events.BroadcastToAllPlayers(Inventory_Events.DROP, item, 1, hit:GetImpactPosition() + (Vector3.UP * 30), true)
+				Events.Broadcast(Inventory_Events.DROP, inventory, item, count, hit:GetImpactPosition() + (Vector3.UP * 30))
 			end
 		end
 	end)

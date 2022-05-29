@@ -4,6 +4,12 @@ Assets {
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
+      Overrides {
+        Name: "cs:Inventory_Drop"
+        AssetReference {
+          Id: 11250812363436965243
+        }
+      }
     }
   }
   SerializationVersion: 115
