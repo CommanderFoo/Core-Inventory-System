@@ -1,13 +1,13 @@
-local API_Inventory = require(script:GetCustomProperty("API_Inventory"))
+local Inventory = require(script:GetCustomProperty("Inventory"))
 
-API_Inventory.set_drag_proxy(script:GetCustomProperty("Proxy"):WaitForObject())
+Inventory.set_drag_proxy(script:GetCustomProperty("Proxy"):WaitForObject())
 
 function Tick()
-	if(API_Inventory.ACTIVE.has_item) then
+	if(Inventory.ACTIVE.has_item) then
 		local mouse_pos = Input.GetCursorPosition()
 
-		API_Inventory.PROXY:SetAbsolutePosition(Vector2.New(mouse_pos.x, mouse_pos.y))
+		Inventory.PROXY:SetAbsolutePosition(Vector2.New(mouse_pos.x, mouse_pos.y))
 	end
 
-	API_Inventory.tick()
+	Inventory.tick()
 end

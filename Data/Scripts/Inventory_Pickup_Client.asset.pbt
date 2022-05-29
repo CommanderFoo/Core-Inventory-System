@@ -5,7 +5,7 @@ Assets {
   TextAsset {
     CustomParameters {
       Overrides {
-        Name: "cs:API_Inventory_Pickup"
+        Name: "cs:Inventory_Pickup"
         AssetReference {
           Id: 8099296177848779074
         }
@@ -21,11 +21,11 @@ Assets {
         }
       }
       Overrides {
-        Name: "cs:API_Inventory_Pickup:isrep"
+        Name: "cs:Inventory_Pickup:isrep"
         Bool: false
       }
       Overrides {
-        Name: "cs:API_Inventory_Pickup:ml"
+        Name: "cs:Inventory_Pickup:ml"
         Bool: false
       }
     }

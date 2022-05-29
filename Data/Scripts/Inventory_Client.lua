@@ -1,6 +1,6 @@
 local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 
-local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
+local Inventory = require(script:GetCustomProperty("Inventory"))
 
 local INVENTORY_UI = ROOT:GetCustomProperty("InventoryUI"):WaitForObject()
 local SLOTS = ROOT:GetCustomProperty("Slots"):WaitForObject()
@@ -16,12 +16,12 @@ local START_VISIBLE = ROOT:GetCustomProperty("StartVisible")
 
 local inventory = nil
 
-API_Inventory.enable_cursor()
+Inventory.enable_cursor()
 
-inventory = API_Inventory.get_inventory(NAME, API_Inventory.Type.PLAYER_INVENTORY)
+inventory = Inventory.get_inventory(NAME, Inventory.Type.PLAYER_INVENTORY)
 
 if(inventory ~= nil) then
-	API_Inventory.init({
+	Inventory.init({
 
 		inventory = inventory,
 		inventory_ui = INVENTORY_UI,
@@ -33,7 +33,7 @@ if(inventory ~= nil) then
 		slot_frame_hover = SLOT_FRAME_HOVER,
 		slot_background_normal = SLOT_BACKGROUND_NORMAL,
 		slot_background_hover = SLOT_BACKGROUND_HOVER,
-		type = API_Inventory.Type.PLAYER_INVENTORY,
+		type = Inventory.Type.PLAYER_INVENTORY,
 		start_visible = START_VISIBLE,
 
 	})

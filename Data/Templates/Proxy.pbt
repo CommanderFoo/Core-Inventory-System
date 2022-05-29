@@ -132,8 +132,8 @@ Assets {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
         Control {
-          Width: 90
-          Height: 90
+          Width: 80
+          Height: 80
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"

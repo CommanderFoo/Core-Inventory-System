@@ -1,9 +1,15 @@
 Assets {
   Id: 12879219911357857649
-  Name: "API_Inventory"
+  Name: "Inventory"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
+      Overrides {
+        Name: "cs:Inventory_Events"
+        AssetReference {
+          Id: 9805636833553611479
+        }
+      }
       Overrides {
         Name: "cs:InventoryAssets"
         AssetReference {
@@ -140,4 +146,5 @@ Assets {
   }
   SerializationVersion: 115
   VirtualFolderPath: "Inventory System"
+  VirtualFolderPath: "API"
 }

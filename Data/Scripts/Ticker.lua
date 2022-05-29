@@ -1,3 +1,4 @@
+---@class Ticker
 local Ticker = {}
 
 function Ticker:tick(fn)

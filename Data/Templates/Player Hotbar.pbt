@@ -20,12 +20,6 @@ Assets {
         ChildIds: 17530914393312924580
         UnregisteredParameters {
           Overrides {
-            Name: "cs:API_Inventory"
-            AssetReference {
-              Id: 12879219911357857649
-            }
-          }
-          Overrides {
             Name: "cs:Name"
             String: "Player Hotbar"
           }
@@ -109,14 +103,6 @@ Assets {
           Overrides {
             Name: "cs:PickupPriority"
             Int: 1
-          }
-          Overrides {
-            Name: "cs:API_Inventory:isrep"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:API_Inventory:ml"
-            Bool: false
           }
           Overrides {
             Name: "cs:Name:isrep"

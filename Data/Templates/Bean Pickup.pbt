@@ -16,12 +16,11 @@ Assets {
           }
         }
         ParentId: 4781671109827199097
-        ChildIds: 8329300644772512400
         ChildIds: 5912204778567650375
         ChildIds: 7002403198478379541
         UnregisteredParameters {
           Overrides {
-            Name: "cs:API_Inventory_Pickup"
+            Name: "cs:Inventory_Pickup"
             AssetReference {
               Id: 8099296177848779074
             }
@@ -85,11 +84,11 @@ Assets {
             Bool: false
           }
           Overrides {
-            Name: "cs:API_Inventory_Pickup:isrep"
+            Name: "cs:Inventory_Pickup:isrep"
             Bool: false
           }
           Overrides {
-            Name: "cs:API_Inventory_Pickup:ml"
+            Name: "cs:Inventory_Pickup:ml"
             Bool: false
           }
           Overrides {
@@ -157,42 +156,6 @@ Assets {
         }
       }
       Objects {
-        Id: 8329300644772512400
-        Name: "Inventory_Pickup"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 14137138681320844337
-        Collidable_v2 {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
-        }
-        CameraCollidable {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        EditorIndicatorVisibility {
-          Value: "mc:eindicatorvisibility:visiblewhenselected"
-        }
-        Script {
-          ScriptAsset {
-            Id: 8622066580887477931
-          }
-        }
-        NetworkRelevanceDistance {
-          Value: "mc:eproxyrelevance:critical"
-        }
-      }
-      Objects {
         Id: 5912204778567650375
         Name: "Client"
         Transform {
@@ -250,12 +213,6 @@ Assets {
         }
         ParentId: 5912204778567650375
         UnregisteredParameters {
-          Overrides {
-            Name: "cs:API_Inventory_Pickup"
-            AssetReference {
-              Id: 8099296177848779074
-            }
-          }
           Overrides {
             Name: "cs:Root"
             ObjectReference {

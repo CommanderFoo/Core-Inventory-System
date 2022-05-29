@@ -23,7 +23,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 490
+                IntVar: 128
               }
             }
           }

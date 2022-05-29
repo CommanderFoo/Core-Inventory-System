@@ -88,20 +88,13 @@ Objects {
     }
   }
   ParentId: 4056815105945944543
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:forceoff"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
   TemplateInstance {
-    ParameterOverrideMap {
-      key: 3646703086997159412
-      value {
-        Overrides {
-          Name: "Width"
-          Int: 80
-        }
-        Overrides {
-          Name: "Height"
-          Int: 80
-        }
-      }
-    }
     ParameterOverrideMap {
       key: 9822156273903299146
       value {
@@ -120,14 +113,6 @@ Objects {
         Overrides {
           Name: "Rotation"
           Rotator {
-          }
-        }
-        Overrides {
-          Name: "Scale"
-          Vector {
-            X: 1
-            Y: 1
-            Z: 1
           }
         }
       }
@@ -174,27 +159,6 @@ Objects {
             Yaw: 90
           }
         }
-        Overrides {
-          Name: "cs:SlotsPerRow"
-          Int: 8
-        }
-        Overrides {
-          Name: "cs:SlotCount"
-          Int: 16
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 10000694764328048290
-      value {
-        Overrides {
-          Name: "Width"
-          Int: -40
-        }
-        Overrides {
-          Name: "Height"
-          Int: -40
-        }
       }
     }
     TemplateAsset {
@@ -240,10 +204,6 @@ Objects {
           Rotator {
           }
         }
-        Overrides {
-          Name: "cs:SlotCount"
-          Int: 10
-        }
       }
     }
     TemplateAsset {
@@ -288,14 +248,6 @@ Objects {
           Name: "Rotation"
           Rotator {
           }
-        }
-        Overrides {
-          Name: "cs:SlotCount"
-          Int: 20
-        }
-        Overrides {
-          Name: "cs:SlotsPerRow"
-          Int: 5
         }
       }
     }
@@ -356,7 +308,7 @@ Objects {
   ParentId: 4593270119659968449
   UnregisteredParameters {
     Overrides {
-      Name: "cs:API_Inventory"
+      Name: "cs:Inventory"
       AssetReference {
         Id: 12879219911357857649
       }
@@ -408,7 +360,7 @@ Objects {
 }
 Objects {
   Id: 14441863831355246146
-  Name: "Inventory_Drops"
+  Name: "Inventory_Drop_Local"
   Transform {
     Location {
       X: 87.3912811
@@ -426,7 +378,7 @@ Objects {
   ParentId: 13912551315565614246
   UnregisteredParameters {
     Overrides {
-      Name: "cs:API_Inventory_Drops"
+      Name: "cs:Inventory_Drop"
       AssetReference {
         Id: 11250812363436965243
       }

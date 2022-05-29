@@ -1,7 +1,7 @@
-local API_INVENTORY_PICKUP = require(script:GetCustomProperty("API_Inventory_Pickup"))
+local Inventory_Pickup = require(script:GetCustomProperty("Inventory_Pickup"))
 local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 
-API_INVENTORY_PICKUP.register({
+Inventory_Pickup.register({
 
 	root = ROOT,
 	trigger = ROOT:GetCustomProperty("Trigger"):WaitForObject(),

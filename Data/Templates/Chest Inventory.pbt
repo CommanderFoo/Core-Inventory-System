@@ -22,22 +22,16 @@ Assets {
         ChildIds: 345139701365849045
         UnregisteredParameters {
           Overrides {
-            Name: "cs:API_Inventory"
-            AssetReference {
-              Id: 12879219911357857649
-            }
-          }
-          Overrides {
             Name: "cs:Name"
             String: "Chest Inventory"
           }
           Overrides {
             Name: "cs:SlotCount"
-            Int: 20
+            Int: 16
           }
           Overrides {
             Name: "cs:SlotsPerRow"
-            Int: 5
+            Int: 8
           }
           Overrides {
             Name: "cs:StorageKey"
@@ -102,14 +96,6 @@ Assets {
               B: 0.395408601
               A: 1
             }
-          }
-          Overrides {
-            Name: "cs:API_Inventory:isrep"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:API_Inventory:ml"
-            Bool: false
           }
           Overrides {
             Name: "cs:Name:isrep"
@@ -272,7 +258,7 @@ Assets {
             }
           }
           Overrides {
-            Name: "cs:Inventory"
+            Name: "cs:InventoryObj"
             ObjectReference {
               SubObjectId: 7705354579242029185
             }
@@ -1313,8 +1299,8 @@ Assets {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
         Control {
-          Width: -60
-          Height: -60
+          Width: -40
+          Height: -40
           UIY: 10
           RenderTransformPivot {
             Anchor {
@@ -1432,7 +1418,7 @@ Assets {
             }
           }
           Overrides {
-            Name: "cs:Inventory"
+            Name: "cs:InventoryObj"
             ObjectReference {
               SubObjectId: 7705354579242029185
             }

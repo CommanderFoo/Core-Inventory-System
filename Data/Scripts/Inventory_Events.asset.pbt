@@ -1,14 +1,9 @@
 Assets {
-  Id: 11250812363436965243
-  Name: "API_Inventory_Drops"
+  Id: 9805636833553611479
+  Name: "Inventory_Events"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
-      Overrides {
-        Name: "cs:Pickups"
-        ObjectReference {
-        }
-      }
     }
   }
   SerializationVersion: 115

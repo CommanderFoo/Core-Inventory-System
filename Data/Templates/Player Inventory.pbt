@@ -20,22 +20,16 @@ Assets {
         ChildIds: 15065771817459362588
         UnregisteredParameters {
           Overrides {
-            Name: "cs:API_Inventory"
-            AssetReference {
-              Id: 12879219911357857649
-            }
-          }
-          Overrides {
             Name: "cs:Name"
             String: "Player Inventory"
           }
           Overrides {
             Name: "cs:SlotCount"
-            Int: 16
+            Int: 20
           }
           Overrides {
             Name: "cs:SlotsPerRow"
-            Int: 4
+            Int: 5
           }
           Overrides {
             Name: "cs:MaxHeight"
@@ -104,14 +98,6 @@ Assets {
           Overrides {
             Name: "cs:PickupPriority"
             Int: 2
-          }
-          Overrides {
-            Name: "cs:API_Inventory:isrep"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:API_Inventory:ml"
-            Bool: false
           }
           Overrides {
             Name: "cs:Name:isrep"
@@ -236,6 +222,12 @@ Assets {
             Name: "cs:Root"
             ObjectReference {
               SubObjectId: 16211408270603517451
+            }
+          }
+          Overrides {
+            Name: "cs:Inventory"
+            AssetReference {
+              Id: 12879219911357857649
             }
           }
         }

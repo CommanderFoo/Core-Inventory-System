@@ -1,12 +1,12 @@
 local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 
----@type API_Inventory
-local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
+---@type Inventory
+local Inventory = require(script:GetCustomProperty("Inventory"))
 
 local SLOT_COUNT = ROOT:GetCustomProperty("SlotCount")
 
 local function on_player_joined(player)
-	API_Inventory.create({
+	Inventory.create({
 
 		player = player,
 		slot_count = math.min(10, SLOT_COUNT),
@@ -15,7 +15,7 @@ local function on_player_joined(player)
 		storage_slot_key = ROOT:GetCustomProperty("StorageSlotKey"),
 		priority = ROOT:GetCustomProperty("PickupPriority"),
 		name = ROOT:GetCustomProperty("Name"),
-		type = API_Inventory.Type.HOTBAR_INVENTORY
+		type = Inventory.Type.HOTBAR_INVENTORY
 
 	}).load()
 end

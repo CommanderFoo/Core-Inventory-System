@@ -1,23 +1,23 @@
 Assets {
-  Id: 8099296177848779074
-  Name: "API_Inventory_Pickup"
+  Id: 11250812363436965243
+  Name: "Inventory_Drop"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
       Overrides {
-        Name: "cs:API_Inventory"
-        AssetReference {
-          Id: 12879219911357857649
+        Name: "cs:Pickups"
+        ObjectReference {
         }
       }
       Overrides {
-        Name: "cs:Ticker"
+        Name: "cs:Inventory_Events"
         AssetReference {
-          Id: 14610399218369338396
+          Id: 9805636833553611479
         }
       }
     }
   }
   SerializationVersion: 115
   VirtualFolderPath: "Inventory System"
+  VirtualFolderPath: "API"
 }

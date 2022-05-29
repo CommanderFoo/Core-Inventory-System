@@ -56,5 +56,10 @@ Assets {
       VirtualFolderPath: "Inventory System"
       PlatformAssetType: 31
     }
+    Folders {
+      VirtualFolderPath: "Inventory System"
+      VirtualFolderPath: "API"
+      PlatformAssetType: 3
+    }
   }
 }

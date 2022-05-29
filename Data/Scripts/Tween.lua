@@ -22,11 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ]]
 
-local Tween = {}
+---@class Tween
+local Tween = {
 
-Tween.id = 0
+	id = 0,
 
-Tween.Easings = require(script:GetCustomProperty("Tween_Easings"))
+	---@class Easings
+	Easings = require(script:GetCustomProperty("Tween_Easings"))
+
+}
 
 Tween.ease = function(from, to, original, time, duration, ease)
 	for k, v in pairs(to) do

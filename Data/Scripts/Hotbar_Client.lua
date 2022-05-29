@@ -1,6 +1,7 @@
 local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 
-local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
+---@type Inventory
+local Inventory = require(script:GetCustomProperty("Inventory"))
 
 local INVENTORY_UI = ROOT:GetCustomProperty("InventoryUI"):WaitForObject()
 local SLOTS = ROOT:GetCustomProperty("Slots"):WaitForObject()
@@ -32,9 +33,9 @@ local function select_slot(slot_index)
 
 		if(slot_frames["slot_" .. tostring(slot_index)] ~= nil) then
 			slot_frames["slot_" .. tostring(slot_index)]:SetColor(SLOT_FRAME_ACTIVE)
-			API_Inventory.enable_frame_hover(slot_frames["slot_" .. tostring(active_slot_index)])
+			Inventory.enable_frame_hover(slot_frames["slot_" .. tostring(active_slot_index)])
 			active_slot_index = slot_index
-			API_Inventory.disable_frame_hover(slot_frames["slot_" .. tostring(slot_index)])
+			Inventory.disable_frame_hover(slot_frames["slot_" .. tostring(slot_index)])
 		end
 	end
 end
@@ -95,15 +96,15 @@ end
 
 local function save_active_slot()
 	if(active_slot_index ~= last_active_slot_index and active_slot_index ~= -1) then
-		Events.BroadcastToServer("inventory.hotbar.save_slot", STORAGE_SLOT_KEY, active_slot_index)
+		Events.BroadcastToServer(Inventory.Events.HOTBAR_SAVE_SLOT, STORAGE_SLOT_KEY, active_slot_index)
 		last_active_slot_index = active_slot_index
 	end
 end
 
-inventory = API_Inventory.get_inventory(NAME, API_Inventory.Type.HOTBAR_INVENTORY)
+inventory = Inventory.get_inventory(NAME, Inventory.Type.HOTBAR_INVENTORY)
 
 if(inventory ~= nil) then
-	API_Inventory.init({
+	Inventory.init({
 
 		inventory = inventory,
 		inventory_ui = INVENTORY_UI,
@@ -114,7 +115,7 @@ if(inventory ~= nil) then
 		slot_background_normal = SLOT_BACKGROUND_NORMAL,
 		slot_background_hover = SLOT_BACKGROUND_HOVER,
 		start_visible = START_VISIBLE,
-		type = API_Inventory.Type.HOTBAR_INVENTORY
+		type = Inventory.Type.HOTBAR_INVENTORY
 
 	})
 end

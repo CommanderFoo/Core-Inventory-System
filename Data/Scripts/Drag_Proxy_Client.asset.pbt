@@ -5,7 +5,7 @@ Assets {
   TextAsset {
     CustomParameters {
       Overrides {
-        Name: "cs:API_Inventory"
+        Name: "cs:Inventory"
         AssetReference {
           Id: 12879219911357857649
         }

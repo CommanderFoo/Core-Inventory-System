@@ -1,7 +1,7 @@
 local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 
----@type API_Inventory
-local API_Inventory = require(ROOT:GetCustomProperty("API_Inventory"))
+---@type Inventory
+local Inventory = require(script:GetCustomProperty("Inventory"))
 
 local TRIGGER = script:GetCustomProperty("Trigger"):WaitForObject()
 local INVENTORY_UI = script:GetCustomProperty("InventoryUI"):WaitForObject()
@@ -17,7 +17,7 @@ local SLOT_FRAME_HOVER = ROOT:GetCustomProperty("SlotFrameHover")
 local SLOT_BACKGROUND_NORMAL = ROOT:GetCustomProperty("SlotBackgroundNormal")
 local SLOT_BACKGROUND_HOVER = ROOT:GetCustomProperty("SlotBackgroundHover")
 
-local INVENTORY = script:GetCustomProperty("Inventory"):WaitForObject()
+local INVENTORY = script:GetCustomProperty("InventoryObj"):WaitForObject()
 
 local localPlayer = Game.GetLocalPlayer()
 local inTrigger = false
@@ -38,7 +38,7 @@ local function OnInteracted(trigger, obj)
 	if inTrigger and Object.IsValid(obj) and obj:IsA("Player") and obj == localPlayer then
 		INVENTORY_UI.visibility = Visibility.FORCE_ON
 		TRIGGER.isInteractable = false
-		API_Inventory.enable_cursor()
+		Inventory.enable_cursor()
 	end
 end
 
@@ -57,7 +57,7 @@ local function OnEnterTrigger(trigger, obj)
 end
 
 if(INVENTORY ~= nil) then
-	API_Inventory.init({
+	Inventory.init({
 
 		inventory = INVENTORY,
 		inventory_ui = INVENTORY_UI,
@@ -68,7 +68,7 @@ if(INVENTORY ~= nil) then
 		slot_background_normal = SLOT_BACKGROUND_NORMAL,
 		slot_background_hover = SLOT_BACKGROUND_HOVER,
 		start_visible = START_VISIBLE,
-		type = API_Inventory.Type.CHEST_INVENTORY,
+		type = Inventory.Type.CHEST_INVENTORY,
 		slots_per_row = SLOTS_PER_ROW,
 		max_height = MAX_HEIGHT,
 
