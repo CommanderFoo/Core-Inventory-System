@@ -61,13 +61,15 @@ Inventory.Type = {
 -- Server
 
 function Inventory.give_items(opts)
-	for i = 1, opts.inventory.slotCount do
-		local item = INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset
+	-- for i = 1, opts.inventory.slotCount do
+	-- 	local item = INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset
 
-		if(opts.inventory:CanAddItem(item, { count = 1 })) then
-			opts.inventory:AddItem(item, { count = 1 })
-		end
-	end
+	-- 	if(opts.inventory:CanAddItem(item, { count = 500 })) then
+	-- 		opts.inventory:AddItem(item, { count = 500 })
+	-- 	end
+	-- end
+
+	--opts.inventory:AddItem(INVENTORY_ASSETS[1].asset, { count = 1500 })
 end
 
 function Inventory.create(opts)
@@ -98,7 +100,6 @@ function Inventory.create(opts)
 
 	Inventory.INVENTORIES[inventory.id] = opts
 
-	inventory:AddItem(INVENTORY_ASSETS[3].asset, { count = 500 })
 	if(DEBUG) then
 		Inventory.give_items(opts)
 	end
@@ -489,11 +490,11 @@ function Inventory.on_slot_pressed_event(button, params)
 	end
 end
 
----Drops one item in to a slot, to an existing count, or into the world.
+---Drops item in to a slot, to an existing count, or into the world.
 ---@param player Player
 ---@param action string
 function Inventory.drop_action(player, action)
-	if(action == "Inventory Drop One" or action == "Shoot") then
+	if(action == "Drop One Item" or action == "Drop Stack") then
 		if(Inventory.ACTIVE.has_item and Inventory.ACTIVE.hovered_inventory and Inventory.ACTIVE.hovered_slot) then
 			local item = Inventory.ACTIVE.inventory:GetItem(Inventory.ACTIVE.slot_index)
 			local item_count = item.count
@@ -503,7 +504,7 @@ function Inventory.drop_action(player, action)
 			if(not Inventory.IS_INSIDE) then
 				local evt = Inventory_Events.DROP_ONE
 
-				if(action == "Shoot") then
+				if(action == "Drop Stack") then
 					evt = Inventory_Events.DROP_STACK
 					new_count = 0
 				end

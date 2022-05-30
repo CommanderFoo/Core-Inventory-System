@@ -21,8 +21,32 @@ Assets {
           }
         }
       }
-      Action: "Inventory Drop One"
+      Action: "Drop One Item"
       Description: "Drops one item onto a slot or into the world."
+      CoreBehavior {
+        Value: "mc:ecorebehavior:none"
+      }
+      IsEnabledOnStart: true
+    }
+    Bindings {
+      BindingType {
+        Value: "mc:ebindingtype:basic"
+      }
+      BasicBindingData {
+        BasicInputs {
+          KeyboardPrimary {
+            Value: "mc:ebindingkeyboard:leftclick"
+          }
+          KeyboardSecondary {
+            Value: "mc:ebindingkeyboard:none"
+          }
+          Controller {
+            Value: "mc:ebindinggamepad:none"
+          }
+        }
+      }
+      Action: "Drop Stack"
+      Description: "Drops the full stack of items."
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }
