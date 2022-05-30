@@ -1,12 +1,10 @@
----@type Inventory
-local Inventory = require(script:GetCustomProperty("Inventory"))
+---@type Inventory_Events
+local Inventory_Events = require(script:GetCustomProperty("Inventory_Events"))
 
 ---@type Ticker
 local Ticker = require(script:GetCustomProperty("Ticker"))
 
----@type Player
-local LOCAL_PLAYER = Game.GetLocalPlayer()
-
+---@class Inventory_Pickup
 local Inventory_Pickup = {
 
 	pickups = {},
@@ -25,23 +23,41 @@ function Inventory_Pickup.create_ticker()
 	Inventory_Pickup.ticker:tick(Inventory_Pickup.tick)
 end
 
-function Inventory_Pickup.register(opts)
-	Inventory_Pickup.create_ticker()
+function Inventory_Pickup.register(root)
+	local opts = {
+	
+		root = root,
+		trigger = root:GetCustomProperty("Trigger"):WaitForObject()
+	
+	}
 
+	if(Environment.IsClient() or Environment.IsSinglePlayerPreview()) then
+		opts.item = root:GetCustomProperty("Item"):WaitForObject()
+		opts.up_down_curve = root:GetCustomProperty("UpDownCurve")
+		opts.rotate = root:GetCustomProperty("Rotate")
+		opts.animate_up_down = root:GetCustomProperty("AnimateUpDown")
+		opts.multiplier = root:GetCustomProperty("multiplier")
+		opts.outline_color = root:GetCustomProperty("OutlineColor")
+		opts.outline = root:GetCustomProperty("Outline"):WaitForObject()
+
+		Inventory_Pickup.create_ticker()
+		opts.z_offset = opts.item:GetPosition().z
+		
+		if(opts.rotate) then
+			opts.item:RotateContinuous(Vector3.New(0, 0, .8), true)
+		end
+
+		opts.trigger.endOverlapEvent:Connect(Inventory_Pickup.on_trigger_exit)
+	end		
+
+	opts.trigger.beginOverlapEvent:Connect(Inventory_Pickup.on_trigger_entered)
 	opts.added = time()
-	opts.z_offset = opts.item:GetPosition().z
 	opts.shared = opts.root:GetCustomProperty("shared")
 
 	Inventory_Pickup.pickups[opts.trigger.id] = opts
 	Inventory_Pickup.count = Inventory_Pickup.count + 1
 
-	if(opts.rotate) then
-		opts.item:RotateContinuous(Vector3.New(0, 0, .8), true)
-	end
-
 	opts.root.destroyEvent:Connect(Inventory_Pickup.on_pickup_destroyed)
-	opts.trigger.beginOverlapEvent:Connect(Inventory_Pickup.on_trigger_entered)
-	opts.trigger.endOverlapEvent:Connect(Inventory_Pickup.on_trigger_exit)
 end
 
 function Inventory_Pickup.is_player(other)
@@ -56,20 +72,19 @@ end
 
 function Inventory_Pickup.on_trigger_entered(trigger, other)
 	if(Inventory_Pickup.is_player(other)) then
-		local OUTLINE = Inventory_Pickup.pickups[trigger.id].outline
+		if(Environment.IsClient() or Environment.IsSinglePlayerPreview()) then
+			local OUTLINE = Inventory_Pickup.pickups[trigger.id].outline
 
-		OUTLINE:SetSmartProperty("Enabled", true)
-		OUTLINE:SetSmartProperty("Object To Outline", Inventory_Pickup.pickups[trigger.id].item)
+			OUTLINE:SetSmartProperty("Enabled", true)
+			OUTLINE:SetSmartProperty("Object To Outline", Inventory_Pickup.pickups[trigger.id].item)
+		end
 
 		Inventory_Pickup.pickups[trigger.id].speed = 100
 		Inventory_Pickup.pickups[trigger.id].can_pickup = true
 
-		-- if(not Inventory_Pickup.pickups[trigger.id].shared) then
-		-- 	local obj = Inventory_Pickup.pickups[trigger.id].root
-
-		-- 	Inventory_Pickup.pickups[trigger.id] = nil
-		-- 	obj:Destroy()
-		-- end
+		if(Environment.IsServer()) then
+			Events.Broadcast(Inventory_Events.PICKUP, Inventory_Pickup.pickups[trigger.id].root, other)
+		end
 	end
 end
 
@@ -96,21 +111,23 @@ end
 
 function Inventory_Pickup.tick(dt)
 	for id, pickup in pairs(Inventory_Pickup.pickups) do
-		if(pickup.can_pickup) then
-			local overlapping = pickup.trigger:GetOverlappingObjects()
+		if(Object.IsValid(pickup.trigger)) then
+			if(pickup.can_pickup) then
+				local overlapping = pickup.trigger:GetOverlappingObjects()
 
-			for index, obj in ipairs(overlapping) do
-				if(obj:IsA("Player")) then
-					pickup.item:Follow(obj, pickup.speed)
-					pickup.speed = pickup.speed + (dt * 10)
+				for index, obj in ipairs(overlapping) do
+					if(obj:IsA("Player")) then
+						pickup.item:Follow(obj, pickup.speed)
+						pickup.speed = pickup.speed + (dt * 10)
+					end
 				end
+			else
+				local pos = pickup.item:GetPosition()
+
+				pos.z = pickup.z_offset + pickup.up_down_curve:GetValue(time() - pickup.added) * pickup.multiplier
+
+				pickup.item:SetPosition(pos)
 			end
-		else
-			local pos = pickup.item:GetPosition()
-
-			pos.z = pickup.z_offset + pickup.up_down_curve:GetValue(time() - pickup.added) * pickup.multiplier
-
-			pickup.item:SetPosition(pos)
 		end
 	end
 end

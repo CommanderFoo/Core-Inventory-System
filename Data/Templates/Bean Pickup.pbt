@@ -16,7 +16,6 @@ Assets {
           }
         }
         ParentId: 4781671109827199097
-        ChildIds: 16836476989887076038
         ChildIds: 5912204778567650375
         ChildIds: 7002403198478379541
         UnregisteredParameters {
@@ -81,8 +80,10 @@ Assets {
             Float: 50
           }
           Overrides {
-            Name: "cs:timestamp"
-            Int: 0
+            Name: "cs:Outline"
+            ObjectReference {
+              SubObjectId: 11416299705193302920
+            }
           }
           Overrides {
             Name: "cs:Inventory_Pickup:isrep"
@@ -132,10 +133,6 @@ Assets {
             Name: "cs:AnimateUpDown:ml"
             Bool: false
           }
-          Overrides {
-            Name: "cs:timestamp:isrep"
-            Bool: true
-          }
         }
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
@@ -151,42 +148,6 @@ Assets {
         }
         Folder {
           IsGroup: true
-        }
-        NetworkRelevanceDistance {
-          Value: "mc:eproxyrelevance:critical"
-        }
-      }
-      Objects {
-        Id: 16836476989887076038
-        Name: "Inventory_Drop_Set_Props"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 14137138681320844337
-        Collidable_v2 {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
-        }
-        CameraCollidable {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        EditorIndicatorVisibility {
-          Value: "mc:eindicatorvisibility:visiblewhenselected"
-        }
-        Script {
-          ScriptAsset {
-            Id: 7968409412185550532
-          }
         }
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
@@ -254,12 +215,6 @@ Assets {
             Name: "cs:Root"
             ObjectReference {
               SubObjectId: 14137138681320844337
-            }
-          }
-          Overrides {
-            Name: "cs:Outline"
-            ObjectReference {
-              SubObjectId: 11416299705193302920
             }
           }
         }

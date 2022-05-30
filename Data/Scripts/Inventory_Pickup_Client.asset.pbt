@@ -11,16 +11,6 @@ Assets {
         }
       }
       Overrides {
-        Name: "cs:Root"
-        ObjectReference {
-        }
-      }
-      Overrides {
-        Name: "cs:Outline"
-        ObjectReference {
-        }
-      }
-      Overrides {
         Name: "cs:Inventory_Pickup:isrep"
         Bool: false
       }

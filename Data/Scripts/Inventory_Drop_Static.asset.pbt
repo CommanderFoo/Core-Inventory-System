@@ -1,6 +1,6 @@
 Assets {
   Id: 10111855426989570073
-  Name: "Inventory_Drops_Local"
+  Name: "Inventory_Drop_Static"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {

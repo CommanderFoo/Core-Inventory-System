@@ -35,22 +35,6 @@ Entries {
         }
         SimpleValue {
           Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 3
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 353
-              }
-            }
           }
         }
       }
@@ -60,22 +44,6 @@ Entries {
         }
         SimpleValue {
           Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 3
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 312
-              }
-            }
           }
         }
       }
@@ -195,7 +163,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 28
+                IntVar: 113
               }
             }
           }

@@ -1,9 +1,148 @@
 Entries {
   Key {
-    StringVar: "phbs"
+    StringVar: "phb"
   }
   SimpleValue {
-    IntVar: 1
+    Table {
+      Entries {
+        Key {
+          IntVar: 1
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 500
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 2
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 500
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 3
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 463
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 4
+        }
+        SimpleValue {
+          Table {
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 5
+        }
+        SimpleValue {
+          Table {
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 6
+        }
+        SimpleValue {
+          Table {
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 7
+        }
+        SimpleValue {
+          Table {
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 8
+        }
+        SimpleValue {
+          Table {
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 9
+        }
+        SimpleValue {
+          Table {
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 10
+        }
+        SimpleValue {
+          Table {
+          }
+        }
+      }
+    }
   }
 }
 Entries {
@@ -43,6 +182,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 107
+              }
+            }
           }
         }
       }
@@ -213,132 +368,9 @@ Entries {
 }
 Entries {
   Key {
-    StringVar: "phb"
+    StringVar: "phbs"
   }
   SimpleValue {
-    Table {
-      Entries {
-        Key {
-          IntVar: 1
-        }
-        SimpleValue {
-          Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 3
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 500
-              }
-            }
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 2
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 3
-        }
-        SimpleValue {
-          Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 3
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 463
-              }
-            }
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 4
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 5
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 6
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 7
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 8
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 9
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 10
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-    }
+    IntVar: 1
   }
 }

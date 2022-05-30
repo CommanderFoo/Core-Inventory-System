@@ -1,3 +1,8 @@
+local INVENTORY_ASSETS = require(script:GetCustomProperty("InventoryAssets"))
+
+---@type Inventory_Pickup
+local Inventory_Pickup = require(script:GetCustomProperty("Inventory_Pickup"))
+
 ---@type Inventory_Events
 local Inventory_Events = require(script:GetCustomProperty("Inventory_Events"))
 
@@ -12,102 +17,42 @@ function Inventory_Drop.set_container(container)
 	Inventory_Drop.container = container
 end
 
-function Inventory_Drop.set_inventory(inventory)
-	Inventory_Drop.inventory = inventory
+function Inventory_Drop.drop(inventory, slot_index, item, count, position)
+	local spawned_item = Inventory_Drop.container:SpawnSharedAsset(item.pickup_template, {
 
-	if(Environment.IsClient() or Environment.IsSinglePlayerPreview()) then
-		inventory.changedEvent:Connect(Inventory_Drop.changed)
-
-		for i, slot in pairs(inventory:GetItems()) do
-			Inventory_Drop.changed(inventory, i)
-		end
-
-		local lookup = {}
-
-		for index, slot in pairs(inventory:GetItems()) do
-			lookup[slot:GetCustomProperty("id")] = 1
-		end
-
-		for i, d in ipairs(Inventory_Drop.drops) do
-			if(Object.IsValid(d) and not lookup[d.id]) then
-				d:Destroy()
-			end
-		end
-	end
-end
-
----Not true local context.
----Move to static context using shared assets
-function Inventory_Drop.drop(item, count, position)
-	local ts = DateTime.CurrentTime().secondsSinceEpoch
-
-	local spawned_item = World.SpawnAsset(item.pickup_template, {
-
-		parent = Inventory_Drop.container,
-		position = position,
-		networkContext = NetworkContextType.LOCAL_CONTEXT
+		position = position
 
 	})
 
 	spawned_item.destroyEvent:Connect(function()
-		for index, item in pairs(Inventory_Drop.inventory:GetItems()) do
-			if(item:GetCustomProperty("id") == spawned_item.id) then
-				Inventory_Drop.inventory:RemoveFromSlot(item.slot)
-			end
-		end
+		Inventory_Drop.drops[spawned_item] = nil
 	end)
 
-	spawned_item:SetCustomProperty("timestamp", ts)
-
-	Inventory_Drop.inventory:AddItem(item.asset, {
-
+	Inventory_Drop.drops[spawned_item] = {
+		
+		ts = DateTime.CurrentTime().millisecondsSinceEpoch,
 		count = count,
-		customProperties = {
+		asset = item.asset
 
-			timestamp = ts,
-			id = spawned_item.id
+	}
 
-		}
-
-	})
+	Inventory_Pickup.register(spawned_item)
 end
 
-function Inventory_Drop.find_obj(slot)
-	for id, slot_index in pairs(Inventory_Drop.drops) do
-		if(slot == slot_index) then
-			return id
+---@TODO: Get priority inventory / named inventories
+function Inventory_Drop.pickup_drop(obj, other)
+	Task.Spawn(function()
+		local entry = Inventory_Drop.drops[obj]
+
+		if(entry ~= nil) then
+			other:GetInventories()[1]:AddItem(entry.asset, { count = entry.count }) --@TODO: change this
+			Inventory_Drop.container:DestroySharedAsset(obj)
 		end
-	end
-
-	return nil
+	
+	end, .25)
 end
 
-function Inventory_Drop.destroy_obj(slot)
-	local id = Inventory_Drop.drops.find_obj(slot)
-
-	if(id ~= nil) then
-		for i, d in ipairs(Inventory_Drop.drops) do
-			if(Object.IsValid(d)) then
-				if(d.id == id) then
-					d:Destroy()
-					Inventory_Drop.drops[id] = nil
-				end
-			else
-				Inventory_Drop.drops[id] = nil
-			end
-		end
-	end
-end
-
-function Inventory_Drop.changed(inv, slot)
-	local item = inv:GetItem(slot)
-
-	if(item ~= nil) then
-		Inventory_Drop.drops[item:GetCustomProperty("id")] = slot
-	else
-		Inventory_Drop.drops.destroy_obj(slot)
-	end
-end
+Events.Connect(Inventory_Events.PICKUP, Inventory_Drop.pickup_drop)
 
 Events.Connect(Inventory_Events.DROP, Inventory_Drop.drop)
 

@@ -27,6 +27,11 @@ Assets {
         String: ""
       }
       Overrides {
+        Name: "cs:position"
+        Vector {
+        }
+      }
+      Overrides {
         Name: "cs:timestamp:isrep"
         Bool: true
       }
@@ -36,6 +41,10 @@ Assets {
       }
       Overrides {
         Name: "cs:id:isrep"
+        Bool: true
+      }
+      Overrides {
+        Name: "cs:position:isrep"
         Bool: true
       }
     }
