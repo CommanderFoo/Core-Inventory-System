@@ -52,8 +52,25 @@ function Inventory_Drop.pickup_drop(obj, other)
 	end, .25)
 end
 
-Events.Connect(Inventory_Events.PICKUP, Inventory_Drop.pickup_drop)
+function Inventory_Drop.clear_old_drops()
+	local ts = DateTime.CurrentTime().millisecondsSinceEpoch
 
+	for obj, entry in pairs(Inventory_Drop.drops) do
+		if((entry.ts + 10000) < ts) then
+			local dropped_item = obj
+
+			Inventory_Drop.container:DestroySharedAsset(dropped_item)
+			Inventory_Drop.drops[obj] = nil
+		end
+	end
+end
+
+local task = Task.Spawn(Inventory_Drop.clear_old_drops, 10)
+
+task.repeatCount = -1
+task.repeatInterval = 10
+
+Events.Connect(Inventory_Events.PICKUP, Inventory_Drop.pickup_drop)
 Events.Connect(Inventory_Events.DROP, Inventory_Drop.drop)
 
 return Inventory_Drop

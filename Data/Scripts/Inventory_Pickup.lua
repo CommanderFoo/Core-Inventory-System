@@ -47,7 +47,7 @@ function Inventory_Pickup.register(root)
 		end
 
 		opts.outline_trigger.beginOverlapEvent:Connect(Inventory_Pickup.on_outline_trigger_enter)
-		opts.trigger.endOverlapEvent:Connect(Inventory_Pickup.on_outline_trigger_exit)
+		opts.outline_trigger.endOverlapEvent:Connect(Inventory_Pickup.on_outline_trigger_exit)
 
 		Inventory_Pickup.create_ticker()
 	end		

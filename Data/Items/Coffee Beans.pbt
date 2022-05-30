@@ -14,39 +14,6 @@ Assets {
           Id: 4083375966430084893
         }
       }
-      Overrides {
-        Name: "cs:timestamp"
-        Int: 0
-      }
-      Overrides {
-        Name: "cs:shared"
-        Bool: false
-      }
-      Overrides {
-        Name: "cs:id"
-        String: ""
-      }
-      Overrides {
-        Name: "cs:position"
-        Vector {
-        }
-      }
-      Overrides {
-        Name: "cs:timestamp:isrep"
-        Bool: true
-      }
-      Overrides {
-        Name: "cs:shared:isrep"
-        Bool: true
-      }
-      Overrides {
-        Name: "cs:id:isrep"
-        Bool: true
-      }
-      Overrides {
-        Name: "cs:position:isrep"
-        Bool: true
-      }
     }
     Assets {
       Id: 4083375966430084893

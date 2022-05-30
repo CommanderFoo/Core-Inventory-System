@@ -290,12 +290,30 @@ function Inventory.drop_one_handler(from_inventory_id, to_inventory_id, from_slo
 
 		if(not is_inside) then
 			if(from_inventory:CanRemoveFromSlot(from_slot_index, { count = 1 })) then
-				from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
 				Inventory.drop_item_into_world(from_inventory.owner, item_asset_id, 1, from_inventory, from_slot_index)
+				from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
 			end
-		elseif(to_inventory:CanAddItem(item.itemAssetId, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
-			to_inventory:AddItem(item.itemAssetId, { count = 1, slot = to_slot_index })
+		elseif(to_inventory:CanAddItem(item_asset_id, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
+			to_inventory:AddItem(item_asset_id, { count = 1, slot = to_slot_index })
 			from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
+		end
+	end
+end
+
+function Inventory.drop_stack_handler(from_inventory_id, to_inventory_id, from_slot_index, to_slot_index, is_inside)
+	local from_inventory_obj = Inventory.INVENTORIES[from_inventory_id]
+	local to_inventory_obj = Inventory.INVENTORIES[to_inventory_id]
+
+	if(from_inventory_obj ~= nil and to_inventory_obj ~= nil) then
+		local from_inventory = from_inventory_obj.inventory
+		local item = from_inventory:GetItem(from_slot_index)
+		local item_asset_id = item.itemAssetId
+
+		if(not is_inside) then
+			if(from_inventory:CanRemoveFromSlot(from_slot_index, { count = item.count })) then
+				Inventory.drop_item_into_world(from_inventory.owner, item_asset_id, item.count, from_inventory, from_slot_index)
+				from_inventory:RemoveFromSlot(from_slot_index, { count = item.count })
+			end
 		end
 	end
 end
@@ -471,12 +489,11 @@ function Inventory.on_slot_pressed_event(button, params)
 	end
 end
 
----@TODO Sync local context object to other players (replication).
 ---Drops one item in to a slot, to an existing count, or into the world.
 ---@param player Player
 ---@param action string
-function Inventory.drop_one_action(player, action)
-	if(action == "Inventory Drop One") then
+function Inventory.drop_action(player, action)
+	if(action == "Inventory Drop One" or action == "Shoot") then
 		if(Inventory.ACTIVE.has_item and Inventory.ACTIVE.hovered_inventory and Inventory.ACTIVE.hovered_slot) then
 			local item = Inventory.ACTIVE.inventory:GetItem(Inventory.ACTIVE.slot_index)
 			local item_count = item.count
@@ -484,7 +501,14 @@ function Inventory.drop_one_action(player, action)
 			local item_asset_id = item.itemAssetId
 
 			if(not Inventory.IS_INSIDE) then
-				Events.BroadcastToServer(Inventory_Events.DROP_ONE, Inventory.ACTIVE.inventory.id, Inventory.ACTIVE.inventory.id, Inventory.ACTIVE.slot_index, Inventory.ACTIVE.hovered_slot_index, Inventory.IS_INSIDE)
+				local evt = Inventory_Events.DROP_ONE
+
+				if(action == "Shoot") then
+					evt = Inventory_Events.DROP_STACK
+					new_count = 0
+				end
+
+				Events.BroadcastToServer(evt, Inventory.ACTIVE.inventory.id, Inventory.ACTIVE.inventory.id, Inventory.ACTIVE.slot_index, Inventory.ACTIVE.hovered_slot_index, Inventory.IS_INSIDE)
 
 				if(new_count == 0) then
 					Inventory.PROXY.visibility = Visibility.FORCE_OFF
@@ -533,7 +557,7 @@ function Inventory.drop_one_action(player, action)
 					end
 				end
 			end
-		end
+		end		
 	end
 end
 
@@ -888,10 +912,11 @@ end
 if(Environment.IsServer()) then
 	Events.Connect(Inventory_Events.MOVE, Inventory.move_item_handler)
 	Events.Connect(Inventory_Events.DROP_ONE, Inventory.drop_one_handler)
+	Events.Connect(Inventory_Events.DROP_STACK, Inventory.drop_stack_handler)
 	Events.Connect(Inventory_Events.REMOVE, Inventory.remove_item_handler)
 	Events.ConnectForPlayer(Inventory_Events.HOTBAR_SAVE_SLOT, Inventory.save_hotbar_slot)
 else
-	Input.actionPressedEvent:Connect(Inventory.drop_one_action)
+	Input.actionPressedEvent:Connect(Inventory.drop_action)
 end
 
 return Inventory
