@@ -27,7 +27,7 @@ function Inventory_Pickup.register(root)
 	local opts = {
 	
 		root = root,
-		trigger = root:GetCustomProperty("Trigger"):WaitForObject()
+		trigger = root:GetCustomProperty("PickupTrigger"):WaitForObject()
 	
 	}
 
@@ -39,25 +39,36 @@ function Inventory_Pickup.register(root)
 		opts.multiplier = root:GetCustomProperty("multiplier")
 		opts.outline_color = root:GetCustomProperty("OutlineColor")
 		opts.outline = root:GetCustomProperty("Outline"):WaitForObject()
-
-		Inventory_Pickup.create_ticker()
 		opts.z_offset = opts.item:GetPosition().z
+		opts.outline_trigger = root:GetCustomProperty("OutlineTrigger"):WaitForObject()
 		
 		if(opts.rotate) then
 			opts.item:RotateContinuous(Vector3.New(0, 0, .8), true)
 		end
 
-		opts.trigger.endOverlapEvent:Connect(Inventory_Pickup.on_trigger_exit)
+		opts.outline_trigger.beginOverlapEvent:Connect(Inventory_Pickup.on_outline_trigger_enter)
+		opts.trigger.endOverlapEvent:Connect(Inventory_Pickup.on_outline_trigger_exit)
+
+		Inventory_Pickup.create_ticker()
 	end		
 
+	opts.root.destroyEvent:Connect(Inventory_Pickup.on_pickup_destroyed)
 	opts.trigger.beginOverlapEvent:Connect(Inventory_Pickup.on_trigger_entered)
 	opts.added = time()
-	opts.shared = opts.root:GetCustomProperty("shared")
 
-	Inventory_Pickup.pickups[opts.trigger.id] = opts
+	Inventory_Pickup.pickups[root.id] = opts
 	Inventory_Pickup.count = Inventory_Pickup.count + 1
+end
 
-	opts.root.destroyEvent:Connect(Inventory_Pickup.on_pickup_destroyed)
+function Inventory_Pickup.on_outline_trigger_enter(trigger, other)
+	if(Inventory_Pickup.is_player(other)) then
+		if(Environment.IsClient() or Environment.IsSinglePlayerPreview()) then
+			local OUTLINE = Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].outline
+
+			OUTLINE:SetSmartProperty("Enabled", true)
+			OUTLINE:SetSmartProperty("Object To Outline", Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].item)
+		end
+	end
 end
 
 function Inventory_Pickup.is_player(other)
@@ -72,25 +83,18 @@ end
 
 function Inventory_Pickup.on_trigger_entered(trigger, other)
 	if(Inventory_Pickup.is_player(other)) then
-		if(Environment.IsClient() or Environment.IsSinglePlayerPreview()) then
-			local OUTLINE = Inventory_Pickup.pickups[trigger.id].outline
-
-			OUTLINE:SetSmartProperty("Enabled", true)
-			OUTLINE:SetSmartProperty("Object To Outline", Inventory_Pickup.pickups[trigger.id].item)
-		end
-
-		Inventory_Pickup.pickups[trigger.id].speed = 100
-		Inventory_Pickup.pickups[trigger.id].can_pickup = true
+		Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].speed = 100
+		Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].can_pickup = true
 
 		if(Environment.IsServer()) then
-			Events.Broadcast(Inventory_Events.PICKUP, Inventory_Pickup.pickups[trigger.id].root, other)
+			Events.Broadcast(Inventory_Events.PICKUP, Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].root, other)
 		end
 	end
 end
 
-function Inventory_Pickup.on_trigger_exit(trigger, other)
-	if(Inventory_Pickup.is_player(other) and Inventory_Pickup.pickups[trigger.id] ~= nil) then
-		local OUTLINE = Inventory_Pickup.pickups[trigger.id].outline
+function Inventory_Pickup.on_outline_trigger_exit(trigger, other)
+	if(Object.IsValid(trigger.parent) and Inventory_Pickup.is_player(other) and Inventory_Pickup.pickups[trigger:FindTemplateRoot().id] ~= nil) then
+		local OUTLINE = Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].outline
 
 		OUTLINE:SetSmartProperty("Enabled", false)
 	end
@@ -104,8 +108,11 @@ function Inventory_Pickup.on_pickup_destroyed(obj)
 
 	if(Inventory_Pickup.count <= 0) then
 		Inventory_Pickup.count = 0
-		Inventory_Pickup.ticker:cancel()
-		Inventory_Pickup.ticker = nil
+
+		if(Inventory_Pickup.ticker ~= nil) then
+			Inventory_Pickup.ticker:cancel()
+			Inventory_Pickup.ticker = nil
+		end
 	end
 end
 

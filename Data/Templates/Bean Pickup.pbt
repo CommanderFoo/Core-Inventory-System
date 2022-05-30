@@ -17,7 +17,7 @@ Assets {
         }
         ParentId: 4781671109827199097
         ChildIds: 5912204778567650375
-        ChildIds: 7002403198478379541
+        ChildIds: 5286392742433402612
         UnregisteredParameters {
           Overrides {
             Name: "cs:Inventory_Pickup"
@@ -26,9 +26,9 @@ Assets {
             }
           }
           Overrides {
-            Name: "cs:Trigger"
+            Name: "cs:PickupTrigger"
             ObjectReference {
-              SubObjectId: 7002403198478379541
+              SubObjectId: 5286392742433402612
             }
           }
           Overrides {
@@ -86,6 +86,12 @@ Assets {
             }
           }
           Overrides {
+            Name: "cs:OutlineTrigger"
+            ObjectReference {
+              SubObjectId: 7002403198478379541
+            }
+          }
+          Overrides {
             Name: "cs:Inventory_Pickup:isrep"
             Bool: false
           }
@@ -94,11 +100,11 @@ Assets {
             Bool: false
           }
           Overrides {
-            Name: "cs:Trigger:isrep"
+            Name: "cs:PickupTrigger:isrep"
             Bool: false
           }
           Overrides {
-            Name: "cs:Trigger:ml"
+            Name: "cs:PickupTrigger:ml"
             Bool: false
           }
           Overrides {
@@ -171,6 +177,7 @@ Assets {
         ChildIds: 8363439165270387492
         ChildIds: 3671607771547500635
         ChildIds: 180455175669557461
+        ChildIds: 7002403198478379541
         Collidable_v2 {
           Value: "mc:ecollisionsetting:forceoff"
         }
@@ -277,6 +284,14 @@ Assets {
               Overrides {
                 Name: "bp:Enabled"
                 Bool: false
+              }
+              Overrides {
+                Name: "bp:Dynamic Thickness"
+                Bool: false
+              }
+              Overrides {
+                Name: "bp:Thickness"
+                Float: 1
               }
             }
           }
@@ -389,7 +404,47 @@ Assets {
       }
       Objects {
         Id: 7002403198478379541
-        Name: "Trigger"
+        Name: "Outline Trigger"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 23.4819584
+            Y: 23.4819584
+            Z: 23.4819584
+          }
+        }
+        ParentId: 5912204778567650375
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:forceon"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Trigger {
+          TeamSettings {
+            IsTeamCollisionEnabled: true
+            IsEnemyCollisionEnabled: true
+          }
+          TriggerShape_v2 {
+            Value: "mc:etriggershape:sphere"
+          }
+        }
+        NetworkRelevanceDistance {
+          Value: "mc:eproxyrelevance:critical"
+        }
+      }
+      Objects {
+        Id: 5286392742433402612
+        Name: "Pickup Trigger"
         Transform {
           Location {
           }
