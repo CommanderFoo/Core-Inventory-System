@@ -305,13 +305,14 @@ Assets {
         Name: "Item"
         Transform {
           Location {
+            Z: 10.955986
           }
           Rotation {
           }
           Scale {
-            X: 0.5
-            Y: 0.5
-            Z: 0.5
+            X: 0.3
+            Y: 0.3
+            Z: 0.3
           }
         }
         ParentId: 5912204778567650375
@@ -340,14 +341,13 @@ Assets {
         Name: "Bean"
         Transform {
           Location {
-            Z: 16
           }
           Rotation {
           }
           Scale {
-            X: 0.75
-            Y: 0.75
-            Z: 0.75
+            X: 1
+            Y: 1
+            Z: 1
           }
         }
         ParentId: 180455175669557461

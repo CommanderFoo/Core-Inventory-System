@@ -30,7 +30,7 @@ Assets {
         }
         ItemObject {
           ItemAsset {
-            Id: 3683707664205314919
+            Id: 841534158063459245
           }
           StackCount: 1
         }
