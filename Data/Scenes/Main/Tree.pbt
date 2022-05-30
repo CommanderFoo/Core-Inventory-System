@@ -38,9 +38,6 @@ Objects {
   Name: "Inventory System"
   Transform {
     Location {
-      X: 87.3912811
-      Y: 0.975377083
-      Z: -3.05175781e-05
     }
     Rotation {
     }

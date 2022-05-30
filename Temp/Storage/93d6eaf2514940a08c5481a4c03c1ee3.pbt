@@ -23,7 +23,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 495
+                IntVar: 499
               }
             }
           }
@@ -104,108 +104,6 @@ Entries {
       Entries {
         Key {
           IntVar: 10
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-    }
-  }
-}
-Entries {
-  Key {
-    StringVar: "pinv999"
-  }
-  SimpleValue {
-    Table {
-      Entries {
-        Key {
-          IntVar: 1
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 2
-        }
-        SimpleValue {
-          Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 3
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 499
-              }
-            }
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 3
-        }
-        SimpleValue {
-          Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 3
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 1
-              }
-            }
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 4
-        }
-        SimpleValue {
-          Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 3
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 350
-              }
-            }
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 5
         }
         SimpleValue {
           Table {
@@ -596,5 +494,107 @@ Entries {
   }
   SimpleValue {
     IntVar: 1
+  }
+}
+Entries {
+  Key {
+    StringVar: "pinv999"
+  }
+  SimpleValue {
+    Table {
+      Entries {
+        Key {
+          IntVar: 1
+        }
+        SimpleValue {
+          Table {
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 2
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 499
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 3
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 4
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 350
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 5
+        }
+        SimpleValue {
+          Table {
+          }
+        }
+      }
+    }
   }
 }

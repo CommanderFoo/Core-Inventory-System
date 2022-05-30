@@ -23,11 +23,19 @@ Assets {
         Bool: false
       }
       Overrides {
+        Name: "cs:id"
+        String: ""
+      }
+      Overrides {
         Name: "cs:timestamp:isrep"
         Bool: true
       }
       Overrides {
         Name: "cs:shared:isrep"
+        Bool: true
+      }
+      Overrides {
+        Name: "cs:id:isrep"
         Bool: true
       }
     }

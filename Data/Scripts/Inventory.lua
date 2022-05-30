@@ -319,7 +319,7 @@ function Inventory.drop_item_into_world(owner, item_asset_id, count, inventory)
 
 			if(projectile.bouncesRemaining == 0) then
 				projectile:Destroy()
-				Events.Broadcast(Inventory_Events.DROP, inventory, item, count, hit:GetImpactPosition() + (Vector3.UP * 30))
+				Events.Broadcast(Inventory_Events.DROP, item, count, hit:GetImpactPosition() + (Vector3.UP * 30))
 			end
 		end
 	end)

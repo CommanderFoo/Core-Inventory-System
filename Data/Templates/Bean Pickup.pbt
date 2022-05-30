@@ -335,7 +335,6 @@ Assets {
         Name: "Item"
         Transform {
           Location {
-            Z: 16.2286606
           }
           Rotation {
           }
@@ -371,6 +370,7 @@ Assets {
         Name: "Bean"
         Transform {
           Location {
+            Z: 16
           }
           Rotation {
           }
