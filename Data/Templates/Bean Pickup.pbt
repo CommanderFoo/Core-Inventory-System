@@ -16,6 +16,7 @@ Assets {
           }
         }
         ParentId: 4781671109827199097
+        ChildIds: 8363439165270387492
         ChildIds: 5912204778567650375
         ChildIds: 5286392742433402612
         UnregisteredParameters {
@@ -160,49 +161,6 @@ Assets {
         }
       }
       Objects {
-        Id: 5912204778567650375
-        Name: "Client"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 14137138681320844337
-        ChildIds: 8363439165270387492
-        ChildIds: 3671607771547500635
-        ChildIds: 180455175669557461
-        ChildIds: 7002403198478379541
-        Collidable_v2 {
-          Value: "mc:ecollisionsetting:forceoff"
-        }
-        Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
-        }
-        CameraCollidable {
-          Value: "mc:ecollisionsetting:forceoff"
-        }
-        EditorIndicatorVisibility {
-          Value: "mc:eindicatorvisibility:visiblewhenselected"
-        }
-        NetworkContext {
-          MinDetailLevel {
-            Value: "mc:edetaillevel:low"
-          }
-          MaxDetailLevel {
-            Value: "mc:edetaillevel:ultra"
-          }
-        }
-        NetworkRelevanceDistance {
-          Value: "mc:eproxyrelevance:critical"
-        }
-      }
-      Objects {
         Id: 8363439165270387492
         Name: "Inventory_Pickup_Client"
         Transform {
@@ -216,7 +174,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 5912204778567650375
+        ParentId: 14137138681320844337
         UnregisteredParameters {
           Overrides {
             Name: "cs:Root"
@@ -240,6 +198,48 @@ Assets {
         Script {
           ScriptAsset {
             Id: 7153229304768253401
+          }
+        }
+        NetworkRelevanceDistance {
+          Value: "mc:eproxyrelevance:critical"
+        }
+      }
+      Objects {
+        Id: 5912204778567650375
+        Name: "Client"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 14137138681320844337
+        ChildIds: 3671607771547500635
+        ChildIds: 180455175669557461
+        ChildIds: 7002403198478379541
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:forceoff"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:forceoff"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        NetworkContext {
+          MinDetailLevel {
+            Value: "mc:edetaillevel:low"
+          }
+          MaxDetailLevel {
+            Value: "mc:edetaillevel:ultra"
           }
         }
         NetworkRelevanceDistance {
@@ -411,9 +411,9 @@ Assets {
           Rotation {
           }
           Scale {
-            X: 9.81037331
-            Y: 9.81037331
-            Z: 9.81037331
+            X: 5.73123217
+            Y: 5.73123217
+            Z: 5.73123217
           }
         }
         ParentId: 5912204778567650375

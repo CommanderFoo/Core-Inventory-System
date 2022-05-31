@@ -1,6 +1,6 @@
 Assets {
   Id: 7153229304768253401
-  Name: "Inventory_Pickup_Client"
+  Name: "Inventory_Pickup_Default"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {

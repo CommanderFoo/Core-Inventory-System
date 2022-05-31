@@ -87,10 +87,7 @@ function Inventory.create(opts)
 
 	inventory:Resize(opts.slot_count)
 	inventory.name = opts.name or inventory.id
-
-	if(opts.priority ~= nil) then
-		inventory:SetCustomProperty("priority", opts.priority)
-	end
+	Inventory.set_priority(inventory, opts.priority)
 
 	if(opts.player ~= nil) then
 		inventory:Assign(opts.player)
@@ -111,6 +108,12 @@ function Inventory.create(opts)
 		end
 
 	}
+end
+
+function Inventory.set_priority(inventory, priority)
+	if(priority ~= nil and priority > 0) then
+		inventory:SetCustomProperty("priority", priority)
+	end
 end
 
 ---@TODO check type of inventory and load data table based on type.
@@ -338,7 +341,7 @@ function Inventory.drop_item_into_world(owner, item_asset_id, count, inventory, 
 
 			if(projectile.bouncesRemaining == 0) then
 				projectile:Destroy()
-				Events.Broadcast(Inventory_Events.DROP, inventory, from_slot_index, item, count, hit:GetImpactPosition() + (Vector3.UP * 30))
+				Events.Broadcast(Inventory_Events.DROP, item, count, hit:GetImpactPosition() + (Vector3.UP * 30))
 			end
 		end
 	end)
@@ -619,25 +622,38 @@ function Inventory.get_inventory(name, type, container)
 	return nil
 end
 
--- function Inventory.get_priority_inventory_with_space(player)
--- 	local inventory = nil
+function Inventory.get_priority_inventories(player)
+	local inventories = {}
 
--- 	for i, inv in ipairs(player:GetInventories()) do
--- 		local priority = inv:GetCustomProperty("priority")
+	for i, inv in ipairs(player:GetInventories()) do
+		local priority = inv:GetCustomProperty("priority")
 
--- 		if(inventory == nil) then
--- 			if(invent)
--- 			inventory = inv
--- 		end
-		
--- 	end
--- end
+		if(priority ~= nil and priority > 0) then
+			inventories[#inventories + 1] = { priority = priority, inventory = inv }
+		end
+	end
 
-function Inventory.can_pickup_item(item, player)
-	--local inventories = Inventory.get_priority_inventory_with_space(player, item)
-	local inv = Inventory.get_inventory("Player Hotbar", Inventory.Type.HOTBAR_INVENTORY)
+	table.sort(inventories, function(a, b)
+		return a.priority < b.priority
+	end)
+
+	return inventories
+end
+
+function Inventory.can_pickup_item(player, asset_id, count)
+	local inventories = Inventory.get_priority_inventories(player)
 	
-	print(inv:CanPickUpItem(item))
+	for index, entry in ipairs(inventories) do
+		local items = entry.inventory:GetItems(asset_id)
+
+		for i, item in pairs(items) do
+			if(item.count < item.maximumStackCount) then
+				return true
+			end
+		end
+	end
+
+	return false
 end
 
 ---Disables the frame from being hovered over. This is used with hotbars.
@@ -918,6 +934,16 @@ if(Environment.IsServer()) then
 	Events.ConnectForPlayer(Inventory_Events.HOTBAR_SAVE_SLOT, Inventory.save_hotbar_slot)
 else
 	Input.actionPressedEvent:Connect(Inventory.drop_action)
+end
+
+
+---@DEBUG REMOVE
+if(Environment.IsServer()) then
+	Input.actionPressedEvent:Connect(function(player, action)
+		if(action == "Aim") then
+			player:GetInventories()[1]:AddItem(INVENTORY_ASSETS[1].asset, { count = 500 })
+		end
+	end)
 end
 
 return Inventory

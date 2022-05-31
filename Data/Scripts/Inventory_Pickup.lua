@@ -83,20 +83,22 @@ end
 
 function Inventory_Pickup.on_trigger_entered(trigger, other)
 	if(Inventory_Pickup.is_player(other)) then
-		Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].speed = 100
-		Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].can_pickup = true
+		local pickup = Inventory_Pickup.pickups[trigger:FindTemplateRoot().id]
 
-		if(Environment.IsServer()) then
-			Events.Broadcast(Inventory_Events.PICKUP, Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].root, other)
+		if(Object.IsValid(pickup.root)) then
+			pickup.speed = 100
+			pickup.can_pickup = true
+
+			if(Environment.IsServer()) then
+				Events.Broadcast(Inventory_Events.PICKUP, pickup.root, other)
+			end
 		end
 	end
 end
 
 function Inventory_Pickup.on_outline_trigger_exit(trigger, other)
 	if(Object.IsValid(trigger.parent) and Inventory_Pickup.is_player(other) and Inventory_Pickup.pickups[trigger:FindTemplateRoot().id] ~= nil) then
-		local OUTLINE = Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].outline
-
-		OUTLINE:SetSmartProperty("Enabled", false)
+		Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].outline:SetSmartProperty("Enabled", false)
 	end
 end
 

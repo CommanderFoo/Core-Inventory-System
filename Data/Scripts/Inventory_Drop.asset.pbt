@@ -5,6 +5,12 @@ Assets {
   TextAsset {
     CustomParameters {
       Overrides {
+        Name: "cs:Inventory"
+        AssetReference {
+          Id: 12879219911357857649
+        }
+      }
+      Overrides {
         Name: "cs:Inventory_Pickup"
         AssetReference {
           Id: 8099296177848779074

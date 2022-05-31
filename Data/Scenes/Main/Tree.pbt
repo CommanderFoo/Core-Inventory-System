@@ -201,6 +201,14 @@ Objects {
           Rotator {
           }
         }
+        Overrides {
+          Name: "cs:SlotCount"
+          Int: 1
+        }
+        Overrides {
+          Name: "cs:PickupPriority"
+          Int: 1
+        }
       }
     }
     TemplateAsset {
@@ -245,6 +253,14 @@ Objects {
           Name: "Rotation"
           Rotator {
           }
+        }
+        Overrides {
+          Name: "cs:SlotCount"
+          Int: 1
+        }
+        Overrides {
+          Name: "cs:SlotsPerRow"
+          Int: 1
         }
       }
     }

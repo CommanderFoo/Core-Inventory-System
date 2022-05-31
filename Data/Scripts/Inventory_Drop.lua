@@ -1,23 +1,23 @@
-local INVENTORY_ASSETS = require(script:GetCustomProperty("InventoryAssets"))
-
----@type Inventory_Pickup
-local Inventory_Pickup = require(script:GetCustomProperty("Inventory_Pickup"))
+---@type Inventory
+local Inventory = require(script:GetCustomProperty("Inventory"))
 
 ---@type Inventory_Events
 local Inventory_Events = require(script:GetCustomProperty("Inventory_Events"))
 
+_G["Inventory.Drops"] = {}
+
 ---@class Inventory_Drop
-local Inventory_Drop = {
-
-	drops = {}
-
-}
+local Inventory_Drop = {}
 
 function Inventory_Drop.set_container(container)
 	Inventory_Drop.container = container
 end
 
-function Inventory_Drop.drop(inventory, slot_index, item, count, position)
+function Inventory_Drop.get_drop(obj)
+	return _G["Inventory.Drops"][obj]
+end
+
+function Inventory_Drop.drop(item, count, position)
 	local spawned_item = Inventory_Drop.container:SpawnSharedAsset(item.pickup_template, {
 
 		position = position
@@ -25,52 +25,54 @@ function Inventory_Drop.drop(inventory, slot_index, item, count, position)
 	})
 
 	spawned_item.destroyEvent:Connect(function()
-		Inventory_Drop.drops[spawned_item] = nil
+		_G["Inventory.Drops"][spawned_item] = nil
 	end)
 
-	Inventory_Drop.drops[spawned_item] = {
+	_G["Inventory.Drops"][spawned_item] = {
 
 		ts = DateTime.CurrentTime().millisecondsSinceEpoch,
 		count = count,
 		asset = item.asset
 
 	}
-
-	Inventory_Pickup.register(spawned_item)
 end
 
----@TODO: Get priority inventory / named inventories
-function Inventory_Drop.pickup_drop(obj, other)
-	Task.Spawn(function()
-		local entry = Inventory_Drop.drops[obj]
+function Inventory_Drop.pickup_drop(obj, player)
+	local entry = _G["Inventory.Drops"][obj]
 
-		if(entry ~= nil) then
-			other:GetInventories()[1]:AddItem(entry.asset, { count = entry.count }) --@TODO: change this
+	if(entry ~= nil) then
+		--player:GetInventories()[1]:AddItem(entry.asset, { count = entry.count })
+
+
+
+		Task.Spawn(function()	
 			Inventory_Drop.container:DestroySharedAsset(obj)
-		end
-
-	end, .25)
+		end, .25)
+	end
 end
 
 function Inventory_Drop.clear_old_drops()
 	local ts = DateTime.CurrentTime().millisecondsSinceEpoch
+	local drops = _G["Inventory.Drops"] or {}
 
-	for obj, entry in pairs(Inventory_Drop.drops) do
+	for obj, entry in pairs(drops) do
 		if((entry.ts + 15000) < ts) then
 			local dropped_item = obj
 
 			Inventory_Drop.container:DestroySharedAsset(dropped_item)
-			Inventory_Drop.drops[obj] = nil
+			_G["Inventory.Drops"][obj] = nil
 		end
 	end
 end
 
-local task = Task.Spawn(Inventory_Drop.clear_old_drops, 15)
+if(Environment.IsServer()) then
+	local task = Task.Spawn(Inventory_Drop.clear_old_drops, 15)
 
-task.repeatCount = -1
-task.repeatInterval = 15
+	task.repeatCount = -1
+	task.repeatInterval = 15
 
-Events.Connect(Inventory_Events.PICKUP, Inventory_Drop.pickup_drop)
-Events.Connect(Inventory_Events.DROP, Inventory_Drop.drop)
+	Events.Connect(Inventory_Events.PICKUP, Inventory_Drop.pickup_drop)
+	Events.Connect(Inventory_Events.DROP, Inventory_Drop.drop)
+end
 
 return Inventory_Drop
