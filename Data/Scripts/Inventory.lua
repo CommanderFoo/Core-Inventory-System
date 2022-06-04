@@ -949,7 +949,7 @@ end
 if(Environment.IsServer()) then
 	Input.actionPressedEvent:Connect(function(player, action)
 		if(action == "Debug Add Item") then
-			player:GetInventories()[math.random(#player:GetInventories())]:AddItem(INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset, { count = 1 })
+			player:GetInventories()[math.random(#player:GetInventories())]:AddItem(INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset, { count = math.random(10) })
 		end
 	end)
 end

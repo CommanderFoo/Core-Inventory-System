@@ -9,7 +9,7 @@ _G["Inventory.Drops"] = {}
 ---@class Inventory_Drop
 local Inventory_Drop = {}
 
-local EXPIRE_TIME = 20
+local EXPIRE_TIME = 40 * 1000
 
 function Inventory_Drop.set_container(container)
 	Inventory_Drop.container = container
@@ -101,7 +101,7 @@ function Inventory_Drop.pickup_drop(obj, player)
 
 		Task.Spawn(function()
 			Inventory_Drop.container:DestroySharedAsset(obj)
-		end, .25)
+		end, .15)
 	end
 end
 
