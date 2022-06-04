@@ -55,6 +55,7 @@ Objects {
   ChildIds: 12022879565615496328
   ChildIds: 8131351067154343009
   ChildIds: 9433971498664992443
+  ChildIds: 9484211090637358869
   ChildIds: 3399513445889837083
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -121,6 +122,77 @@ Objects {
   }
 }
 Objects {
+  Id: 9484211090637358869
+  Name: "Chest Inventory"
+  Transform {
+    Location {
+      X: 332.608704
+    }
+    Rotation {
+      Yaw: 89.9999924
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4056815105945944543
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 4718527058990615992
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Chest Inventory"
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+            Yaw: 89.9999847
+          }
+        }
+        Overrides {
+          Name: "cs:SlotCount"
+          Int: 36
+        }
+        Overrides {
+          Name: "cs:SlotsPerRow"
+          Int: 9
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        Overrides {
+          Name: "cs:StorageKey"
+          String: "cinv2"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: 563.233032
+            Y: 223.639282
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 17881690212890626348
+    }
+  }
+}
+Objects {
   Id: 9433971498664992443
   Name: "Chest Inventory"
   Transform {
@@ -146,12 +218,6 @@ Objects {
           String: "Chest Inventory"
         }
         Overrides {
-          Name: "Position"
-          Vector {
-            X: 332.608704
-          }
-        }
-        Overrides {
           Name: "Rotation"
           Rotator {
             Yaw: 90
@@ -159,11 +225,18 @@ Objects {
         }
         Overrides {
           Name: "cs:SlotCount"
-          Int: 24
+          Int: 36
         }
         Overrides {
           Name: "cs:SlotsPerRow"
-          Int: 8
+          Int: 9
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: 563.233032
+            Y: -315.592896
+          }
         }
       }
     }
@@ -687,8 +760,8 @@ Objects {
     Rotation {
     }
     Scale {
-      X: 350.683868
-      Y: 86.1630707
+      X: 500
+      Y: 500
       Z: 1
     }
   }

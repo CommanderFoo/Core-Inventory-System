@@ -1,27 +1,27 @@
 Assets {
-  Id: 2274318445354310211
-  Name: "Mana Potion - Copy"
+  Id: 8221789454165149272
+  Name: "Gem"
   PlatformAssetType: 33
   SerializationVersion: 115
   ItemAsset {
-    CustomName: "Rock"
+    CustomName: "Gem"
     MaximumStackCount: 100
-    ItemTemplateAssetId: 13847419989906830265
+    ItemTemplateAssetId: 2697717066050931678
     CustomParameters {
       Overrides {
         Name: "cs:Icon"
         AssetReference {
-          Id: 6817672012392341097
+          Id: 14310716204244769815
         }
       }
     }
     Assets {
-      Id: 6817672012392341097
-      Name: "Survival Craft Rock 001"
+      Id: 14310716204244769815
+      Name: "Fantasy Craft Gem 012"
       PlatformAssetType: 9
       PrimaryAsset {
         AssetType: "PlatformBrushAssetRef"
-        AssetId: "UI_Survival_Crafting_Rock_001"
+        AssetId: "UI_Fantasy_Crafting_Gem_012"
       }
     }
   }

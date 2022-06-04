@@ -220,7 +220,7 @@ end
 ---@param to_inventory_id string The inventory id the item is going too.
 ---@param from_slot_index integer The slot index the item is coming from.
 ---@param to_slot_index integer The slot index the item is going too.
-function Inventory.move_item_handler(from_inventory_id, to_inventory_id, from_slot_index, to_slot_index)
+function Inventory.move_item_handler(player, from_inventory_id, to_inventory_id, from_slot_index, to_slot_index)
 	local from_inventory_obj = Inventory.INVENTORIES[from_inventory_id]
 	local to_inventory_obj = Inventory.INVENTORIES[to_inventory_id]
 
@@ -282,7 +282,7 @@ end
 ---@param from_slot_index integer The slot index the item is coming from.
 ---@param to_slot_index integer The slot index the item is going too.
 ---@param is_inside boolean Determins if the item being dropped is over an inventory or not.
-function Inventory.drop_one_handler(from_inventory_id, to_inventory_id, from_slot_index, to_slot_index, is_inside)
+function Inventory.drop_one_handler(player, from_inventory_id, to_inventory_id, from_slot_index, to_slot_index, is_inside)
 	local from_inventory_obj = Inventory.INVENTORIES[from_inventory_id]
 	local to_inventory_obj = Inventory.INVENTORIES[to_inventory_id]
 
@@ -294,7 +294,9 @@ function Inventory.drop_one_handler(from_inventory_id, to_inventory_id, from_slo
 
 		if(not is_inside) then
 			if(from_inventory:CanRemoveFromSlot(from_slot_index, { count = 1 })) then
-				Inventory.drop_item_into_world(from_inventory.owner, item_asset_id, 1, from_inventory, from_slot_index)
+				local owner = from_inventory.owner or player
+
+				Inventory.drop_item_into_world(owner, item_asset_id, 1, from_inventory, from_slot_index)
 				from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
 			end
 		elseif(to_inventory:CanAddItem(item_asset_id, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
@@ -304,7 +306,7 @@ function Inventory.drop_one_handler(from_inventory_id, to_inventory_id, from_slo
 	end
 end
 
-function Inventory.drop_stack_handler(from_inventory_id, to_inventory_id, from_slot_index, to_slot_index, is_inside)
+function Inventory.drop_stack_handler(player, from_inventory_id, to_inventory_id, from_slot_index, to_slot_index, is_inside)
 	local from_inventory_obj = Inventory.INVENTORIES[from_inventory_id]
 	local to_inventory_obj = Inventory.INVENTORIES[to_inventory_id]
 
@@ -315,7 +317,9 @@ function Inventory.drop_stack_handler(from_inventory_id, to_inventory_id, from_s
 
 		if(not is_inside) then
 			if(from_inventory:CanRemoveFromSlot(from_slot_index, { count = item.count })) then
-				Inventory.drop_item_into_world(from_inventory.owner, item_asset_id, item.count, from_inventory, from_slot_index)
+				local owner = from_inventory.owner or player
+
+				Inventory.drop_item_into_world(owner, item_asset_id, item.count, from_inventory, from_slot_index)
 				from_inventory:RemoveFromSlot(from_slot_index, { count = item.count })
 			end
 		end
@@ -341,7 +345,7 @@ function Inventory.drop_item_into_world(owner, item_asset_id, count, inventory, 
 
 			if(projectile.bouncesRemaining == 0) then
 				projectile:Destroy()
-				Events.Broadcast(Inventory_Events.DROP, item, count, hit:GetImpactPosition() + (Vector3.UP * 30))
+				Events.Broadcast(Inventory_Events.DROP, item, count, hit:GetImpactPosition() + (Vector3.UP * 10))
 			end
 		end
 	end)
@@ -352,7 +356,7 @@ end
 ---Removes an item from a slot.
 ---@param inventory_id string
 ---@param slot_index integer
-function Inventory.remove_item_handler(inventory_id, slot_index)
+function Inventory.remove_item_handler(player, inventory_id, slot_index)
 	local inventory_obj = Inventory.INVENTORIES[inventory_id]
 
 	if(inventory_obj ~= nil) then
@@ -935,10 +939,10 @@ end
 -- Events
 
 if(Environment.IsServer()) then
-	Events.Connect(Inventory_Events.MOVE, Inventory.move_item_handler)
-	Events.Connect(Inventory_Events.DROP_ONE, Inventory.drop_one_handler)
-	Events.Connect(Inventory_Events.DROP_STACK, Inventory.drop_stack_handler)
-	Events.Connect(Inventory_Events.REMOVE, Inventory.remove_item_handler)
+	Events.ConnectForPlayer(Inventory_Events.MOVE, Inventory.move_item_handler)
+	Events.ConnectForPlayer(Inventory_Events.DROP_ONE, Inventory.drop_one_handler)
+	Events.ConnectForPlayer(Inventory_Events.DROP_STACK, Inventory.drop_stack_handler)
+	Events.ConnectForPlayer(Inventory_Events.REMOVE, Inventory.remove_item_handler)
 	Events.ConnectForPlayer(Inventory_Events.HOTBAR_SAVE_SLOT, Inventory.save_hotbar_slot)
 else
 	Input.actionPressedEvent:Connect(Inventory.drop_action)

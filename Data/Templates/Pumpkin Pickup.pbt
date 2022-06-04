@@ -1,13 +1,13 @@
 Assets {
-  Id: 13847419989906830265
-  Name: "Mana Pickup"
+  Id: 14873374765596803654
+  Name: "Pumpkin Pickup"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 9647641322356905071
+      RootId: 10315668641955567655
       Objects {
-        Id: 9647641322356905071
-        Name: "Mana Pickup"
+        Id: 10315668641955567655
+        Name: "Pumpkin Pickup"
         Transform {
           Scale {
             X: 1
@@ -16,9 +16,9 @@ Assets {
           }
         }
         ParentId: 4781671109827199097
-        ChildIds: 3873831855344145274
-        ChildIds: 1431622397542462489
-        ChildIds: 5846992421847466905
+        ChildIds: 4542248419845087026
+        ChildIds: 1807623157407922257
+        ChildIds: 2465717398906687690
         UnregisteredParameters {
           Overrides {
             Name: "cs:Inventory_Pickup"
@@ -29,13 +29,13 @@ Assets {
           Overrides {
             Name: "cs:PickupTrigger"
             ObjectReference {
-              SubObjectId: 2535931915172918886
+              SubObjectId: 3024910382619064878
             }
           }
           Overrides {
             Name: "cs:Item"
             ObjectReference {
-              SubObjectId: 4851327974891098251
+              SubObjectId: 5303184572989562051
             }
           }
           Overrides {
@@ -83,13 +83,13 @@ Assets {
           Overrides {
             Name: "cs:Outline"
             ObjectReference {
-              SubObjectId: 16121938924721877974
+              SubObjectId: 15381887691075649438
             }
           }
           Overrides {
             Name: "cs:OutlineTrigger"
             ObjectReference {
-              SubObjectId: 3216106713216064906
+              SubObjectId: 2768090167631499714
             }
           }
           Overrides {
@@ -161,7 +161,7 @@ Assets {
         }
       }
       Objects {
-        Id: 3873831855344145274
+        Id: 4542248419845087026
         Name: "Inventory_Pickup_Client"
         Transform {
           Location {
@@ -174,12 +174,12 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 9647641322356905071
+        ParentId: 10315668641955567655
         UnregisteredParameters {
           Overrides {
             Name: "cs:Root"
             ObjectReference {
-              SubObjectId: 9647641322356905071
+              SubObjectId: 10315668641955567655
             }
           }
         }
@@ -205,7 +205,7 @@ Assets {
         }
       }
       Objects {
-        Id: 1431622397542462489
+        Id: 1807623157407922257
         Name: "Client"
         Transform {
           Location {
@@ -218,10 +218,10 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 9647641322356905071
-        ChildIds: 8724197670298942027
-        ChildIds: 4851327974891098251
-        ChildIds: 17885993417400905642
+        ParentId: 10315668641955567655
+        ChildIds: 721103461059307800
+        ChildIds: 5303184572989562051
+        ChildIds: 10026310708736310521
         Collidable_v2 {
           Value: "mc:ecollisionsetting:forceoff"
         }
@@ -247,7 +247,7 @@ Assets {
         }
       }
       Objects {
-        Id: 8724197670298942027
+        Id: 721103461059307800
         Name: "Inventory Object Outline"
         Transform {
           Scale {
@@ -256,7 +256,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 1431622397542462489
+        ParentId: 1807623157407922257
         TemplateInstance {
           ParameterOverrideMap {
             key: 3443521175387742296
@@ -278,7 +278,7 @@ Assets {
               Overrides {
                 Name: "bp:Object To Outline"
                 ObjectReference {
-                  SubObjectId: 4851327974891098251
+                  SubObjectId: 5303184572989562051
                 }
               }
               Overrides {
@@ -301,22 +301,22 @@ Assets {
         }
       }
       Objects {
-        Id: 4851327974891098251
+        Id: 5303184572989562051
         Name: "Item"
         Transform {
           Location {
-            Z: -0.168646812
+            Z: -0.0918808
           }
           Rotation {
           }
           Scale {
-            X: 0.198776558
-            Y: 0.198776558
-            Z: 0.198776558
+            X: 0.266359
+            Y: 0.266359
+            Z: 0.266359
           }
         }
-        ParentId: 1431622397542462489
-        ChildIds: 10607777210800281322
+        ParentId: 1807623157407922257
+        ChildIds: 3028862614184934431
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -337,20 +337,20 @@ Assets {
         }
       }
       Objects {
-        Id: 10607777210800281322
-        Name: "Bottle 01"
+        Id: 3028862614184934431
+        Name: "Organic - Food - Pumpkin 03"
         Transform {
           Location {
           }
           Rotation {
           }
           Scale {
-            X: 3.33333325
-            Y: 3.33333325
-            Z: 3.33333325
+            X: 1
+            Y: 1
+            Z: 1
           }
         }
-        ParentId: 4851327974891098251
+        ParentId: 5303184572989562051
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -365,7 +365,7 @@ Assets {
         }
         CoreMesh {
           MeshAsset {
-            Id: 9437651154019690538
+            Id: 11194053994054870421
           }
           Teams {
             IsTeamCollisionEnabled: true
@@ -387,7 +387,7 @@ Assets {
         }
       }
       Objects {
-        Id: 17885993417400905642
+        Id: 10026310708736310521
         Name: "Outline Trigger"
         Transform {
           Scale {
@@ -396,7 +396,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 1431622397542462489
+        ParentId: 1807623157407922257
         TemplateInstance {
           ParameterOverrideMap {
             key: 17259491069621030325
@@ -413,7 +413,7 @@ Assets {
         }
       }
       Objects {
-        Id: 5846992421847466905
+        Id: 2465717398906687690
         Name: "Pickup Trigger"
         Transform {
           Scale {
@@ -422,7 +422,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 9647641322356905071
+        ParentId: 10315668641955567655
         TemplateInstance {
           ParameterOverrideMap {
             key: 2859771732851525319
@@ -440,12 +440,12 @@ Assets {
       }
     }
     Assets {
-      Id: 9437651154019690538
-      Name: "Bottle 01"
+      Id: 11194053994054870421
+      Name: "Organic - Food - Pumpkin 03"
       PlatformAssetType: 1
       PrimaryAsset {
         AssetType: "StaticMeshAssetRef"
-        AssetId: "sm_prop_fantasy_bottle_001"
+        AssetId: "sm_prop_org_food_pumpkin_003_ref"
       }
     }
     PrimaryAssetId {

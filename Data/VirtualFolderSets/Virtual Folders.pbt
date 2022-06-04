@@ -20,11 +20,6 @@ Assets {
     }
     Folders {
       VirtualFolderPath: "Inventory System"
-      VirtualFolderPath: "Item Objects"
-      PlatformAssetType: 5
-    }
-    Folders {
-      VirtualFolderPath: "Inventory System"
       VirtualFolderPath: "Slots"
       PlatformAssetType: 5
     }

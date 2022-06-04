@@ -1,6 +1,14 @@
 Entries {
   Key {
-    StringVar: "pinv"
+    StringVar: "phbs"
+  }
+  SimpleValue {
+    IntVar: 1
+  }
+}
+Entries {
+  Key {
+    StringVar: "phb"
   }
   SimpleValue {
     Table {
@@ -10,6 +18,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -19,6 +43,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -28,6 +68,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -37,6 +93,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 34
+              }
+            }
           }
         }
       }
@@ -76,7 +148,7 @@ Entries {
                 IntVar: 1
               }
               SimpleValue {
-                IntVar: 4
+                IntVar: 2
               }
             }
             Entries {
@@ -84,7 +156,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 5
+                IntVar: 16
               }
             }
           }
@@ -101,7 +173,7 @@ Entries {
                 IntVar: 1
               }
               SimpleValue {
-                IntVar: 3
+                IntVar: 4
               }
             }
             Entries {
@@ -126,6 +198,74 @@ Entries {
                 IntVar: 1
               }
               SimpleValue {
+                IntVar: 4
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 4
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 9
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 13
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 10
+        }
+        SimpleValue {
+          Table {
+          }
+        }
+      }
+    }
+  }
+}
+Entries {
+  Key {
+    StringVar: "pinv"
+  }
+  SimpleValue {
+    Table {
+      Entries {
+        Key {
+          IntVar: 1
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
                 IntVar: 3
               }
             }
@@ -135,6 +275,181 @@ Entries {
               }
               SimpleValue {
                 IntVar: 5
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 2
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 3
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 2
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 24
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 4
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 19
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 5
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 4
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 6
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 7
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 6
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 26
+              }
+            }
+          }
+        }
+      }
+      Entries {
+        Key {
+          IntVar: 8
+        }
+        SimpleValue {
+          Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 10
               }
             }
           }
@@ -201,7 +516,7 @@ Entries {
                 IntVar: 1
               }
               SimpleValue {
-                IntVar: 3
+                IntVar: 4
               }
             }
             Entries {
@@ -209,7 +524,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 2
+                IntVar: 5
               }
             }
           }
@@ -226,7 +541,7 @@ Entries {
                 IntVar: 1
               }
               SimpleValue {
-                IntVar: 4
+                IntVar: 3
               }
             }
             Entries {
@@ -234,7 +549,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 3
+                IntVar: 5
               }
             }
           }
@@ -246,6 +561,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 4
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -255,6 +586,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 4
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -264,6 +611,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 4
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -282,6 +645,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -291,6 +670,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -300,6 +695,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -318,6 +729,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 3
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -327,6 +754,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 4
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -372,6 +815,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 4
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }
@@ -493,192 +952,5 @@ Entries {
         }
       }
     }
-  }
-}
-Entries {
-  Key {
-    StringVar: "phb"
-  }
-  SimpleValue {
-    Table {
-      Entries {
-        Key {
-          IntVar: 1
-        }
-        SimpleValue {
-          Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 3
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 3
-              }
-            }
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 2
-        }
-        SimpleValue {
-          Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 4
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 5
-              }
-            }
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 3
-        }
-        SimpleValue {
-          Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 2
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 12
-              }
-            }
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 4
-        }
-        SimpleValue {
-          Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 1
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 28
-              }
-            }
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 5
-        }
-        SimpleValue {
-          Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 4
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 4
-              }
-            }
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 6
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 7
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 8
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 9
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-      Entries {
-        Key {
-          IntVar: 10
-        }
-        SimpleValue {
-          Table {
-          }
-        }
-      }
-    }
-  }
-}
-Entries {
-  Key {
-    StringVar: "phbs"
-  }
-  SimpleValue {
-    IntVar: 1
   }
 }

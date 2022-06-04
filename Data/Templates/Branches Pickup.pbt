@@ -454,4 +454,6 @@ Assets {
     }
   }
   SerializationVersion: 115
+  VirtualFolderPath: "Inventory System"
+  VirtualFolderPath: "Item Templates"
 }

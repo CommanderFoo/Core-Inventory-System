@@ -305,14 +305,14 @@ Assets {
         Name: "Item"
         Transform {
           Location {
-            Z: 5.14821148
+            Z: 1.00805569
           }
           Rotation {
           }
           Scale {
-            X: 0.3
-            Y: 0.3
-            Z: 0.3
+            X: 0.198776558
+            Y: 0.198776558
+            Z: 0.198776558
           }
         }
         ParentId: 1431622397542462489
@@ -454,4 +454,6 @@ Assets {
     }
   }
   SerializationVersion: 115
+  VirtualFolderPath: "Inventory System"
+  VirtualFolderPath: "Item Templates"
 }

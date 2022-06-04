@@ -1,13 +1,13 @@
 Assets {
-  Id: 13847419989906830265
-  Name: "Mana Pickup"
+  Id: 2697717066050931678
+  Name: "Gem Pickup"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 9647641322356905071
+      RootId: 6899561007948754403
       Objects {
-        Id: 9647641322356905071
-        Name: "Mana Pickup"
+        Id: 6899561007948754403
+        Name: "Gem Pickup"
         Transform {
           Scale {
             X: 1
@@ -16,9 +16,9 @@ Assets {
           }
         }
         ParentId: 4781671109827199097
-        ChildIds: 3873831855344145274
-        ChildIds: 1431622397542462489
-        ChildIds: 5846992421847466905
+        ChildIds: 17285370661656341238
+        ChildIds: 14554860458925329813
+        ChildIds: 16913771074414307101
         UnregisteredParameters {
           Overrides {
             Name: "cs:Inventory_Pickup"
@@ -29,13 +29,13 @@ Assets {
           Overrides {
             Name: "cs:PickupTrigger"
             ObjectReference {
-              SubObjectId: 2535931915172918886
+              SubObjectId: 17947429595546931178
             }
           }
           Overrides {
             Name: "cs:Item"
             ObjectReference {
-              SubObjectId: 4851327974891098251
+              SubObjectId: 11056343210955761927
             }
           }
           Overrides {
@@ -83,13 +83,13 @@ Assets {
           Overrides {
             Name: "cs:Outline"
             ObjectReference {
-              SubObjectId: 16121938924721877974
+              SubObjectId: 405260797980854874
             }
           }
           Overrides {
             Name: "cs:OutlineTrigger"
             ObjectReference {
-              SubObjectId: 3216106713216064906
+              SubObjectId: 17762914364427559942
             }
           }
           Overrides {
@@ -161,7 +161,7 @@ Assets {
         }
       }
       Objects {
-        Id: 3873831855344145274
+        Id: 17285370661656341238
         Name: "Inventory_Pickup_Client"
         Transform {
           Location {
@@ -174,12 +174,12 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 9647641322356905071
+        ParentId: 6899561007948754403
         UnregisteredParameters {
           Overrides {
             Name: "cs:Root"
             ObjectReference {
-              SubObjectId: 9647641322356905071
+              SubObjectId: 6899561007948754403
             }
           }
         }
@@ -205,7 +205,7 @@ Assets {
         }
       }
       Objects {
-        Id: 1431622397542462489
+        Id: 14554860458925329813
         Name: "Client"
         Transform {
           Location {
@@ -218,10 +218,10 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 9647641322356905071
-        ChildIds: 8724197670298942027
-        ChildIds: 4851327974891098251
-        ChildIds: 17885993417400905642
+        ParentId: 6899561007948754403
+        ChildIds: 14019681460048764623
+        ChildIds: 11056343210955761927
+        ChildIds: 4875896133265951534
         Collidable_v2 {
           Value: "mc:ecollisionsetting:forceoff"
         }
@@ -247,7 +247,7 @@ Assets {
         }
       }
       Objects {
-        Id: 8724197670298942027
+        Id: 14019681460048764623
         Name: "Inventory Object Outline"
         Transform {
           Scale {
@@ -256,7 +256,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 1431622397542462489
+        ParentId: 14554860458925329813
         TemplateInstance {
           ParameterOverrideMap {
             key: 3443521175387742296
@@ -278,7 +278,7 @@ Assets {
               Overrides {
                 Name: "bp:Object To Outline"
                 ObjectReference {
-                  SubObjectId: 4851327974891098251
+                  SubObjectId: 11056343210955761927
                 }
               }
               Overrides {
@@ -301,22 +301,22 @@ Assets {
         }
       }
       Objects {
-        Id: 4851327974891098251
+        Id: 11056343210955761927
         Name: "Item"
         Transform {
           Location {
-            Z: -0.168646812
+            Z: 23.5641365
           }
           Rotation {
           }
           Scale {
-            X: 0.198776558
-            Y: 0.198776558
-            Z: 0.198776558
+            X: 0.406295955
+            Y: 0.406295955
+            Z: 0.406295955
           }
         }
-        ParentId: 1431622397542462489
-        ChildIds: 10607777210800281322
+        ParentId: 14554860458925329813
+        ChildIds: 16143776347356836075
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -337,20 +337,28 @@ Assets {
         }
       }
       Objects {
-        Id: 10607777210800281322
-        Name: "Bottle 01"
+        Id: 16143776347356836075
+        Name: "Gem - Diamond 6-Sided Polished"
         Transform {
           Location {
           }
           Rotation {
           }
           Scale {
-            X: 3.33333325
-            Y: 3.33333325
-            Z: 3.33333325
+            X: 1
+            Y: 1
+            Z: 1
           }
         }
-        ParentId: 4851327974891098251
+        ParentId: 11056343210955761927
+        UnregisteredParameters {
+          Overrides {
+            Name: "ma:Shared_BaseMaterial:id"
+            AssetReference {
+              Id: 1397060456576486271
+            }
+          }
+        }
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -365,7 +373,7 @@ Assets {
         }
         CoreMesh {
           MeshAsset {
-            Id: 9437651154019690538
+            Id: 13993934911315618978
           }
           Teams {
             IsTeamCollisionEnabled: true
@@ -387,7 +395,7 @@ Assets {
         }
       }
       Objects {
-        Id: 17885993417400905642
+        Id: 4875896133265951534
         Name: "Outline Trigger"
         Transform {
           Scale {
@@ -396,7 +404,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 1431622397542462489
+        ParentId: 14554860458925329813
         TemplateInstance {
           ParameterOverrideMap {
             key: 17259491069621030325
@@ -413,7 +421,7 @@ Assets {
         }
       }
       Objects {
-        Id: 5846992421847466905
+        Id: 16913771074414307101
         Name: "Pickup Trigger"
         Transform {
           Scale {
@@ -422,7 +430,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 9647641322356905071
+        ParentId: 6899561007948754403
         TemplateInstance {
           ParameterOverrideMap {
             key: 2859771732851525319
@@ -440,12 +448,21 @@ Assets {
       }
     }
     Assets {
-      Id: 9437651154019690538
-      Name: "Bottle 01"
+      Id: 13993934911315618978
+      Name: "Gem - Diamond 6-Sided Polished"
       PlatformAssetType: 1
       PrimaryAsset {
         AssetType: "StaticMeshAssetRef"
-        AssetId: "sm_prop_fantasy_bottle_001"
+        AssetId: "sm_diamond_6_sided_polished_001"
+      }
+    }
+    Assets {
+      Id: 1397060456576486271
+      Name: "Magic Glass"
+      PlatformAssetType: 2
+      PrimaryAsset {
+        AssetType: "MaterialAssetRef"
+        AssetId: "fxmi_magic_glass"
       }
     }
     PrimaryAssetId {
