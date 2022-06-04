@@ -1,6 +1,10 @@
 ---@type Audio
 local PICKUP_AUDIO = script:GetCustomProperty("PickupAudio"):WaitForObject()
 
-Events.Connect("Audio.Pickup", function()
-	PICKUP_AUDIO:Play()
+local LOCAL_PLAYER = Game.GetLocalPlayer()
+
+Events.Connect("Audio.Pickup", function(player)
+	if(player == LOCAL_PLAYER) then
+		PICKUP_AUDIO:Play()
+	end
 end)

@@ -1,13 +1,5 @@
 Entries {
   Key {
-    StringVar: "phbs"
-  }
-  SimpleValue {
-    IntVar: 1
-  }
-}
-Entries {
-  Key {
     StringVar: "phb"
   }
   SimpleValue {
@@ -93,22 +85,6 @@ Entries {
         }
         SimpleValue {
           Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 1
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 34
-              }
-            }
           }
         }
       }
@@ -148,7 +124,7 @@ Entries {
                 IntVar: 1
               }
               SimpleValue {
-                IntVar: 2
+                IntVar: 4
               }
             }
             Entries {
@@ -156,7 +132,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 16
+                IntVar: 4
               }
             }
           }
@@ -198,7 +174,7 @@ Entries {
                 IntVar: 1
               }
               SimpleValue {
-                IntVar: 4
+                IntVar: 2
               }
             }
             Entries {
@@ -206,7 +182,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 4
+                IntVar: 16
               }
             }
           }
@@ -243,6 +219,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 34
+              }
+            }
           }
         }
       }
@@ -336,22 +328,6 @@ Entries {
         }
         SimpleValue {
           Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 1
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 19
-              }
-            }
           }
         }
       }
@@ -779,6 +755,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 12
+              }
+            }
           }
         }
       }
@@ -952,5 +944,13 @@ Entries {
         }
       }
     }
+  }
+}
+Entries {
+  Key {
+    StringVar: "phbs"
+  }
+  SimpleValue {
+    IntVar: 1
   }
 }

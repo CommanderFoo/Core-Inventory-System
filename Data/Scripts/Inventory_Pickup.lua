@@ -40,17 +40,11 @@ function Inventory_Pickup.register(root)
 		opts.rotate = root:GetCustomProperty("Rotate")
 		opts.animate_up_down = root:GetCustomProperty("AnimateUpDown")
 		opts.multiplier = root:GetCustomProperty("multiplier")
-		opts.outline_color = root:GetCustomProperty("OutlineColor")
-		opts.outline = root:GetCustomProperty("Outline"):WaitForObject()
 		opts.z_offset = opts.item:GetPosition().z
-		opts.outline_trigger = root:GetCustomProperty("OutlineTrigger"):WaitForObject()
 		
 		if(opts.rotate) then
 			opts.item:RotateContinuous(Vector3.New(0, 0, .8), true)
 		end
-
-		opts.outline_trigger.beginOverlapEvent:Connect(Inventory_Pickup.on_outline_trigger_enter)
-		opts.outline_trigger.endOverlapEvent:Connect(Inventory_Pickup.on_outline_trigger_exit)
 
 		Inventory_Pickup.create_ticker()
 	end		
@@ -62,17 +56,6 @@ function Inventory_Pickup.register(root)
 
 	Inventory_Pickup.pickups[root.id] = opts
 	Inventory_Pickup.count = Inventory_Pickup.count + 1
-end
-
-function Inventory_Pickup.on_outline_trigger_enter(trigger, other)
-	if(Inventory_Pickup.is_player(other)) then
-		if(Environment.IsClient() or Environment.IsSinglePlayerPreview()) then
-			local OUTLINE = Inventory_Pickup.pickups[trigger.parent:FindTemplateRoot().id].outline
-
-			OUTLINE:SetSmartProperty("Enabled", true)
-			OUTLINE:SetSmartProperty("Object To Outline", Inventory_Pickup.pickups[trigger.parent:FindTemplateRoot().id].item)
-		end
-	end
 end
 
 function Inventory_Pickup.is_player(other)
@@ -93,20 +76,14 @@ function Inventory_Pickup.on_trigger_entered(trigger, other)
 			pickup.speed = 100
 			pickup.can_pickup = true
 
-			if(Environment.IsClient() or Environment.IsSinglePlayerPreview()) then
-				Events.Broadcast("Audio.Pickup")
+			if(Environment.IsClient()) then
+				Events.Broadcast("Audio.Pickup", other)
 			end
-			
+
 			if(Environment.IsServer()) then
 				Events.Broadcast(Inventory_Events.PICKUP, pickup.root, other)
 			end
 		end
-	end
-end
-
-function Inventory_Pickup.on_outline_trigger_exit(trigger, other)
-	if(Object.IsValid(trigger.parent) and Inventory_Pickup.is_player(other) and Inventory_Pickup.pickups[trigger:FindTemplateRoot().id] ~= nil) then
-		Inventory_Pickup.pickups[trigger.parent:FindTemplateRoot().id].outline:SetSmartProperty("Enabled", false)
 	end
 end
 

@@ -81,18 +81,6 @@ Assets {
             Float: 50
           }
           Overrides {
-            Name: "cs:Outline"
-            ObjectReference {
-              SubObjectId: 11416299705193302920
-            }
-          }
-          Overrides {
-            Name: "cs:OutlineTrigger"
-            ObjectReference {
-              SubObjectId: 7886807988446995924
-            }
-          }
-          Overrides {
             Name: "cs:Inventory_Pickup:isrep"
             Bool: false
           }
@@ -162,7 +150,7 @@ Assets {
       }
       Objects {
         Id: 8363439165270387492
-        Name: "Inventory_Pickup_Client"
+        Name: "Inventory_Pickup_Default"
         Transform {
           Location {
           }
@@ -222,6 +210,7 @@ Assets {
         ChildIds: 3671607771547500635
         ChildIds: 180455175669557461
         ChildIds: 12957252370939876794
+        ChildIds: 9554720072399065707
         Collidable_v2 {
           Value: "mc:ecollisionsetting:forceoff"
         }
@@ -426,6 +415,62 @@ Assets {
           TemplateAsset {
             Id: 16799078388953106667
           }
+        }
+      }
+      Objects {
+        Id: 9554720072399065707
+        Name: "Inventory_Pickup_Client"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 5912204778567650375
+        UnregisteredParameters {
+          Overrides {
+            Name: "cs:Outline"
+            ObjectReference {
+              SubObjectId: 11416299705193302920
+            }
+          }
+          Overrides {
+            Name: "cs:OutlineTrigger"
+            ObjectReference {
+              SubObjectId: 7886807988446995924
+            }
+          }
+          Overrides {
+            Name: "cs:Item"
+            ObjectReference {
+              SubObjectId: 180455175669557461
+            }
+          }
+        }
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Script {
+          ScriptAsset {
+            Id: 16570813441883333925
+          }
+        }
+        NetworkRelevanceDistance {
+          Value: "mc:eproxyrelevance:critical"
         }
       }
       Objects {
