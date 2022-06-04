@@ -1,6 +1,9 @@
 ---@type Inventory_Events
 local Inventory_Events = require(script:GetCustomProperty("Inventory_Events"))
 
+---@type Inventory
+local Inventory = require(script:GetCustomProperty("Inventory"))
+
 ---@type Ticker
 local Ticker = require(script:GetCustomProperty("Ticker"))
 
@@ -54,6 +57,7 @@ function Inventory_Pickup.register(root)
 
 	opts.root.destroyEvent:Connect(Inventory_Pickup.on_pickup_destroyed)
 	opts.trigger.beginOverlapEvent:Connect(Inventory_Pickup.on_trigger_entered)
+
 	opts.added = time()
 
 	Inventory_Pickup.pickups[root.id] = opts
@@ -63,10 +67,10 @@ end
 function Inventory_Pickup.on_outline_trigger_enter(trigger, other)
 	if(Inventory_Pickup.is_player(other)) then
 		if(Environment.IsClient() or Environment.IsSinglePlayerPreview()) then
-			local OUTLINE = Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].outline
+			local OUTLINE = Inventory_Pickup.pickups[trigger.parent:FindTemplateRoot().id].outline
 
 			OUTLINE:SetSmartProperty("Enabled", true)
-			OUTLINE:SetSmartProperty("Object To Outline", Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].item)
+			OUTLINE:SetSmartProperty("Object To Outline", Inventory_Pickup.pickups[trigger.parent:FindTemplateRoot().id].item)
 		end
 	end
 end
@@ -83,12 +87,16 @@ end
 
 function Inventory_Pickup.on_trigger_entered(trigger, other)
 	if(Inventory_Pickup.is_player(other)) then
-		local pickup = Inventory_Pickup.pickups[trigger:FindTemplateRoot().id]
+		local pickup = Inventory_Pickup.pickups[trigger.parent:FindTemplateRoot().id]
 
-		if(Object.IsValid(pickup.root)) then
+		if(Object.IsValid(pickup.root) and Inventory.can_pickup_item(other, pickup.asset)) then
 			pickup.speed = 100
 			pickup.can_pickup = true
 
+			if(Environment.IsClient() or Environment.IsSinglePlayerPreview()) then
+				Events.Broadcast("Audio.Pickup")
+			end
+			
 			if(Environment.IsServer()) then
 				Events.Broadcast(Inventory_Events.PICKUP, pickup.root, other)
 			end
@@ -98,7 +106,7 @@ end
 
 function Inventory_Pickup.on_outline_trigger_exit(trigger, other)
 	if(Object.IsValid(trigger.parent) and Inventory_Pickup.is_player(other) and Inventory_Pickup.pickups[trigger:FindTemplateRoot().id] ~= nil) then
-		Inventory_Pickup.pickups[trigger:FindTemplateRoot().id].outline:SetSmartProperty("Enabled", false)
+		Inventory_Pickup.pickups[trigger.parent:FindTemplateRoot().id].outline:SetSmartProperty("Enabled", false)
 	end
 end
 

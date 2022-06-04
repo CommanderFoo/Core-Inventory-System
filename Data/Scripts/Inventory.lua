@@ -640,10 +640,14 @@ function Inventory.get_priority_inventories(player)
 	return inventories
 end
 
-function Inventory.can_pickup_item(player, asset_id, count)
+function Inventory.can_pickup_item(player, asset_id)
 	local inventories = Inventory.get_priority_inventories(player)
-	
+
 	for index, entry in ipairs(inventories) do
+		if(entry.inventory.occupiedSlotCount < entry.inventory.slotCount) then
+			return true
+		end
+
 		local items = entry.inventory:GetItems(asset_id)
 
 		for i, item in pairs(items) do
@@ -783,6 +787,10 @@ function Inventory.inventory_changed(inventory, slot_index, slots)
 
 		if(Object.IsValid(child_count)) then
 			child_count.text = tostring(item.count)
+		end
+
+		if(Inventory.ACTIVE.inventory == inventory and Inventory.ACTIVE.slot_index == slot_index) then
+			Inventory.PROXY_COUNT.text = tostring(item.count)
 		end
 	else
 		child_icon.visibility = Visibility.FORCE_OFF
@@ -940,8 +948,8 @@ end
 ---@DEBUG REMOVE
 if(Environment.IsServer()) then
 	Input.actionPressedEvent:Connect(function(player, action)
-		if(action == "Aim") then
-			player:GetInventories()[1]:AddItem(INVENTORY_ASSETS[1].asset, { count = 500 })
+		if(action == "Debug Add Item") then
+			player:GetInventories()[math.random(#player:GetInventories())]:AddItem(INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset, { count = 1 })
 		end
 	end)
 end

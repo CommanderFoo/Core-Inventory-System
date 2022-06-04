@@ -35,6 +35,15 @@ Assets {
   }
 }
 Assets {
+  Id: 9578398714806555845
+  Name: "UI Pop Single 04 SFX"
+  PlatformAssetType: 7
+  PrimaryAsset {
+    AssetType: "AudioAssetRef"
+    AssetId: "sfx_ui_pop_single_04_Cue_ref"
+  }
+}
+Assets {
   Id: 7887238662729938253
   Name: "Sky Dome"
   PlatformAssetType: 6

@@ -50,6 +50,7 @@ Objects {
   ParentId: 4781671109827199097
   ChildIds: 10736260970155672102
   ChildIds: 4593270119659968449
+  ChildIds: 10751865052575020561
   ChildIds: 16615752752333070723
   ChildIds: 12022879565615496328
   ChildIds: 8131351067154343009
@@ -156,6 +157,14 @@ Objects {
             Yaw: 90
           }
         }
+        Overrides {
+          Name: "cs:SlotCount"
+          Int: 24
+        }
+        Overrides {
+          Name: "cs:SlotsPerRow"
+          Int: 8
+        }
       }
     }
     TemplateAsset {
@@ -203,7 +212,7 @@ Objects {
         }
         Overrides {
           Name: "cs:SlotCount"
-          Int: 1
+          Int: 10
         }
         Overrides {
           Name: "cs:PickupPriority"
@@ -256,11 +265,15 @@ Objects {
         }
         Overrides {
           Name: "cs:SlotCount"
-          Int: 1
+          Int: 40
         }
         Overrides {
           Name: "cs:SlotsPerRow"
-          Int: 1
+          Int: 5
+        }
+        Overrides {
+          Name: "cs:PickupPriority"
+          Int: 2
         }
       }
     }
@@ -344,6 +357,165 @@ Objects {
     ScriptAsset {
       Id: 10111855426989570073
     }
+  }
+  NetworkRelevanceDistance {
+    Value: "mc:eproxyrelevance:critical"
+  }
+}
+Objects {
+  Id: 10751865052575020561
+  Name: "Client"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4056815105945944543
+  ChildIds: 14657203865100992715
+  ChildIds: 13993254307831907484
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:forceoff"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:forceoff"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  NetworkContext {
+    MinDetailLevel {
+      Value: "mc:edetaillevel:low"
+    }
+    MaxDetailLevel {
+      Value: "mc:edetaillevel:ultra"
+    }
+  }
+  NetworkRelevanceDistance {
+    Value: "mc:eproxyrelevance:critical"
+  }
+}
+Objects {
+  Id: 13993254307831907484
+  Name: "Inventory_Audio_Client"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 10751865052575020561
+  UnregisteredParameters {
+    Overrides {
+      Name: "cs:PickupAudio"
+      ObjectReference {
+        SelfId: 7992050087494182973
+      }
+    }
+  }
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Script {
+    ScriptAsset {
+      Id: 15464992485385980514
+    }
+  }
+  NetworkRelevanceDistance {
+    Value: "mc:eproxyrelevance:critical"
+  }
+}
+Objects {
+  Id: 14657203865100992715
+  Name: "Audio"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 10751865052575020561
+  ChildIds: 7992050087494182973
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Folder {
+    IsGroup: true
+  }
+  NetworkRelevanceDistance {
+    Value: "mc:eproxyrelevance:critical"
+  }
+}
+Objects {
+  Id: 7992050087494182973
+  Name: "Pickup"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 14657203865100992715
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  AudioInstance {
+    AudioAsset {
+      Id: 9578398714806555845
+    }
+    Volume: 1
+    Falloff: -1
+    Radius: -1
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"

@@ -1,21 +1,21 @@
 Assets {
-  Id: 370900379657318047
-  Name: "Book"
+  Id: 12185415287135871786
+  Name: "Pickup Trigger"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 12499954380400017395
+      RootId: 2859771732851525319
       Objects {
-        Id: 12499954380400017395
-        Name: "Fantasy Book 02"
+        Id: 2859771732851525319
+        Name: "Pickup Trigger"
         Transform {
           Scale {
-            X: 1
-            Y: 1
-            Z: 1
+            X: 2.72379947
+            Y: 2.72379947
+            Z: 2.72379947
           }
         }
-        ParentId: 4781671109827199097
+        ParentId: 11950647702050303750
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -28,37 +28,18 @@ Assets {
         EditorIndicatorVisibility {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
-        CoreMesh {
-          MeshAsset {
-            Id: 572112202728889102
-          }
-          Teams {
+        Trigger {
+          TeamSettings {
             IsTeamCollisionEnabled: true
             IsEnemyCollisionEnabled: true
           }
-          StaticMesh {
-            Physics {
-              Mass: 100
-              LinearDamping: 0.01
-            }
-            BoundsScale: 1
+          TriggerShape_v2 {
+            Value: "mc:etriggershape:sphere"
           }
-        }
-        Relevance {
-          Value: "mc:eproxyrelevance:critical"
         }
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
-      }
-    }
-    Assets {
-      Id: 572112202728889102
-      Name: "Fantasy Book 02"
-      PlatformAssetType: 1
-      PrimaryAsset {
-        AssetType: "StaticMeshAssetRef"
-        AssetId: "sm_prop_fan_book_002_ref"
       }
     }
     PrimaryAssetId {
@@ -67,6 +48,4 @@ Assets {
     }
   }
   SerializationVersion: 115
-  VirtualFolderPath: "Inventory System"
-  VirtualFolderPath: "Item Templates"
 }

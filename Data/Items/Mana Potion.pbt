@@ -1,27 +1,27 @@
 Assets {
-  Id: 18384392046183835442
-  Name: "Coffee Beans"
+  Id: 10230004328590537649
+  Name: "Mana Potion"
   PlatformAssetType: 33
   SerializationVersion: 115
   ItemAsset {
-    CustomName: "Coffee Beans"
-    MaximumStackCount: 100
-    ItemTemplateAssetId: 10208314571334523668
+    CustomName: "Mana Potion"
+    MaximumStackCount: 5
+    ItemTemplateAssetId: 13847419989906830265
     CustomParameters {
       Overrides {
         Name: "cs:Icon"
         AssetReference {
-          Id: 4083375966430084893
+          Id: 10947710073004246349
         }
       }
     }
     Assets {
-      Id: 4083375966430084893
-      Name: "Fantasy Beans 001"
+      Id: 10947710073004246349
+      Name: "Fantasy Spell Potion 005"
       PlatformAssetType: 9
       PrimaryAsset {
         AssetType: "PlatformBrushAssetRef"
-        AssetId: "UI_Fantasy_Food_Beans_001"
+        AssetId: "UI_Fantasy_Potion_005"
       }
     }
   }

@@ -1,27 +1,27 @@
 Assets {
-  Id: 18384392046183835442
-  Name: "Coffee Beans"
+  Id: 2274318445354310211
+  Name: "Mana Potion - Copy"
   PlatformAssetType: 33
   SerializationVersion: 115
   ItemAsset {
-    CustomName: "Coffee Beans"
+    CustomName: "Rock"
     MaximumStackCount: 100
-    ItemTemplateAssetId: 10208314571334523668
+    ItemTemplateAssetId: 13847419989906830265
     CustomParameters {
       Overrides {
         Name: "cs:Icon"
         AssetReference {
-          Id: 4083375966430084893
+          Id: 6817672012392341097
         }
       }
     }
     Assets {
-      Id: 4083375966430084893
-      Name: "Fantasy Beans 001"
+      Id: 6817672012392341097
+      Name: "Survival Craft Rock 001"
       PlatformAssetType: 9
       PrimaryAsset {
         AssetType: "PlatformBrushAssetRef"
-        AssetId: "UI_Fantasy_Food_Beans_001"
+        AssetId: "UI_Survival_Crafting_Rock_001"
       }
     }
   }
