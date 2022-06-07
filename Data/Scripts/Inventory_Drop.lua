@@ -60,13 +60,13 @@ function Inventory_Drop.pickup_drop(obj, player)
 				for i, item in pairs(items) do
 					local max = item.maximumStackCount
 					local item_count = item.count
-					
+
 					if(item_count < max) then
 						local space = max - item_count
-					
+
 						if(pick_count > space) then
 							local over = pick_count - space
-					
+
 							to_add = to_add + (pick_count - over)
 							pick_count = over
 						else
@@ -83,15 +83,14 @@ function Inventory_Drop.pickup_drop(obj, player)
 				inv.inventory:AddItem(entry.asset, { count = pick_count })
 				pick_count = 0
 			end
-			
+
 			to_add = 0
 		end
 
-		
 		if(pick_count > 0) then
 			local position = player:GetWorldPosition()
 			local hit = World.Raycast(position, position + (-Vector3.UP * 300), { ignorePlayers = true })
-			
+
 			if(hit ~= nil) then
 				position = hit:GetImpactPosition()
 			end
@@ -99,9 +98,13 @@ function Inventory_Drop.pickup_drop(obj, player)
 			Inventory_Drop.drop(entry.item, pick_count, position)
 		end
 
-		Task.Spawn(function()
+		if(Environment.IsSinglePlayerPreview()) then
+			Task.Spawn(function()
+				Inventory_Drop.container:DestroySharedAsset(obj)
+			end, 0.12)
+		else
 			Inventory_Drop.container:DestroySharedAsset(obj)
-		end, .15)
+		end
 	end
 end
 

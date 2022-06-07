@@ -28,10 +28,10 @@ end
 
 function Inventory_Pickup.register(root)
 	local opts = {
-	
+
 		root = root,
 		trigger = root:GetCustomProperty("PickupTrigger"):WaitForObject()
-	
+
 	}
 
 	if(Environment.IsClient() or Environment.IsSinglePlayerPreview()) then
@@ -41,13 +41,13 @@ function Inventory_Pickup.register(root)
 		opts.animate_up_down = root:GetCustomProperty("AnimateUpDown")
 		opts.multiplier = root:GetCustomProperty("multiplier")
 		opts.z_offset = opts.item:GetPosition().z
-		
+
 		if(opts.rotate) then
 			opts.item:RotateContinuous(Vector3.New(0, 0, .8), true)
 		end
 
 		Inventory_Pickup.create_ticker()
-	end		
+	end
 
 	opts.root.destroyEvent:Connect(Inventory_Pickup.on_pickup_destroyed)
 	opts.trigger.beginOverlapEvent:Connect(Inventory_Pickup.on_trigger_entered)

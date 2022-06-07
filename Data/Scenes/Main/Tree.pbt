@@ -16,7 +16,6 @@ Objects {
   }
   ChildIds: 16270802511419725645
   ChildIds: 4056815105945944543
-  ChildIds: 8059474695649284867
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -32,50 +31,6 @@ Objects {
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
-  }
-}
-Objects {
-  Id: 8059474695649284867
-  Name: "Bean Pickup"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 14137138681320844337
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Bean Pickup"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            X: -490.139954
-            Y: 61.668396
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 10208314571334523668
-    }
   }
 }
 Objects {
