@@ -4,6 +4,12 @@ Assets {
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
+      Overrides {
+        Name: "cs:Inventory_Pickup"
+        AssetReference {
+          Id: 8099296177848779074
+        }
+      }
     }
   }
   SerializationVersion: 115

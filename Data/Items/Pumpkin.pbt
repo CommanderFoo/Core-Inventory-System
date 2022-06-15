@@ -5,7 +5,7 @@ Assets {
   SerializationVersion: 115
   ItemAsset {
     CustomName: "Pumpkin"
-    MaximumStackCount: 50
+    MaximumStackCount: 5
     ItemTemplateAssetId: 14873374765596803654
     CustomParameters {
       Overrides {

@@ -5,7 +5,7 @@ Assets {
   SerializationVersion: 115
   ItemAsset {
     CustomName: "Rock"
-    MaximumStackCount: 100
+    MaximumStackCount: 5
     ItemTemplateAssetId: 5848822719085026840
     CustomParameters {
       Overrides {

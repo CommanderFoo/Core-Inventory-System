@@ -162,7 +162,7 @@ Assets {
       }
       Objects {
         Id: 13566479696548412767
-        Name: "Inventory_Pickup_Client"
+        Name: "Inventory_Pickup_Default"
         Transform {
           Location {
           }
@@ -222,6 +222,7 @@ Assets {
         ChildIds: 17087498849124234912
         ChildIds: 14615357257194208942
         ChildIds: 7784399501063660353
+        ChildIds: 16710573450966939790
         Collidable_v2 {
           Value: "mc:ecollisionsetting:forceoff"
         }
@@ -410,6 +411,64 @@ Assets {
           TemplateAsset {
             Id: 16799078388953106667
           }
+        }
+      }
+      Objects {
+        Id: 16710573450966939790
+        Name: "Inventory_Pickup_Client"
+        Transform {
+          Location {
+            X: -251.960754
+            Y: -508.493378
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 11122035206489545276
+        UnregisteredParameters {
+          Overrides {
+            Name: "cs:Outline"
+            ObjectReference {
+              SubObjectId: 6213822771200744947
+            }
+          }
+          Overrides {
+            Name: "cs:OutlineTrigger"
+            ObjectReference {
+              SubObjectId: 11900380414139593647
+            }
+          }
+          Overrides {
+            Name: "cs:Item"
+            ObjectReference {
+              SubObjectId: 14615357257194208942
+            }
+          }
+        }
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Script {
+          ScriptAsset {
+            Id: 16570813441883333925
+          }
+        }
+        NetworkRelevanceDistance {
+          Value: "mc:eproxyrelevance:critical"
         }
       }
       Objects {

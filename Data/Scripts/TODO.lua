@@ -1,4 +1,6 @@
 --[[
+Drop at pointer position?
+
 Hover tips
 	Hover tips to show information about the item in the inventory.
 
@@ -12,8 +14,7 @@ Saving and Loading
 
 --[[
 left click right click quickly breaks (fake item)
-Drop at pointer position
-right click in inventory on item drops one on none matching item
+right click in inventory on item drops one on none matching item [FIXED]
 Hot bar full, items not going into inventory
 
 Error running Lua task: [B2BC2E45B89F7F71] Inventory:293: attempt to index a nil value (local 'item')

@@ -5,7 +5,7 @@ Assets {
   SerializationVersion: 115
   ItemAsset {
     CustomName: "Branches"
-    MaximumStackCount: 100
+    MaximumStackCount: 5
     ItemTemplateAssetId: 15114056476892985360
     CustomParameters {
       Overrides {

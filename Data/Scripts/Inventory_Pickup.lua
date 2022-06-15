@@ -34,7 +34,9 @@ function Inventory_Pickup.register(root)
 
 	}
 
-	if(Environment.IsClient() or Environment.IsSinglePlayerPreview()) then
+	if(Environment.IsClient()) then
+		print("hello")
+
 		opts.item = root:GetCustomProperty("Item"):WaitForObject()
 		opts.up_down_curve = root:GetCustomProperty("UpDownCurve")
 		opts.rotate = root:GetCustomProperty("Rotate")
@@ -61,7 +63,7 @@ end
 function Inventory_Pickup.is_player(other)
 	local player = other:IsA("Player") and other or (other:IsA("Vehicle") and other.driver or nil)
 
-	if(player ~= nil) then
+	if(player ~= nil and player == Inventory_Pickup.player) then
 		return true
 	end
 

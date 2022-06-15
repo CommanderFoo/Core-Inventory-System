@@ -338,11 +338,11 @@ Objects {
         }
         Overrides {
           Name: "cs:SlotCount"
-          Int: 40
+          Int: 4
         }
         Overrides {
           Name: "cs:SlotsPerRow"
-          Int: 5
+          Int: 4
         }
         Overrides {
           Name: "cs:PickupPriority"

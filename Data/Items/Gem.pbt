@@ -5,7 +5,7 @@ Assets {
   SerializationVersion: 115
   ItemAsset {
     CustomName: "Gem"
-    MaximumStackCount: 100
+    MaximumStackCount: 5
     ItemTemplateAssetId: 2697717066050931678
     CustomParameters {
       Overrides {

@@ -555,7 +555,10 @@ function Inventory.drop_action(player, action)
 
 					if(can_drop) then
 						Events.BroadcastToServer(Inventory_Events.DROP_ONE, Inventory.ACTIVE.inventory.id, Inventory.ACTIVE.hovered_inventory.id, Inventory.ACTIVE.slot_index, Inventory.ACTIVE.hovered_slot_index, true)
-						Inventory.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
+
+						if(current_item.itemAssetId == item_asset_id) then
+							Inventory.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
+						end
 					end
 
 					if(new_count == 0) then
