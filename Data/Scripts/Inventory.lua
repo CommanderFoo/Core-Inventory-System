@@ -924,11 +924,13 @@ function Inventory.find_lookup_item_by_index(index)
 			return data_item
 		end
 	end
+
+	return nil
 end
 
 ---Find an item based on an asset id.
 ---@param item_asset_id string
----@return table
+---@return table, integer
 function Inventory.find_lookup_item_by_asset_id(item_asset_id)
 	for i, data_item in ipairs(INVENTORY_ASSETS) do
 		local id = CoreString.Split(data_item.asset, ":")
