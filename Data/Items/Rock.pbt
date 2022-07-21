@@ -2,7 +2,7 @@ Assets {
   Id: 2274318445354310211
   Name: "Rock"
   PlatformAssetType: 33
-  SerializationVersion: 115
+  SerializationVersion: 118
   ItemAsset {
     CustomName: "Rock"
     MaximumStackCount: 5

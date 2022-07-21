@@ -35,6 +35,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:low"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 864181965577000609
@@ -78,6 +79,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 1593872431898998203
@@ -149,6 +151,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:medium"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 15451685474051339442
@@ -208,6 +211,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:medium"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 13805664801445939363
@@ -283,6 +287,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:medium"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 4926269533963566576
@@ -327,6 +332,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
     }
     Assets {
@@ -361,7 +367,7 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 115
+  SerializationVersion: 118
   VirtualFolderPath: "Inventory System"
   VirtualFolderPath: "Item Effects"
 }

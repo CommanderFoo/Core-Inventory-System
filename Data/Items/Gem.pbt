@@ -2,7 +2,7 @@ Assets {
   Id: 8221789454165149272
   Name: "Gem"
   PlatformAssetType: 33
-  SerializationVersion: 115
+  SerializationVersion: 118
   ItemAsset {
     CustomName: "Gem"
     MaximumStackCount: 5

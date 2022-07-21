@@ -41,6 +41,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 14240649463821707122
@@ -102,6 +103,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 3646703086997159412
@@ -155,6 +157,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 11010190364456646908
@@ -224,6 +227,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 12107523552722501973
@@ -307,6 +311,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 8451547051492361927
@@ -351,6 +356,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
     }
     Assets {
@@ -367,6 +373,6 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 115
+  SerializationVersion: 118
   VirtualFolderPath: "Inventory System"
 }

@@ -2,7 +2,7 @@ Assets {
   Id: 10230004328590537649
   Name: "Mana Potion"
   PlatformAssetType: 33
-  SerializationVersion: 115
+  SerializationVersion: 118
   ItemAsset {
     CustomName: "Mana Potion"
     MaximumStackCount: 5

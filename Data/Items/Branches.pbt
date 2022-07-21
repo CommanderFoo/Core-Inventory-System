@@ -2,7 +2,7 @@ Assets {
   Id: 14968134499033307644
   Name: "Branches"
   PlatformAssetType: 33
-  SerializationVersion: 115
+  SerializationVersion: 118
   ItemAsset {
     CustomName: "Branches"
     MaximumStackCount: 5

@@ -147,6 +147,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 8363439165270387492
@@ -191,6 +192,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 5912204778567650375
@@ -234,6 +236,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 3671607771547500635
@@ -288,6 +291,7 @@ Assets {
             Id: 107364086786845811
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 180455175669557461
@@ -324,6 +328,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 4353924373396388117
@@ -390,6 +395,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 12957252370939876794
@@ -416,6 +422,7 @@ Assets {
             Id: 16799078388953106667
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 9554720072399065707
@@ -472,6 +479,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 1928113482940348809
@@ -498,6 +506,7 @@ Assets {
             Id: 12185415287135871786
           }
         }
+        IsReplicationEnabledByDefault: true
       }
     }
     Assets {
@@ -523,7 +532,7 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 115
+  SerializationVersion: 118
   VirtualFolderPath: "Inventory System"
   VirtualFolderPath: "Item Templates"
 }

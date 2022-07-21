@@ -41,6 +41,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:medium"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 2237278166346986589
@@ -129,6 +130,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
     }
     Assets {
@@ -145,7 +147,7 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 115
+  SerializationVersion: 118
   VirtualFolderPath: "Inventory System"
   VirtualFolderPath: "Item Effects"
 }

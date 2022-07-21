@@ -88,6 +88,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 17735132007176028767
@@ -159,6 +160,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 9472809460194108830
@@ -230,6 +232,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 324281747223349984
@@ -285,6 +288,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 2543227901657266366
@@ -340,6 +344,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 16503906686502048982
@@ -411,6 +416,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 15755353160874131835
@@ -483,6 +489,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 15619986201336408170
@@ -555,6 +562,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 11167445923321681904
@@ -626,6 +634,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 1467277428421801004
@@ -710,6 +719,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 1911836874402532981
@@ -779,6 +789,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 10317098048782159033
@@ -860,6 +871,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 17592029742623518068
@@ -962,6 +974,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
     }
     Assets {
@@ -987,7 +1000,7 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 115
+  SerializationVersion: 118
   VirtualFolderPath: "Inventory System"
   VirtualFolderPath: "Slots"
 }

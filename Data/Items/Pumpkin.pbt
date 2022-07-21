@@ -2,7 +2,7 @@ Assets {
   Id: 9477123807619640825
   Name: "Pumpkin"
   PlatformAssetType: 33
-  SerializationVersion: 115
+  SerializationVersion: 118
   ItemAsset {
     CustomName: "Pumpkin"
     MaximumStackCount: 5

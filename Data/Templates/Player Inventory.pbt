@@ -166,6 +166,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 2500953123942684900
@@ -201,6 +202,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 9076164386770402219
@@ -251,6 +253,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 15065771817459362588
@@ -292,6 +295,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 743378354195726532
@@ -353,6 +357,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 6300197238816624524
@@ -407,6 +412,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 6292591663627849679
@@ -462,6 +468,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 14289887156831265265
@@ -533,6 +540,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 14844936100065309165
@@ -605,6 +613,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 10691943758495249195
@@ -677,6 +686,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 4687245618954537196
@@ -748,6 +758,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 6902830251164886791
@@ -803,6 +814,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 7014555396256135866
@@ -858,6 +870,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 5777401043938452477
@@ -929,6 +942,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 6026759713469640503
@@ -1001,6 +1015,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 8194065810440726693
@@ -1073,6 +1088,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 4323404581045333396
@@ -1144,6 +1160,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 16616713666081671397
@@ -1228,6 +1245,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 10515405227916180255
@@ -1285,6 +1303,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 9906497988187534985
@@ -1341,6 +1360,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 1590362262712198598
@@ -1385,6 +1405,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
     }
     Assets {
@@ -1410,7 +1431,7 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 115
+  SerializationVersion: 118
   VirtualFolderPath: "Inventory System"
   VirtualFolderPath: "Inventories"
 }

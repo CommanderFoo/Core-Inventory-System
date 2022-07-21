@@ -30,7 +30,7 @@ Assets {
       }
     }
   }
-  SerializationVersion: 115
+  SerializationVersion: 118
   VirtualFolderPath: "Inventory System"
   VirtualFolderPath: "API"
 }

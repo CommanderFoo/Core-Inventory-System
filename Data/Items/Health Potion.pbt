@@ -2,7 +2,7 @@ Assets {
   Id: 16682527484454613368
   Name: "Health Potion"
   PlatformAssetType: 33
-  SerializationVersion: 115
+  SerializationVersion: 118
   ItemAsset {
     CustomName: "Health Potion"
     MaximumStackCount: 5

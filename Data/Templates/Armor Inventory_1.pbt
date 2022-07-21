@@ -168,6 +168,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 4744273400981095351
@@ -203,6 +204,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 7318093300271285187
@@ -247,6 +249,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 4433747024315996968
@@ -288,6 +291,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 6496115731275101807
@@ -349,6 +353,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 16936384737219765831
@@ -405,6 +410,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 5810800949664031969
@@ -460,6 +466,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 8535507963681886655
@@ -531,6 +538,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 11596403341863320598
@@ -603,6 +611,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 353408210654798953
@@ -675,6 +684,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 15430001382692067317
@@ -746,6 +756,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 10173933852012680284
@@ -801,6 +812,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 16547171684141006638
@@ -856,6 +868,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 996454852895128167
@@ -927,6 +940,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 9039618651730158298
@@ -999,6 +1013,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 10427202050271926010
@@ -1071,6 +1086,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 4259068706814474300
@@ -1142,6 +1158,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 7314209734278581157
@@ -1226,6 +1243,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 1233016953411068269
@@ -1289,6 +1307,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 3307723175948113775
@@ -1342,6 +1361,7 @@ Assets {
             Id: 118775985379504992
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 12702742772033891728
@@ -1429,6 +1449,7 @@ Assets {
             Id: 118775985379504992
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 11536119574923842403
@@ -1516,6 +1537,7 @@ Assets {
             Id: 118775985379504992
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 13886788964490345132
@@ -1603,6 +1625,7 @@ Assets {
             Id: 118775985379504992
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 1871600874058972963
@@ -1698,6 +1721,7 @@ Assets {
             Id: 118775985379504992
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 7594781660473702445
@@ -1793,6 +1817,7 @@ Assets {
             Id: 118775985379504992
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 7531743467730015465
@@ -1880,6 +1905,7 @@ Assets {
             Id: 118775985379504992
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 14717813595744771862
@@ -1967,6 +1993,7 @@ Assets {
             Id: 118775985379504992
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 14548884974670768883
@@ -2070,6 +2097,7 @@ Assets {
             Id: 118775985379504992
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 7270317912739735379
@@ -2114,6 +2142,7 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
+        IsReplicationEnabledByDefault: true
       }
     }
     Assets {
@@ -2184,7 +2213,7 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 115
+  SerializationVersion: 118
   VirtualFolderPath: "Inventory System"
   VirtualFolderPath: "Inventories"
 }

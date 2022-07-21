@@ -87,6 +87,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 1011772035714833027
@@ -158,6 +159,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 8891090642596527426
@@ -229,6 +231,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 16329318139300288169
@@ -298,6 +301,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 8590866795804415077
@@ -379,6 +383,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 879926025679140264
@@ -481,6 +486,7 @@ Assets {
             }
           }
         }
+        IsReplicationEnabledByDefault: true
       }
     }
     Assets {
@@ -506,7 +512,7 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 115
+  SerializationVersion: 118
   VirtualFolderPath: "Inventory System"
   VirtualFolderPath: "Slots"
 }

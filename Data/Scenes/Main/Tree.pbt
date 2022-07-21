@@ -32,6 +32,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 4056815105945944543
@@ -75,6 +76,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 3399513445889837083
@@ -120,6 +122,7 @@ Objects {
       Id: 2907989484309433646
     }
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 9484211090637358869
@@ -191,6 +194,7 @@ Objects {
       Id: 17881690212890626348
     }
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 9433971498664992443
@@ -244,6 +248,7 @@ Objects {
       Id: 17881690212890626348
     }
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 8131351067154343009
@@ -297,6 +302,7 @@ Objects {
       Id: 2366760204233403941
     }
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 12022879565615496328
@@ -338,7 +344,7 @@ Objects {
         }
         Overrides {
           Name: "cs:SlotCount"
-          Int: 4
+          Int: 20
         }
         Overrides {
           Name: "cs:SlotsPerRow"
@@ -354,6 +360,7 @@ Objects {
       Id: 17543768331625296425
     }
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 16615752752333070723
@@ -390,6 +397,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 5851658729303734582
@@ -434,6 +442,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 10751865052575020561
@@ -475,6 +484,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 13993254307831907484
@@ -519,6 +529,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 14657203865100992715
@@ -554,6 +565,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 7992050087494182973
@@ -593,6 +605,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 4593270119659968449
@@ -628,6 +641,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 13138830252238135915
@@ -672,6 +686,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 10736260970155672102
@@ -711,6 +726,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 16270802511419725645
@@ -750,6 +766,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 14982843161775482339
@@ -804,6 +821,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 10005074784157121906
@@ -841,6 +859,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 10505154200474359396
@@ -946,6 +965,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 7155168770677928712
@@ -1031,6 +1051,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 13551641546322277000
@@ -1167,6 +1188,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 16813558807825262224
@@ -1210,6 +1232,7 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 9086936746104183945
@@ -1248,4 +1271,5 @@ Objects {
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
   }
+  IsReplicationEnabledByDefault: true
 }
