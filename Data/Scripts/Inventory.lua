@@ -61,15 +61,15 @@ Inventory.Type = {
 -- Server
 
 function Inventory.give_items(opts)
-	-- for i = 1, opts.inventory.slotCount do
-	-- 	local item = INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset
+	for i = 1, opts.inventory.slotCount do
+		local item = INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset
 
-	-- 	if(opts.inventory:CanAddItem(item, { count = 500 })) then
-	-- 		opts.inventory:AddItem(item, { count = 500 })
-	-- 	end
-	-- end
+		if(opts.inventory:CanAddItem(item, { count = 1 })) then
+			opts.inventory:AddItem(item, { count = 1 })
+		end
+	end
 
-	--opts.inventory:AddItem(INVENTORY_ASSETS[1].asset, { count = 1500 })
+	opts.inventory:AddItem(INVENTORY_ASSETS[1].asset, { count = 1 })
 end
 
 function Inventory.create(opts)
