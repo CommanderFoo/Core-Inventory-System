@@ -11,12 +11,6 @@ Assets {
         }
       }
       Overrides {
-        Name: "cs:Inventory_Pickup"
-        AssetReference {
-          Id: 8099296177848779074
-        }
-      }
-      Overrides {
         Name: "cs:Inventory_Events"
         AssetReference {
           Id: 9805636833553611479

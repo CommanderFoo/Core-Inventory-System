@@ -20,11 +20,15 @@ function Inventory_Drop.get_drop(obj)
 end
 
 function Inventory_Drop.drop(item, count, position)
-	local spawned_item = Inventory_Drop.container:SpawnSharedAsset(item.pickup_template, {
+	local spawned_item = World.SpawnAsset(item.pickup_template, {
 
-		position = position
+		parent = Inventory_Drop.container,
+		position = position,
+		networkContext = NetworkContextType.NETWORKED
 
 	})
+
+	spawned_item.name = item.asset
 
 	spawned_item.destroyEvent:Connect(function()
 		_G["Inventory.Drops"][spawned_item] = nil
@@ -40,7 +44,7 @@ function Inventory_Drop.drop(item, count, position)
 	}
 end
 
-function Inventory_Drop.pickup_drop(obj, player)
+function Inventory_Drop.pickup_drop(obj, player, is_shared)
 	local entry = _G["Inventory.Drops"][obj]
 
 	if(entry ~= nil) then
@@ -98,12 +102,8 @@ function Inventory_Drop.pickup_drop(obj, player)
 			Inventory_Drop.drop(entry.item, pick_count, position)
 		end
 
-		if(Environment.IsSinglePlayerPreview()) then
-			Task.Spawn(function()
-				Inventory_Drop.container:DestroySharedAsset(obj)
-			end, 0.12)
-		else
-			Inventory_Drop.container:DestroySharedAsset(obj)
+		if(not is_shared) then
+			_G["Inventory.Drops"][obj] = nil
 		end
 	end
 end
@@ -116,7 +116,7 @@ function Inventory_Drop.clear_old_drops()
 		if((entry.ts + EXPIRE_TIME) < ts) then
 			local dropped_item = obj
 
-			Inventory_Drop.container:DestroySharedAsset(dropped_item)
+			dropped_item:Destroy()
 			_G["Inventory.Drops"][obj] = nil
 		end
 	end

@@ -16,26 +16,14 @@ Assets {
           }
         }
         ParentId: 4781671109827199097
-        ChildIds: 8363439165270387492
+        ChildIds: 14830761984959309288
         ChildIds: 5912204778567650375
-        ChildIds: 1928113482940348809
+        ChildIds: 751240688122820843
         UnregisteredParameters {
           Overrides {
-            Name: "cs:Inventory_Pickup"
+            Name: "cs:Inventory"
             AssetReference {
-              Id: 8099296177848779074
-            }
-          }
-          Overrides {
-            Name: "cs:PickupTrigger"
-            ObjectReference {
-              SubObjectId: 7125550805143490104
-            }
-          }
-          Overrides {
-            Name: "cs:Item"
-            ObjectReference {
-              SubObjectId: 180455175669557461
+              Id: 12879219911357857649
             }
           }
           Overrides {
@@ -77,32 +65,16 @@ Assets {
             Bool: true
           }
           Overrides {
-            Name: "cs:multiplier"
+            Name: "cs:Multiplier"
             Float: 50
           }
           Overrides {
-            Name: "cs:Inventory_Pickup:isrep"
+            Name: "cs:IsShared"
             Bool: false
           }
           Overrides {
-            Name: "cs:Inventory_Pickup:ml"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:PickupTrigger:isrep"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:PickupTrigger:ml"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:Item:isrep"
-            Bool: false
-          }
-          Overrides {
-            Name: "cs:Item:ml"
-            Bool: false
+            Name: "cs:FollowSpeed"
+            Int: 5000
           }
           Overrides {
             Name: "cs:UpDownCurve:isrep"
@@ -129,6 +101,7 @@ Assets {
             Bool: false
           }
         }
+        WantsNetworking: true
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -147,11 +120,10 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
-        IsReplicationEnabledByDefault: true
       }
       Objects {
-        Id: 8363439165270387492
-        Name: "Inventory_Pickup_Default"
+        Id: 14830761984959309288
+        Name: "Inventory_Pickup_Server"
         Transform {
           Location {
           }
@@ -171,7 +143,20 @@ Assets {
               SubObjectId: 14137138681320844337
             }
           }
+          Overrides {
+            Name: "cs:PickupTrigger"
+            ObjectReference {
+              SubObjectId: 751240688122820843
+            }
+          }
+          Overrides {
+            Name: "cs:Inventory_Events"
+            AssetReference {
+              Id: 9805636833553611479
+            }
+          }
         }
+        WantsNetworking: true
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -213,6 +198,7 @@ Assets {
         ChildIds: 180455175669557461
         ChildIds: 12957252370939876794
         ChildIds: 9554720072399065707
+        WantsNetworking: true
         Collidable_v2 {
           Value: "mc:ecollisionsetting:forceoff"
         }
@@ -236,7 +222,6 @@ Assets {
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:critical"
         }
-        IsReplicationEnabledByDefault: true
       }
       Objects {
         Id: 3671607771547500635
@@ -441,6 +426,18 @@ Assets {
         ParentId: 5912204778567650375
         UnregisteredParameters {
           Overrides {
+            Name: "cs:Root"
+            ObjectReference {
+              SubObjectId: 14137138681320844337
+            }
+          }
+          Overrides {
+            Name: "cs:Item"
+            ObjectReference {
+              SubObjectId: 180455175669557461
+            }
+          }
+          Overrides {
             Name: "cs:Outline"
             ObjectReference {
               SubObjectId: 11416299705193302920
@@ -453,9 +450,9 @@ Assets {
             }
           }
           Overrides {
-            Name: "cs:Item"
+            Name: "cs:PickupTrigger"
             ObjectReference {
-              SubObjectId: 180455175669557461
+              SubObjectId: 751240688122820843
             }
           }
         }
@@ -482,31 +479,52 @@ Assets {
         IsReplicationEnabledByDefault: true
       }
       Objects {
-        Id: 1928113482940348809
+        Id: 751240688122820843
         Name: "Pickup Trigger"
         Transform {
           Scale {
-            X: 1
-            Y: 1
-            Z: 1
+            X: 2.72379947
+            Y: 2.72379947
+            Z: 2.72379947
           }
         }
         ParentId: 14137138681320844337
-        TemplateInstance {
-          ParameterOverrideMap {
-            key: 2859771732851525319
-            value {
-              Overrides {
-                Name: "Name"
-                String: "Pickup Trigger"
-              }
-            }
+        WantsNetworking: true
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Trigger {
+          TeamSettings {
+            IsTeamCollisionEnabled: true
+            IsEnemyCollisionEnabled: true
           }
-          TemplateAsset {
-            Id: 12185415287135871786
+          TriggerShape_v2 {
+            Value: "mc:etriggershape:sphere"
+          }
+          InteractionTemplate {
+          }
+          BreadcrumbTemplate {
           }
         }
-        IsReplicationEnabledByDefault: true
+        InstanceHistory {
+          SelfId: 7125550805143490104
+          SubobjectId: 2859771732851525319
+          InstanceId: 1928113482940348809
+          TemplateId: 12185415287135871786
+          WasRoot: true
+        }
+        NetworkRelevanceDistance {
+          Value: "mc:eproxyrelevance:critical"
+        }
       }
     }
     Assets {
