@@ -1,13 +1,5 @@
 Entries {
   Key {
-    StringVar: "phbs"
-  }
-  SimpleValue {
-    IntVar: 1
-  }
-}
-Entries {
-  Key {
     StringVar: "phb"
   }
   SimpleValue {
@@ -56,7 +48,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 1
+                IntVar: 5
               }
             }
           }
@@ -68,22 +60,6 @@ Entries {
         }
         SimpleValue {
           Table {
-            Entries {
-              Key {
-                IntVar: 1
-              }
-              SimpleValue {
-                IntVar: 1
-              }
-            }
-            Entries {
-              Key {
-                IntVar: 2
-              }
-              SimpleValue {
-                IntVar: 5
-              }
-            }
           }
         }
       }
@@ -102,6 +78,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 2
+              }
+            }
           }
         }
       }
@@ -151,6 +143,14 @@ Entries {
         }
       }
     }
+  }
+}
+Entries {
+  Key {
+    StringVar: "phbs"
+  }
+  SimpleValue {
+    IntVar: 1
   }
 }
 Entries {
@@ -278,7 +278,7 @@ Entries {
                 IntVar: 2
               }
               SimpleValue {
-                IntVar: 1
+                IntVar: 4
               }
             }
           }
@@ -290,6 +290,22 @@ Entries {
         }
         SimpleValue {
           Table {
+            Entries {
+              Key {
+                IntVar: 1
+              }
+              SimpleValue {
+                IntVar: 1
+              }
+            }
+            Entries {
+              Key {
+                IntVar: 2
+              }
+              SimpleValue {
+                IntVar: 5
+              }
+            }
           }
         }
       }

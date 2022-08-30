@@ -403,6 +403,13 @@ function Inventory.set_drag_proxy(proxy)
 	Inventory.PROXY_COUNT = Inventory.PROXY_ICON:FindChildByName("Count")
 end
 
+---@param tooltip UIControl
+function Inventory.set_tooltip(tooltip)
+	Inventory.TOOLTIP = tooltip
+	Inventory.TOOLTIP_NAME = tooltip:FindDescendantByName("Item Name")
+	Inventory.TOOLTIP_DESC = tooltip:FindDescendantByName("Item Description")
+end
+
 ---Enables the cursor for the player.
 function Inventory.enable_cursor()
 	UI.SetCanCursorInteractWithUI(true)
@@ -572,6 +579,28 @@ function Inventory.drop_action(player, action)
 	end
 end
 
+function Inventory.show_tooltip()	
+	local item = Inventory.ACTIVE.hovered_inventory:GetItem(Inventory.ACTIVE.hovered_slot_index)
+
+	if(item ~= nil) then
+		Inventory.TOOLTIP.visibility = Visibility.FORCE_ON
+		Inventory.TOOLTIP_NAME.text = item.name
+		Inventory.TOOLTIP_DESC.text = item:GetCustomProperty("TooltipDescription")
+	end
+end
+
+function Inventory.hide_tooltip()
+	Inventory.TOOLTIP.visibility = Visibility.FORCE_OFF
+end
+
+function Inventory.is_tooltip_showing()
+	if(Inventory.TOOLTIP.visibility == Visibility.FORCE_ON) then
+		return true
+	end
+
+	return false
+end
+
 ---Triggers when the player hovers over a slot.
 ---@param button UIButton
 ---@param params table
@@ -587,6 +616,7 @@ function Inventory.on_hovered_event(button, params)
 	Inventory.ACTIVE.hovered_slot_index = params.slot_index
 	Inventory.ACTIVE.hovered_inventory = params.inventory
 	Inventory.ACTIVE.hovered_slot = params.slot
+	Inventory.show_tooltip()
 end
 
 ---Triggers when the player unhovers on a slot.
@@ -600,6 +630,7 @@ function Inventory.on_unhovered_event(button, params)
 	end
 
 	params.slot:GetCustomProperty("Background"):GetObject():SetColor(params.slot_background_normal)
+	Inventory.hide_tooltip()
 end
 
 ---Looks up an inventory.

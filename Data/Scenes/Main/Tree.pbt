@@ -104,6 +104,7 @@ Objects {
   ChildIds: 9433971498664992443
   ChildIds: 9484211090637358869
   ChildIds: 3399513445889837083
+  ChildIds: 16512755781344736806
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -123,6 +124,40 @@ Objects {
     Value: "mc:eproxyrelevance:critical"
   }
   IsReplicationEnabledByDefault: true
+}
+Objects {
+  Id: 16512755781344736806
+  Name: "Tooltip"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4056815105945944543
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 7189892930104440088
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Tooltip"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -87.3912811
+            Y: -0.975377083
+            Z: 3.05175781e-05
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 1492013694673447387
+    }
+  }
 }
 Objects {
   Id: 3399513445889837083
@@ -344,6 +379,23 @@ Objects {
         }
       }
     }
+    ParameterOverrideMap {
+      key: 12600169729114424956
+      value {
+        Overrides {
+          Name: "Anchor"
+          Enum {
+            Value: "mc:euianchor:bottomcenter"
+          }
+        }
+        Overrides {
+          Name: "Dock"
+          Enum {
+            Value: "mc:euianchor:bottomcenter"
+          }
+        }
+      }
+    }
     TemplateAsset {
       Id: 2366760204233403941
     }
@@ -369,6 +421,27 @@ Objects {
   }
   TemplateInstance {
     ParameterOverrideMap {
+      key: 6300197238816624524
+      value {
+        Overrides {
+          Name: "Anchor"
+          Enum {
+            Value: "mc:euianchor:middleright"
+          }
+        }
+        Overrides {
+          Name: "Dock"
+          Enum {
+            Value: "mc:euianchor:middleright"
+          }
+        }
+        Overrides {
+          Name: "UIX"
+          Float: -50
+        }
+      }
+    }
+    ParameterOverrideMap {
       key: 16211408270603517451
       value {
         Overrides {
@@ -388,25 +461,12 @@ Objects {
           Rotator {
           }
         }
-        Overrides {
-          Name: "cs:SlotCount"
-          Int: 20
-        }
-        Overrides {
-          Name: "cs:SlotsPerRow"
-          Int: 4
-        }
-        Overrides {
-          Name: "cs:PickupPriority"
-          Int: 2
-        }
       }
     }
     TemplateAsset {
       Id: 17543768331625296425
     }
   }
-  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 10751865052575020561

@@ -14,6 +14,10 @@ Assets {
           Id: 4083375966430084893
         }
       }
+      Overrides {
+        Name: "cs:TooltipDescription"
+        String: "This is an item."
+      }
     }
     Assets {
       Id: 4083375966430084893
