@@ -235,7 +235,7 @@ Assets {
       }
       Objects {
         Id: 9343618491549622118
-        Name: "Hotbar_Server"
+        Name: "Inventory_Hotbar_Server"
         Transform {
           Location {
           }
@@ -846,7 +846,7 @@ Assets {
       }
       Objects {
         Id: 8644038496056306344
-        Name: "Hotbar_Client"
+        Name: "Inventory_Hotbar_Client"
         Transform {
           Location {
           }

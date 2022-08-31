@@ -1,3 +1,3 @@
-"asset[Asset Reference]","pickup_template[Asset Reference]","throw_template[Asset Reference]"
-"FF227B294C4DE732","8DAB380443D69B14","2F724F4B5CFE9555"
-"780F4692BF25C628","1BF032F98FE1E341","2F724F4B5CFE9555"
+"Asset[Asset Reference]","Template[Asset Reference]","EquipmentTemplate[Asset Reference]","Icon[Asset Reference]","Name[String]","Description[String]"
+"780F4692BF25C628","1BF032F98FE1E341","A1889D5F4BC28B32","AC09C40A5171CCC3","Sticks","Used for crafting various items."
+"35CC08B0299209A8","144DFC6AE7E4AC08","B9B7E1E8CB03C342","87C0CA8C3E84CE09","Basic Shotgun","A basic shotgun that does low damage."

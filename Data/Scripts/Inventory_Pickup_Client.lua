@@ -1,5 +1,4 @@
 local ROOT = script:GetCustomProperty("Root"):WaitForObject()
-local ASSET = ROOT.parent
 
 ---@type Inventory
 local Inventory = require(ROOT:GetCustomProperty("Inventory"))
@@ -24,6 +23,8 @@ local ANIMATE_UP_DOWN = ROOT:GetCustomProperty("AnimateUpDown")
 
 local FOLLOW_SPEED = ROOT:GetCustomProperty("FollowSpeed")
 
+local ROTATE = ROOT:GetCustomProperty("Rotate")
+
 local LOCAL_PLAYER = Game.GetLocalPlayer()
 
 local evts = {}
@@ -32,6 +33,10 @@ local speed = 0
 local z_offset = ITEM:GetPosition().z
 local dropped = time()
 local has_picked_up = false
+
+if(ROTATE) then
+	ITEM:RotateContinuous(Rotation.New(0, 0, 15))
+end
 
 local function on_outline_trigger_exit(trigger, other)
 	if(has_picked_up) then
@@ -59,7 +64,7 @@ local function on_pickup_trigger_enter(trigger, other)
 		return
 	end
 
-	if(LOCAL_PLAYER == other and Inventory.can_pickup_item(other, ASSET)) then
+	if(LOCAL_PLAYER == other and Inventory.can_pickup_item(other, ROOT.name)) then
 		can_pickup = true
 		speed = 100
 

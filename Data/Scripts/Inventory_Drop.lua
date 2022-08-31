@@ -20,7 +20,7 @@ function Inventory_Drop.get_drop(obj)
 end
 
 function Inventory_Drop.drop(item, count, position)
-	local spawned_item = World.SpawnAsset(item.pickup_template, {
+	local spawned_item = World.SpawnAsset(item.Template, {
 
 		parent = Inventory_Drop.container,
 		position = position,
@@ -28,7 +28,7 @@ function Inventory_Drop.drop(item, count, position)
 
 	})
 
-	spawned_item.name = item.asset
+	spawned_item.name = item.Asset
 
 	spawned_item.destroyEvent:Connect(function()
 		_G["Inventory.Drops"][spawned_item] = nil
@@ -38,7 +38,7 @@ function Inventory_Drop.drop(item, count, position)
 
 		ts = DateTime.CurrentTime().millisecondsSinceEpoch,
 		count = count,
-		asset = item.asset,
+		asset = item.Asset,
 		item = item
 
 	}
@@ -48,6 +48,8 @@ function Inventory_Drop.pickup_drop(obj, player, is_shared)
 	local entry = _G["Inventory.Drops"][obj]
 
 	if(entry ~= nil) then
+		Task.Wait()
+		
 		local inventories = Inventory.get_priority_inventories(player)
 		local pick_count = entry.count
 
@@ -59,7 +61,7 @@ function Inventory_Drop.pickup_drop(obj, player, is_shared)
 			end
 
 			if(to_add ~= -1) then
-				local items = inv.inventory:GetItems(entry.asset, { itemAssetId = entry.asset })
+				local items = Inventory.get_items(inv.inventory, entry.asset)
 
 				for i, item in pairs(items) do
 					local max = item.maximumStackCount
@@ -90,6 +92,8 @@ function Inventory_Drop.pickup_drop(obj, player, is_shared)
 
 			to_add = 0
 		end
+
+		Events.BroadcastToPlayer(player, Inventory_Events.TRY_EQUIP_ITEM)
 
 		if(pick_count > 0) then
 			local position = player:GetWorldPosition()

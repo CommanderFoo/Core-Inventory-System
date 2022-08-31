@@ -7,6 +7,8 @@ local DEBUG = script:GetCustomProperty("Debug")
 local SLOT = script:GetCustomProperty("Slot")
 local HOTBAR_SLOT = script:GetCustomProperty("HotbarSlot")
 
+local THROWN_ITEM_EFFECT = script:GetCustomProperty("ThrownItemEffect")
+
 local DROPPED_ITEM_BOUNCES = script:GetCustomProperty("DroppedItemBounces")
 local DROPPED_ITEM_BOUNCINESS = script:GetCustomProperty("DroppedItemBounciness")
 local DROPPED_DIST_FROM_PLAYER = script:GetCustomProperty("DroppedDistFromPlayer")
@@ -62,14 +64,14 @@ Inventory.Type = {
 
 function Inventory.give_items(opts)
 	for i = 1, opts.inventory.slotCount do
-		local item = INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset
+		local item = INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].Asset
 
 		if(opts.inventory:CanAddItem(item, { count = 1 })) then
 			opts.inventory:AddItem(item, { count = 1 })
 		end
 	end
 
-	opts.inventory:AddItem(INVENTORY_ASSETS[1].asset, { count = 1 })
+	opts.inventory:AddItem(INVENTORY_ASSETS[1].Asset, { count = 1 })
 end
 
 function Inventory.create(opts)
@@ -129,8 +131,8 @@ function Inventory.load(opts)
 				local item = Inventory.find_lookup_item_by_index(entry[1])
 
 				if(item ~= nil) then
-					if(opts.inventory:CanAddItem(item.asset, { count = entry[2], slot = slot_index })) then
-						opts.inventory:AddItem(item.asset, { count = entry[2], slot = slot_index })
+					if(opts.inventory:CanAddItem(item.Asset, { count = entry[2], slot = slot_index })) then
+						opts.inventory:AddItem(item.Asset, { count = entry[2], slot = slot_index })
 					end
 				end
 			end
@@ -203,7 +205,7 @@ function Inventory.save_hotbar_slot(player, storage_slot_key, slot_index)
 	end
 end
 
----Removes a player's inventory.
+---Removes a player's inventory.e
 ---@param player Player
 function Inventory.remove_player_inventory(player)
 	for id, obj in pairs(Inventory.INVENTORIES) do
@@ -213,6 +215,10 @@ function Inventory.remove_player_inventory(player)
 			Inventory.INVENTORY_PANELS[id] = nil
 		end
 	end
+end
+
+function Inventory.get_inventory_by_id(id)
+	return Inventory.INVENTORIES[id].inventory
 end
 
 ---Moves an item from one slot to another. This supports cross inventories.
@@ -298,6 +304,10 @@ function Inventory.drop_one_handler(player, from_inventory_id, to_inventory_id, 
 
 				Inventory.drop_item_into_world(owner, item_asset_id, 1, from_inventory, from_slot_index)
 				from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
+
+				if(not Object.IsValid(item)) then
+					Events.Broadcast(Inventory_Events.UNEQUIP_ITEM_ON_DROP, player, from_slot_index)
+				end
 			end
 		elseif(to_inventory:CanAddItem(item_asset_id, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
 			to_inventory:AddItem(item_asset_id, { count = 1, slot = to_slot_index })
@@ -321,6 +331,7 @@ function Inventory.drop_stack_handler(player, from_inventory_id, to_inventory_id
 
 				Inventory.drop_item_into_world(owner, item_asset_id, item.count, from_inventory, from_slot_index)
 				from_inventory:RemoveFromSlot(from_slot_index, { count = item.count })
+				Events.Broadcast(Inventory_Events.UNEQUIP_ITEM_ON_DROP, player, from_slot_index)
 			end
 		end
 	end
@@ -329,7 +340,7 @@ end
 function Inventory.drop_item_into_world(owner, item_asset_id, count, inventory, from_slot_index)
 	local item = Inventory.find_lookup_item_by_asset_id(item_asset_id)
 	local forward = owner:GetViewWorldRotation() * Vector3.FORWARD
-	local projectile = Projectile.Spawn(item.throw_template, owner:GetWorldPosition() + (Vector3.UP * DROPPED_UP_DIST_FROM_PLAYER) + (forward * DROPPED_DIST_FROM_PLAYER), forward)
+	local projectile = Projectile.Spawn(THROWN_ITEM_EFFECT, owner:GetWorldPosition() + (Vector3.UP * DROPPED_UP_DIST_FROM_PLAYER) + (forward * DROPPED_DIST_FROM_PLAYER), forward)
 
 	projectile.shouldDieOnImpact = false
 	projectile.speed = DROPPED_ITEM_SPEED
@@ -583,9 +594,20 @@ function Inventory.show_tooltip()
 	local item = Inventory.ACTIVE.hovered_inventory:GetItem(Inventory.ACTIVE.hovered_slot_index)
 
 	if(item ~= nil) then
+		local lookup_item = Inventory.find_lookup_item_by_asset_id(item.itemAssetId)
+
 		Inventory.TOOLTIP.visibility = Visibility.FORCE_ON
-		Inventory.TOOLTIP_NAME.text = item.name
-		Inventory.TOOLTIP_DESC.text = item:GetCustomProperty("TooltipDescription")
+		Inventory.TOOLTIP_NAME.text = lookup_item.Name
+		Inventory.TOOLTIP_DESC.text = lookup_item.Description
+
+		local size = Inventory.TOOLTIP_DESC:ComputeApproximateSize()
+
+		while(size == nil) do
+			size = Inventory.TOOLTIP_DESC:ComputeApproximateSize()
+			Task.Wait()
+		end
+	
+		Inventory.TOOLTIP.height = 60 + size.y
 	end
 end
 
@@ -616,6 +638,7 @@ function Inventory.on_hovered_event(button, params)
 	Inventory.ACTIVE.hovered_slot_index = params.slot_index
 	Inventory.ACTIVE.hovered_inventory = params.inventory
 	Inventory.ACTIVE.hovered_slot = params.slot
+
 	Inventory.show_tooltip()
 end
 
@@ -678,6 +701,21 @@ function Inventory.get_priority_inventories(player)
 	return inventories
 end
 
+function Inventory.get_items(inv, asset_id)
+	local items = inv:GetItems()
+	local matched_items = {}
+
+	asset_id = CoreString.Split(asset_id, ":")
+
+	for index, item in ipairs(items) do
+		if(item.itemAssetId == asset_id) then
+			matched_items[#matched_items + 1] = item
+		end
+	end
+
+	return matched_items
+end
+
 function Inventory.can_pickup_item(player, asset_id)
 	local inventories = Inventory.get_priority_inventories(player)
 
@@ -686,7 +724,7 @@ function Inventory.can_pickup_item(player, asset_id)
 			return true
 		end
 
-		local items = entry.inventory:GetItems(asset_id)
+		local items = Inventory.get_items(entry.inventory, asset_id)
 
 		for i, item in pairs(items) do
 			if(item.count < item.maximumStackCount) then
@@ -818,7 +856,8 @@ function Inventory.inventory_changed(inventory, slot_index, slots)
 	local child_count = slots:GetChildren()[slot_index]:GetCustomProperty("Count"):GetObject()
 
 	if(item ~= nil) then
-		local icon = item:GetCustomProperty("Icon")
+		local lookup_item = Inventory.find_lookup_item_by_asset_id(item.itemAssetId)
+		local icon = lookup_item.Icon
 
 		child_icon:SetImage(icon)
 		child_icon.visibility = Visibility.FORCE_ON
@@ -964,7 +1003,7 @@ end
 ---@return table, integer
 function Inventory.find_lookup_item_by_asset_id(item_asset_id)
 	for i, data_item in ipairs(INVENTORY_ASSETS) do
-		local id = CoreString.Split(data_item.asset, ":")
+		local id = CoreString.Split(data_item.Asset, ":")
 
 		if(id == item_asset_id) then
 			return data_item, i
@@ -989,7 +1028,7 @@ end
 if(Environment.IsServer()) then
 	Input.actionPressedEvent:Connect(function(player, action)
 		if(action == "Debug Add Item") then
-			player:GetInventories()[math.random(#player:GetInventories())]:AddItem(INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].asset, { count = math.random(10) })
+			player:GetInventories()[math.random(#player:GetInventories())]:AddItem(INVENTORY_ASSETS[math.random(#INVENTORY_ASSETS)].Asset, { count = math.random(10) })
 		end
 	end)
 end

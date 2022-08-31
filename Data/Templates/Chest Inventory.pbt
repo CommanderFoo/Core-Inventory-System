@@ -27,11 +27,11 @@ Assets {
           }
           Overrides {
             Name: "cs:SlotCount"
-            Int: 16
+            Int: 36
           }
           Overrides {
             Name: "cs:SlotsPerRow"
-            Int: 8
+            Int: 9
           }
           Overrides {
             Name: "cs:StorageKey"
@@ -240,7 +240,7 @@ Assets {
       }
       Objects {
         Id: 736062018856191188
-        Name: "Chest_Inventory_Server"
+        Name: "Inventory_Chest_Server"
         Transform {
           Location {
           }
@@ -1416,7 +1416,7 @@ Assets {
       }
       Objects {
         Id: 5791908621500875874
-        Name: "Chest_Inventory_Client"
+        Name: "Inventory_Chest_Client"
         Transform {
           Location {
           }

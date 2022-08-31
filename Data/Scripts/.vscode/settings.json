@@ -2,7 +2,10 @@
 
 	"files.exclude": {
 
-		 "**/*.pbt": true 
+		 "**/*.pbt": true,
+		 "Weapon*.lua": true,
+		 "ProjectileW*.lua": true,
+		 "EquipmentPickup*": true
 
 	},
 	"Lua.diagnostics.disable": [

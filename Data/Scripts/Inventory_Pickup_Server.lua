@@ -1,3 +1,6 @@
+---@type Inventory
+local Inventory = require(script:GetCustomProperty("Inventory"))
+
 local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 
 local IS_SHARED = ROOT:GetCustomProperty("IsShared")
@@ -21,7 +24,9 @@ local function get_total_players_picked_up()
 end
 
 PICKUP_TRIGGER.beginOverlapEvent:Connect(function(trigger, other)
-	if(other:IsA("Player") and not players[other]) then
+	local entry = _G["Inventory.Drops"][ROOT]
+
+	if(other:IsA("Player") and not players[other] and Inventory.can_pickup_item(other, entry.asset)) then
 		if(IS_SHARED) then
 			players[other] = other
 

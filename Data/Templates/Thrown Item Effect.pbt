@@ -291,7 +291,7 @@ Assets {
       }
       Objects {
         Id: 4926269533963566576
-        Name: "Throw_Effect_Destroyed_Client"
+        Name: "Inventory_Throw_Effect_Destroyed_Client"
         Transform {
           Location {
           }

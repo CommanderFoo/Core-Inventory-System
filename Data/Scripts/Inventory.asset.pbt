@@ -39,6 +39,12 @@ Assets {
         }
       }
       Overrides {
+        Name: "cs:ThrownItemEffect"
+        AssetReference {
+          Id: 3418882252228957525
+        }
+      }
+      Overrides {
         Name: "cs:DroppedItemBounces"
         Int: 8
       }
@@ -140,6 +146,14 @@ Assets {
       }
       Overrides {
         Name: "cs:DroppedItemProjLength:subcategory"
+        String: "DroppedItemSettings"
+      }
+      Overrides {
+        Name: "cs:ThrownItemEffect:category"
+        String: "Custom"
+      }
+      Overrides {
+        Name: "cs:ThrownItemEffect:subcategory"
         String: "DroppedItemSettings"
       }
     }

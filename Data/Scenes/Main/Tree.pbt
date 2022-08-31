@@ -16,6 +16,7 @@ Objects {
   }
   ChildIds: 16270802511419725645
   ChildIds: 4056815105945944543
+  ChildIds: 6174579881253526101
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -33,6 +34,40 @@ Objects {
     Value: "mc:eproxyrelevance:critical"
   }
   IsReplicationEnabledByDefault: true
+}
+Objects {
+  Id: 6174579881253526101
+  Name: "Advanced Shotgun"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  WantsNetworking: true
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 17886792431389911077
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Shotgun"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -2020.09485
+            Y: -3353.88843
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 13382413207709401922
+    }
+  }
 }
 Objects {
   Id: 4056815105945944543
@@ -56,7 +91,6 @@ Objects {
   ChildIds: 12022879565615496328
   ChildIds: 8131351067154343009
   ChildIds: 9433971498664992443
-  ChildIds: 9484211090637358869
   ChildIds: 3399513445889837083
   ChildIds: 16512755781344736806
   Collidable_v2 {
@@ -92,6 +126,48 @@ Objects {
   ParentId: 4056815105945944543
   TemplateInstance {
     ParameterOverrideMap {
+      key: 54666255652980159
+      value {
+        Overrides {
+          Name: "Height"
+          Int: 120
+        }
+        Overrides {
+          Name: "Width"
+          Int: 260
+        }
+        Overrides {
+          Name: "Visible"
+          Enum {
+            Value: "mc:evisibilitysetting:forceoff"
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 2706120170509256451
+      value {
+        Overrides {
+          Name: "Color"
+          Color {
+            R: 0.187820792
+            G: 0.0843762606
+            B: 0.0109600984
+            A: 0.6
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 6592134428415072945
+      value {
+        Overrides {
+          Name: "Opacity"
+          Float: 1
+        }
+      }
+    }
+    ParameterOverrideMap {
       key: 7189892930104440088
       value {
         Overrides {
@@ -104,6 +180,95 @@ Objects {
             X: -87.3912811
             Y: -0.975377083
             Z: 3.05175781e-05
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 9010608095558872989
+      value {
+        Overrides {
+          Name: "Color"
+          Color {
+            R: 0.571125031
+            G: 0.274677306
+            B: 0.088655591
+            A: 0.6
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 10116855485341550712
+      value {
+        Overrides {
+          Name: "Color"
+          Color {
+            R: 0.361306876
+            G: 0.135633335
+            B: 0.0262412187
+            A: 0.6
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 16686969169900918804
+      value {
+        Overrides {
+          Name: "Font"
+          AssetReference {
+            Id: 3081743918018300983
+          }
+        }
+        Overrides {
+          Name: "OutlineSize"
+          Int: 1
+        }
+        Overrides {
+          Name: "OutlineColor"
+          Color {
+            A: 1
+          }
+        }
+        Overrides {
+          Name: "Size"
+          Int: 15
+        }
+        Overrides {
+          Name: "Color"
+          Color {
+            R: 1
+            G: 0.935238063
+            B: 0.49
+            A: 1
+          }
+        }
+        Overrides {
+          Name: "Label"
+          String: ""
+        }
+        Overrides {
+          Name: "UIY"
+          Float: 40
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 17573487062967763596
+      value {
+        Overrides {
+          Name: "Color"
+          Color {
+            R: 0.982250869
+            G: 0.558340669
+            B: 0.246201396
+            A: 0.6
           }
         }
       }
@@ -160,78 +325,6 @@ Objects {
   IsReplicationEnabledByDefault: true
 }
 Objects {
-  Id: 9484211090637358869
-  Name: "Chest Inventory"
-  Transform {
-    Location {
-      X: 332.608704
-    }
-    Rotation {
-      Yaw: 89.9999924
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 4718527058990615992
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Chest Inventory"
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-            Yaw: 89.9999847
-          }
-        }
-        Overrides {
-          Name: "cs:SlotCount"
-          Int: 36
-        }
-        Overrides {
-          Name: "cs:SlotsPerRow"
-          Int: 9
-        }
-        Overrides {
-          Name: "Scale"
-          Vector {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        Overrides {
-          Name: "cs:StorageKey"
-          String: "cinv2"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            X: 563.233032
-            Y: 223.639282
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 17881690212890626348
-    }
-  }
-  IsReplicationEnabledByDefault: true
-}
-Objects {
   Id: 9433971498664992443
   Name: "Chest Inventory"
   Transform {
@@ -257,24 +350,16 @@ Objects {
           String: "Chest Inventory"
         }
         Overrides {
-          Name: "Rotation"
-          Rotator {
-            Yaw: 90
-          }
-        }
-        Overrides {
-          Name: "cs:SlotCount"
-          Int: 36
-        }
-        Overrides {
-          Name: "cs:SlotsPerRow"
-          Int: 9
-        }
-        Overrides {
           Name: "Position"
           Vector {
             X: 563.233032
             Y: -315.592896
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+            Yaw: 90
           }
         }
       }
@@ -324,29 +409,8 @@ Objects {
           }
         }
         Overrides {
-          Name: "cs:SlotCount"
-          Int: 10
-        }
-        Overrides {
           Name: "cs:PickupPriority"
           Int: 1
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 12600169729114424956
-      value {
-        Overrides {
-          Name: "Anchor"
-          Enum {
-            Value: "mc:euianchor:bottomcenter"
-          }
-        }
-        Overrides {
-          Name: "Dock"
-          Enum {
-            Value: "mc:euianchor:bottomcenter"
-          }
         }
       }
     }
@@ -375,27 +439,6 @@ Objects {
   }
   TemplateInstance {
     ParameterOverrideMap {
-      key: 6300197238816624524
-      value {
-        Overrides {
-          Name: "Anchor"
-          Enum {
-            Value: "mc:euianchor:middleright"
-          }
-        }
-        Overrides {
-          Name: "Dock"
-          Enum {
-            Value: "mc:euianchor:middleright"
-          }
-        }
-        Overrides {
-          Name: "UIX"
-          Float: -50
-        }
-      }
-    }
-    ParameterOverrideMap {
       key: 16211408270603517451
       value {
         Overrides {
@@ -414,6 +457,10 @@ Objects {
           Name: "Rotation"
           Rotator {
           }
+        }
+        Overrides {
+          Name: "cs:PickupPriority"
+          Int: 2
         }
       }
     }
@@ -669,7 +716,7 @@ Objects {
 }
 Objects {
   Id: 13138830252238135915
-  Name: "Save_Inventory_Server"
+  Name: "Inventory_Save_Server"
   Transform {
     Location {
     }
