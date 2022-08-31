@@ -304,10 +304,6 @@ function Inventory.drop_one_handler(player, from_inventory_id, to_inventory_id, 
 
 				Inventory.drop_item_into_world(owner, item_asset_id, 1, from_inventory, from_slot_index)
 				from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
-
-				if(not Object.IsValid(item)) then
-					Events.Broadcast(Inventory_Events.UNEQUIP_ITEM_ON_DROP, player, from_slot_index)
-				end
 			end
 		elseif(to_inventory:CanAddItem(item_asset_id, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
 			to_inventory:AddItem(item_asset_id, { count = 1, slot = to_slot_index })
@@ -331,7 +327,6 @@ function Inventory.drop_stack_handler(player, from_inventory_id, to_inventory_id
 
 				Inventory.drop_item_into_world(owner, item_asset_id, item.count, from_inventory, from_slot_index)
 				from_inventory:RemoveFromSlot(from_slot_index, { count = item.count })
-				Events.Broadcast(Inventory_Events.UNEQUIP_ITEM_ON_DROP, player, from_slot_index)
 			end
 		end
 	end

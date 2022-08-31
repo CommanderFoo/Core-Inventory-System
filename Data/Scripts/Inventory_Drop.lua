@@ -93,8 +93,6 @@ function Inventory_Drop.pickup_drop(obj, player, is_shared)
 			to_add = 0
 		end
 
-		Events.BroadcastToPlayer(player, Inventory_Events.TRY_EQUIP_ITEM)
-
 		if(pick_count > 0) then
 			local position = player:GetWorldPosition()
 			local hit = World.Raycast(position, position + (-Vector3.UP * 300), { ignorePlayers = true })

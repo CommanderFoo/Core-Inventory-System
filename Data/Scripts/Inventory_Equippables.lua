@@ -57,18 +57,6 @@ function Inventory_Equippables.unequip(player)
 	end
 end
 
-function Inventory_Equippables.unequip_on_drop(player, index)
-	if(Inventory_Equippables.equipped_slot == index and Object.IsValid(Inventory_Equippables.equipped_item)) then
-		Inventory_Equippables.equipped_item:Unequip(player)
-
-		if(Object.IsValid(Inventory_Equippables.equipped_item)) then
-			Inventory_Equippables.equipped_item:Destroy()
-		end
-
-		Inventory_Equippables.equipped_slot = -1
-	end
-end
-
 function Inventory_Equippables.try_equip(inventory, item_index)
 	if(inventory == nil) then
 		return
@@ -95,7 +83,6 @@ end
 if(Environment.IsServer()) then
 	Events.ConnectForPlayer(Inventory_Events.EQUIP_ITEM, Inventory_Equippables.equip)
 	Events.ConnectForPlayer(Inventory_Events.UNEQUIP_ITEM, Inventory_Equippables.unequip)
-	Events.Connect(Inventory_Events.UNEQUIP_ITEM_ON_DROP, Inventory_Equippables.unequip_on_drop)
 end
 
 return Inventory_Equippables

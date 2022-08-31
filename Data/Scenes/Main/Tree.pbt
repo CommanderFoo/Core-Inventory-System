@@ -16,7 +16,6 @@ Objects {
   }
   ChildIds: 16270802511419725645
   ChildIds: 4056815105945944543
-  ChildIds: 1711050878963083992
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -34,43 +33,6 @@ Objects {
     Value: "mc:eproxyrelevance:critical"
   }
   IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 1711050878963083992
-  Name: "Stick"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4781671109827199097
-  WantsNetworking: true
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 10668888808268486891
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Stick"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 11639726269557541682
-    }
-  }
 }
 Objects {
   Id: 4056815105945944543

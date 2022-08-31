@@ -132,6 +132,8 @@ if(inventory ~= nil) then
 		type = Inventory.Type.HOTBAR_INVENTORY
 
 	})
+
+	inventory.changedEvent:Connect(try_equip)
 end
 
 update_task = Task.Spawn(save_active_slot, 30)
@@ -146,5 +148,3 @@ select_slot(1)
 
 LOCAL_PLAYER.privateNetworkedDataChangedEvent:Connect(on_private_networked_data_changed)
 on_private_networked_data_changed(LOCAL_PLAYER, "inventory.hotbar." .. STORAGE_SLOT_KEY)
-
-Events.Connect(Inventory_Events.TRY_EQUIP_ITEM, try_equip)
