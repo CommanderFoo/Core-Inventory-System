@@ -24,7 +24,7 @@ Assets {
       }
       Overrides {
         Name: "cs:Debug"
-        Bool: true
+        Bool: false
       }
       Overrides {
         Name: "cs:Slot"

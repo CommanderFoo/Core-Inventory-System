@@ -15,12 +15,30 @@ Assets {
       }
     }
     Assets {
-      Id: 9782041094341840393
-      Name: "Survival Shotgun 002"
+      Id: 2698612484296151683
+      Name: "Fantasy Scroll 006"
       PlatformAssetType: 9
       PrimaryAsset {
         AssetType: "PlatformBrushAssetRef"
-        AssetId: "UI_Survival_Weapon_Shotgun_002"
+        AssetId: "UI_Fantasy_Equip_Scroll_006"
+      }
+    }
+    Assets {
+      Id: 8259702750895395027
+      Name: "Fantasy Mushroom 005"
+      PlatformAssetType: 9
+      PrimaryAsset {
+        AssetType: "PlatformBrushAssetRef"
+        AssetId: "UI_Fantasy_Food_Mushroom_005"
+      }
+    }
+    Assets {
+      Id: 10857037881117614693
+      Name: "Fantasy Fruit 005"
+      PlatformAssetType: 9
+      PrimaryAsset {
+        AssetType: "PlatformBrushAssetRef"
+        AssetId: "UI_Fantasy_Food_Fruit_005"
       }
     }
   }

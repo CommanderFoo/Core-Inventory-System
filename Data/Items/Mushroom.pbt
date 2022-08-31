@@ -1,12 +1,12 @@
 Assets {
-  Id: 8651211005288105512
-  Name: "Stick"
+  Id: 6386321487390625558
+  Name: "Mushroom"
   PlatformAssetType: 33
   SerializationVersion: 118
   VirtualFolderPath: "Inventory System"
   ItemAsset {
-    MaximumStackCount: 30
-    ItemTemplateAssetId: 2013165080876802881
+    MaximumStackCount: 100
+    ItemTemplateAssetId: 15852684568902083763
     CustomParameters {
     }
   }

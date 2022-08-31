@@ -1,12 +1,12 @@
 Assets {
-  Id: 8651211005288105512
-  Name: "Stick"
+  Id: 5701872344458775433
+  Name: "Apple"
   PlatformAssetType: 33
   SerializationVersion: 118
   VirtualFolderPath: "Inventory System"
   ItemAsset {
-    MaximumStackCount: 30
-    ItemTemplateAssetId: 2013165080876802881
+    MaximumStackCount: 10
+    ItemTemplateAssetId: 15169606915569742847
     CustomParameters {
     }
   }

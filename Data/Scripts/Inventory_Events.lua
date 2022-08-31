@@ -10,6 +10,7 @@ local Inventory_Events = {
 	HOTBAR_SAVE_SLOT = "Inv.Hotbar.Slot",
 	EQUIP_ITEM = "Inv.Equip",
 	UNEQUIP_ITEM = "Inv.Unequip",
+	SORT = "Inv.Sort"
 
 }
 

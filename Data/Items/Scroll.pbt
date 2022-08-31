@@ -1,12 +1,12 @@
 Assets {
-  Id: 3876482931963857320
-  Name: "Shotgun"
+  Id: 16185530597388852783
+  Name: "Scroll"
   PlatformAssetType: 33
   SerializationVersion: 118
-  VirtualFolderPath: "Inventory"
+  VirtualFolderPath: "Inventory System"
   ItemAsset {
     MaximumStackCount: 1
-    ItemTemplateAssetId: 841534158063459245
+    ItemTemplateAssetId: 6436896364294764909
     CustomParameters {
     }
   }

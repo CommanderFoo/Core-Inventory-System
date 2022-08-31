@@ -1,3 +1,5 @@
 "Asset[Asset Reference]","Template[Asset Reference]","EquipmentTemplate[Asset Reference]","Icon[Asset Reference]","Name[String]","Description[String]"
-"780F4692BF25C628","1BF032F98FE1E341","A1889D5F4BC28B32","AC09C40A5171CCC3","Sticks","Used for crafting various items."
-"35CC08B0299209A8","144DFC6AE7E4AC08","B9B7E1E8CB03C342","87C0CA8C3E84CE09","Basic Shotgun","A basic shotgun that does low damage."
+"780F4692BF25C628","1BF032F98FE1E341","0BADBADBADBADBAD","AC09C40A5171CCC3","Sticks","Used for crafting various wooden items."
+"E09E8E52DE941E2F","59547323A1CAF96D","0BADBADBADBADBAD","257365C1B0E81283","Scroll","Give to the wizard in town to receive a random quest."
+"58A0C58E7D5CCF16","DC000C9FD1B9A4B3","0BADBADBADBADBAD","72A05BE3E16FD0D3","Mushroom","Used in cooking to make potions."
+"4F211EAFFE16CB89","D285451E20D7F3FF","0BADBADBADBADBAD","96ABF26E08F9A265","Apple","An apple a day keeps Victoria away."

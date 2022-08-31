@@ -427,6 +427,14 @@ Objects {
           Name: "cs:PickupPriority"
           Int: 2
         }
+        Overrides {
+          Name: "cs:SlotsPerRow"
+          Int: 4
+        }
+        Overrides {
+          Name: "cs:SlotCount"
+          Int: 36
+        }
       }
     }
     TemplateAsset {

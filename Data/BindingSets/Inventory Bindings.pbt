@@ -3,7 +3,7 @@ Assets {
   Name: "Inventory Bindings"
   PlatformAssetType: 29
   SerializationVersion: 118
-  VirtualFolderPath: "Inventory"
+  VirtualFolderPath: "Inventory System"
   BindingSetAsset {
     Bindings {
       BindingType {
@@ -48,6 +48,30 @@ Assets {
       }
       Action: "Drop Stack"
       Description: "Drops the full stack of items."
+      CoreBehavior {
+        Value: "mc:ecorebehavior:none"
+      }
+      IsEnabledOnStart: true
+    }
+    Bindings {
+      BindingType {
+        Value: "mc:ebindingtype:basic"
+      }
+      BasicBindingData {
+        BasicInputs {
+          KeyboardPrimary {
+            Value: "mc:ebindingkeyboard:r"
+          }
+          KeyboardSecondary {
+            Value: "mc:ebindingkeyboard:none"
+          }
+          Controller {
+            Value: "mc:ebindinggamepad:none"
+          }
+        }
+      }
+      Action: "Sort Inventory"
+      Description: "Sort current active inventory."
       CoreBehavior {
         Value: "mc:ecorebehavior:none"
       }

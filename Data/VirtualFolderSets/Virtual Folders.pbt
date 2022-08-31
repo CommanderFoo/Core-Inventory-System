@@ -57,48 +57,12 @@ Assets {
       PlatformAssetType: 3
     }
     Folders {
-      VirtualFolderPath: "Inventory"
-      PlatformAssetType: 29
-    }
-    Folders {
-      VirtualFolderPath: "Inventory"
+      VirtualFolderPath: "Inventory System"
       PlatformAssetType: 33
     }
     Folders {
-      VirtualFolderPath: "Core Content"
-      PlatformAssetType: 5
-    }
-    Folders {
-      VirtualFolderPath: "Core Content"
-      VirtualFolderPath: "Weapons"
-      PlatformAssetType: 5
-    }
-    Folders {
-      VirtualFolderPath: "Core Content"
-      VirtualFolderPath: "Weapons"
-      VirtualFolderPath: "Projectile"
-      PlatformAssetType: 5
-    }
-    Folders {
-      VirtualFolderPath: "Core Content"
-      VirtualFolderPath: "Weapons"
-      VirtualFolderPath: "Projectile"
-      VirtualFolderPath: "Dependecies"
-      PlatformAssetType: 5
-    }
-    Folders {
-      VirtualFolderPath: "Core Content"
-      PlatformAssetType: 3
-    }
-    Folders {
-      VirtualFolderPath: "Core Content"
-      VirtualFolderPath: "Weapon"
-      PlatformAssetType: 3
-    }
-    Folders {
-      VirtualFolderPath: "Core Content"
-      VirtualFolderPath: "Equipment"
-      PlatformAssetType: 3
+      VirtualFolderPath: "Inventory System"
+      PlatformAssetType: 29
     }
   }
 }
