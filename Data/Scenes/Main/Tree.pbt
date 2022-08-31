@@ -16,7 +16,7 @@ Objects {
   }
   ChildIds: 16270802511419725645
   ChildIds: 4056815105945944543
-  ChildIds: 6174579881253526101
+  ChildIds: 1711050878963083992
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -36,8 +36,8 @@ Objects {
   IsReplicationEnabledByDefault: true
 }
 Objects {
-  Id: 6174579881253526101
-  Name: "Advanced Shotgun"
+  Id: 1711050878963083992
+  Name: "Stick"
   Transform {
     Scale {
       X: 1
@@ -49,23 +49,26 @@ Objects {
   WantsNetworking: true
   TemplateInstance {
     ParameterOverrideMap {
-      key: 17886792431389911077
+      key: 10668888808268486891
       value {
         Overrides {
           Name: "Name"
-          String: "Advanced Shotgun"
+          String: "Stick"
         }
         Overrides {
           Name: "Position"
           Vector {
-            X: -2020.09485
-            Y: -3353.88843
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
           }
         }
       }
     }
     TemplateAsset {
-      Id: 13382413207709401922
+      Id: 11639726269557541682
     }
   }
 }
