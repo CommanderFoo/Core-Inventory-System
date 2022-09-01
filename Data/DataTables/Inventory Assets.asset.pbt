@@ -41,5 +41,14 @@ Assets {
         AssetId: "UI_Fantasy_Food_Fruit_005"
       }
     }
+    Assets {
+      Id: 15993531986273568426
+      Name: "Fantasy Boot 002"
+      PlatformAssetType: 9
+      PrimaryAsset {
+        AssetType: "PlatformBrushAssetRef"
+        AssetId: "UI_Fantasy_Gear_Boot_002"
+      }
+    }
   }
 }

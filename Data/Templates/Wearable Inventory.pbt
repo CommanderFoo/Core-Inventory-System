@@ -1,13 +1,13 @@
 Assets {
   Id: 7581631008779369608
-  Name: "Armor Inventory"
+  Name: "Wearable Inventory"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
       RootId: 15757681508783782519
       Objects {
         Id: 15757681508783782519
-        Name: "Armor Inventory"
+        Name: "Wearable Inventory"
         Transform {
           Scale {
             X: 1
@@ -208,7 +208,7 @@ Assets {
       }
       Objects {
         Id: 7318093300271285187
-        Name: "Armor_Inventory_Server"
+        Name: "Inventory_Wearable_Server"
         Transform {
           Location {
           }
@@ -1211,7 +1211,7 @@ Assets {
           AddSizeToParentIfUsingParentSize: true
           UseParentWidth: true
           Text {
-            Label: "Armor"
+            Label: "Wearables"
             Color {
               R: 1
               G: 1
@@ -2111,7 +2111,7 @@ Assets {
       }
       Objects {
         Id: 7270317912739735379
-        Name: "Armor_Inventory_Client"
+        Name: "Inventory_Wearables_Client"
         Transform {
           Location {
           }

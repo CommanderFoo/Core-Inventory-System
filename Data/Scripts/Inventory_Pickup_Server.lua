@@ -26,7 +26,7 @@ end
 PICKUP_TRIGGER.beginOverlapEvent:Connect(function(trigger, other)
 	local entry = _G["Inventory.Drops"][ROOT]
 
-	if(other:IsA("Player") and not players[other] and Inventory.can_pickup_item(other, entry.asset)) then
+	if(other:IsA("Player") and not players[other] and entry ~= nil and Inventory.can_pickup_item(other, entry.asset)) then
 		if(IS_SHARED) then
 			players[other] = other
 

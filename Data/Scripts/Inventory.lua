@@ -310,18 +310,21 @@ function Inventory.drop_one_handler(player, from_inventory_id, to_inventory_id, 
 		local from_inventory = from_inventory_obj.inventory
 		local to_inventory = to_inventory_obj.inventory
 		local item = from_inventory:GetItem(from_slot_index)
-		local item_asset_id = item.itemAssetId
 
-		if(not is_inside) then
-			if(from_inventory:CanRemoveFromSlot(from_slot_index, { count = 1 })) then
-				local owner = from_inventory.owner or player
+		if(item ~= nil) then
+			local item_asset_id = item.itemAssetId
 
-				Inventory.drop_item_into_world(owner, item_asset_id, 1, from_inventory, from_slot_index)
+			if(not is_inside) then
+				if(from_inventory:CanRemoveFromSlot(from_slot_index, { count = 1 })) then
+					local owner = from_inventory.owner or player
+
+					Inventory.drop_item_into_world(owner, item_asset_id, 1, from_inventory, from_slot_index)
+					from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
+				end
+			elseif(to_inventory:CanAddItem(item_asset_id, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
+				to_inventory:AddItem(item_asset_id, { count = 1, slot = to_slot_index })
 				from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
 			end
-		elseif(to_inventory:CanAddItem(item_asset_id, { count = 1, slot = to_slot_index }) and from_inventory:CanRemoveFromSlot(from_slot_index)) then
-			to_inventory:AddItem(item_asset_id, { count = 1, slot = to_slot_index })
-			from_inventory:RemoveFromSlot(from_slot_index, { count = 1 })
 		end
 	end
 end

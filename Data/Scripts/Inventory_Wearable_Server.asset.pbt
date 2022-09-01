@@ -1,6 +1,6 @@
 Assets {
   Id: 5442004602744257629
-  Name: "Inventory_Armor_Server"
+  Name: "Inventory_Wearable_Server"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {

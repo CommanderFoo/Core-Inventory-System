@@ -211,7 +211,6 @@ Objects {
       IsMountEnabled: true
       MaxHitpoints: 100
       PlayerMasterVolumeMultiplier: 1
-      ComplexCollision: true
     }
   }
   NetworkRelevanceDistance {

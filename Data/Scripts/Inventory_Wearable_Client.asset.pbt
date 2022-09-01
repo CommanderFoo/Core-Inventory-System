@@ -1,6 +1,6 @@
 Assets {
   Id: 737881821191491817
-  Name: "Inventory_Armory_Client"
+  Name: "Inventory_Wearable_Client"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {

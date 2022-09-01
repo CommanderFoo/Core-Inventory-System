@@ -1,6 +1,6 @@
 Assets {
   Id: 118775985379504992
-  Name: "Armor Slot"
+  Name: "Wearable Slot"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
