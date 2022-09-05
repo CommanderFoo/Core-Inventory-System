@@ -7,7 +7,7 @@ Assets {
       RootId: 847440081716985346
       Objects {
         Id: 847440081716985346
-        Name: "Armor Slot"
+        Name: "Wearable Slot"
         Transform {
           Scale {
             X: 1
@@ -15,7 +15,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 10406026702474839825
+        ParentId: 4781671109827199097
         ChildIds: 1340751629767531230
         ChildIds: 4642553103218505358
         ChildIds: 18306186469111437044
@@ -42,7 +42,6 @@ Assets {
           Overrides {
             Name: "cs:Count"
             ObjectReference {
-              SelfId: 841534158063459245
             }
           }
           Overrides {
@@ -50,6 +49,10 @@ Assets {
             ObjectReference {
               SubObjectId: 1200182638931670517
             }
+          }
+          Overrides {
+            Name: "cs:Tags"
+            String: ""
           }
         }
         Collidable_v2 {

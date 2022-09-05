@@ -303,6 +303,15 @@ Objects {
   ParentId: 4056815105945944543
   TemplateInstance {
     ParameterOverrideMap {
+      key: 1334856252270001103
+      value {
+        Overrides {
+          Name: "cs:Tags"
+          String: "Foot"
+        }
+      }
+    }
+    ParameterOverrideMap {
       key: 15757681508783782519
       value {
         Overrides {
@@ -317,6 +326,17 @@ Objects {
         Overrides {
           Name: "Rotation"
           Rotator {
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 16936384737219765831
+      value {
+        Overrides {
+          Name: "Visible"
+          Enum {
+            Value: "mc:evisibilitysetting:forceon"
           }
         }
       }

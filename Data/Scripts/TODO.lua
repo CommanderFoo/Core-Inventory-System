@@ -2,7 +2,6 @@
 
 Saving and Loading
 	Redo to make sure correct items are in inventory (see armour inventory).
-	Remove items that have been disabled (add new column).
 	Version number.
 --]]
 

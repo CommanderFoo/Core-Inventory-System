@@ -15,7 +15,7 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 6398081772340214702
+        ParentId: 4781671109827199097
         ChildIds: 17735132007176028767
         ChildIds: 324281747223349984
         ChildIds: 1911836874402532981
@@ -50,6 +50,10 @@ Assets {
             ObjectReference {
               SubObjectId: 17592029742623518068
             }
+          }
+          Overrides {
+            Name: "cs:Tags"
+            String: ""
           }
         }
         Collidable_v2 {

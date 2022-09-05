@@ -296,6 +296,38 @@ function Inventory.move_item_handler(player, from_inventory_id, to_inventory_id,
 	end
 end
 
+function Inventory.can_place_in_slot(asset_id, to_slot)
+	local item_row = Inventory.find_lookup_item_by_asset_id(asset_id)
+
+	if(item_row ~= nil) then
+		local item_tags_str = item_row.Tags
+		local slot_tags_str = to_slot:GetCustomProperty("Tags")
+		
+		if(string.len(slot_tags_str) > 0) then
+			if(string.len(item_tags_str) > 0) then
+				local item_tags = { CoreString.Split(item_tags_str), { delimiter = ",", removeEmptyResults = true }}
+				local slot_tags = { CoreString.Split(slot_tags_str), { delimiter = ",", removeEmptyResults = true }}
+
+				for _, item_tag in ipairs(item_tags) do
+					local item_tag_trimmed = CoreString.Trim(item_tag)
+
+					for _, slot_tag in ipairs(slot_tags) do
+						local slot_tag_trimmer = CoreString.Trim(slot_tag)
+
+						if(item_tag_trimmed == slot_tag_trimmer) then
+							return true
+						end
+					end
+				end
+			end
+
+			return false
+		end
+	end
+
+	return true
+end
+
 ---Drops an item into an inventory. If the item is outside of an inventory, then it will drop into the world.
 ---@param from_inventory_id string The inventory id the item is coming from.
 ---@param to_inventory_id string The inventory id the item is going too.
@@ -456,59 +488,74 @@ function Inventory.on_slot_pressed_event(button, params)
 
 	-- Has item already.
 	if(Inventory.ACTIVE.has_item) then
+		local hovered_inventory = Inventory.ACTIVE.hovered_inventory or Inventory.ACTIVE.inventory
+		local item = Inventory.ACTIVE.inventory:GetItem(Inventory.ACTIVE.slot_index)
+		local can_place = false
 
-		-- No icon, so this is an empty slot, and dropping it into it.
-		if(is_hidden) then
-			icon.visibility = Visibility.FORCE_ON
-			icon:SetImage(Inventory.PROXY_ICON:GetImage())
-			Inventory.ACTIVE.slot.opacity = 1
-			Inventory.ACTIVE.slot_icon.visibility = Visibility.FORCE_OFF
+		if(Inventory.can_place_in_slot(item.itemAssetId, Inventory.ACTIVE.hovered_slot)) then
+			can_place = true
 
-			if(Object.IsValid(count) and Object.IsValid(Inventory.ACTIVE.slot_count)) then
-				count.text = Inventory.ACTIVE.slot_count.text
-			end
-
-			if(Object.IsValid(Inventory.ACTIVE.slot_count)) then
-				Inventory.ACTIVE.slot_count.text = "0"
-			end
-
-		-- Slot contains existing item
-		else
-			local item = Inventory.ACTIVE.inventory:GetItem(Inventory.ACTIVE.slot_index)
-			local hovered_inventory = Inventory.ACTIVE.hovered_inventory or Inventory.ACTIVE.inventory
-			local to_item = hovered_inventory:GetItem(Inventory.ACTIVE.hovered_slot_index or Inventory.ACTIVE.slot_index)
-
-			if(item ~= nil and to_item ~= nil and item.itemAssetId == to_item.itemAssetId and to_item.count == to_item.maximumStackCount) then
+			-- No icon, so this is an empty slot, and dropping it into it.
+		
+			if(is_hidden) then
+				icon.visibility = Visibility.FORCE_ON
+				icon:SetImage(Inventory.PROXY_ICON:GetImage())
 				Inventory.ACTIVE.slot.opacity = 1
-			else
-				local tmp_img = icon:GetImage()
-				local tmp_count = nil
-
-				if(Object.IsValid(count)) then
-					tmp_count = count.text
-				end
-
-				icon:SetImage(Inventory.ACTIVE.slot_icon:GetImage())
+				Inventory.ACTIVE.slot_icon.visibility = Visibility.FORCE_OFF
 
 				if(Object.IsValid(count) and Object.IsValid(Inventory.ACTIVE.slot_count)) then
 					count.text = Inventory.ACTIVE.slot_count.text
 				end
 
-				Inventory.ACTIVE.slot_icon:SetImage(tmp_img)
-
-				if(tmp_count ~= nil and Object.IsValid(Inventory.ACTIVE.slot_count)) then
-					Inventory.ACTIVE.slot_count.text = tmp_count
+				if(Object.IsValid(Inventory.ACTIVE.slot_count)) then
+					Inventory.ACTIVE.slot_count.text = "0"
 				end
+			end
 
-				Inventory.ACTIVE.slot.opacity = 1
+		-- Slot contains existing item
+		else
+			if(Inventory.can_place_in_slot(item.itemAssetId, Inventory.ACTIVE.hovered_slot)) then
+				can_place = true
 
-				tmp_img = nil
-				tmp_count = nil
+				local item = Inventory.ACTIVE.inventory:GetItem(Inventory.ACTIVE.slot_index)
+				local hovered_inventory = Inventory.ACTIVE.hovered_inventory or Inventory.ACTIVE.inventory
+				local to_item = hovered_inventory:GetItem(Inventory.ACTIVE.hovered_slot_index or Inventory.ACTIVE.slot_index)
+
+				if(item ~= nil and to_item ~= nil and item.itemAssetId == to_item.itemAssetId and to_item.count == to_item.maximumStackCount) then
+					Inventory.ACTIVE.slot.opacity = 1
+				else
+					local tmp_img = icon:GetImage()
+					local tmp_count = nil
+
+					if(Object.IsValid(count)) then
+						tmp_count = count.text
+					end
+
+					icon:SetImage(Inventory.ACTIVE.slot_icon:GetImage())
+
+					if(Object.IsValid(count) and Object.IsValid(Inventory.ACTIVE.slot_count)) then
+						count.text = Inventory.ACTIVE.slot_count.text
+					end
+
+					Inventory.ACTIVE.slot_icon:SetImage(tmp_img)
+
+					if(tmp_count ~= nil and Object.IsValid(Inventory.ACTIVE.slot_count)) then
+						Inventory.ACTIVE.slot_count.text = tmp_count
+					end
+
+					Inventory.ACTIVE.slot.opacity = 1
+
+					tmp_img = nil
+					tmp_count = nil
+				end
 			end
 		end
 
-		Events.BroadcastToServer(Inventory_Events.MOVE, Inventory.ACTIVE.inventory.id, params.inventory.id, Inventory.ACTIVE.slot_index, params.slot_index)
+		if(can_place) then
+			Events.BroadcastToServer(Inventory_Events.MOVE, Inventory.ACTIVE.inventory.id, params.inventory.id, Inventory.ACTIVE.slot_index, params.slot_index)		
+		end
 
+		Inventory.ACTIVE.slot.opacity = 1
 		Inventory.clear_dragged_item()
 		Inventory.PROXY.visibility = Visibility.FORCE_OFF
 
@@ -567,43 +614,49 @@ function Inventory.drop_action(player, action)
 			local icon = Inventory.ACTIVE.hovered_slot:GetCustomProperty("Icon"):GetObject()
 			local is_hidden = icon.visibility == Visibility.FORCE_OFF and true or false
 
-			if(Inventory.ACTIVE.inventory == Inventory.ACTIVE.hovered_inventory and Inventory.ACTIVE.slot_index == Inventory.ACTIVE.hovered_slot_index) then
+			if(Inventory.can_place_in_slot(item_asset_id, Inventory.ACTIVE.hovered_slot)) then
+				if(Inventory.ACTIVE.inventory == Inventory.ACTIVE.hovered_inventory and Inventory.ACTIVE.slot_index == Inventory.ACTIVE.hovered_slot_index) then
+					Inventory.PROXY.visibility = Visibility.FORCE_OFF
+					Inventory.ACTIVE.slot.opacity = 1
+					Inventory.clear_dragged_item()
+				elseif(is_hidden) then
+					icon.visibility = Visibility.FORCE_ON
+					icon:SetImage(Inventory.PROXY_ICON:GetImage())
+					Inventory.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
+
+					Events.BroadcastToServer(Inventory_Events.DROP_ONE, Inventory.ACTIVE.inventory.id, Inventory.ACTIVE.hovered_inventory.id, Inventory.ACTIVE.slot_index, Inventory.ACTIVE.hovered_slot_index, true)
+
+					if(new_count == 0) then
+						Inventory.PROXY.visibility = Visibility.FORCE_OFF
+						Inventory.ACTIVE.slot.opacity = 1
+						Inventory.clear_dragged_item()
+					end
+				else
+					local current_item = Inventory.ACTIVE.hovered_inventory:GetItem(Inventory.ACTIVE.hovered_slot_index)
+					local can_drop = true
+
+					if(current_item ~= nil and current_item.count == current_item.maximumStackCount and current_item.itemAssetId == item_asset_id) then
+						can_drop = false
+					end
+
+					if(can_drop) then
+						Events.BroadcastToServer(Inventory_Events.DROP_ONE, Inventory.ACTIVE.inventory.id, Inventory.ACTIVE.hovered_inventory.id, Inventory.ACTIVE.slot_index, Inventory.ACTIVE.hovered_slot_index, true)
+
+						if(current_item.itemAssetId == item_asset_id) then
+							Inventory.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
+						end
+					end
+
+					if(new_count == 0) then
+						Inventory.PROXY.visibility = Visibility.FORCE_OFF
+						Inventory.ACTIVE.slot.opacity = 1
+						Inventory.clear_dragged_item()
+					end
+				end
+			else
 				Inventory.PROXY.visibility = Visibility.FORCE_OFF
 				Inventory.ACTIVE.slot.opacity = 1
 				Inventory.clear_dragged_item()
-			elseif(is_hidden) then
-				icon.visibility = Visibility.FORCE_ON
-				icon:SetImage(Inventory.PROXY_ICON:GetImage())
-				Inventory.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
-
-				Events.BroadcastToServer(Inventory_Events.DROP_ONE, Inventory.ACTIVE.inventory.id, Inventory.ACTIVE.hovered_inventory.id, Inventory.ACTIVE.slot_index, Inventory.ACTIVE.hovered_slot_index, true)
-
-				if(new_count == 0) then
-					Inventory.PROXY.visibility = Visibility.FORCE_OFF
-					Inventory.ACTIVE.slot.opacity = 1
-					Inventory.clear_dragged_item()
-				end
-			else
-				local current_item = Inventory.ACTIVE.hovered_inventory:GetItem(Inventory.ACTIVE.hovered_slot_index)
-				local can_drop = true
-
-				if(current_item ~= nil and current_item.count == current_item.maximumStackCount and current_item.itemAssetId == item_asset_id) then
-					can_drop = false
-				end
-
-				if(can_drop) then
-					Events.BroadcastToServer(Inventory_Events.DROP_ONE, Inventory.ACTIVE.inventory.id, Inventory.ACTIVE.hovered_inventory.id, Inventory.ACTIVE.slot_index, Inventory.ACTIVE.hovered_slot_index, true)
-
-					if(current_item.itemAssetId == item_asset_id) then
-						Inventory.PROXY_COUNT.text = new_count == 0 and "" or tostring(new_count)
-					end
-				end
-
-				if(new_count == 0) then
-					Inventory.PROXY.visibility = Visibility.FORCE_OFF
-					Inventory.ACTIVE.slot.opacity = 1
-					Inventory.clear_dragged_item()
-				end
 			end
 		end
 	end		
