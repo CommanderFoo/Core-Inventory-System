@@ -377,7 +377,7 @@ Assets {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
         Visible_v2 {
-          Value: "mc:evisibilitysetting:forceoff"
+          Value: "mc:evisibilitysetting:forceon"
         }
         CameraCollidable {
           Value: "mc:ecollisionsetting:inheritfromparent"
@@ -2060,6 +2060,10 @@ Assets {
               Overrides {
                 Name: "UIRotationAngle"
                 Float: 1
+              }
+              Overrides {
+                Name: "cs:Tags"
+                String: "Foot"
               }
             }
           }

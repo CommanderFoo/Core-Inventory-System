@@ -22,6 +22,7 @@ local DROPPED_ITEM_PROJ_LIFE_SPAN = script:GetCustomProperty("DroppedItemProjLif
 ---@class Inventory
 local Inventory = {
 
+	version = 0.1,
 	sorting_option = true,
 	disabled_hover = {},
 
@@ -119,7 +120,6 @@ function Inventory.set_priority(inventory, priority)
 	end
 end
 
----@TODO check type of inventory and load data table based on type.
 function Inventory.load(opts)
 	if(opts.type == Inventory.Type.CHEST_INVENTORY) then
 		-- ?
@@ -147,7 +147,6 @@ function Inventory.load(opts)
 	end
 end
 
----@TODO check type of inventory and save based on data table type.
 ---Saves inventory.
 ---@param player Player
 function Inventory.save(player)
@@ -183,6 +182,7 @@ function Inventory.save(player)
 			end
 		end
 
+		data.iv = Inventory.version
 		Storage.SetPlayerData(player, data)
 	end
 

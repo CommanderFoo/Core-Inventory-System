@@ -56,7 +56,6 @@ Objects {
   ChildIds: 12022879565615496328
   ChildIds: 8131351067154343009
   ChildIds: 9433971498664992443
-  ChildIds: 11657261510356797106
   ChildIds: 3399513445889837083
   ChildIds: 16512755781344736806
   Collidable_v2 {
@@ -289,62 +288,6 @@ Objects {
     }
   }
   IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 11657261510356797106
-  Name: "Armor Inventory"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 1334856252270001103
-      value {
-        Overrides {
-          Name: "cs:Tags"
-          String: "Foot"
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 15757681508783782519
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Wearable Inventory"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 16936384737219765831
-      value {
-        Overrides {
-          Name: "Visible"
-          Enum {
-            Value: "mc:evisibilitysetting:forceon"
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 7581631008779369608
-    }
-  }
 }
 Objects {
   Id: 9433971498664992443
