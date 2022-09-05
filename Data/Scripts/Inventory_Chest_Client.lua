@@ -71,6 +71,7 @@ if(INVENTORY ~= nil) then
 		type = Inventory.Type.CHEST_INVENTORY,
 		slots_per_row = SLOTS_PER_ROW,
 		max_height = MAX_HEIGHT,
+		sortable = ROOT:GetCustomProperty("Sortable"),
 
 	})
 end

@@ -9,6 +9,7 @@ Inventory.create({
 	slot_count = ROOT:GetCustomProperty("SlotCount"),
 	storage_key = ROOT:GetCustomProperty("StorageKey"),
 	name = ROOT:GetCustomProperty("Name"),
+	sortable = ROOT:GetCustomProperty("Sortable"),
 	type = Inventory.Type.CHEST_INVENTORY
 
 })

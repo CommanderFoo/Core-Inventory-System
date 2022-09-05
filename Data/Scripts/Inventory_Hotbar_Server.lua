@@ -18,6 +18,7 @@ local function on_player_joined(player)
 		storage_slot_key = ROOT:GetCustomProperty("StorageSlotKey"),
 		priority = ROOT:GetCustomProperty("PickupPriority"),
 		name = ROOT:GetCustomProperty("Name"),
+		sortable = ROOT:GetCustomProperty("Sortable"),
 		type = Inventory.Type.HOTBAR_INVENTORY
 
 	}).load()

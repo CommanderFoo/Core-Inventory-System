@@ -25,11 +25,11 @@ Assets {
           }
           Overrides {
             Name: "cs:SlotCount"
-            Int: 20
+            Int: 36
           }
           Overrides {
             Name: "cs:SlotsPerRow"
-            Int: 5
+            Int: 4
           }
           Overrides {
             Name: "cs:MaxHeight"
@@ -98,6 +98,10 @@ Assets {
           Overrides {
             Name: "cs:PickupPriority"
             Int: 2
+          }
+          Overrides {
+            Name: "cs:Sortable"
+            Bool: true
           }
           Overrides {
             Name: "cs:Name:isrep"

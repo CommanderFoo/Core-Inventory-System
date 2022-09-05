@@ -105,6 +105,10 @@ Assets {
             Int: 1
           }
           Overrides {
+            Name: "cs:Sortable"
+            Bool: false
+          }
+          Overrides {
             Name: "cs:Name:isrep"
             Bool: false
           }

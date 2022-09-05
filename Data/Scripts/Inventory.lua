@@ -46,7 +46,8 @@ Inventory.ACTIVE = {
 	has_item = false,
 	hovered_slot_index = nil,
 	hovered_inventory = nil,
-	hovered_slot = nil
+	hovered_slot = nil,
+	sortable = nil
 
 }
 
@@ -219,7 +220,7 @@ function Inventory.save_hotbar_slot(player, storage_slot_key, slot_index)
 	end
 end
 
----Removes a player's inventory.e
+---Removes a player's inventory.
 ---@param player Player
 function Inventory.remove_player_inventory(player)
 	for id, obj in pairs(Inventory.INVENTORIES) do
@@ -448,6 +449,7 @@ function Inventory.clear_dragged_item()
 	Inventory.ACTIVE.hovered_slot = nil
 	Inventory.ACTIVE.hovered_slot_index = nil
 	Inventory.ACTIVE.hovered_inventory = nil
+	Inventory.ACTIVE.sortable = nil
 end
 
 ---Set the drag proxy object and setup the icon and count properties.
@@ -488,7 +490,6 @@ function Inventory.on_slot_pressed_event(button, params)
 
 	-- Has item already.
 	if(Inventory.ACTIVE.has_item) then
-		local hovered_inventory = Inventory.ACTIVE.hovered_inventory or Inventory.ACTIVE.inventory
 		local item = Inventory.ACTIVE.inventory:GetItem(Inventory.ACTIVE.slot_index)
 		local can_place = false
 
@@ -577,7 +578,7 @@ end
 function Inventory.on_action_pressed(player, action)
 	if(action == "Drop One Item" or action == "Drop Stack") then
 		Inventory.drop_action(player, action)
-	elseif(action == "Sort Inventory" and Inventory.ACTIVE.hovered_inventory ~= nil) then
+	elseif(action == "Sort Inventory" and Inventory.ACTIVE.hovered_inventory ~= nil and Inventory.ACTIVE.sortable) then
 		Events.BroadcastToServer(Inventory_Events.SORT, Inventory.ACTIVE.hovered_inventory.id, Inventory.sorting_option)
 		Inventory.sorting_option = not Inventory.sorting_option
 	end
@@ -710,6 +711,7 @@ function Inventory.on_hovered_event(button, params)
 	Inventory.ACTIVE.hovered_slot_index = params.slot_index
 	Inventory.ACTIVE.hovered_inventory = params.inventory
 	Inventory.ACTIVE.hovered_slot = params.slot
+	Inventory.ACTIVE.sortable = params.sortable
 
 	Inventory.show_tooltip()
 end
@@ -1041,6 +1043,7 @@ function Inventory.init(opts)
 				slot_background_hover = opts.slot_background_hover,
 				slot_frame_normal = opts.slot_frame_normal,
 				slot_background_normal = opts.slot_background_normal,
+				sortable = opts.sortable
 
 			}
 

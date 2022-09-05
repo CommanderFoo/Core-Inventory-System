@@ -46,6 +46,10 @@ Assets {
             Bool: true
           }
           Overrides {
+            Name: "cs:Sortable"
+            Bool: false
+          }
+          Overrides {
             Name: "cs:InventoryUI"
             ObjectReference {
               SubObjectId: 16936384737219765831

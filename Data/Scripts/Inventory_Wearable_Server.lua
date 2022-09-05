@@ -11,6 +11,7 @@ local function on_player_joined(player)
 		clean_up = ROOT:GetCustomProperty("CleanUp"),
 		storage_key = ROOT:GetCustomProperty("StorageKey"),
 		name = ROOT:GetCustomProperty("Name"),
+		sortable = ROOT:GetCustomProperty("Sortable"),
 		type = Inventory.Type.ARMOR_INVENTORY
 
 	}).load()

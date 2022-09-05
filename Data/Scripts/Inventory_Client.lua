@@ -35,6 +35,7 @@ if(inventory ~= nil) then
 		slot_background_hover = SLOT_BACKGROUND_HOVER,
 		type = Inventory.Type.PLAYER_INVENTORY,
 		start_visible = START_VISIBLE,
+		sortable = ROOT:GetCustomProperty("Sortable"),
 
 	})
 end

@@ -129,6 +129,7 @@ if(inventory ~= nil) then
 		slot_background_normal = SLOT_BACKGROUND_NORMAL,
 		slot_background_hover = SLOT_BACKGROUND_HOVER,
 		start_visible = START_VISIBLE,
+		sortable = ROOT:GetCustomProperty("Sortable"),
 		type = Inventory.Type.HOTBAR_INVENTORY
 
 	})
