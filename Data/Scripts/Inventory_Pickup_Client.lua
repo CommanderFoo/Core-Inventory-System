@@ -93,6 +93,7 @@ script.destroyEvent:Connect(function()
 end)
 
 function Tick(dt)
+	print(time())
 	if(has_picked_up) then
 		return
 	end

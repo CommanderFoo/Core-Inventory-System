@@ -9,7 +9,7 @@ _G["Inventory.Drops"] = {}
 ---@class Inventory_Drop
 local Inventory_Drop = {}
 
-local EXPIRE_TIME = 40 * 1000
+local EXPIRE_TIME = 5
 
 function Inventory_Drop.set_container(container)
 	Inventory_Drop.container = container
@@ -36,7 +36,7 @@ function Inventory_Drop.drop(item, count, position)
 
 	_G["Inventory.Drops"][spawned_item] = {
 
-		ts = DateTime.CurrentTime().millisecondsSinceEpoch,
+		ts = DateTime.CurrentTime().secondsSinceEpoch,
 		count = count,
 		asset = item.Asset,
 		item = item
@@ -111,7 +111,7 @@ function Inventory_Drop.pickup_drop(obj, player, is_shared)
 end
 
 function Inventory_Drop.clear_old_drops()
-	local ts = DateTime.CurrentTime().millisecondsSinceEpoch
+	local ts = DateTime.CurrentTime().secondsSinceEpoch
 	local drops = _G["Inventory.Drops"] or {}
 
 	for obj, entry in pairs(drops) do
@@ -125,6 +125,7 @@ function Inventory_Drop.clear_old_drops()
 end
 
 if(Environment.IsServer()) then
+	---@TODO: Move to tick
 	local task = Task.Spawn(Inventory_Drop.clear_old_drops, EXPIRE_TIME)
 
 	task.repeatCount = -1
