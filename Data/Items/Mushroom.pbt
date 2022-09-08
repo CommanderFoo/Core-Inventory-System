@@ -3,7 +3,7 @@ Assets {
   Name: "Mushroom"
   PlatformAssetType: 33
   SerializationVersion: 118
-  VirtualFolderPath: "Inventory System"
+  VirtualFolderPath: "Inventory"
   ItemAsset {
     MaximumStackCount: 100
     ItemTemplateAssetId: 15852684568902083763

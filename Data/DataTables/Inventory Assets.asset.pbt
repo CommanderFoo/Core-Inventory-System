@@ -3,7 +3,7 @@ Assets {
   Name: "Inventory Assets"
   PlatformAssetType: 31
   SerializationVersion: 118
-  VirtualFolderPath: "Inventory System"
+  VirtualFolderPath: "Inventory"
   DataTableAsset {
     Assets {
       Id: 12396654997909130435

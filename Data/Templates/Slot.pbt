@@ -519,6 +519,6 @@ Assets {
     }
   }
   SerializationVersion: 118
-  VirtualFolderPath: "Inventory System"
+  VirtualFolderPath: "Inventory"
   VirtualFolderPath: "Slots"
 }
