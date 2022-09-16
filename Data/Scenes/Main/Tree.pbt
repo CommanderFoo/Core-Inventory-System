@@ -15,7 +15,9 @@ Objects {
     }
   }
   ChildIds: 16270802511419725645
-  ChildIds: 4056815105945944543
+  ChildIds: 3332283227233703685
+  ChildIds: 9240207570372459281
+  ChildIds: 12427107849396578516
   UnregisteredParameters {
   }
   Collidable_v2 {
@@ -35,7 +37,43 @@ Objects {
   IsReplicationEnabledByDefault: true
 }
 Objects {
-  Id: 4056815105945944543
+  Id: 12427107849396578516
+  Name: "Crafting System"
+  Transform {
+    Location {
+    }
+    Rotation {
+    }
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 4781671109827199097
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  CameraCollidable {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  EditorIndicatorVisibility {
+    Value: "mc:eindicatorvisibility:visiblewhenselected"
+  }
+  Folder {
+    IsFilePartition: true
+    FilePartitionName: "Crafting System"
+  }
+  NetworkRelevanceDistance {
+    Value: "mc:eproxyrelevance:critical"
+  }
+  IsReplicationEnabledByDefault: true
+}
+Objects {
+  Id: 9240207570372459281
   Name: "Inventory System"
   Transform {
     Location {
@@ -49,15 +87,6 @@ Objects {
     }
   }
   ParentId: 4781671109827199097
-  ChildIds: 10736260970155672102
-  ChildIds: 12565870518819623267
-  ChildIds: 4593270119659968449
-  ChildIds: 10751865052575020561
-  ChildIds: 12022879565615496328
-  ChildIds: 8131351067154343009
-  ChildIds: 9433971498664992443
-  ChildIds: 3399513445889837083
-  ChildIds: 16512755781344736806
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
@@ -71,7 +100,8 @@ Objects {
     Value: "mc:eindicatorvisibility:visiblewhenselected"
   }
   Folder {
-    IsGroup: true
+    IsFilePartition: true
+    FilePartitionName: "Inventory System"
   }
   NetworkRelevanceDistance {
     Value: "mc:eproxyrelevance:critical"
@@ -79,8 +109,8 @@ Objects {
   IsReplicationEnabledByDefault: true
 }
 Objects {
-  Id: 16512755781344736806
-  Name: "Tooltip"
+  Id: 3332283227233703685
+  Name: "UI Tab System"
   Transform {
     Scale {
       X: 1
@@ -88,706 +118,21 @@ Objects {
       Z: 1
     }
   }
-  ParentId: 4056815105945944543
+  ParentId: 4781671109827199097
   TemplateInstance {
     ParameterOverrideMap {
-      key: 54666255652980159
-      value {
-        Overrides {
-          Name: "Height"
-          Int: 120
-        }
-        Overrides {
-          Name: "Width"
-          Int: 260
-        }
-        Overrides {
-          Name: "Visible"
-          Enum {
-            Value: "mc:evisibilitysetting:forceoff"
-          }
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 2706120170509256451
-      value {
-        Overrides {
-          Name: "Color"
-          Color {
-            R: 0.187820792
-            G: 0.0843762606
-            B: 0.0109600984
-            A: 0.6
-          }
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 6592134428415072945
-      value {
-        Overrides {
-          Name: "Opacity"
-          Float: 1
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 7189892930104440088
+      key: 5614874845559682138
       value {
         Overrides {
           Name: "Name"
-          String: "Tooltip"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            X: -87.3912811
-            Y: -0.975377083
-            Z: 3.05175781e-05
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 9010608095558872989
-      value {
-        Overrides {
-          Name: "Color"
-          Color {
-            R: 0.571125031
-            G: 0.274677306
-            B: 0.088655591
-            A: 0.6
-          }
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 10116855485341550712
-      value {
-        Overrides {
-          Name: "Color"
-          Color {
-            R: 0.361306876
-            G: 0.135633335
-            B: 0.0262412187
-            A: 0.6
-          }
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 16686969169900918804
-      value {
-        Overrides {
-          Name: "Font"
-          AssetReference {
-            Id: 3081743918018300983
-          }
-        }
-        Overrides {
-          Name: "OutlineSize"
-          Int: 1
-        }
-        Overrides {
-          Name: "OutlineColor"
-          Color {
-            A: 1
-          }
-        }
-        Overrides {
-          Name: "Size"
-          Int: 15
-        }
-        Overrides {
-          Name: "Color"
-          Color {
-            R: 1
-            G: 0.935238063
-            B: 0.49
-            A: 1
-          }
-        }
-        Overrides {
-          Name: "Label"
-          String: ""
-        }
-        Overrides {
-          Name: "UIY"
-          Float: 40
-        }
-      }
-    }
-    ParameterOverrideMap {
-      key: 17573487062967763596
-      value {
-        Overrides {
-          Name: "Color"
-          Color {
-            R: 0.982250869
-            G: 0.558340669
-            B: 0.246201396
-            A: 0.6
-          }
+          String: "UI Tab System"
         }
       }
     }
     TemplateAsset {
-      Id: 1492013694673447387
+      Id: 14117218562207568606
     }
   }
-}
-Objects {
-  Id: 3399513445889837083
-  Name: "Proxy"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 9822156273903299146
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Proxy"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            X: -87.3912811
-            Y: -0.975377083
-            Z: 3.05175781e-05
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 2907989484309433646
-    }
-  }
-  IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 9433971498664992443
-  Name: "Chest Inventory"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 4718527058990615992
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Chest Inventory"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            X: 508.220947
-            Y: -315.592896
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-            Yaw: 90
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 17881690212890626348
-    }
-  }
-}
-Objects {
-  Id: 8131351067154343009
-  Name: "Player Hotbar"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 2157732961051654012
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Player Hotbar"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            X: -87.3912811
-            Y: -0.975377083
-            Z: 3.05175781e-05
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 2366760204233403941
-    }
-  }
-}
-Objects {
-  Id: 12022879565615496328
-  Name: "Player Inventory"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 16211408270603517451
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Player Inventory"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            X: -87.3912811
-            Y: -0.975377083
-            Z: 3.05175781e-05
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 17543768331625296425
-    }
-  }
-}
-Objects {
-  Id: 10751865052575020561
-  Name: "Client"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  ChildIds: 14657203865100992715
-  ChildIds: 13993254307831907484
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:forceoff"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  NetworkContext {
-    MinDetailLevel {
-      Value: "mc:edetaillevel:low"
-    }
-    MaxDetailLevel {
-      Value: "mc:edetaillevel:ultra"
-    }
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-  IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 13993254307831907484
-  Name: "Inventory_Audio_Client"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 10751865052575020561
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:PickupAudio"
-      ObjectReference {
-        SelfId: 7992050087494182973
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Script {
-    ScriptAsset {
-      Id: 15464992485385980514
-    }
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-  IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 14657203865100992715
-  Name: "Audio"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 10751865052575020561
-  ChildIds: 7992050087494182973
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Folder {
-    IsGroup: true
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-  IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 7992050087494182973
-  Name: "Pickup"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 14657203865100992715
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  AudioInstance {
-    AudioAsset {
-      Id: 9578398714806555845
-    }
-    Volume: 1
-    Falloff: -1
-    Radius: -1
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-  IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 4593270119659968449
-  Name: "Server"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  ChildIds: 13138830252238135915
-  ChildIds: 17971822039108373568
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  NetworkContext {
-    Type: Server
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-  IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 17971822039108373568
-  Name: "Inventory_Drop_Server"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4593270119659968449
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:Drops"
-      ObjectReference {
-        SelfId: 12565870518819623267
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Script {
-    ScriptAsset {
-      Id: 10111855426989570073
-    }
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-  IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 13138830252238135915
-  Name: "Inventory_Save_Server"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4593270119659968449
-  UnregisteredParameters {
-    Overrides {
-      Name: "cs:Inventory"
-      AssetReference {
-        Id: 12879219911357857649
-      }
-    }
-  }
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Script {
-    ScriptAsset {
-      Id: 16170364069802545493
-    }
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-  IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 12565870518819623267
-  Name: "Drops"
-  Transform {
-    Location {
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  Folder {
-    IsGroup: true
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-  IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 10736260970155672102
-  Name: "Inventory Bindings"
-  Transform {
-    Location {
-      X: -87.3912811
-      Y: -0.975377083
-      Z: 3.05175781e-05
-    }
-    Rotation {
-    }
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 4056815105945944543
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  CameraCollidable {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  EditorIndicatorVisibility {
-    Value: "mc:eindicatorvisibility:visiblewhenselected"
-  }
-  BindingSet {
-    BindingSetAsset {
-      Id: 5004294234075582436
-    }
-  }
-  NetworkRelevanceDistance {
-    Value: "mc:eproxyrelevance:critical"
-  }
-  IsReplicationEnabledByDefault: true
 }
 Objects {
   Id: 16270802511419725645

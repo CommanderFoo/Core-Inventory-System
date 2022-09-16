@@ -39,11 +39,6 @@ Assets {
     }
     Folders {
       VirtualFolderPath: "Inventory"
-      VirtualFolderPath: "Tween"
-      PlatformAssetType: 3
-    }
-    Folders {
-      VirtualFolderPath: "Inventory"
       VirtualFolderPath: "Effects"
       PlatformAssetType: 3
     }
@@ -63,6 +58,26 @@ Assets {
     Folders {
       VirtualFolderPath: "Inventory"
       PlatformAssetType: 31
+    }
+    Folders {
+      VirtualFolderPath: "Tween"
+      PlatformAssetType: 3
+    }
+    Folders {
+      VirtualFolderPath: "UI Button"
+      PlatformAssetType: 3
+    }
+    Folders {
+      VirtualFolderPath: "UI Tab"
+      PlatformAssetType: 3
+    }
+    Folders {
+      VirtualFolderPath: "UI Button"
+      PlatformAssetType: 5
+    }
+    Folders {
+      VirtualFolderPath: "UI Tab"
+      PlatformAssetType: 5
     }
   }
 }

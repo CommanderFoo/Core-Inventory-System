@@ -1086,6 +1086,14 @@ function Inventory.find_lookup_item_by_asset_id(item_asset_id)
 	end
 end
 
+function Inventory.clear_active()
+	if(Inventory.ACTIVE.slot ~= nil) then
+		Inventory.ACTIVE.slot.opacity = 1
+		Inventory.clear_dragged_item()
+		Inventory.PROXY.visibility = Visibility.FORCE_OFF
+	end
+end
+
 -- Events
 
 if(Environment.IsServer()) then
@@ -1097,6 +1105,7 @@ if(Environment.IsServer()) then
 	Events.ConnectForPlayer(Inventory_Events.SORT, Inventory.sort)
 else
 	Input.actionPressedEvent:Connect(Inventory.on_action_pressed)
+	Events.Connect(Inventory_Events.CLEAR_ACTIVE, Inventory.clear_active)
 end
 
 

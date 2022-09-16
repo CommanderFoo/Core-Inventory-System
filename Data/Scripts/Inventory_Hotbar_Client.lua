@@ -3,11 +3,11 @@ local ROOT = script:GetCustomProperty("Root"):WaitForObject()
 ---@type Inventory
 local Inventory = require(script:GetCustomProperty("Inventory"))
 
----@type Inventory_Equippables
-local Inventory_Equippables = require(script:GetCustomProperty("Inventory_Equippables"))
-
 ---@type Inventory_Events
 local Inventory_Events = require(script:GetCustomProperty("Inventory_Events"))
+
+---@type Inventory_Equippables
+local Inventory_Equippables = require(script:GetCustomProperty("Inventory_Equippables"))
 
 local INVENTORY_UI = ROOT:GetCustomProperty("InventoryUI"):WaitForObject()
 local SLOTS = ROOT:GetCustomProperty("Slots"):WaitForObject()
@@ -115,6 +115,14 @@ local function save_active_slot()
 	end
 end
 
+local function show_hotbar()
+	INVENTORY_UI.visibility = Visibility.INHERIT
+end
+
+local function hide_hotbar()
+	INVENTORY_UI.visibility = Visibility.FORCE_OFF
+end
+
 inventory = Inventory.get_inventory(NAME, Inventory.Type.HOTBAR_INVENTORY)
 
 if(inventory ~= nil) then
@@ -149,3 +157,6 @@ select_slot(1)
 
 LOCAL_PLAYER.privateNetworkedDataChangedEvent:Connect(on_private_networked_data_changed)
 on_private_networked_data_changed(LOCAL_PLAYER, "inventory.hotbar." .. STORAGE_SLOT_KEY)
+
+Events.Connect(Inventory_Events.HOTBAR_HIDE, hide_hotbar)
+Events.Connect(Inventory_Events.HOTBAR_SHOW, show_hotbar)

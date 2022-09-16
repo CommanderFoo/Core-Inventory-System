@@ -1,13 +1,13 @@
 Assets {
-  Id: 9951480137272277549
-  Name: "Slot"
+  Id: 491768282389810091
+  Name: "UI Grow Shrink Button"
   PlatformAssetType: 5
   TemplateAsset {
     ObjectBlock {
-      RootId: 1680811936629800543
+      RootId: 5166945521430075954
       Objects {
-        Id: 1680811936629800543
-        Name: "Slot"
+        Id: 5166945521430075954
+        Name: "UI Grow Shrink Button"
         Transform {
           Scale {
             X: 1
@@ -15,172 +15,143 @@ Assets {
             Z: 1
           }
         }
-        ParentId: 4781671109827199097
-        ChildIds: 1011772035714833027
-        ChildIds: 16329318139300288169
-        ChildIds: 879926025679140264
+        ParentId: 15890731679625016125
+        ChildIds: 4954124357189605708
+        ChildIds: 12694488258904602806
+        ChildIds: 13605223797867136028
+        ChildIds: 11026056780448712365
+        ChildIds: 11359641501298423512
+        ChildIds: 14475387559359828896
         UnregisteredParameters {
           Overrides {
-            Name: "cs:Frame"
+            Name: "cs:ButtonImage"
             ObjectReference {
-              SubObjectId: 1011772035714833027
+              SubObjectId: 4954124357189605708
             }
           }
           Overrides {
-            Name: "cs:Background"
+            Name: "cs:PressedImage"
             ObjectReference {
-              SubObjectId: 8891090642596527426
+              SubObjectId: 12694488258904602806
             }
           }
           Overrides {
-            Name: "cs:Icon"
+            Name: "cs:HoveredImage"
             ObjectReference {
-              SubObjectId: 16329318139300288169
+              SubObjectId: 13605223797867136028
             }
           }
           Overrides {
-            Name: "cs:Count"
+            Name: "cs:DisabledImage"
             ObjectReference {
-              SubObjectId: 8590866795804415077
+              SubObjectId: 11026056780448712365
             }
           }
           Overrides {
-            Name: "cs:Button"
+            Name: "cs:ButtonText"
             ObjectReference {
-              SubObjectId: 879926025679140264
+              SubObjectId: 11359641501298423512
             }
           }
           Overrides {
-            Name: "cs:Tags"
-            String: ""
-          }
-        }
-        Collidable_v2 {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
-        }
-        CameraCollidable {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        EditorIndicatorVisibility {
-          Value: "mc:eindicatorvisibility:visiblewhenselected"
-        }
-        Control {
-          Width: 80
-          Height: 80
-          RenderTransformPivot {
-            Anchor {
-              Value: "mc:euianchor:middlecenter"
-            }
-          }
-          Panel {
-            Opacity: 1
-            OpacityMaskBrush {
-            }
-          }
-          AnchorLayout {
-            SelfAnchor {
-              Anchor {
-                Value: "mc:euianchor:topleft"
-              }
-            }
-            TargetAnchor {
-              Anchor {
-                Value: "mc:euianchor:topleft"
-              }
-            }
-          }
-        }
-        IsReplicationEnabledByDefault: true
-      }
-      Objects {
-        Id: 1011772035714833027
-        Name: "Frame"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 1680811936629800543
-        ChildIds: 8891090642596527426
-        Collidable_v2 {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
-        }
-        CameraCollidable {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        EditorIndicatorVisibility {
-          Value: "mc:eindicatorvisibility:visiblewhenselected"
-        }
-        Control {
-          Width: 200
-          Height: 200
-          RenderTransformPivot {
-            Anchor {
-              Value: "mc:euianchor:middlecenter"
-            }
-          }
-          UseParentWidth: true
-          UseParentHeight: true
-          Image {
-            Brush {
-              Id: 3839519509431907484
-            }
+            Name: "cs:PressedTextColor"
             Color {
-              G: 0.000910581031
-              B: 0.0144438436
+              R: 0.97
+              G: 0.969999969
               A: 1
             }
-            TeamSettings {
-            }
-            ShadowColor {
+          }
+          Overrides {
+            Name: "cs:HoveredTextColor"
+            Color {
+              R: 0.954000115
+              G: 0.917010486
+              B: 0.487931371
               A: 1
             }
-            ShadowOffset {
-            }
-            ScreenshotIndex: 1
           }
-          AnchorLayout {
-            SelfAnchor {
-              Anchor {
-                Value: "mc:euianchor:middlecenter"
-              }
+          Overrides {
+            Name: "cs:DisabledTextColor"
+            Color {
+              R: 0.46770826
+              G: 0.46770826
+              B: 0.46770826
+              A: 1
             }
-            TargetAnchor {
-              Anchor {
-                Value: "mc:euianchor:middlecenter"
-              }
-            }
+          }
+          Overrides {
+            Name: "cs:GrowAmount"
+            Int: 30
+          }
+          Overrides {
+            Name: "cs:ButtonImage:category"
+            String: "Custom"
+          }
+          Overrides {
+            Name: "cs:ButtonImage:subcategory"
+            String: "ButtonImages"
+          }
+          Overrides {
+            Name: "cs:HoveredImage:category"
+            String: "Custom"
+          }
+          Overrides {
+            Name: "cs:HoveredImage:subcategory"
+            String: "ButtonImages"
+          }
+          Overrides {
+            Name: "cs:DisabledImage:category"
+            String: "Custom"
+          }
+          Overrides {
+            Name: "cs:DisabledImage:subcategory"
+            String: "ButtonImages"
+          }
+          Overrides {
+            Name: "cs:ButtonText:category"
+            String: "Custom"
+          }
+          Overrides {
+            Name: "cs:ButtonText:subcategory"
+            String: "ButtonText"
+          }
+          Overrides {
+            Name: "cs:DisabledTextColor:category"
+            String: "Custom"
+          }
+          Overrides {
+            Name: "cs:DisabledTextColor:subcategory"
+            String: "ButtonText"
+          }
+          Overrides {
+            Name: "cs:HoveredTextColor:category"
+            String: "Custom"
+          }
+          Overrides {
+            Name: "cs:HoveredTextColor:subcategory"
+            String: "ButtonText"
+          }
+          Overrides {
+            Name: "cs:PressedImage:category"
+            String: "Custom"
+          }
+          Overrides {
+            Name: "cs:PressedImage:subcategory"
+            String: "ButtonImages"
+          }
+          Overrides {
+            Name: "cs:PressedTextColor:category"
+            String: "Custom"
+          }
+          Overrides {
+            Name: "cs:PressedTextColor:subcategory"
+            String: "ButtonText"
+          }
+          Overrides {
+            Name: "cs:GrowAmount:subcategory"
+            String: "Animation"
           }
         }
-        IsReplicationEnabledByDefault: true
-      }
-      Objects {
-        Id: 8891090642596527426
-        Name: "Background"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 1011772035714833027
         Collidable_v2 {
           Value: "mc:ecollisionsetting:inheritfromparent"
         }
@@ -194,238 +165,13 @@ Assets {
           Value: "mc:eindicatorvisibility:visiblewhenselected"
         }
         Control {
-          Width: -6
-          Height: -6
+          Width: 75
+          Height: 75
           RenderTransformPivot {
             Anchor {
               Value: "mc:euianchor:middlecenter"
             }
           }
-          AddSizeToParentIfUsingParentSize: true
-          UseParentWidth: true
-          UseParentHeight: true
-          Image {
-            Brush {
-              Id: 3839519509431907484
-            }
-            Color {
-              G: 0.000910581031
-              B: 0.0144438436
-              A: 1
-            }
-            TeamSettings {
-            }
-            ShadowColor {
-              A: 1
-            }
-            ShadowOffset {
-            }
-            ScreenshotIndex: 1
-          }
-          AnchorLayout {
-            SelfAnchor {
-              Anchor {
-                Value: "mc:euianchor:middlecenter"
-              }
-            }
-            TargetAnchor {
-              Anchor {
-                Value: "mc:euianchor:middlecenter"
-              }
-            }
-          }
-        }
-        IsReplicationEnabledByDefault: true
-      }
-      Objects {
-        Id: 16329318139300288169
-        Name: "Icon"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 1680811936629800543
-        ChildIds: 8590866795804415077
-        Collidable_v2 {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        Visible_v2 {
-          Value: "mc:evisibilitysetting:forceoff"
-        }
-        CameraCollidable {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        EditorIndicatorVisibility {
-          Value: "mc:eindicatorvisibility:visiblewhenselected"
-        }
-        Control {
-          Width: 50
-          Height: 50
-          RenderTransformPivot {
-            Anchor {
-              Value: "mc:euianchor:middlecenter"
-            }
-          }
-          Image {
-            Brush {
-              Id: 841534158063459245
-            }
-            Color {
-              R: 1
-              G: 1
-              B: 1
-              A: 1
-            }
-            TeamSettings {
-            }
-            ShadowColor {
-              A: 1
-            }
-            ShadowOffset {
-            }
-            ScreenshotIndex: 1
-          }
-          AnchorLayout {
-            SelfAnchor {
-              Anchor {
-                Value: "mc:euianchor:middlecenter"
-              }
-            }
-            TargetAnchor {
-              Anchor {
-                Value: "mc:euianchor:middlecenter"
-              }
-            }
-          }
-        }
-        IsReplicationEnabledByDefault: true
-      }
-      Objects {
-        Id: 8590866795804415077
-        Name: "Count"
-        Transform {
-          Location {
-            X: -13.0504675
-            Y: -440.125092
-            Z: 2.28881836e-05
-          }
-          Rotation {
-            Yaw: 150.98143
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 16329318139300288169
-        Collidable_v2 {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
-        }
-        CameraCollidable {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        EditorIndicatorVisibility {
-          Value: "mc:eindicatorvisibility:visiblewhenselected"
-        }
-        Control {
-          Width: 70
-          Height: 35
-          UIY: 15
-          RenderTransformPivot {
-            Anchor {
-              Value: "mc:euianchor:middlecenter"
-            }
-          }
-          Text {
-            Color {
-              R: 1
-              G: 1
-              B: 1
-              A: 1
-            }
-            Size: 12
-            Justification {
-              Value: "mc:etextjustify:right"
-            }
-            Font {
-              Id: 3081743918018300983
-            }
-            VerticalJustification {
-              Value: "mc:everticaljustification:center"
-            }
-            ShadowColor {
-              A: 1
-            }
-            ShadowOffset {
-            }
-            OutlineColor {
-              A: 1
-            }
-            OutlineSize: 2
-          }
-          AnchorLayout {
-            SelfAnchor {
-              Anchor {
-                Value: "mc:euianchor:bottomright"
-              }
-            }
-            TargetAnchor {
-              Anchor {
-                Value: "mc:euianchor:bottomright"
-              }
-            }
-          }
-        }
-        IsReplicationEnabledByDefault: true
-      }
-      Objects {
-        Id: 879926025679140264
-        Name: "Button"
-        Transform {
-          Location {
-          }
-          Rotation {
-          }
-          Scale {
-            X: 1
-            Y: 1
-            Z: 1
-          }
-        }
-        ParentId: 1680811936629800543
-        Collidable_v2 {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        Visible_v2 {
-          Value: "mc:evisibilitysetting:inheritfromparent"
-        }
-        CameraCollidable {
-          Value: "mc:ecollisionsetting:inheritfromparent"
-        }
-        EditorIndicatorVisibility {
-          Value: "mc:eindicatorvisibility:visiblewhenselected"
-        }
-        Control {
-          Width: 100
-          Height: 30
-          RenderTransformPivot {
-            Anchor {
-              Value: "mc:euianchor:middlecenter"
-            }
-          }
-          UseParentWidth: true
-          UseParentHeight: true
           IsHittable: true
           Button {
             FontColor {
@@ -461,7 +207,7 @@ Assets {
             IsButtonEnabled: true
             OnlyUseMainColor: true
             ClickMode {
-              Value: "mc:ebuttonclickmode:preciseclick"
+              Value: "mc:ebuttonclickmode:default"
             }
             Font {
             }
@@ -492,18 +238,417 @@ Assets {
         }
         IsReplicationEnabledByDefault: true
       }
-    }
-    Assets {
-      Id: 3839519509431907484
-      Name: "BG Flat 002"
-      PlatformAssetType: 9
-      PrimaryAsset {
-        AssetType: "PlatformBrushAssetRef"
-        AssetId: "BackgroundNoOutline_019"
+      Objects {
+        Id: 4954124357189605708
+        Name: "Button Image"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 5166945521430075954
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Control {
+          RenderTransformPivot {
+            Anchor {
+              Value: "mc:euianchor:middlecenter"
+            }
+          }
+          UseParentWidth: true
+          UseParentHeight: true
+          Image {
+            Brush {
+              Id: 12530442819506261373
+            }
+            Color {
+              R: 1
+              G: 1
+              B: 1
+              A: 1
+            }
+            TeamSettings {
+            }
+            ShadowColor {
+              A: 1
+            }
+            ShadowOffset {
+            }
+            ScreenshotIndex: 1
+          }
+          AnchorLayout {
+            SelfAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+            TargetAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+          }
+        }
+        IsReplicationEnabledByDefault: true
+      }
+      Objects {
+        Id: 12694488258904602806
+        Name: "Pressed Image"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 5166945521430075954
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:forceoff"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Control {
+          RenderTransformPivot {
+            Anchor {
+              Value: "mc:euianchor:middlecenter"
+            }
+          }
+          UseParentWidth: true
+          UseParentHeight: true
+          Image {
+            Brush {
+              Id: 12530442819506261373
+            }
+            Color {
+              R: 1
+              G: 1
+              B: 1
+              A: 1
+            }
+            TeamSettings {
+            }
+            ShadowColor {
+              A: 1
+            }
+            ShadowOffset {
+            }
+            ScreenshotIndex: 1
+          }
+          AnchorLayout {
+            SelfAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+            TargetAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+          }
+        }
+        IsReplicationEnabledByDefault: true
+      }
+      Objects {
+        Id: 13605223797867136028
+        Name: "Hovered Image"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 5166945521430075954
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:forceoff"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Control {
+          RenderTransformPivot {
+            Anchor {
+              Value: "mc:euianchor:middlecenter"
+            }
+          }
+          UseParentWidth: true
+          UseParentHeight: true
+          Image {
+            Brush {
+              Id: 12530442819506261373
+            }
+            Color {
+              R: 1
+              G: 1
+              B: 1
+              A: 1
+            }
+            TeamSettings {
+            }
+            ShadowColor {
+              A: 1
+            }
+            ShadowOffset {
+            }
+            ScreenshotIndex: 1
+          }
+          AnchorLayout {
+            SelfAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+            TargetAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+          }
+        }
+        IsReplicationEnabledByDefault: true
+      }
+      Objects {
+        Id: 11026056780448712365
+        Name: "Disabled Image"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 5166945521430075954
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:forceoff"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Control {
+          RenderTransformPivot {
+            Anchor {
+              Value: "mc:euianchor:middlecenter"
+            }
+          }
+          UseParentWidth: true
+          UseParentHeight: true
+          Image {
+            Brush {
+              Id: 12530442819506261373
+            }
+            Color {
+              R: 1
+              G: 1
+              B: 1
+              A: 1
+            }
+            TeamSettings {
+            }
+            ShadowColor {
+              A: 1
+            }
+            ShadowOffset {
+            }
+            ScreenshotIndex: 1
+          }
+          AnchorLayout {
+            SelfAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+            TargetAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+          }
+        }
+        IsReplicationEnabledByDefault: true
+      }
+      Objects {
+        Id: 11359641501298423512
+        Name: "Button Text"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 5166945521430075954
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:forceoff"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Control {
+          Width: 125
+          Height: 38
+          RenderTransformPivot {
+            Anchor {
+              Value: "mc:euianchor:middlecenter"
+            }
+          }
+          Text {
+            Color {
+              R: 1
+              G: 1
+              B: 1
+              A: 1
+            }
+            Size: 20
+            Justification {
+              Value: "mc:etextjustify:center"
+            }
+            Font {
+              Id: 11382362097000883863
+            }
+            VerticalJustification {
+              Value: "mc:everticaljustification:center"
+            }
+            ShadowColor {
+              A: 1
+            }
+            ShadowOffset {
+            }
+            ScaleToFit: true
+            OutlineColor {
+              A: 1
+            }
+            OutlineSize: 3
+          }
+          AnchorLayout {
+            SelfAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+            TargetAnchor {
+              Anchor {
+                Value: "mc:euianchor:middlecenter"
+              }
+            }
+          }
+        }
+        IsReplicationEnabledByDefault: true
+      }
+      Objects {
+        Id: 14475387559359828896
+        Name: "UI_Button_Grow_Shrink_Client"
+        Transform {
+          Location {
+          }
+          Rotation {
+          }
+          Scale {
+            X: 1
+            Y: 1
+            Z: 1
+          }
+        }
+        ParentId: 5166945521430075954
+        UnregisteredParameters {
+          Overrides {
+            Name: "cs:Tween"
+            AssetReference {
+              Id: 841534158063459245
+            }
+          }
+        }
+        Collidable_v2 {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        Visible_v2 {
+          Value: "mc:evisibilitysetting:inheritfromparent"
+        }
+        CameraCollidable {
+          Value: "mc:ecollisionsetting:inheritfromparent"
+        }
+        EditorIndicatorVisibility {
+          Value: "mc:eindicatorvisibility:visiblewhenselected"
+        }
+        Script {
+          ScriptAsset {
+            Id: 3434899174104576620
+          }
+        }
+        NetworkRelevanceDistance {
+          Value: "mc:eproxyrelevance:critical"
+        }
+        IsReplicationEnabledByDefault: true
       }
     }
     Assets {
-      Id: 3081743918018300983
+      Id: 12530442819506261373
+      Name: "Fantasy Fish 003"
+      PlatformAssetType: 9
+      PrimaryAsset {
+        AssetType: "PlatformBrushAssetRef"
+        AssetId: "UI_Fantasy_Food_Fish_003"
+      }
+    }
+    Assets {
+      Id: 11382362097000883863
       Name: "Teko Bold"
       PlatformAssetType: 28
       PrimaryAsset {
@@ -516,7 +661,10 @@ Assets {
       AssetId: "None"
     }
   }
+  Marketplace {
+    Description: "blah"
+  }
   SerializationVersion: 118
-  VirtualFolderPath: "Inventory"
-  VirtualFolderPath: "Slots"
+  DirectlyPublished: true
+  VirtualFolderPath: "UI Button"
 }

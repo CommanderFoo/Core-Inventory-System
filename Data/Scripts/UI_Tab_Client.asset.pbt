@@ -1,21 +1,21 @@
 Assets {
-  Id: 5010859578220487614
-  Name: "Tween"
+  Id: 17038290338637226440
+  Name: "UI_Tab_Client"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
       Overrides {
-        Name: "cs:Tween_Easings"
+        Name: "cs:UI_Tab"
         AssetReference {
-          Id: 4450535636412507475
+          Id: 2020806990263371807
         }
       }
     }
   }
   Marketplace {
-    Description: "My custom tween library."
+    Description: "HI"
   }
   SerializationVersion: 118
   DirectlyPublished: true
-  VirtualFolderPath: "Tween"
+  VirtualFolderPath: "UI Tab"
 }

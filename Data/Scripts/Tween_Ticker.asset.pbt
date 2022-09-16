@@ -1,15 +1,9 @@
 Assets {
-  Id: 5010859578220487614
-  Name: "Tween"
+  Id: 5576294122610321325
+  Name: "Tween_Ticker"
   PlatformAssetType: 3
   TextAsset {
     CustomParameters {
-      Overrides {
-        Name: "cs:Tween_Easings"
-        AssetReference {
-          Id: 4450535636412507475
-        }
-      }
     }
   }
   Marketplace {
