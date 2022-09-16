@@ -546,13 +546,12 @@ Objects {
     }
   }
   ParentId: 5688105305610342162
-  ChildIds: 356854996644816439
   ChildIds: 1397998237077904074
   Collidable_v2 {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Visible_v2 {
-    Value: "mc:evisibilitysetting:forceon"
+    Value: "mc:evisibilitysetting:inheritfromparent"
   }
   CameraCollidable {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -621,7 +620,7 @@ Objects {
     Value: "mc:ecollisionsetting:inheritfromparent"
   }
   Visible_v2 {
-    Value: "mc:evisibilitysetting:forceon"
+    Value: "mc:evisibilitysetting:forceoff"
   }
   CameraCollidable {
     Value: "mc:ecollisionsetting:inheritfromparent"
@@ -800,50 +799,6 @@ Objects {
     TemplateId: 2366760204233403941
   }
   IsReplicationEnabledByDefault: true
-}
-Objects {
-  Id: 356854996644816439
-  Name: "Hotbar Slot"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 6959639116732839542
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 17241503802324526723
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Hotbar Slot"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            X: 966.58136
-            Y: -909.103394
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 10648753773554858583
-    }
-  }
 }
 Objects {
   Id: 2077517598392050669
