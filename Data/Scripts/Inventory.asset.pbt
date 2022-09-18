@@ -29,7 +29,7 @@ Assets {
       Overrides {
         Name: "cs:Slot"
         AssetReference {
-          Id: 9951480137272277549
+          Id: 4935026005276874481
         }
       }
       Overrides {
