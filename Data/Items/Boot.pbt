@@ -2,7 +2,7 @@ Assets {
   Id: 4415606480724947789
   Name: "Boot"
   PlatformAssetType: 33
-  SerializationVersion: 118
+  SerializationVersion: 121
   VirtualFolderPath: "Inventory"
   ItemAsset {
     MaximumStackCount: 1

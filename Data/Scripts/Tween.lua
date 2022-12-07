@@ -20,6 +20,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+Author: CommanderFoo
+
+This hasn't been released, it's my own Tween library I created. Feel free to
+use it. It's not beginner friendly, but it's powerful.
+
 ]]
 
 ---@class Tween
@@ -61,9 +67,32 @@ Tween.copy_table = function(t)
 	return tmp
 end
 
+Tween.remove = function(t, item_to_remove)
+	local j, n = 1, #t
+
+	for i = 1, n do
+		if(t[i] ~= item_to_remove) then
+			if(i ~= j) then
+				t[j] = t[i]
+				t[i] = nil
+			end
+
+			j = j + 1
+		else
+			t[i] = nil
+		end
+	end
+
+	return t
+end
+
 function Tween:tween(delta)
-	if(self.tween_finished or self.tween_paused) then
-		return
+	if(self.tween_finished) then
+		return nil
+	end
+
+	if(self.tween_paused) then
+		return self
 	end
 
 	self.time = self.time + delta

@@ -146,7 +146,7 @@ Assets {
           }
         }
         Relevance {
-          Value: "mc:eproxyrelevance:high"
+          Value: "mc:edistancerelevance:high"
         }
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:medium"
@@ -206,7 +206,7 @@ Assets {
           }
         }
         Relevance {
-          Value: "mc:eproxyrelevance:medium"
+          Value: "mc:edistancerelevance:medium"
         }
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:medium"
@@ -282,7 +282,7 @@ Assets {
           }
         }
         Relevance {
-          Value: "mc:eproxyrelevance:medium"
+          Value: "mc:edistancerelevance:medium"
         }
         NetworkRelevanceDistance {
           Value: "mc:eproxyrelevance:medium"
@@ -367,7 +367,7 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 118
+  SerializationVersion: 121
   VirtualFolderPath: "Inventory"
   VirtualFolderPath: "Item Effects"
 }

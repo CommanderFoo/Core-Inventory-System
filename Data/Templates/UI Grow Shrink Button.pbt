@@ -664,7 +664,7 @@ Assets {
   Marketplace {
     Description: "blah"
   }
-  SerializationVersion: 118
+  SerializationVersion: 121
   DirectlyPublished: true
   VirtualFolderPath: "UI Button"
 }

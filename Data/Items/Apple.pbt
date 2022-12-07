@@ -2,7 +2,7 @@ Assets {
   Id: 5701872344458775433
   Name: "Apple"
   PlatformAssetType: 33
-  SerializationVersion: 118
+  SerializationVersion: 121
   VirtualFolderPath: "Inventory"
   ItemAsset {
     MaximumStackCount: 10

@@ -1178,7 +1178,7 @@ Assets {
       AssetId: "None"
     }
   }
-  SerializationVersion: 118
+  SerializationVersion: 121
   VirtualFolderPath: "Inventory"
   VirtualFolderPath: "Inventories"
 }

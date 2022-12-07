@@ -2,7 +2,7 @@ Assets {
   Id: 5004294234075582436
   Name: "Inventory Bindings"
   PlatformAssetType: 29
-  SerializationVersion: 118
+  SerializationVersion: 121
   VirtualFolderPath: "Inventory"
   BindingSetAsset {
     Bindings {

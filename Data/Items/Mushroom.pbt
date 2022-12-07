@@ -2,7 +2,7 @@ Assets {
   Id: 6386321487390625558
   Name: "Mushroom"
   PlatformAssetType: 33
-  SerializationVersion: 118
+  SerializationVersion: 121
   VirtualFolderPath: "Inventory"
   ItemAsset {
     MaximumStackCount: 100
